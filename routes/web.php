@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -140,3 +141,24 @@ Route::get('reports', [ReportsController::class, 'index'])
 Route::get('/img/{path}', [ImagesController::class, 'show'])
     ->where('path', '.*')
     ->name('image');
+
+// Settings
+Route::get('/settings', [SettingsController::class, 'index'])
+    ->name("settings")
+    ->middleware("auth");
+
+Route::get("/settings/telegram-chat/create", [SettingsController::class, 'createTelegramChat'])
+    ->name("settings.create-telegram-chat")
+    ->middleware("auth");
+
+Route::post("/settings/send-code", [SettingsController::class, 'sendCode'])
+    ->name("settings.send-code")
+    ->middleware("auth");
+
+Route::post("/settings/verify-code", [SettingsController::class, 'verifyCode'])
+    ->name("settings.verify-code")
+    ->middleware("auth");
+
+Route::post("/settings/verify-password", [SettingsController::class, 'verifyPassword'])
+    ->name("settings.verify-password")
+    ->middleware("auth");    

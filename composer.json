@@ -11,6 +11,7 @@
         "php": "^8.2",
         "ext-exif": "*",
         "ext-gd": "*",
+        "danog/madelineproto": "^8",
         "fakerphp/faker": "^1.23",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^1.0",

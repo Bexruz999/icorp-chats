@@ -28,6 +28,11 @@ export default function MainMenu({ className }: MainMenuProps) {
         link="reports"
         icon={<Printer size={20} />}
       />
+      <MainMenuItem
+        text="Settings"
+        link="settings"
+        icon={<Printer size={20} />}
+      />
     </div>
   );
 }
