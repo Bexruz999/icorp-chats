@@ -10,6 +10,9 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MessengerController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,6 +103,13 @@ Route::put('organizations/{organization}/restore', [OrganizationsController::cla
     ->name('organizations.restore')
     ->middleware('auth');
 
+// Messenger
+
+Route::get('messenger', [MessengerController::class, 'index'])
+    ->name('messengers')
+    ->middleware('auth');
+
+
 // Contacts
 
 Route::get('contacts', [ContactsController::class, 'index'])
@@ -161,4 +171,4 @@ Route::post("/settings/verify-code", [SettingsController::class, 'verifyCode'])
 
 Route::post("/settings/verify-password", [SettingsController::class, 'verifyPassword'])
     ->name("settings.verify-password")
-    ->middleware("auth");    
+    ->middleware("auth");

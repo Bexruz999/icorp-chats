@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class MessengersController extends Controller
+class MessengerController extends Controller
 {
     public function index(): Response
     {
