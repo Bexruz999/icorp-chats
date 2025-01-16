@@ -20,8 +20,6 @@ function CreateTelegramChatPage({state, phoneNumber = ""} : {state: number, phon
     if(state == 1) {
         form = <SendCodeForm onChange={setPhone}/>
     } else if(state == 2) {
-        console.log("Received phone number:", phoneNumber);
-        console.log("Phone number:", phone);
         form = <VerifyCodeForm phone={phone}/>
     } else if(state = 3) {
         form = <VerifyPasswordForm phone={phone}/>

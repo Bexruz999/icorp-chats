@@ -17,6 +17,7 @@ export interface Account {
   name: string;
   users: User[];
   contacts: Contact[];
+  connections: Connection[];
   organizations: Organization[];
   messenger: Messenger[];
 }
@@ -36,6 +37,11 @@ export interface Contact {
   deleted_at: string;
   organization_id: number;
   organization: Organization;
+}
+export interface Connection {
+  phone: string;
+  id: number;
+  created_at: string;
 }
 
 export interface Messenger {

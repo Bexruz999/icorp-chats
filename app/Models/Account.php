@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Account extends Model
 {
+    protected $with = ["connections"];
+    
     public function users(): HasMany
     {
         return $this->hasMany(User::class);
@@ -20,5 +22,9 @@ class Account extends Model
     public function contacts(): HasMany
     {
         return $this->hasMany(Contact::class);
+    }
+
+    public function connections(): HasMany {
+        return $this->hasMany(Connection::class);
     }
 }

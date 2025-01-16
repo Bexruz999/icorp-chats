@@ -171,4 +171,7 @@ Route::post("/settings/verify-code", [SettingsController::class, 'verifyCode'])
 
 Route::post("/settings/verify-password", [SettingsController::class, 'verifyPassword'])
     ->name("settings.verify-password")
-    ->middleware("auth");
+    ->middleware("auth");  
+    Route::post("/settings/delete-connection", [SettingsController::class, 'deleteConnection'])
+    ->name("settings.delete")
+    ->middleware("auth");   

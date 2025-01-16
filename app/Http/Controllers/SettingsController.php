@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class SettingsController extends Controller
@@ -99,6 +100,15 @@ class SettingsController extends Controller
 
         $this->settingsService->verifyTelegramPassword($password, $phone);
 
-        return Redirect::route('settings')->with('success', 'Телеграм подключен');
+        return Redirect::route('settings')->with('success', 'Телеграм канал подключен');
+    }
+
+    public function deleteConnection(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required|string|max:15'
+        ]);
+
+        $this->settingsService->deleteConnection($request->input("phone"));
+        return Redirect::route('settings')->with('success', 'Телеграм канал удален');
     }
 }
