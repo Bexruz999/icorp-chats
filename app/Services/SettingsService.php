@@ -6,7 +6,7 @@ class SettingsService {
     const STATUS_VERIFYED = 2;
     const STATUS_WRONG_CODE = 3;
 
-    public function sendTelegramVerificationCode(string $phone): void 
+    public function sendTelegramVerificationCode(string $phone): void
     {
         $MadelineProto = $this->createMadelineProto($phone);
         $MadelineProto->phoneLogin($phone);
@@ -42,7 +42,6 @@ class SettingsService {
         ->setApiHash(env('TELEGRAM_API_HASH'));
 
         $storagePath = storage_path("app/telegram/{$phone}.madeline");
-
         return new \danog\MadelineProto\API($storagePath, $settings);
     }
 }
