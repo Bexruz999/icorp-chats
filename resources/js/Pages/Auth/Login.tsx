@@ -9,8 +9,8 @@ import { CheckboxInput } from '@/Components/Form/CheckboxInput';
 
 export default function LoginPage() {
   const { data, setData, errors, post, processing } = useForm({
-    email: 'johndoe@example.com',
-    password: 'secret',
+    email: '',
+    password: '',
     remember: true
   });
 
@@ -34,10 +34,15 @@ export default function LoginPage() {
           className="mt-8 overflow-hidden bg-white rounded-lg shadow-xl"
         >
           <div className="px-10 py-12">
-            <h1 className="text-3xl font-bold text-center">Welcome Back!</h1>
+            <h1 className="text-3xl font-bold text-center">Войти или<br />
+              <a className="text-3xl text-center text-indigo-700" tabIndex={-1} href={route('register')}>
+                Зарегистрироваться
+              </a>
+            </h1>
+
             <div className="w-24 mx-auto mt-6 border-b-2" />
             <div className="grid gap-6">
-              <FieldGroup label="Email" name="email" error={errors.email}>
+              <FieldGroup label="Email адрес" name="email" error={errors.email}>
                 <TextInput
                   name="email"
                   type="email"
@@ -48,7 +53,7 @@ export default function LoginPage() {
               </FieldGroup>
 
               <FieldGroup
-                label="Password"
+                label="Пароль"
                 name="password"
                 error={errors.password}
               >
@@ -62,7 +67,7 @@ export default function LoginPage() {
 
               <FieldGroup>
                 <CheckboxInput
-                  label="Remember Me"
+                  label="Запомнить меня"
                   name="remember"
                   id="remember"
                   checked={data.remember}
@@ -72,15 +77,12 @@ export default function LoginPage() {
             </div>
           </div>
           <div className="flex items-center justify-between px-10 py-4 bg-gray-100 border-t border-gray-200">
-            <a className="hover:underline" tabIndex={-1} href="#reset-password">
-              Forgot password?
+          <a className="hover:underline" tabIndex={-1} href={route('login')}>
+              Забыли пароль?
             </a>
-            <LoadingButton
-              type="submit"
-              loading={processing}
-              className="btn-indigo"
-            >
-              Login
+
+            <LoadingButton type="submit" loading={processing} className="btn-indigo">
+              Войти
             </LoadingButton>
           </div>
         </form>

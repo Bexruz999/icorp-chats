@@ -1,17 +1,34 @@
 
 import MainLayout from '@/Layouts/MainLayout';
 import { PageProps } from '@/types';
-import { Link, useForm } from '@inertiajs/react';
+import { Link, useForm, usePage } from '@inertiajs/react';
+import Table2 from '@/Components/Table/Table2';
+
 
 
 function SettingsPage({auth}: PageProps) {
+
+  const {connections} = usePage<{
+    connections: {
+      id: number,
+      phone: string
+    }[]
+  }>().props;
+
+  console.log(connections);
+
   const { data, setData, errors, post, processing } = useForm({
-      phone: ""
+      connections: connections
   });
 
-  const connections = auth.user.account.connections;
+  function deleteModal(row: {}) {
 
-  
+    if (confirm('Хотите удалить?')) {
+      console.log(row);
+    }
+  }
+
+
   return (
     <div>
       <h1 className="mb-8 text-3xl font-bold">Настройки</h1>
@@ -19,18 +36,14 @@ function SettingsPage({auth}: PageProps) {
             <Link className="btn-indigo focus:outline-none" href={"/settings/telegram-chat/create"}>Подключить личный телеграм</Link>
       </div>
       <div className="mt-10">
-              <h1 className="mb-8 text-3xl font-bold">Зарегестрированные номера</h1>
-
-        {connections.map((item, index) => (
-          <div key={index}>
-            <div>{item.phone}</div>
-            <div className="cursor-pointer text-red-500 inline-block" onClick={(e) => {
-              setData('phone', item.phone)
-              
-              post(route("settings.delete"))
-            }}>Удалить</div>
-          </div>
-        ))}
+        <h1 className="mb-8 text-3xl font-bold">Зарегестрированные номера</h1>
+        <Table2
+          columns={[
+            { label: 'номер', name: 'phone', colSpan: 2}
+          ]}
+          rows={data.connections}
+          rowDelete={row => route('settings.delete', row.id)}
+        />
         <div></div>
       </div>
     </div>
@@ -38,7 +51,7 @@ function SettingsPage({auth}: PageProps) {
 }
 
 SettingsPage.layout = (page: React.ReactNode) => (
-    <MainLayout title="Reports" children={page} />
-  );
-  
+  <MainLayout title="Reports" children={page} />
+);
+
 export default SettingsPage;

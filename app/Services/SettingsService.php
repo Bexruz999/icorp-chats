@@ -55,6 +55,6 @@ class SettingsService {
 
 
     private function getStoragePath(string $phone): string {
-        return storage_path("app/telegram/{$phone}.madeline");
+        return TelegramService::checkStoragePath($phone, 'app/telegram/');
     }
 }

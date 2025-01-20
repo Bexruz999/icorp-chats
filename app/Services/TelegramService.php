@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use danog\MadelineProto\API;
+use function Amp\File\write;
 
 
 class TelegramService {
@@ -11,7 +12,7 @@ class TelegramService {
             ->setApiId(intval(env("TELEGRAM_API_ID")))
             ->setApiHash(env('TELEGRAM_API_HASH'));
 
-        $storagePath = storage_path("app/telegram/{$phone}.madeline");
+        $storagePath = self::checkStoragePath($phone, 'app/telegram/');
 
         return new \danog\MadelineProto\API($storagePath, $settings);
     }
@@ -119,6 +120,17 @@ class TelegramService {
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
+    }
+
+    public static function checkStoragePath(string $phone, string $path = 'storage/telegram/') {
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+
+        }
+
+        file_put_contents("{$path}{$phone}.madeline", 'testtesttest');
+
+        return storage_path("{$path}{$phone}.madeline");
     }
 
 }

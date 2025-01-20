@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Connection;
 use App\Services\SettingsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -17,18 +18,20 @@ class SettingsController extends Controller
     const STATE_SEND_CODE = 1;
     const STATE_VERIFY_CODE = 2;
     const STATE_PASSWORD_VERIFY = 3;
-    
+
     public function __construct(SettingsService $settingsService)
-    {   
+    {
         $this->settingsService = $settingsService;
     }
-    
+
     public function index(): Response
     {
-        return Inertia::render('Settings/Index');
+        return Inertia::render('Settings/Index')->with([
+            'connections' => Connection::all(),
+        ]);
     }
 
-    public function createTelegramChat(): Response 
+    public function createTelegramChat(): Response
     {
         return Inertia::render('Settings/CreateTelegramChat', [
             "state" => self::STATE_SEND_CODE
@@ -49,7 +52,7 @@ class SettingsController extends Controller
         }
         $phone = $request->input("phone");
         $this->settingsService->sendTelegramVerificationCode($phone);
-        
+
         return Inertia::render("Settings/CreateTelegramChat", [
             "state" => self::STATE_VERIFY_CODE,
             "phoneNumber" => $phone
@@ -85,7 +88,7 @@ class SettingsController extends Controller
 
     public function verifyPassword(Request $request) {
         $validator = Validator::make($request->all(), [
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:4',
             'phone' => 'required|string|max:15'
         ]);
 
@@ -103,12 +106,11 @@ class SettingsController extends Controller
         return Redirect::route('settings')->with('success', 'Телеграм канал подключен');
     }
 
-    public function deleteConnection(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'phone' => 'required|string|max:15'
-        ]);
+    public function deleteConnection(Request $request, $id) {
 
-        $this->settingsService->deleteConnection($request->input("phone"));
-        return Redirect::route('settings')->with('success', 'Телеграм канал удален');
+        $connection = Connection::findOrFail($id);
+
+        //$this->settingsService->deleteConnection($connection->phone);
+        return Redirect::route('dashboard')->with('success', 'Телеграм канал удален');
     }
 }
