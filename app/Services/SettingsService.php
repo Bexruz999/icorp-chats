@@ -12,7 +12,7 @@ class SettingsService {
 
     public function sendTelegramVerificationCode(string $phone): void
     {
-        $MadelineProto = $this->createMadelineProto($phone);
+        $MadelineProto = TelegramService::createMadelineProto($phone);
         $user = auth()->user()->load('account');
 
         $user->account->connections()->create([
@@ -23,7 +23,7 @@ class SettingsService {
     }
 
     public function verifyTelegramCode(int $code, string $phone): int {
-        $MadelineProto = $this->createMadelineProto($phone);
+        $MadelineProto = TelegramService::createMadelineProto($phone);
 
         $authorization = $MadelineProto->completePhoneLogin($code);
 
@@ -35,7 +35,7 @@ class SettingsService {
     }
 
     public function verifyTelegramPassword(string $password, string $phone): int {
-        $MadelineProto = $this->createMadelineProto($phone);
+        $MadelineProto = TelegramService::createMadelineProto($phone);
 
         $authorization = $MadelineProto->complete2falogin($password);
 
@@ -52,25 +52,7 @@ class SettingsService {
         DB::table('connections')->where(['phone' => $phone, 'account_id' => auth()->user()->account->id])->delete();
     }
 
-    private function createMadelineProto(string $phone): \danog\MadelineProto\API {
-        $settings = new \danog\MadelineProto\Settings;
-        // $settings->setDb(
-        //     (new \danog\MadelineProto\Settings\Database\Postgres)
-        //     ->setDatabase(env("DB_DATABASE"))
-        //     ->setUsername(env("DB_USERNAME"))
-        //     ->setPassword(env("DB_PASSWORD"))
-        // );
 
-        $settings->setAppInfo(
-            (new \danog\MadelineProto\Settings\AppInfo)
-            ->setApiId(intval(env("TELEGRAM_API_ID")))
-            ->setApiHash(env('TELEGRAM_API_HASH'))
-        );
-
-        $storagePath = $this->getStoragePath($phone);
-
-        return new \danog\MadelineProto\API($storagePath, $settings);
-    }
 
     private function getStoragePath(string $phone): string {
         return storage_path("app/telegram/{$phone}.madeline");

@@ -108,7 +108,14 @@ Route::put('organizations/{organization}/restore', [OrganizationsController::cla
 Route::get('messenger', [MessengerController::class, 'index'])
     ->name('messengers')
     ->middleware('auth');
-
+Route::get('messenger/messages', [MessengerController::class, 'getMessages'])
+    ->name('messenger.messages')
+    ->middleware('auth');
+//
+//Route::post('messenger', [MessengerController::class, 'getDialogs'])
+//    ->name('messengers.getDialogs')
+//    ->middleware('auth')
+//;
 
 // Contacts
 
@@ -171,7 +178,7 @@ Route::post("/settings/verify-code", [SettingsController::class, 'verifyCode'])
 
 Route::post("/settings/verify-password", [SettingsController::class, 'verifyPassword'])
     ->name("settings.verify-password")
-    ->middleware("auth");  
+    ->middleware("auth");
     Route::post("/settings/delete-connection", [SettingsController::class, 'deleteConnection'])
     ->name("settings.delete")
-    ->middleware("auth");   
+    ->middleware("auth");
