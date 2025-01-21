@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
@@ -189,6 +190,9 @@ Route::post("/settings/verify-code", [SettingsController::class, 'verifyCode'])
 Route::post("/settings/verify-password", [SettingsController::class, 'verifyPassword'])
     ->name("settings.verify-password")
     ->middleware("auth");
-    Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'deleteConnection'])
+
+Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'deleteConnection'])
     ->name("settings.delete")
     ->middleware("auth");
+
+Route::resource('employees', EmployeesController::class);
