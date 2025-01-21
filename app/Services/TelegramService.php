@@ -111,33 +111,27 @@ class TelegramService {
                 'limit' => 100,
             ]);
 
-            // Проверяем, есть ли сообщения в массиве
             $messageList = $messages['messages'] ?? [];
             if (empty($messageList)) {
                 return ['error' => 'Нет сообщений'];
             }
 
-            // Определяем идентификаторы пользователей и их данные
             $selfId = null;
             $selfName = 'Unknown';
-            $otherUserId = null;
 
             foreach ($messages['users'] as $user) {
                 if (!empty($user['self'])) {
                     $selfId = $user['id'];
                     $selfName = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '')) ?: 'Unknown';
-                } else {
-                    $otherUserId = $user['id'];
                 }
             }
 
             // Обрабатываем сообщения
-            $result = array_map(function ($message) use ($selfId, $selfName, $otherUserId, $messages) {
+            $result = array_map(function ($message) use ($selfId, $selfName, $messages) {
                 $users = $messages['users'] ?? [];
                 $chats = $messages['chats'] ?? [];
                 $senderName = 'Unknown';
                 $isSelf = false;
-
 
                 if (!empty($chats)) {
                     // Групповая переписка
@@ -165,12 +159,12 @@ class TelegramService {
                     // Личная переписка
                     if (isset($message['from_id'])) {
                         if ($message['from_id'] == $selfId) {
-                            $senderName = $selfName; // Имя текущего пользователя
-                            $isSelf = true; // Помечаем сообщение как отправленное текущим пользователем
-                        } elseif ($message['from_id'] == $otherUserId) {
+                            $senderName = $selfName;
+                            $isSelf = true;
+                        } else {
                             // Определяем имя другого пользователя
                             foreach ($users as $user) {
-                                if ($user['id'] === $otherUserId) {
+                                if ($user['id'] === $message['from_id']) {
                                     $firstName = $user['first_name'] ?? '';
                                     $lastName = $user['last_name'] ?? '';
                                     $senderName = trim("{$firstName} {$lastName}") ?: 'Unknown';
@@ -178,26 +172,24 @@ class TelegramService {
                                 }
                             }
                         }
-                    } elseif (empty($message['out'])) {
-                        // Сообщения от другого пользователя, если `from_id` отсутствует
-                        foreach ($users as $user) {
-                            if ($user['id'] === $otherUserId) {
-                                $firstName = $user['first_name'] ?? '';
-                                $lastName = $user['last_name'] ?? '';
-                                $senderName = trim("{$firstName} {$lastName}") ?: 'Unknown';
-                                break;
-                            }
-                        }
                     }
                 }
 
                 return [
                     'id' => $message['id'] ?? null,
-                    'sender' => $message['from_id']['user_id'] ?? 'Unknown',
+                    'sender' => $senderName,
                     'content' => $message['message'] ?? '',
                     'time' => isset($message['date']) ? date('H:i', $message['date']) : '',
+                    'is_self' => $isSelf,
                 ];
-            }, $messages['messages'] ?? []);
+            }, $messageList);
+
+            // Сортируем сообщения по ID
+            usort($result, function ($a, $b) {
+                return $a['id'] <=> $b['id'];
+            });
+
+            return $result;
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
