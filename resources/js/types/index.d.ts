@@ -12,6 +12,19 @@ export interface User {
   account: Account;
 }
 
+export interface Employee {
+  id: number;
+  name: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  owner: string;
+  photo: string;
+  password: string;
+  deleted_at: string;
+  account: Account;
+}
+
 export interface Account {
   id: number;
   name: string;

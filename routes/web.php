@@ -10,6 +10,7 @@ use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Middleware\AdminValid;
 use App\Services\SettingsService;
 use Illuminate\Support\Facades\Route;
 
@@ -195,4 +196,5 @@ Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'd
     ->name("settings.delete")
     ->middleware("auth");
 
-Route::resource('employees', EmployeesController::class);
+Route::resource('employees', EmployeesController::class)->only(['index', 'show', ]);
+Route::resource('employees', EmployeesController::class)->only(['create', 'update', 'store', 'edit'])->middleware(AdminValid::class);

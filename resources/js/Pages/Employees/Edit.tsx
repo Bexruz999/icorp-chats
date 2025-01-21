@@ -8,12 +8,12 @@ import TextInput from '@/Components/Form/TextInput';
 import SelectInput from '@/Components/Form/SelectInput';
 import FileInput from '@/Components/Form/FileInput';
 import TrashedMessage from '@/Components/Messages/TrashedMessage';
-import { User } from '@/types';
+import { Employee } from '@/types';
 import FieldGroup from '@/Components/Form/FieldGroup';
 
 const Edit = () => {
   const { user } = usePage<{
-    user: User & { password: string; photo: File | null };
+    user: Employee & { password: string; photo: File | null };
   }>().props;
 
   const { data, setData, errors, post, processing } = useForm({
@@ -117,7 +117,7 @@ const Edit = () => {
             >
               <TextInput
                 name="password"
-                type="password"
+                type="text"
                 error={errors.password}
                 value={data.password}
                 onChange={e => setData('password', e.target.value)}

@@ -89,7 +89,7 @@ class EmployeesController extends Controller
             ]);
         }
 
-        return Redirect::back()->with('success', 'User updated.');
+        return Redirect::back()->with('success', 'Сотрудник обновлен.');
     }
 
     /**
