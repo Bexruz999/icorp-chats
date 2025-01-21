@@ -48,7 +48,7 @@ export default function LoginPage() {
               <FieldGroup label="Контактный номер" name="phone" error={errors.phone}>
                 <TextInput
                   name="phone"
-                  type="number"
+                  type="text"
                   error={errors.phone}
                   onChange={e => setData('phone', e.target.value)}
                 />

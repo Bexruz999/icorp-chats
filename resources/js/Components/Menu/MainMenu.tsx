@@ -1,6 +1,7 @@
 import MainMenuItem from '@/Components/Menu/MainMenuItem';
 import { Building, CircleGauge, MessageCircle, Printer, Users } from 'lucide-react';
 import { usePage } from '@inertiajs/react';
+import { PageProps } from '@/types';
 
 interface MainMenuProps {
   className?: string;
@@ -8,7 +9,7 @@ interface MainMenuProps {
 
 export default function MainMenu({ className }: MainMenuProps) {
 
-  const { auth } = usePage().props
+  const { auth } = usePage<PageProps>().props
 
   return (
     <div className={className}>
@@ -33,19 +34,12 @@ export default function MainMenu({ className }: MainMenuProps) {
         icon={<Users size={20} />}
       />
       <MainMenuItem
-        text="Reports"
-        link="reports"
-        icon={<Printer size={20} />}
-      />
-      <MainMenuItem
         text="Messenger"
         link="messengers"
         icon={<MessageCircle size={20} />}
       />
 
-      {(auth.user.owner === true) ?
-        <MainMenuItem text="Settings" link="settings" icon={<Printer size={20} />} />
-        : ''}
+      {auth.user.owner ? <MainMenuItem text="Settings" link="settings" icon={<Printer size={20} />} /> : ''}
 
     </div>
   );

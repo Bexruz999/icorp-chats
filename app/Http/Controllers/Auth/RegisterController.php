@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Mail\SendPassword;
+use App\Models\Account;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -29,12 +30,16 @@ class RegisterController extends Controller
 
         $password = Str::password(8, true, true, false);
 
+        $account = Account::create([
+            'name' => $request->first_name,
+        ]);
+
         $user = User::create([
             'first_name' => $request->first_name,
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => bcrypt($password),
-            'account_id' => 1,
+            'account_id' => $account->id,
             'owner' => true
         ]);
 

@@ -1,0 +1,102 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
+use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
+
+class EmployeesController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return Inertia::render('Employees/Index', [
+            'filters' => \Illuminate\Support\Facades\Request::all('search', 'role', 'trashed'),
+            'users' => new UserCollection(
+                Auth::user()->account->users()->where('owner', false)->paginate()
+            ),
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return Inertia::render('Employees/Create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(UserStoreRequest $request)
+    {
+        $user = Auth::user()->account->users()->create(
+            $request->validated()
+        );
+
+        if ($request->hasFile('photo')) {
+            $user->update([
+                'photo' => $request->file('photo')->store('users'),
+            ]);
+        }
+
+        return Redirect::route('employees.index')->with('success', 'Сотрудник создан.');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(User $user)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        return Inertia::render('Employees/Edit', [
+            'user' => new UserResource($user),
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UserUpdateRequest $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->update(
+            $request->validated()
+        );
+
+        if ($request->hasFile('photo')) {
+            $user->update([
+                'photo' => $request->file('photo')->store('users'),
+            ]);
+        }
+
+        return Redirect::back()->with('success', 'User updated.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(User $user)
+    {
+        //
+    }
+}
