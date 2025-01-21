@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use danog\MadelineProto\API;
+use Illuminate\Support\Facades\File;
 use function Amp\File\write;
 
 
@@ -122,15 +123,14 @@ class TelegramService {
         }
     }
 
-    public static function checkStoragePath(string $phone, string $path = 'storage/telegram/') {
-        if (!file_exists($path)) {
-            mkdir($path, 0777, true);
+    public static function checkStoragePath(string $phone, string $path = 'app/telegram/') {
+        $path = storage_path($path);
 
+        if (!File::exists($path)) {
+            File::makeDirectory($path, 0777, true, true);
         }
 
-        file_put_contents("{$path}{$phone}.madeline", 'testtesttest');
-
-        return storage_path("{$path}{$phone}.madeline");
+        return "{$path}{$phone}.madeline";
     }
 
 }

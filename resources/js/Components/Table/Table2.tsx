@@ -1,6 +1,7 @@
-import { Link } from '@inertiajs/react';
+import { Link, router } from '@inertiajs/react';
 import get from 'lodash/get';
-import { ChevronRight, Trash2 } from 'lucide-react';
+import { ChevronRight, Table, Trash2 } from 'lucide-react';
+import { useState } from 'react';
 
 interface TableProps<T> {
   columns: {
@@ -13,10 +14,11 @@ interface TableProps<T> {
   rowDelete?: (row: T) => string;
 }
 
-function deleteModal(row: {}) {
+
+function deleteModal(e) {
 
   if (confirm('Хотите удалить?')) {
-    console.log(row);
+    router.delete(e.currentTarget.getAttribute('delete-url'), );
   }
 }
 
@@ -50,7 +52,7 @@ export default function Table2<T>({
                 className="px-6 py-24 border-t text-center"
                 colSpan={columns.length}
               >
-                No data found.
+                Данные не найдены.
               </td>
             </tr>
           )}
@@ -62,7 +64,7 @@ export default function Table2<T>({
                     <td key={column.name} className="border-t">
                       <Link
                         tabIndex={-1}
-                        href={rowDelete?.(row)!}
+                        href=""
                         className="flex items-center px-6 py-4 focus:text-indigo focus:outline-none"
                       >
                         {column.renderCell?.(row) ??
@@ -74,7 +76,9 @@ export default function Table2<T>({
                 })}
                 <td className="w-px border-t">
                   <div className="flex items-center px-4 focus:outline-none">
-                    <Trash2 size={28} fontWeight="bold" className="text-red-600" />
+                    <button key={1} delete-url={rowDelete?.(row)!} onClick={deleteModal}>
+                      <Trash2 size={28} fontWeight="bold" className="text-red-600" />
+                    </button>
                   </div>
                 </td>
               </tr>

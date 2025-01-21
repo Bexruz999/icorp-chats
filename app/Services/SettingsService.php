@@ -1,7 +1,6 @@
 <?php
 namespace App\Services;
 
-use App\Models\Connection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 

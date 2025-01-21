@@ -9,6 +9,7 @@ use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UsersController;
+use App\Services\SettingsService;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MessengerController;

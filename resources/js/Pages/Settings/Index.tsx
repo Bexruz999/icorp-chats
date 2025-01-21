@@ -21,13 +21,6 @@ function SettingsPage({auth}: PageProps) {
       connections: connections
   });
 
-  function deleteModal(row: {}) {
-
-    if (confirm('Хотите удалить?')) {
-      console.log(row);
-    }
-  }
-
 
   return (
     <div>

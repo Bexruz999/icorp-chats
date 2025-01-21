@@ -110,7 +110,7 @@ class SettingsController extends Controller
 
         $connection = Connection::findOrFail($id);
 
-        //$this->settingsService->deleteConnection($connection->phone);
-        return Redirect::route('dashboard')->with('success', 'Телеграм канал удален');
+        $this->settingsService->deleteConnection($connection->phone);
+        return Redirect::back()->with('success', 'Телеграм канал удален');
     }
 }
