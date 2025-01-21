@@ -3,6 +3,7 @@ import MainMenu from '@/Components/Menu/MainMenu';
 import FlashMessages from '@/Components/Messages/FlashMessages';
 import TopHeader from '@/Components/Header/TopHeader';
 import BottomHeader from '@/Components/Header/BottomHeader';
+import { useEffect } from 'react';
 
 interface MainLayoutProps {
   title?: string;
@@ -10,6 +11,11 @@ interface MainLayoutProps {
 }
 
 export default function MainLayout({ title, children }: MainLayoutProps) {
+  useEffect(() => {
+    window.Echo.private('telegram-messages').listen('TelegramMessage', e => {
+      console.log('Received message:', e);
+    });
+  });
   return (
     <>
       <Head title={title} />
