@@ -121,6 +121,10 @@ Route::get('messenger', [MessengerController::class, 'index'])
 Route::get('messenger/messages', [MessengerController::class, 'getMessages'])
     ->name('messenger.messages')
     ->middleware('auth');
+Route::post('/messenger/send-message', [MessengerController::class, 'sendMessage'])
+    ->name('messenger.send-message')
+    ->middleware('auth');;
+
 //
 //Route::post('messenger', [MessengerController::class, 'getDialogs'])
 //    ->name('messengers.getDialogs')
