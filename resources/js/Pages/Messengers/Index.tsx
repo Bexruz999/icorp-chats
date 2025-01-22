@@ -8,12 +8,38 @@ import axios from 'axios';
 
 const MessengerPage = ({ chats }) => {
   const [inputValue, setInputValue] = useState<string>('');
-  const [selectedChat, setSelectedChat] = useState(null); // Выбранный чат
-  const [messages, setMessages] = useState([]); // Сообщения чата
+  const [selectedChat, setSelectedChat] = useState(null);
+  const [messages, setMessages] = useState([]);
 
 
   const [isUserChatsOpen, setIsUserChatsOpen] = useState(true); // Контейнер для "user"
   const [isGroupChatsOpen, setIsGroupChatsOpen] = useState(true); // Контейнер для "chat"
+
+  const handleSendMessage = () => {
+    if (!inputValue.trim() || !selectedChat) return;
+
+    axios
+      .post('/messenger/send-message', {
+        peerId: selectedChat.id,
+        message: inputValue,
+      })
+      .then((response) => {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            id: response.data.message_id,
+            sender: 'You',
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            content: inputValue,
+            is_self: true
+          },
+        ]);
+        setInputValue('');
+      })
+      .catch((error) => {
+        console.error('Error sending message:', error);
+      });
+  };
 
 
   useEffect(() => {
@@ -21,13 +47,22 @@ const MessengerPage = ({ chats }) => {
       axios
         .get('/messenger/messages', { params: { peerId: selectedChat.id } })
         .then((response) => {
-          setMessages(response.data); // Устанавливаем загруженные сообщения
+          setMessages(response.data);
+
+          // Прокрутка к последнему сообщению
+          setTimeout(() => {
+            const chatContainer = document.querySelector('.flex-1');
+            if (chatContainer) {
+              chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+          }, 100);
         })
         .catch((error) => {
-          console.error('Error fetching messages:', error); // Обрабатываем ошибки
+          console.error('Error fetching messages:', error);
         });
     }
-  }, [selectedChat]); // Срабатывает, когда меняется selectedChat
+  }, [selectedChat]);
+
 
 
   // Разделение чатов по типу
@@ -35,18 +70,6 @@ const MessengerPage = ({ chats }) => {
   const groupChats = chats.filter((chat) => chat.type === 'chat');
 
 
-  const handleSendMessage = () => {
-    if (inputValue.trim() === '') return;
-
-    const newMessage = {
-      sender: 'You',
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      content: inputValue,
-    };
-
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
-    setInputValue('');
-  };
 
   return (
     <div className="flex h-screen">
@@ -151,20 +174,24 @@ const MessengerPage = ({ chats }) => {
             <div
               key={idx}
               className={`flex ${
-                msg.sender === 'You' ? 'justify-end' : 'justify-start'
+                msg.is_self  ? 'justify-end' : 'justify-start'
               } mb-4`}
             >
               <div
-                className={`p-3 rounded-lg max-w-xs ${
-                  msg.sender === 'You' ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800'
+                className={`relative p-4 rounded-lg max-w-full min-w-40  ${
+                  msg.is_self ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800'
                 }`}
               >
+                <p className="text-xs font-bold mb-1">{msg.is_self ? 'You' : `${msg.sender}`}</p>
                 <p className="text-sm">{msg.content}</p>
-                <p className="text-xs mt-1 text-gray-500">{msg.time}</p>
+                <p className="text-xs mt-1 ${
+                  msg.is_self ? ' text-white' : 'text-gray-500'
+                }">{msg.time}</p>
               </div>
             </div>
           ))}
         </div>
+
 
         <div className="p-4 border-t border-gray-200 flex items-center">
           <input
@@ -181,6 +208,7 @@ const MessengerPage = ({ chats }) => {
             Send
           </button>
         </div>
+
       </div>
     </div>
   );

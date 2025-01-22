@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Events\TelegramMessage;
+use App\Listeners\TelegramIncomingMessage;
+use App\Services\TelegramService;
 use Illuminate\Console\Command;
 
 class TestSocket extends Command
@@ -26,6 +28,8 @@ class TestSocket extends Command
      */
     public function handle()
     {
-        event(new TelegramMessage("asd234"));
+        // TelegramMessage::dispatch("test mesa");
+        $storage = storage_path() . '/app/telegram/+998996042509.madeline';
+        TelegramIncomingMessage::startAndLoop($storage);
     }
 }

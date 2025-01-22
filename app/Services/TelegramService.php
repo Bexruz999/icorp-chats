@@ -2,8 +2,6 @@
 namespace App\Services;
 
 use danog\MadelineProto\API;
-use Illuminate\Support\Facades\File;
-use function Amp\File\write;
 
 
 class TelegramService {
@@ -13,7 +11,7 @@ class TelegramService {
             ->setApiId(intval(env("TELEGRAM_API_ID")))
             ->setApiHash(env('TELEGRAM_API_HASH'));
 
-        $storagePath = self::getStoragePath($phone, 'app/telegram/');
+        $storagePath = storage_path("app/telegram/{$phone}.madeline");
 
         return new \danog\MadelineProto\API($storagePath, $settings);
     }
@@ -87,8 +85,11 @@ class TelegramService {
             }
 
             return $result;
-        } catch (\Exception $e) {
-            return ['error' => $e->getMessage()];
+        } catch (\Throwable $e) {
+            throw new \RuntimeException("Ошибка получения диалогов: " . $e->getMessage());
+        } finally {
+            // Уничтожение экземпляра MadelineProto
+//            $MadelineProto->stop();
         }
     }
 
@@ -110,20 +111,124 @@ class TelegramService {
                 'limit' => 100,
             ]);
 
-            return array_map(function ($message) {
+            // Проверяем, есть ли сообщения в массиве
+            $messageList = $messages['messages'] ?? [];
+            if (empty($messageList)) {
+                return ['error' => 'Нет сообщений'];
+            }
+
+            // Определяем идентификаторы пользователей и их данные
+            $selfId = null;
+            $selfName = 'Unknown';
+            $otherUserId = null;
+
+            foreach ($messages['users'] as $user) {
+                if (!empty($user['self'])) {
+                    $selfId = $user['id'];
+                    $selfName = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '')) ?: 'Unknown';
+                } else {
+                    $otherUserId = $user['id'];
+                }
+            }
+
+            // Обрабатываем сообщения
+            $result = array_map(function ($message) use ($selfId, $selfName, $otherUserId, $messages) {
+                $users = $messages['users'] ?? [];
+                $chats = $messages['chats'] ?? [];
+                $senderName = 'Unknown';
+                $isSelf = false;
+
+                if (!empty($chats)) {
+                    // Групповая переписка
+                    if (isset($message['from_id'])) {
+                        foreach ($users as $user) {
+                            if ($user['id'] === $message['from_id']) {
+                                $senderName = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '')) ?: 'Unknown';
+                                if ($user['self'] == 1) {
+                                    $isSelf = true;
+                                }
+                                break;
+                            }
+                        }
+                        foreach ($chats as $chat) {
+                            if ($chat['id'] === $message['from_id']) {
+                                $senderName = $chat['title'] ?? 'Unknown';
+                                if ($user['self'] == 1) {
+                                    $isSelf = true;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                } elseif (!empty($users)) {
+                    // Личная переписка
+                    if (isset($message['from_id'])) {
+                        if ($message['from_id'] == $selfId) {
+                            $senderName = $selfName; // Имя текущего пользователя
+                            $isSelf = true;
+                        } elseif ($message['from_id'] == $otherUserId) {
+                            // Определяем имя другого пользователя
+                            foreach ($users as $user) {
+                                if ($user['id'] === $otherUserId) {
+                                    $firstName = $user['first_name'] ?? '';
+                                    $lastName = $user['last_name'] ?? '';
+                                    $senderName = trim("{$firstName} {$lastName}") ?: 'Unknown';
+                                    break;
+                                }
+                            }
+                        }
+                    } elseif (empty($message['out'])) {
+                        // Сообщения от другого пользователя, если `from_id` отсутствует
+                        foreach ($users as $user) {
+                            if ($user['id'] === $otherUserId) {
+                                $firstName = $user['first_name'] ?? '';
+                                $lastName = $user['last_name'] ?? '';
+                                $senderName = trim("{$firstName} {$lastName}") ?: 'Unknown';
+
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 return [
                     'id' => $message['id'] ?? null,
-                    'sender' => $message['from_id']['user_id'] ?? 'Unknown',
+                    'sender' => $senderName,
                     'content' => $message['message'] ?? '',
                     'time' => isset($message['date']) ? date('H:i', $message['date']) : '',
+                    'is_self' => $isSelf, // Новое поле, чтобы указать, что это сообщение отправлено текущим пользователем
                 ];
-            }, $messages['messages'] ?? []);
+            }, $messageList);
+
+            // Сортируем сообщения по ID
+            usort($result, function ($a, $b) {
+                return $a['id'] <=> $b['id'];
+            });
+
+            return $result;
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
     }
 
-    public static function getStoragePath(string $phone, string $path = 'app/telegram/') {
+
+
+    public function sendMessage(string $phone, int $peerId, string $message): array
+    {
+        $MadelineProto = self::createMadelineProto($phone);
+
+        try {
+            $result = $MadelineProto->messages->sendMessage([
+                'peer' => $peerId,
+                'message' => $message,
+            ]);
+
+            return ['success' => true, 'message_id' => $result['id'] ?? null];
+        } catch (\Exception $e) {
+            return ['success' => false, 'error' => $e->getMessage()];
+        }
+    }
+    public static function checkStoragePath(string $phone, string $path = 'app/telegram/') {
         $path = storage_path($path);
 
         if (!File::exists($path)) {

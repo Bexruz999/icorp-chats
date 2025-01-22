@@ -48,26 +48,43 @@ class MessengerController extends Controller
         $this->telegramService = $telegramService;
     }
 
-    public function getMessages( Request $request): JsonResponse
-    {
+//    public function getMessages( Request $request): JsonResponse
+//    {
+//
+//        $peerId = $request->integer("peerId");
+//        $phone = auth()->user()->account->connections[0]->phone;
+//        $messages = $this->telegramService->getMessages($phone, $peerId);
+//        return response()->json($messages);
+//    }
 
-        $peerId = $request->integer("peerId");
+    public function getMessages(Request $request): JsonResponse
+    {
+        $peerId = $request->integer('peerId');
         $phone = auth()->user()->account->connections[0]->phone;
         $messages = $this->telegramService->getMessages($phone, $peerId);
+//        exit(var_dump($messages));
         return response()->json($messages);
     }
 
-//    public function getDialogs(Request $request)
-//    {
-//        $validator = Validator::make($request->all(), [
-//            'phone' => 'required|string|max:15'
-//        ]);
-//
-//        $phone = $request->input('phone');
-//        $dialogs = $this->telegramService->getDialogs($phone);
-//
-//        return response()->json($dialogs);
-//    }
+
+
+    public function sendMessage(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'peerId' => 'required|integer',
+            'message' => 'required|string',
+        ]);
+
+        $phone = auth()->user()->account->connections[0]->phone;
+        $result = $this->telegramService->sendMessage($phone, $validated['peerId'], $validated['message']);
+
+        if ($result['success']) {
+            return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
+        }
+
+        return response()->json(['status' => 'error', 'error' => $result['error']], 500);
+    }
+
 
     public function create(): Response
     {

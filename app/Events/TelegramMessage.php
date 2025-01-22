@@ -9,20 +9,23 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use danog\MadelineProto\EventHandler\Message;
+use danog\MadelineProto\EventHandler\SimpleFilter\Incoming;
 
 class TelegramMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public string $message;
+    public Incoming&Message $message;
 
 
     /**
      * Create a new event instance.
      */
-    public function __construct(string $message)
+    public function __construct(Incoming&Message $message)
     {
         $this->message = $message;
+        var_dump($message);
     }
 
     /**
