@@ -196,5 +196,4 @@ Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'd
     ->name("settings.delete")
     ->middleware("auth");
 
-Route::resource('employees', EmployeesController::class)->only(['index', 'show', ]);
-Route::resource('employees', EmployeesController::class)->only(['create', 'update', 'store', 'edit'])->middleware(AdminValid::class);
+Route::resource('employees', EmployeesController::class)->middleware(AdminValid::class);

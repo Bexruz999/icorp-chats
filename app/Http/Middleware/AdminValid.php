@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 class AdminValid
@@ -15,10 +16,15 @@ class AdminValid
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->owner) {
-            return $next($request);
-        } else {
-            abort(Response::HTTP_FORBIDDEN);
+        $routes = ['employees.create', 'employees.update', 'employees.destroy', 'employees.store', 'employees.edit'];
+
+        if (in_array(Route::getCurrentRoute()->getName(), $routes)) {
+            if (auth()->user()->owner) {
+                return $next($request);
+            } else {
+                abort(Response::HTTP_FORBIDDEN);
+            }
         }
+        return $next($request);
     }
 }

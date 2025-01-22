@@ -18,7 +18,7 @@ const Create = () => {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    post(route('users.store'));
+    post(route('employees.store'));
   }
 
   return (

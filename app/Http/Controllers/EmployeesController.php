@@ -9,6 +9,7 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 class EmployeesController extends Controller
@@ -18,6 +19,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
+
         return Inertia::render('Employees/Index', [
             'filters' => \Illuminate\Support\Facades\Request::all('search', 'role', 'trashed'),
             'users' => new UserCollection(

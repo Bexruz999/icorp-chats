@@ -13,7 +13,7 @@ class TelegramService {
             ->setApiId(intval(env("TELEGRAM_API_ID")))
             ->setApiHash(env('TELEGRAM_API_HASH'));
 
-        $storagePath = self::checkStoragePath($phone, 'app/telegram/');
+        $storagePath = self::getStoragePath($phone, 'app/telegram/');
 
         return new \danog\MadelineProto\API($storagePath, $settings);
     }
@@ -123,7 +123,7 @@ class TelegramService {
         }
     }
 
-    public static function checkStoragePath(string $phone, string $path = 'app/telegram/') {
+    public static function getStoragePath(string $phone, string $path = 'app/telegram/') {
         $path = storage_path($path);
 
         if (!File::exists($path)) {
