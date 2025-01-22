@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use danog\MadelineProto\API;
+use Illuminate\Support\Facades\File;
 
 
 class TelegramService {
@@ -228,7 +229,7 @@ class TelegramService {
             return ['success' => false, 'error' => $e->getMessage()];
         }
     }
-    public static function checkStoragePath(string $phone, string $path = 'app/telegram/') {
+    public static function getStoragePath(string $phone, string $path = 'app/telegram/') {
         $path = storage_path($path);
 
         if (!File::exists($path)) {

@@ -25,8 +25,9 @@ class SettingsController extends Controller
 
     public function index(): Response
     {
+
         return Inertia::render('Settings/Index')->with([
-            'connections' => Connection::all(),
+            'connections' => Connection::where('account_id', auth()->user()->account->id)->get(),
         ]);
     }
 

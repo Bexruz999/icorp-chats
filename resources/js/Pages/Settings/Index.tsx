@@ -18,7 +18,7 @@ function SettingsPage({auth}: PageProps) {
   console.log(connections);
 
   const { data, setData, errors, post, processing } = useForm({
-      connections: connections
+      connections: connections,
   });
 
 

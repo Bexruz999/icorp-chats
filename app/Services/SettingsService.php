@@ -12,11 +12,6 @@ class SettingsService {
     public function sendTelegramVerificationCode(string $phone): void
     {
         $MadelineProto = TelegramService::createMadelineProto($phone);
-        $user = auth()->user()->load('account');
-
-        $user->account->connections()->create([
-            'phone' => $phone
-        ]);
 
         $MadelineProto->phoneLogin($phone);
     }
@@ -29,6 +24,12 @@ class SettingsService {
         if ($authorization['_'] === 'account.password') {
             return self::STATUS_PASSWORD_NEED;
         }
+
+        $user = auth()->user()->load('account');
+
+        $user->account->connections()->create([
+            'phone' => $phone
+        ]);
 
         return self::STATUS_VERIFYED;
     }

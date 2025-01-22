@@ -31,3 +31,13 @@
 .form-select.error {
   @apply border-red-400 focus:border-red-400 focus:ring-red-400;
 }
+
+
+.modal {
+  position: relative;
+  max-width: 20rem;
+  padding: 2rem;
+  border: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem 0.25rem hsl(0 0% 0% / 10%);
+}

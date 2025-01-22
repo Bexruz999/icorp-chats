@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Jobs\SendEmail;
 use App\Mail\SendPassword;
 use App\Models\Account;
 use App\Models\User;
@@ -43,7 +44,7 @@ class RegisterController extends Controller
             'owner' => true
         ]);
 
-        Mail::to($request->email)->send(new SendPassword($request->email, $password, $request->email));
+        SendEmail::dispatch($request->email, $password);
 
         return redirect()->route('login');
     }
