@@ -15,6 +15,7 @@ use App\Services\SettingsService;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MessengerController;
+use Inertia\Inertia;
 
 
 /*
@@ -53,6 +54,12 @@ Route::delete('logout', [LoginController::class, 'destroy'])
 
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard')
+    ->middleware('auth');
+
+Route::get('/test', function () {
+    return Inertia::render('MiniApp/Index');
+})
+    ->name('miniApp.index')
     ->middleware('auth');
 
 // Users
