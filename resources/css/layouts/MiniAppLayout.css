@@ -1,0 +1,27 @@
+.tab-item {
+  font-size: 20px;
+  padding: 10px 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  opacity: 0.6;
+  background: white;
+  border: 0;
+  outline: 0;
+  text-wrap: nowrap;
+}
+
+.active-tab {
+  font-weight: bold;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+}
+
+.tab-content {
+  display: none;
+  flex-wrap: wrap;
+}
+
+.active-content {
+  display: flex;
+}

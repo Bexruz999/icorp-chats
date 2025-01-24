@@ -1,37 +1,53 @@
 import { Link } from '@inertiajs/react';
 import MiniAppLayout from '@/Layouts/MiniAppLayout';
+import styled from 'styled-components';
+import { useState } from 'react';
+import { Card } from '@/Components/Cards/Cad';
+
+const Tab = `${({ active }) => active && `border-bottom: 2px solid black; opacity: 1;`}`;
+
+const categories = ['Cash', 'Credit Card', 'Bitcoin', 'Bitcoin2'];
+
 
 function DashboardPage() {
+  const [active, setActive] = useState(categories[0]);
+
+  function selectTab({ type }: { type: string }) {
+    setActive(type);
+    console.log(type);
+  }
+
+
   return (
-    <div>
-      <h1 className="mb-8 text-3xl font-bold">Dashboard</h1>
-      <p className="mb-12 leading-normal">
-        Hey there! Welcome to Ping CRM, a demo app designed to help illustrate
-        how
-        <a
-          className="mx-1 text-indigo-600 underline hover:text-orange-500"
-          href="https://inertiajs.com"
-        >
-          Inertia.js
-        </a>
-        works with
-        <a
-          className="ml-1 text-indigo-600 underline hover:text-orange-500"
-          href="https://reactjs.org/"
-        >
-          React
-        </a>
-        .
-      </p>
-      <div>
-        <Link className="mr-1 btn-indigo" href="/500">
-          500 error
-        </Link>
-        <Link className="btn-indigo" href="/404">
-          404 error
-        </Link>
+    <>
+      <div className="d-flex overflow-scroll p-2 z-10">
+        {categories.map((type) => (
+          <div className={active === type ? "tab-item active-tab" : "tab-item"}
+               key={type}
+               onClick={() => selectTab({ type: type })}
+          >
+            {type}
+          </div>
+        ))}
       </div>
-    </div>
+      <div className="tab-contents">
+        {categories.map((type) => (
+          <div className={active === type ? "tab-content active-content" :"tab-content"}>
+            <Card title="test" description={type}
+                  image="https://opelmobile.com.au/wp-content/uploads/2023/06/FP6-1.png" />
+
+            <Card title="test" description="Test"
+                  image="https://opelmobile.com.au/wp-content/uploads/2023/06/FP6-1.png" />
+
+            <Card title="test" description="Test"
+                  image="https://opelmobile.com.au/wp-content/uploads/2023/06/FP6-1.png" />
+
+            <Card title="test" description="Test"
+                  image="https://opelmobile.com.au/wp-content/uploads/2023/06/FP6-1.png" />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 

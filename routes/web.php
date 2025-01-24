@@ -11,7 +11,6 @@ use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\AdminValid;
-use App\Services\SettingsService;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MessengerController;
@@ -58,9 +57,7 @@ Route::get('/', [DashboardController::class, 'index'])
 
 Route::get('/test', function () {
     return Inertia::render('MiniApp/Index');
-})
-    ->name('miniApp.index')
-    ->middleware('auth');
+})->name('miniApp.index');
 
 // Users
 

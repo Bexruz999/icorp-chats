@@ -1,9 +1,8 @@
-import { Head, usePage } from '@inertiajs/react';
-import MainMenu from '@/Components/Menu/MainMenu';
+import { Head } from '@inertiajs/react';
 import FlashMessages from '@/Components/Messages/FlashMessages';
-import TopHeader from '@/Components/Header/TopHeader';
 import BottomHeader from '@/Components/Header/BottomHeader';
-
+import '@coreui/coreui/dist/css/coreui.min.css'
+import '../../css/layouts/MiniAppLayout.css'
 
 interface MainLayoutProps {
   title?: string;
@@ -18,11 +17,11 @@ export default function MainLayout({ title, children }: MainLayoutProps) {
       <div className="flex flex-col">
         <div className="flex flex-col h-screen">
           <div className="md:flex">
-            <TopHeader />
-            <BottomHeader />
+           {/* <TopHeader />*/}
+            {/*<BottomHeader />*/}
           </div>
           <div className="flex flex-grow overflow-hidden">
-            <MainMenu externals={external} className="flex-shrink-0 hidden w-56 overflow-y-auto bg-indigo-800 md:block" />
+            {/*<MainMenu externals={external} className="flex-shrink-0 hidden w-56 overflow-y-auto bg-indigo-800 md:block" />*/}
             {/**
              * We need to scroll the content of the page, not the whole page.
              * So we need to add `scroll-region="true"` to the div below.
