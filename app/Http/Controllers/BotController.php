@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBotRequest;
 use App\Http\Resources\BotCollection;
+use App\Http\Resources\BotResource;
+use App\Models\Bot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -54,7 +56,11 @@ class BotController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $bot = Bot::find($id);
+
+        return Inertia::render('Bots/Edit', [
+            'bot' => new BotResource($bot)
+        ]);
     }
 
     /**

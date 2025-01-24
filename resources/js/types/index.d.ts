@@ -25,6 +25,12 @@ export interface Employee {
   account: Account;
 }
 
+export interface Bot {
+  id: number;
+  name: string;
+  token: string;
+}
+
 export interface Account {
   id: number;
   name: string;
