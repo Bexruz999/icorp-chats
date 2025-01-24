@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->bigInteger('price');
-            $table->bigInteger('discount_price')->nullable();
+            $table->decimal('price', );
+            $table->decimal('discount_price')->nullable();
             $table->text('description')->nullable();
             $table->string('short_description')->nullable();
             $table->string('image')->nullable();

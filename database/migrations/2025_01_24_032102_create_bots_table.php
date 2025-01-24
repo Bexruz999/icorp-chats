@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bots', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('account_id')->constrained('accounts');
             $table->string('name');
             $table->string('token');
             $table->timestamps();
