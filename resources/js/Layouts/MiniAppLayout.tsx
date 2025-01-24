@@ -1,6 +1,5 @@
 import { Head } from '@inertiajs/react';
 import FlashMessages from '@/Components/Messages/FlashMessages';
-import BottomHeader from '@/Components/Header/BottomHeader';
 import '@coreui/coreui/dist/css/coreui.min.css'
 import '../../css/layouts/MiniAppLayout.css'
 
