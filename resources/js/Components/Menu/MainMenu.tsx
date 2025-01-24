@@ -18,9 +18,14 @@ export default function MainMenu({ className }: MainMenuProps) {
         link="dashboard"
         icon={<CircleGauge size={20} />}
       />
-      <MainMenuItem
+      {/*<MainMenuItem
         text="Organizations"
         link="organizations"
+        icon={<Building size={20} />}
+      />*/}
+      <MainMenuItem
+        text="Боты"
+        link="bots.index"
         icon={<Building size={20} />}
       />
       <MainMenuItem
@@ -28,11 +33,11 @@ export default function MainMenu({ className }: MainMenuProps) {
         link="employees.index"
         icon={<Building size={20} />}
       />
-      <MainMenuItem
+      {/*<MainMenuItem
         text="Contacts"
         link="contacts"
         icon={<Users size={20} />}
-      />
+      />*/}
       <MainMenuItem
         text="Messenger"
         link="messengers"

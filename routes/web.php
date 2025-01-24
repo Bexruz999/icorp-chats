@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BotController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeesController;
@@ -205,3 +206,5 @@ Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'd
     ->middleware("auth");
 
 Route::resource('employees', EmployeesController::class)->middleware(AdminValid::class);
+
+Route::resource('bots', BotController::class)->middleware('auth');
