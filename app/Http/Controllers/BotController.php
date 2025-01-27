@@ -11,6 +11,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
+use Telegram\Bot\Api;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 class BotController extends Controller
@@ -45,9 +46,12 @@ class BotController extends Controller
 
         $token = $request->token;
         $url = route('bot.webhook');
-        $response = file_get_contents("https://api.telegram.org/bot$token/setWebhook?url=$url");
 
-        Log::info(json_encode($request));
+        $telegram = new Api($token);
+        $telegram->setWebhookUrl($url);
+        /*$response = file_get_contents("https://api.telegram.org/bot$token/setWebhook?url=$url");*/
+
+        $response = $telegram->getMe();
 
         return Response::json($response);
     }
