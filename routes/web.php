@@ -208,3 +208,11 @@ Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'd
 Route::resource('employees', EmployeesController::class)->middleware(AdminValid::class);
 
 Route::resource('bots', BotController::class)->middleware('auth');
+
+Route::match(['get', 'post'], '/telegram/webhook', function(Request $request) {
+    // Handle Telegram webhook requests here
+    //...
+    Log::info($request);
+
+    return response()->json(['ok' => true]);
+});
