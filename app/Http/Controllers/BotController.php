@@ -48,7 +48,9 @@ class BotController extends Controller
         $url = route('bot.webhook');
 
         $telegram = new Api($token);
-        $telegram->setWebhook($url);
+        $telegram->setWebhook([
+            'url ' => $url
+        ]);
         /*$response = file_get_contents("https://api.telegram.org/bot$token/setWebhook?url=$url");*/
 
         $response = $telegram->getMe();
