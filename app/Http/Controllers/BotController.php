@@ -7,8 +7,11 @@ use App\Http\Resources\BotCollection;
 use App\Http\Resources\BotResource;
 use App\Models\Bot;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class BotController extends Controller
 {
@@ -40,7 +43,11 @@ class BotController extends Controller
     {
         Auth::user()->account->bots()->create($request->validated());
 
-        return redirect()->route('bots.index')->with('success', 'Бот создан.');
+        $response = Telegram::getMe();
+
+        Log::info($response);
+
+        return Response::json($response);
     }
 
     /**

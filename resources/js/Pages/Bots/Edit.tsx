@@ -5,9 +5,6 @@ import MainLayout from '@/Layouts/MainLayout';
 import DeleteButton from '@/Components/Button/DeleteButton';
 import LoadingButton from '@/Components/Button/LoadingButton';
 import TextInput from '@/Components/Form/TextInput';
-import SelectInput from '@/Components/Form/SelectInput';
-import FileInput from '@/Components/Form/FileInput';
-import TrashedMessage from '@/Components/Messages/TrashedMessage';
 import { Bot } from '@/types';
 import FieldGroup from '@/Components/Form/FieldGroup';
 
