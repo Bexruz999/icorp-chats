@@ -43,7 +43,10 @@ class BotController extends Controller
     {
         Auth::user()->account->bots()->create($request->validated());
 
-        $response = Telegram::getMe();
+        $response = Telegram::setWebhook([
+            'url' => env('telegram_webhook_url'),
+            'token' => $request->token
+        ]);
 
         Log::info($response);
 

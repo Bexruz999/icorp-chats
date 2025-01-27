@@ -209,10 +209,10 @@ Route::resource('employees', EmployeesController::class)->middleware(AdminValid:
 
 Route::resource('bots', BotController::class)->middleware('auth');
 
-Route::match(['get', 'post'], '/telegram/webhook', function(Request $request) {
+Route::match(['get', 'post'], '/bot/webhook', function(Request $request) {
     // Handle Telegram webhook requests here
     //...
     Log::info($request);
 
     return response()->json(['ok' => true]);
-});
+})->name('bot.webhook');
