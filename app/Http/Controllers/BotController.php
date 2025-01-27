@@ -47,7 +47,7 @@ class BotController extends Controller
         $url = route('bot.webhook');
         $response = file_get_contents("https://api.telegram.org/bot$token/setWebhook?url=$url");
 
-        Log::info($response);
+        Log::info(json_encode($request));
 
         return Response::json($response);
     }

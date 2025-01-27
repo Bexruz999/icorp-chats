@@ -37,6 +37,10 @@ class AppServiceProvider extends ServiceProvider
         JsonResource::withoutWrapping();
 
         $this->bootRoute();
+
+        \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::except([
+            'submit'
+        ]);
     }
 
     public function bootRoute(): void
