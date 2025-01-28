@@ -41,6 +41,10 @@ const Edit = () => {
     }
   }
 
+  function addCategory() {
+    router.get(route('categories.create.shop', shop.id));
+  }
+
   function setBot(e: any) {
     data.bot_id = e.value;
   }
@@ -103,6 +107,17 @@ const Edit = () => {
         rows={shop.categories}
         getRowDetailsUrl={row => route('categories.edit', row.id)}
       />
+
+      <div className="mt-6">
+        <LoadingButton
+          loading={processing}
+          type="button"
+          onClick={addCategory}
+          className="ml-auto btn-indigo"
+        >
+          Добавить категорию
+        </LoadingButton>
+      </div>
     </div>
   );
 };

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use App\Models\Shop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
@@ -19,17 +24,34 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return Inertia::render('Categories/Create')->with([
+            'shop' => $id
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $shop = Shop::findOrFail($validated['shop_id']);
+
+        $category = $shop->categories()->create([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+        ]);
+
+        if ($request->hasFile('image')) {
+            $category->update([
+                'image' => $request->file('image')->store('category'),
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Категория добавлен успешно');
     }
 
     /**
@@ -55,9 +77,21 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCategoryRequest $request, string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $category->update(
+            $request->validated()
+        );
+
+        if ($request->hasFile('image')) {
+            $category->update([
+                'image' => $request->file('image')->store('category'),
+            ]);
+        }
+
+        return Redirect::back()->with('success', 'Категория обновлена.');
     }
 
     /**

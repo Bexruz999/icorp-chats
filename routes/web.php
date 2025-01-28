@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ShopController;
@@ -213,6 +214,9 @@ Route::resource('bots', BotController::class)->middleware('auth');
 
 Route::resource('shops', ShopController::class)->middleware('auth');
 
+Route::get('categories/create/{id}',[CategoryController::class, 'create'])->name('categories.create.shop');
 Route::resource('categories', CategoryController::class)->middleware('auth');
+
+Route::resource('products', ProductController::class)->middleware('auth');
 
 Route::post('/webhook/{slug}', [BotController::class, 'webhook'])->name('bot.webhook');

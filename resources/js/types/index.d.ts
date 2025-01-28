@@ -47,6 +47,15 @@ export interface Category {
   description: string;
   parent_id: number;
   image: string;
+  products: Product[];
+}
+
+export interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
 }
 
 export interface Account {
