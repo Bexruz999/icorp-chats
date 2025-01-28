@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductCollection;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class ProductController extends Controller
 {
@@ -11,7 +15,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Products/Index', [
+            'filters' => \Illuminate\Support\Facades\Request::all('search', 'role', 'trashed'),
+            'products' => new ProductCollection(
+                Product::whereIn('shop_id', Auth::user()->account->shops()->pluck('id'))->paginate()
+            ),
+        ]);
     }
 
     /**
@@ -43,7 +52,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
     }
 
     /**

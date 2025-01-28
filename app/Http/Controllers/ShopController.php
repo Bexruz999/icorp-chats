@@ -30,7 +30,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-        $bots = Auth::user()->account->bots()->pluck('name', 'id');
+        $bots = Auth::user()->account->bots()->doesntHave('shops')->pluck('name', 'id');
 
         $options = [];
         if (isset($bots)) {

@@ -54,6 +54,8 @@ export interface Product {
   id: number;
   name: string;
   description: string;
+  short_description: string;
+  slug: string;
   price: number;
   image: string;
 }
