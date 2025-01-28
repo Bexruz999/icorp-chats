@@ -2,21 +2,21 @@ import { Link, usePage } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import FilterBar from '@/Components/FilterBar/FilterBar';
 import Pagination from '@/Components/Pagination/Pagination';
-import { PaginatedData, Shop } from '@/types';
+import { Category, PaginatedData } from '@/types';
 import Table from '@/Components/Table/Table';
 
 const Index = () => {
-  const { shops } = usePage<{ shops: PaginatedData<Shop> }>().props;
+  const { categories } = usePage<{ categories: PaginatedData<Category> }>().props;
 
   const {
     data,
     meta: { links }
-  } = shops;
+  } = categories;
 
   return (
     <div>
       <h1 className="mb-8 text-3xl font-bold">
-        Магазины
+        Категория
       </h1>
       <div className="flex items-center justify-between mb-6">
         <FilterBar />
@@ -31,32 +31,13 @@ const Index = () => {
             name: 'name',
 
             renderCell: row => (
-              <>
-                {row.logo && (
-                  <img
-                    src={row.logo}
-                    alt={row.name}
-                    className="w-5 h-5 mr-2 rounded-full"
-                  />
-                )}
-                <>{row.name}</>
-              </>
+              <>{row.name}</>
             )
-          },
-          {
-            label: 'Slug',
-            name: 'slug',
-
+          }, {
+            label: 'Магазин',
+            name: 'shop_id',
             renderCell: row => (
-              <>{row.slug}</>
-            )
-          },
-          {
-            label: 'Бот',
-            name: 'bot',
-
-            renderCell: row => (
-              <>{row.bot.name}</>
+              <>{row.shop.name}</>
             )
           }
         ]}

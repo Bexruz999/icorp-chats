@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Resources\CategoryCollection;
 use App\Models\Category;
 use App\Models\Shop;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
@@ -18,7 +18,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-
+        return Inertia::render('Categories/Index', [
+            'filters' => \Illuminate\Support\Facades\Request::all('search', 'role', 'trashed'),
+            'categories' => new CategoryCollection(Category::whereIn(
+                'shop_id',
+                Auth::user()->account->shops()->pluck('id')
+            )->with('shop')->paginate()),
+        ]);
     }
 
     /**

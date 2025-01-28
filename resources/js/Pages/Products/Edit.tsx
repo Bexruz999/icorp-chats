@@ -7,37 +7,36 @@ import LoadingButton from '@/Components/Button/LoadingButton';
 import TextInput from '@/Components/Form/TextInput';
 import SelectInput from '@/Components/Form/SelectInput';
 import TrashedMessage from '@/Components/Messages/TrashedMessage';
-import { Organization } from '@/types';
-import Table from '@/Components/Table/Table';
+import { Product } from '@/types';
 import FieldGroup from '@/Components/Form/FieldGroup';
+import FileInput from '@/Components/Form/FileInput';
 
 const Edit = () => {
-  const { organization } = usePage<{ organization: Organization }>().props;
+  const { product, categories } = usePage<{ product: Product }>().props;
   const { data, setData, errors, put, processing } = useForm({
-    name: organization.name || '',
-    email: organization.email || '',
-    phone: organization.phone || '',
-    address: organization.address || '',
-    city: organization.city || '',
-    region: organization.region || '',
-    country: organization.country || '',
-    postal_code: organization.postal_code || ''
+    name: product.name || '',
+    description: product.description || '',
+    short_description: product.short_description || '',
+    image: product.image || '',
+    category_id: product.category_id || '',
+    price: product.price || '',
+    discount_price: product.discount_price || '',
   });
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    put(route('organizations.update', organization.id));
+    put(route('organizations.update', product.id));
   }
 
   function destroy() {
     if (confirm('Are you sure you want to delete this organization?')) {
-      router.delete(route('organizations.destroy', organization.id));
+      router.delete(route('organizations.destroy', product.id));
     }
   }
 
   function restore() {
     if (confirm('Are you sure you want to restore this organization?')) {
-      router.put(route('organizations.restore', organization.id));
+      router.put(route('organizations.restore', product.id));
     }
   }
 
@@ -46,20 +45,14 @@ const Edit = () => {
       <Head title={data.name} />
       <h1 className="mb-8 text-3xl font-bold">
         <Link
-          href={route('organizations')}
+          href={route('products.index')}
           className="text-indigo-600 hover:text-indigo-700"
         >
-          Organizations
+          Продукция
         </Link>
         <span className="mx-2 font-medium text-indigo-600">/</span>
         {data.name}
       </h1>
-      {organization.deleted_at && (
-        <TrashedMessage
-          message="This organization has been deleted."
-          onRestore={restore}
-        />
-      )}
       <div className="max-w-3xl overflow-hidden bg-white rounded shadow">
         <form onSubmit={handleSubmit}>
           <div className="grid gap-8 p-8 lg:grid-cols-2">
@@ -72,118 +65,80 @@ const Edit = () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Email" name="email" error={errors.email}>
+            <FieldGroup label="Описание" name="description" error={errors.description}>
               <TextInput
-                name="email"
-                type="email"
-                error={errors.email}
-                value={data.email}
-                onChange={e => setData('email', e.target.value)}
+                name="description"
+                error={errors.description}
+                value={data.description}
+                onChange={e => setData('description', e.target.value)}
               />
             </FieldGroup>
 
-            <FieldGroup label="Phone" name="phone" error={errors.phone}>
+            <FieldGroup label="Короткий Описание" name="short_description" error={errors.short_description}>
               <TextInput
-                name="phone"
-                error={errors.phone}
-                value={data.phone}
-                onChange={e => setData('phone', e.target.value)}
+                name="short_description"
+                error={errors.short_description}
+                value={data.short_description}
+                onChange={e => setData('short_description', e.target.value)}
               />
             </FieldGroup>
 
-            <FieldGroup label="Address" name="address" error={errors.address}>
-              <TextInput
-                name="address"
-                error={errors.address}
-                value={data.address}
-                onChange={e => setData('address', e.target.value)}
-              />
-            </FieldGroup>
-
-            <FieldGroup label="City" name="city" error={errors.city}>
-              <TextInput
-                name="city"
-                error={errors.city}
-                value={data.city}
-                onChange={e => setData('city', e.target.value)}
-              />
-            </FieldGroup>
-
-            <FieldGroup
-              label="Province/State"
-              name="region"
-              error={errors.region}
-            >
-              <TextInput
-                name="region"
-                error={errors.region}
-                value={data.region}
-                onChange={e => setData('region', e.target.value)}
-              />
-            </FieldGroup>
-
-            <FieldGroup label="Country" name="country" error={errors.country}>
+            <FieldGroup label="Категория" name="category_id" error={errors.category_id}>
               <SelectInput
                 name="country"
-                error={errors.country}
-                value={data.country}
-                onChange={e => setData('country', e.target.value)}
-                options={[
-                  {
-                    value: '',
-                    label: ''
-                  },
-                  {
-                    value: 'CA',
-                    label: 'Canada'
-                  },
-                  {
-                    value: 'US',
-                    label: 'United States'
-                  }
-                ]}
-              />{' '}
-            </FieldGroup>
-
-            <FieldGroup
-              label="Postal Code"
-              name="postal_code"
-              error={errors.postal_code}
-            >
-              <TextInput
-                name="postal_code"
-                error={errors.postal_code}
-                value={data.postal_code}
-                onChange={e => setData('postal_code', e.target.value)}
+                error={errors.category_id}
+                value={data.category_id}
+                onChange={e => setData('category_id', e.target.value)}
+                options={categories}
               />
             </FieldGroup>
+
+
+            <FieldGroup label="Цена" name="price" error={errors.price}>
+              <TextInput
+                name="price"
+                error={errors.price}
+                value={data.price}
+                onChange={e => setData('price', e.target.value)}
+              />
+            </FieldGroup>
+
+            <FieldGroup label="Скидочная Цена" name="discount_price" error={errors.discount_price}>
+              <TextInput
+                name="price"
+                error={errors.price}
+                value={data.price}
+                onChange={e => setData('price', e.target.value)}
+              />
+            </FieldGroup>
+
+            <FieldGroup label="Фотография" name="image" error={errors.image}>
+              <FileInput
+                name="photo"
+                accept="image/*"
+                error={errors.image}
+                value={data.image}
+                onChange={photo => {
+                  setData('image', photo as unknown as string);
+                }}
+              />
+            </FieldGroup>
+
           </div>
           <div className="flex items-center px-8 py-4 bg-gray-100 border-t border-gray-200">
-            {!organization.deleted_at && (
-              <DeleteButton onDelete={destroy}>
-                Delete Organization
-              </DeleteButton>
-            )}
+            <DeleteButton onDelete={destroy}>
+              Удалить продукт
+            </DeleteButton>
             <LoadingButton
               loading={processing}
               type="submit"
               className="ml-auto btn-indigo"
             >
-              Update Organization
+              Обновить продукт
             </LoadingButton>
           </div>
         </form>
       </div>
-      <h2 className="mt-12 mb-6 text-2xl font-bold">Contacts</h2>
-      <Table
-        columns={[
-          { label: 'Name', name: 'name' },
-          { label: 'City', name: 'city' },
-          { label: 'Phone', name: 'phone', colSpan: 2 }
-        ]}
-        rows={organization.contacts}
-        getRowDetailsUrl={row => route('contacts.edit', row.id)}
-      />
     </div>
   );
 };

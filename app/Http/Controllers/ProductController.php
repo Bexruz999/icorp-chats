@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductCollection;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +53,20 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
+        $product = Product::find($id);
+        $categories = Category::whereIn(
+            'shop_id',
+            Auth::user()->account->shops()->pluck('id'))
+            ->get();
+        $options = [];
+        foreach ($categories as $category) {
+            $options[] = ['label' => $category->name, 'value' => $category->id];
+        }
 
+        return Inertia::render('Products/Edit', [
+            'product' => $product,
+            'categories' => $options
+        ]);
     }
 
     /**

@@ -48,15 +48,18 @@ export interface Category {
   parent_id: number;
   image: string;
   products: Product[];
+  shop: Shop;
 }
 
 export interface Product {
   id: number;
+  category_id: number;
   name: string;
   description: string;
   short_description: string;
   slug: string;
   price: number;
+  discount_price: number;
   image: string;
 }
 
