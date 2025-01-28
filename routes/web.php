@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BotController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeesController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\AdminValid;
 use Illuminate\Support\Facades\Route;
@@ -209,18 +211,8 @@ Route::resource('employees', EmployeesController::class)->middleware(AdminValid:
 
 Route::resource('bots', BotController::class)->middleware('auth');
 
-Route::match(['get', 'post'], '/bot/webhook', function(Request $request) {
-    // Handle Telegram webhook requests here
-    //...
-    Log::info(json_encode($request));
+Route::resource('shops', ShopController::class)->middleware('auth');
 
-    return response()->json(['ok' => true]);
-})->name('bot.webhook');
+Route::resource('categories', CategoryController::class)->middleware('auth');
 
-Route::match(['get', 'post'], '/telegram/webhook', function(Request $request) {
-    // Handle Telegram webhook requests here
-    //...
-    Log::info(json_encode($request));
-
-    return response()->json(['ok' => true]);
-})->name('bot.webhook');
+Route::post('/webhook/{slug}', [BotController::class, 'webhook'])->name('bot.webhook');

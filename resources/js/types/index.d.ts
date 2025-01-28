@@ -31,6 +31,24 @@ export interface Bot {
   token: string;
 }
 
+export interface Shop {
+  id: number;
+  bot: Bot;
+  account: Account;
+  name: string;
+  slug: string;
+  logo: string;
+  categories: Category[]
+}
+
+export interface Category {
+  id: number;
+  name: string;
+  description: string;
+  parent_id: number;
+  image: string;
+}
+
 export interface Account {
   id: number;
   name: string;

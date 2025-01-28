@@ -2,17 +2,17 @@ import { Link, usePage } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import FilterBar from '@/Components/FilterBar/FilterBar';
 import Pagination from '@/Components/Pagination/Pagination';
-import { PaginatedData, User } from '@/types';
+import { Bot, PaginatedData } from '@/types';
 import Table from '@/Components/Table/Table';
 import { Trash2 } from 'lucide-react';
 
 const Index = () => {
-  const { users } = usePage<{ users: PaginatedData<User> }>().props;
+  const { bots } = usePage<{ bots: PaginatedData<Bot> }>().props;
 
   const {
     data,
     meta: { links }
-  } = users;
+  } = bots;
 
   return (
     <div>

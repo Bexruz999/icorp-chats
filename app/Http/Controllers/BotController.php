@@ -7,12 +7,12 @@ use App\Http\Resources\BotCollection;
 use App\Http\Resources\BotResource;
 use App\Models\Bot;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Telegram\Bot\Api;
-use Telegram\Bot\Laravel\Facades\Telegram;
+use Telegram\Bot\Keyboard\Keyboard;
 
 class BotController extends Controller
 {
@@ -23,7 +23,7 @@ class BotController extends Controller
     {
         return Inertia::render('Bots/Index', [
             'filters' => \Illuminate\Support\Facades\Request::all('search', 'role', 'trashed'),
-            'users' => new BotCollection(
+            'bots' => new BotCollection(
                 Auth::user()->account->bots()->paginate()
             ),
         ]);
@@ -42,20 +42,31 @@ class BotController extends Controller
      */
     public function store(StoreBotRequest $request)
     {
-        Auth::user()->account->bots()->create($request->validated());
-
+        $slug = strtolower(Str::random(16));
         $token = $request->token;
-        $url = route('bot.webhook');
+        $url = route('bot.webhook', ['slug' => $slug]);
 
         $telegram = new Api($token);
-        $telegram->setWebhook([
-            'url ' => $url
-        ]);
-        /*$response = file_get_contents("https://api.telegram.org/bot$token/setWebhook?url=$url");*/
 
-        $response = $telegram->getMe();
+        try {
+            $result = $telegram->setWebhook(['url' => $url]);
 
-        return Response::json($response);
+            if ($result->ok) {
+                Log::info('Bot webhook set for '. $slug);
+                Auth::user()->account->bots()->create(array_merge(
+                    $request->validated(),
+                    ['slug' => $slug]
+                ));
+            } else {
+                Log::error('Error setting bot webhook for '. $slug. ': '. $result->description);
+            }
+
+            return redirect()->route('bots.index')->with('success', 'Бот успешно добавлен');
+        } catch (\Throwable $exception) {
+            return redirect()->back()->with('error', $exception);
+        }
+
+
     }
 
     /**
@@ -92,5 +103,42 @@ class BotController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function webhook(Request $request, string $slug) {
+        $bot = Bot::where('slug', $slug)->firstOrFail();
+
+        $reply_markup = Keyboard::make()
+            ->setResizeKeyboard(true)
+            ->setOneTimeKeyboard(true)
+            ->row([
+                Keyboard::button('1'),
+                Keyboard::button('2'),
+                Keyboard::button('3'),
+            ])
+            ->row([
+                Keyboard::button('4'),
+                Keyboard::button('5'),
+                Keyboard::button('6'),
+            ])
+            ->row([
+                Keyboard::button('7'),
+                Keyboard::button('8'),
+                Keyboard::button('9'),
+            ])
+            ->row([
+                Keyboard::button('0'),
+            ]);
+
+        $telegram = new Api($bot->token);
+        $res = $telegram->sendMessage([
+            'chat_id' => 781366976,
+            'text' => 'test',
+            'reply_markup' => $reply_markup
+        ]);
+
+        Log::info(json_encode($res));
+
+        return response()->json(['ok' => true]);
     }
 }

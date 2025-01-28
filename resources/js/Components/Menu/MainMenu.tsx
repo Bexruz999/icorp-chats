@@ -29,6 +29,16 @@ export default function MainMenu({ className }: MainMenuProps) {
         icon={<Building size={20} />}
       />
       <MainMenuItem
+        text="Магазины"
+        link="shops.index"
+        icon={<Building size={20} />}
+      />
+      <MainMenuItem
+        text="Категории"
+        link="categories.index"
+        icon={<Building size={20} />}
+      />
+      <MainMenuItem
         text="Сотрудники"
         link="employees.index"
         icon={<Building size={20} />}

@@ -31,4 +31,8 @@ class Account extends Model
     public function bots(): HasMany {
         return $this->hasMany(Bot::class);
     }
+
+    public function shops(): HasMany {
+        return $this->hasMany(Shop::class);
+    }
 }
