@@ -6,6 +6,7 @@ use App\Http\Requests\StoreBotRequest;
 use App\Http\Resources\BotCollection;
 use App\Http\Resources\BotResource;
 use App\Models\Bot;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -140,5 +141,14 @@ class BotController extends Controller
         Log::info(json_encode($res));
 
         return response()->json(['ok' => true]);
+    }
+
+    public function shop(Request $request, $slug) {
+        $shop = Shop::with('categories', 'bot')->where(['slug' => $slug])->firstOrFail();
+
+        return Inertia::render('MiniApp/Index')->with([
+            'data' => $shop->categories()->with('products')->get(),
+            'bot' => $shop->bot
+        ]);
     }
 }

@@ -121,7 +121,7 @@ class ProductController extends Controller
 
         $product->update(array_merge($validated, ['slug' => Str::slug($validated['name'])]));
 
-        if ($request->has('image') && $request->file('image')) {
+        if ($request->has('image') && ($request->file('image') !== "")) {
             $product->update(['image' => $request->file('image')->store('products')]);
         }
 

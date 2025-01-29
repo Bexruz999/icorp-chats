@@ -1,17 +1,22 @@
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import MiniAppLayout from '@/Layouts/MiniAppLayout';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { Card } from '@/Components/Cards/Cad';
+import { Category, Product } from '@/types';
 
 const Tab = `${({ active }) => active && `border-bottom: 2px solid black; opacity: 1;`}`;
 
-const categories = ['Cash', 'Credit Card', 'Bitcoin', 'Bitcoin2'];
+//const categories = ['Cash', 'Credit Card', 'Bitcoin', 'Bitcoin2'];
 
 
 function DashboardPage() {
-  const [active, setActive] = useState(categories[0]);
 
+  const { data } = usePage<any>().props
+  const categories = data.map((c: Category) => {return c.name;})
+
+  console.log(categories);
+  const [active, setActive] = useState(categories[0]);
   function selectTab({ type }: { type: string }) {
     setActive(type);
     console.log(type);
@@ -23,27 +28,25 @@ function DashboardPage() {
       <div className="d-flex overflow-scroll p-2 z-10">
         {categories.map((type) => (
           <div className={active === type ? "tab-item active-tab" : "tab-item"}
-               key={type}
-               onClick={() => selectTab({ type: type })}
-          >
+               key={type} onClick={() => selectTab({ type: type })}>
             {type}
           </div>
         ))}
       </div>
       <div className="tab-contents">
-        {categories.map((type) => (
-          <div className={active === type ? "tab-content active-content" :"tab-content"}>
-            <Card title="test" description={type}
-                  image="https://opelmobile.com.au/wp-content/uploads/2023/06/FP6-1.png" />
+        {data.map((tab: Category) => (
+          <div className={active === tab.name ? "tab-content active-content" :"tab-content"}>
 
-            <Card title="test" description="Test"
-                  image="https://opelmobile.com.au/wp-content/uploads/2023/06/FP6-1.png" />
-
-            <Card title="test" description="Test"
-                  image="https://opelmobile.com.au/wp-content/uploads/2023/06/FP6-1.png" />
-
-            <Card title="test" description="Test"
-                  image="https://opelmobile.com.au/wp-content/uploads/2023/06/FP6-1.png" />
+            {tab.products.map((product: Product) => {
+              return (
+                <Card title={product.name}
+                      description={product.description}
+                      image={'/storage/'+product.image}
+                      price={Number(product.price)}
+                      discount_price={Number(product.discount_price)}
+                />
+              );
+            })}
           </div>
         ))}
       </div>

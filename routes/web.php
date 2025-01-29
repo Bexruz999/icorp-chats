@@ -220,3 +220,5 @@ Route::resource('categories', CategoryController::class)->middleware('auth');
 Route::resource('products', ProductController::class)->middleware('auth');
 
 Route::post('/webhook/{slug}', [BotController::class, 'webhook'])->name('bot.webhook');
+Route::get('/shop/{slug}', [BotController::class, 'shop'])->name('bot.shop')
+    ->middleware('guest');
