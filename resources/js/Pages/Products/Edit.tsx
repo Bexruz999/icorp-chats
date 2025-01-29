@@ -6,26 +6,30 @@ import DeleteButton from '@/Components/Button/DeleteButton';
 import LoadingButton from '@/Components/Button/LoadingButton';
 import TextInput from '@/Components/Form/TextInput';
 import SelectInput from '@/Components/Form/SelectInput';
-import TrashedMessage from '@/Components/Messages/TrashedMessage';
 import { Product } from '@/types';
 import FieldGroup from '@/Components/Form/FieldGroup';
 import FileInput from '@/Components/Form/FileInput';
 
 const Edit = () => {
-  const { product, categories } = usePage<{ product: Product }>().props;
-  const { data, setData, errors, put, processing } = useForm({
+  const { product, categories, shops } = usePage<{ product: Product }>().props;
+  const { data, setData, errors, post, processing } = useForm({
     name: product.name || '',
     description: product.description || '',
     short_description: product.short_description || '',
-    image: product.image || '',
+    image: '',
     category_id: product.category_id || '',
+    shop_id: product.shop_id || '',
     price: product.price || '',
     discount_price: product.discount_price || '',
+    _method: 'put'
   });
+
+  console.log(product);
+  console.log(data);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    put(route('organizations.update', product.id));
+    post(route('products.update', product.id));
   }
 
   function destroy() {
@@ -65,6 +69,18 @@ const Edit = () => {
               />
             </FieldGroup>
 
+            <FieldGroup label="Фотография" name="image" error={errors.image}>
+              <FileInput
+                name="photo"
+                accept="image/*"
+                error={errors.image}
+                value={data.image}
+                onChange={photo => {
+                  setData('image', photo as unknown as string);
+                }}
+              />
+            </FieldGroup>
+
             <FieldGroup label="Описание" name="description" error={errors.description}>
               <TextInput
                 name="description"
@@ -93,6 +109,15 @@ const Edit = () => {
               />
             </FieldGroup>
 
+            <FieldGroup label="Магазин" name="shop_id" error={errors.shop_id}>
+              <SelectInput
+                name="country"
+                error={errors.shop_id}
+                value={data.shop_id}
+                onChange={e => setData('shop_id', e.target.value)}
+                options={shops}
+              />
+            </FieldGroup>
 
             <FieldGroup label="Цена" name="price" error={errors.price}>
               <TextInput
@@ -109,18 +134,6 @@ const Edit = () => {
                 error={errors.price}
                 value={data.price}
                 onChange={e => setData('price', e.target.value)}
-              />
-            </FieldGroup>
-
-            <FieldGroup label="Фотография" name="image" error={errors.image}>
-              <FileInput
-                name="photo"
-                accept="image/*"
-                error={errors.image}
-                value={data.image}
-                onChange={photo => {
-                  setData('image', photo as unknown as string);
-                }}
               />
             </FieldGroup>
 

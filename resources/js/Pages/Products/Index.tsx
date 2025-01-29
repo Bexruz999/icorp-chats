@@ -25,9 +25,9 @@ function Index() {
         <FilterBar />
         <Link
           className="btn-indigo focus:outline-none"
-          href={route('organizations.create')}
+          href={route('products.create')}
         >
-          <span>Create</span>
+          <span>Создать</span>
           <span className="hidden md:inline"> Продукция</span>
         </Link>
       </div>
@@ -36,7 +36,18 @@ function Index() {
           {
             label: 'Название',
             name: 'name',
-            renderCell: row => (<>{row.name}</>)
+            renderCell: row => (
+              <>
+                {row.image && (
+                  <img
+                    src={row.image}
+                    alt={row.name}
+                    className="w-5 h-5 mr-2 rounded-full"
+                  />
+                )}
+                <>{row.name}</>
+              </>
+            )
           },
           {
             label: 'Slug',

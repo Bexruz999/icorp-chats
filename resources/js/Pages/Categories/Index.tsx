@@ -31,7 +31,16 @@ const Index = () => {
             name: 'name',
 
             renderCell: row => (
-              <>{row.name}</>
+              <>
+                {row.image && (
+                  <img
+                    src={'/storage/' + row.image}
+                    alt={row.name}
+                    className="w-5 h-5 mr-2 rounded-full"
+                  />
+                )}
+                <>{row.name}</>
+              </>
             )
           }, {
             label: 'Магазин',
@@ -42,7 +51,7 @@ const Index = () => {
           }
         ]}
         rows={data}
-        getRowDetailsUrl={row => route('shops.edit', row.id)}
+        getRowDetailsUrl={row => route('categories.edit', row.id)}
       />
       <Pagination links={links} />
     </div>

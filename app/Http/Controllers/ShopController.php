@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreShopRequest;
+use App\Http\Requests\UpdateShopRequest;
 use App\Http\Resources\ShopCollection;
 use App\Http\Resources\ShopResource;
 use App\Models\Shop;
@@ -73,9 +74,9 @@ class ShopController extends Controller
      */
     public function edit(string $id)
     {
-        $shop = Shop::with('categories')->find($id);
+        $shop = Shop::with('categories', 'bot')->find($id);
 
-        $bots = Auth::user()->account->bots()->pluck('name', 'id');
+        $bots = Auth::user()->account->bots()->doesntHave('shops')->pluck('name', 'id');
 
         $options = [];
         if (isset($bots)) {
@@ -90,16 +91,28 @@ class ShopController extends Controller
 
         return Inertia::render('Shops/Edit', [
             'shop' => new ShopResource($shop),
-            'bots' => $options
+            'bots' => array_merge($options, [
+                ['label' => 'Нет', 'value' => null],
+                ['label' => $shop->bot->name, 'value' => $shop->bot->id, 'selected' => true]
+            ])
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateShopRequest $request, string $id)
     {
-        //
+        $shop = Shop::find($id);
+
+        $validated = $request->validated();
+
+        $shop->update([
+            'name' => $validated['name'],
+            'bot_id' => $validated['bot_id']
+        ]);
+
+        return redirect()->route('shops.index')->with('success', 'Магазин изменен успешно');
     }
 
     /**

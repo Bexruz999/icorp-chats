@@ -21,7 +21,7 @@ const Edit = () => {
     // you SHOULD send POST request and fake the PUT request like this.
     _method: 'put'
   });
-
+  console.log(shop);
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -81,7 +81,7 @@ const Edit = () => {
               />
             </FieldGroup>
             <FieldGroup label="Выбрать Telegram Bot" name="bot_id">
-              <Select defaultValue={bots.filter((bot: { selected: boolean }) => bot.selected)} options={bots}
+              <Select isClearable defaultValue={bots[1]} options={bots}
                       onChange={e => setBot(e)} />
             </FieldGroup>
           </div>

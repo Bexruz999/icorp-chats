@@ -54,6 +54,7 @@ export interface Category {
 export interface Product {
   id: number;
   category_id: number;
+  shop_id: number;
   name: string;
   description: string;
   short_description: string;

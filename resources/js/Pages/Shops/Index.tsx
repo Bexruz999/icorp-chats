@@ -13,6 +13,8 @@ const Index = () => {
     meta: { links }
   } = shops;
 
+  console.log(data);
+
   return (
     <div>
       <h1 className="mb-8 text-3xl font-bold">
@@ -56,7 +58,7 @@ const Index = () => {
             name: 'bot',
 
             renderCell: row => (
-              <>{row.bot.name}</>
+              <>{row.bot ? row.bot.name: ''}</>
             )
           }
         ]}
