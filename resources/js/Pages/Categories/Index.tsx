@@ -34,7 +34,7 @@ const Index = () => {
               <>
                 {row.image && (
                   <img
-                    src={'/storage/' + row.image}
+                    src={row.image}
                     alt={row.name}
                     className="w-5 h-5 mr-2 rounded-full"
                   />

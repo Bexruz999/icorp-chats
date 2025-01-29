@@ -53,7 +53,7 @@ class CategoryController extends Controller
 
         if ($request->hasFile('image')) {
             $category->update([
-                'image' => $request->file('image')->store('category'),
+                'image' => $request->file('image')->store('public'),
             ]);
         }
 
@@ -93,7 +93,7 @@ class CategoryController extends Controller
 
         if ($request->hasFile('image')) {
             $category->update([
-                'image' => $request->file('image')->store('category'),
+                'image' => $request->file('image')->store('public/category'),
             ]);
         }
 
