@@ -27,7 +27,7 @@ function DashboardPage() {
 
 
   return (
-    <>
+    <><p>{JSON.stringify(initData)}</p>
       <div className="d-flex overflow-scroll p-2 z-10">
         {categories.map((type) => (
           <div className={active === type ? "tab-item active-tab" : "tab-item"}
