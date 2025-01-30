@@ -122,7 +122,7 @@ const Create = () => {
               type="submit"
               className="btn-indigo"
             >
-              Create Organization
+              Создать продукт
             </LoadingButton>
           </div>
         </form>

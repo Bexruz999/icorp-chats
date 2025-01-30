@@ -58,7 +58,7 @@ class ShopController extends Controller
             'slug' => Str::random()
         ]);
 
-        return redirect()->route('shops.index')->with('success', 'Магазин добавлен успешно');
+        return redirect()->route('shops.edit', $shop->id)->with('success', 'Магазин добавлен успешно');
     }
 
     /**

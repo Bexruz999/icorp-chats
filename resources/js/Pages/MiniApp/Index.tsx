@@ -1,6 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import MiniAppLayout from '@/Layouts/MiniAppLayout';
-import styled from 'styled-components';
+import WebApp from '@twa-dev/sdk';
 import { useState } from 'react';
 import { Card } from '@/Components/Cards/Cad';
 import { Category, Product } from '@/types';
@@ -15,7 +15,10 @@ function DashboardPage() {
   const { data } = usePage<any>().props
   const categories = data.map((c: Category) => {return c.name;})
 
-  console.log(categories);
+  const initDataRaw = WebApp.initData;
+  const initData = WebApp.initDataUnsafe;
+
+  console.log(initDataRaw, initData);
   const [active, setActive] = useState(categories[0]);
   function selectTab({ type }: { type: string }) {
     setActive(type);

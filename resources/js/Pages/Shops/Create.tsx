@@ -51,7 +51,7 @@ const Create = () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Звонить на номер" name="bot_id">
+            <FieldGroup label="Выбрать Telegram Bot" name="bot_id">
               <Select options={bots} onChange={e => setBot(e)} />
             </FieldGroup>
 

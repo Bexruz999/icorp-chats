@@ -54,7 +54,7 @@ const Edit = () => {
           </Link>
           <span className="mx-2 font-medium text-indigo-600">/</span>
           {}
-          {data.name} {data.name}
+          {data.name}
         </h1>
       </div>
       <div className="max-w-3xl overflow-hidden bg-white rounded shadow">
