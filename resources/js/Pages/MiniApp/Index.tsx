@@ -18,8 +18,7 @@ function DashboardPage() {
   const initDataRaw = WebApp.initData;
   const initData = WebApp.initDataUnsafe;
 
-  console.log('test', initData);
-  console.log('test2', initDataRaw);
+  console.log('test',initDataRaw, initData);
   const [active, setActive] = useState(categories[0]);
   function selectTab({ type }: { type: string }) {
     setActive(type);
@@ -28,7 +27,7 @@ function DashboardPage() {
 
 
   return (
-    <>
+    <><p>{JSON.stringify(initData)}</p>
       <div className="d-flex overflow-scroll p-2 z-10">
         {categories.map((type) => (
           <div className={active === type ? "tab-item active-tab" : "tab-item"}
