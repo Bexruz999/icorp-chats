@@ -1,41 +1,46 @@
-import React from 'react'
+import React from 'react';
 import {
   CCard,
   CCardBody,
   CCardImage,
-  CCardLink,
   CCardText,
-  CCardTitle,
-  CListGroup,
-  CListGroupItem,
-} from '@coreui/react'
+  CCardTitle
+} from '@coreui/react';
+import { Category, Product } from '@/types';
 
 interface CardProps {
-  title: string,
-  description: string,
-  image: string,
-  price: number,
-  discount_price: number,
+  button: any,
+  category: Category,
+  product: Product,
+  addToBasket: (remove: boolean, id: number) => void
 }
 
-export const Card = ({ title, description, image, price, discount_price }: CardProps) => {
-  return (
-    <CCard style={{ width: '10rem', margin: '10px' }}>
-      <CCardImage style={{padding: '3px'}} orientation="top" src={image} />
-      <CCardBody>
-        <CCardTitle><b>{title}</b></CCardTitle>
-        <CCardText>{description}</CCardText>
-      </CCardBody>
-      <CCardBody>
-        <CCardText>Цена: <span className={(price > discount_price) ? 'line-through' : ''}>
-          {price}
-        </span></CCardText>
+export const Card = ({button, product, addToBasket }: CardProps) => {
 
-        {(price > discount_price) ? <CCardText>Скидка: {discount_price}</CCardText> : ''}
-      </CCardBody>
+
+  return (
+    <CCard style={{width: '45%', margin: '10px' }}>
+      <CCardImage style={{ padding: '5px', borderRadius: '10px' }} orientation="top" src={'/storage/' + product.image} />
       <CCardBody>
-        <button className="btn-indigo w-full">kupit</button>
+        <div className="d-flex flex-col justify-between h-full">
+          <CCardTitle><b>{product.name}</b></CCardTitle>
+          <CCardText>{product.description}</CCardText>
+
+          <CCardText>Цена:
+            <span className={(product.price > product.discount_price) ? 'line-through' : ''}>
+            <b>{product.price}</b>
+          </span>
+          </CCardText>
+
+          {(product.price > product.discount_price) ?
+            <CCardText>
+              Скидка: <b>{product.discount_price}</b>
+            </CCardText>
+            :''}
+
+          {button}
+        </div>
       </CCardBody>
     </CCard>
-  )
-}
+  );
+};

@@ -20,7 +20,9 @@
 .tab-content {
   display: none;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 40px;
 }
 
 .active-content {
