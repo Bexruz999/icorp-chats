@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBasketRequest;
 use App\Http\Requests\StoreBotRequest;
 use App\Http\Resources\BotCollection;
 use App\Http\Resources\BotResource;
+use App\Models\Basket;
 use App\Models\Bot;
 use App\Models\Shop;
 use Illuminate\Http\Request;
@@ -109,33 +111,10 @@ class BotController extends Controller
     public function webhook(Request $request, string $slug) {
         $bot = Bot::where('slug', $slug)->firstOrFail();
 
-        $reply_markup = Keyboard::make()
-            ->setResizeKeyboard(true)
-            ->setOneTimeKeyboard(true)
-            ->row([
-                Keyboard::button('1'),
-                Keyboard::button('2'),
-                Keyboard::button('3'),
-            ])
-            ->row([
-                Keyboard::button('4'),
-                Keyboard::button('5'),
-                Keyboard::button('6'),
-            ])
-            ->row([
-                Keyboard::button('7'),
-                Keyboard::button('8'),
-                Keyboard::button('9'),
-            ])
-            ->row([
-                Keyboard::button('0'),
-            ]);
-
         $telegram = new Api($bot->token);
         $res = $telegram->sendMessage([
             'chat_id' => 781366976,
-            'text' => 'test',
-            'reply_markup' => $reply_markup
+            'text' => 'test'
         ]);
 
         Log::info(json_encode($res));
@@ -147,8 +126,26 @@ class BotController extends Controller
         $shop = Shop::with('categories', 'bot')->where(['slug' => $slug])->firstOrFail();
 
         return Inertia::render('MiniApp/Index')->with([
-            'data' => $shop->categories()->with('products')->get(),
-            'bot' => $shop->bot
+            'categories' => $shop->categories()->with('products')->get(),
+            'bot' => $shop->bot,
+            'slug' => $slug
         ]);
+    }
+
+    public function addBasket(StoreBasketRequest $request, $slug)
+    {
+        return $request;
+
+        /*$shop = Shop::select(['id', 'slug', 'account_id'])->where('slug', $slug)->firstOrFail();
+
+        $validated = $request->validated();
+        $basket = new Basket();
+        $basket->shop_id = $shop->id;
+        $basket->account_id = $shop->account_id;
+        $basket->tg_id = $validated['tg_id'];
+        $basket->description = $validated['description'];
+        $basket->save();*/
+
+        //$basket->items()->createMany([]);
     }
 }

@@ -221,3 +221,5 @@ Route::resource('products', ProductController::class)->middleware('auth');
 
 Route::post('/webhook/{slug}', [BotController::class, 'webhook'])->name('bot.webhook');
 Route::get('/shop/{slug}', [BotController::class, 'shop'])->name('bot.shop');
+Route::post('/basket/{slug}/store', [BotController::class, 'addBasket'])->name('basket.create')
+->middleware('guest');

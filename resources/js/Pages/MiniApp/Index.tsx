@@ -1,9 +1,9 @@
-import { Link, usePage } from '@inertiajs/react';
+import { Link, useForm, usePage } from '@inertiajs/react';
 import MiniAppLayout from '@/Layouts/MiniAppLayout';
 import WebApp from '@twa-dev/sdk';
 import React, { useState } from 'react';
 import { Card } from '@/Components/Cards/Cad';
-import { Category, Product } from '@/types';
+import { Bot, Category, Product } from '@/types';
 
 const Tab = `${({ active }) => active && `border-bottom: 2px solid black; opacity: 1;`}`;
 
@@ -11,16 +11,26 @@ const Tab = `${({ active }) => active && `border-bottom: 2px solid black; opacit
 
 function DashboardPage() {
 
-  const { data } = usePage().props;
-  const categories = data.map((c: Category) => {
-    return c.name;
+  /*const initDataRaw = WebApp.initData;
+  const initData = WebApp.initDataUnsafe;*/
+
+  const { categories, bot, slug } = usePage<{categories: Category[], bot: Bot, slug: string}>().props;
+
+  const { data, setData, errors, post, processing } = useForm({
+    name: '',
+    basket: [],
+    tg_id: WebApp.initData
   });
 
-  const initDataRaw = WebApp.initData;
-  const initData = WebApp.initDataUnsafe;
+  function handleSubmit() {
+    post(route('basket.create', slug));
+  }
+
+
+  const tabNames = categories.map((c: Category) => {return c.name;});
 
   //console.log('test', initDataRaw, initData);
-  const [active, setActive] = useState(categories[0]);
+  const [active, setActive] = useState(tabNames[0]);
   const [basket, setBasket] = useState({});
 
   function addToBasket(remove: boolean, id: number) {
@@ -28,6 +38,7 @@ function DashboardPage() {
       setBasket((basket) => {
         const newBasket = { ...basket };
         newBasket[id] = remove ? newBasket[id] - 1 : newBasket[id] + 1;
+        data.basket = newBasket;
         return newBasket;
       });
     } else {
@@ -35,6 +46,7 @@ function DashboardPage() {
       setBasket((basket) => {
         const newBasket = {...basket };
         newBasket[id] = remove? 0 : 1;
+        data.basket = newBasket;
         return newBasket;
       });
     }
@@ -49,16 +61,18 @@ function DashboardPage() {
     return Object.keys(basket).reduce((total, key) => total + basket[key], 0);
   }
 
-  console.log(checkBasket());
+  function sendBasket() {
+    fetch(route('basket.create'), )
+  }
 
   const inCartClass: string = "d-flex items-center justify-between";
   const addBtnClass: string = "btn-indigo rounded-lg w-full py-1";
 
-
+  console.log(data.basket);
   return (
     <>
       <div className="d-flex overflow-scroll p-2 z-10">
-        {categories.map((type) => (
+        {tabNames.map((type) => (
           <div className={active === type ? 'tab-item active-tab' : 'tab-item'}
                key={type} onClick={() => selectTab({ type: type })}>
             {type}
@@ -66,7 +80,7 @@ function DashboardPage() {
         ))}
       </div>
       <div className="tab-contents">
-        {data.map((tab: Category) => (
+        {categories.map((tab: Category) => (
           <div className={active === tab.name ? 'tab-content active-content' : 'tab-content'}>
 
             {tab.products.map((product: Product) => {
@@ -96,7 +110,7 @@ function DashboardPage() {
       </div>
 
       <div className={checkBasket() > 0 ? 'd-flex h-12 justify-center fixed bottom-0 right-0 left-0' : 'd-none'}>
-        <button className="btn-indigo rounded-0 w-full">Перейти в корзину</button>
+        <button onClick={handleSubmit} className="btn-indigo rounded-0 w-full">Перейти в корзину</button>
       </div>
     </>
   );
