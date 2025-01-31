@@ -14,13 +14,14 @@ function DashboardPage() {
   /*const initDataRaw = WebApp.initData;
   const initData = WebApp.initDataUnsafe;*/
 
+  const {id} = WebApp.initDataUnsafe.user
+
   const { categories, bot, slug } = usePage<{categories: Category[], bot: Bot, slug: string}>().props;
 
   const { data, setData, errors, post, processing } = useForm({
     name: '',
     basket: [],
-    tg_id: WebApp.initData,
-    tg_id2: WebApp.initDataUnsafe.user.id
+    tg_id: id
   });
 
   function handleSubmit() {
