@@ -11,17 +11,15 @@ const Tab = `${({ active }) => active && `border-bottom: 2px solid black; opacit
 
 function DashboardPage() {
 
-  /*const initDataRaw = WebApp.initData;
-  const initData = WebApp.initDataUnsafe;*/
-
-  const {id} = WebApp.initDataUnsafe.user
+  //const {id} = WebApp.initDataUnsafe.user
 
   const { categories, bot, slug } = usePage<{categories: Category[], bot: Bot, slug: string}>().props;
 
   const { data, setData, errors, post, processing } = useForm({
-    name: '',
     basket: [],
-    tg_id: id
+    //tg_id: id
+    tg_id: 2092452523,
+    description: 'Description'
   });
 
   function handleSubmit() {
@@ -61,6 +59,22 @@ function DashboardPage() {
 
   function checkBasket() {
     return Object.keys(basket).reduce((total, key) => total + basket[key], 0);
+  }
+
+  function getTotalPrice() {
+    let total = 0;
+    categories.forEach((category) => {
+      category.products.forEach((product: Product) => {
+        if (basket.hasOwnProperty(product.id)) {
+          if (product.price > product.discount_price > 0) {
+            total += basket[product.id] * product.discount_price;
+          } else {
+            total += basket[product.id] * product.price;
+          }
+        }
+      })
+    });
+    return total;
   }
 
   function sendBasket() {
@@ -112,7 +126,7 @@ function DashboardPage() {
       </div>
 
       <div className={checkBasket() > 0 ? 'd-flex h-12 justify-center fixed bottom-0 right-0 left-0' : 'd-none'}>
-        <button onClick={handleSubmit} className="btn-indigo rounded-0 w-full">Перейти в корзину</button>
+        <button onClick={handleSubmit} className="btn-indigo rounded-0 w-full">Оформить заказ | {getTotalPrice()}</button>
       </div>
     </>
   );

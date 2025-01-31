@@ -22,7 +22,9 @@ class StoreBasketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tg_id' => 'required|numeric',
+            'description' => 'nullable',
+            'basket' => 'required|array',
         ];
     }
 }

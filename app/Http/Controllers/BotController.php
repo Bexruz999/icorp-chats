@@ -134,18 +134,25 @@ class BotController extends Controller
 
     public function addBasket(StoreBasketRequest $request, $slug)
     {
-        return $request;
-
-        /*$shop = Shop::select(['id', 'slug', 'account_id'])->where('slug', $slug)->firstOrFail();
+        $shop = Shop::select(['id', 'slug', 'account_id'])->where('slug', $slug)->firstOrFail();
 
         $validated = $request->validated();
+
         $basket = new Basket();
+
         $basket->shop_id = $shop->id;
         $basket->account_id = $shop->account_id;
         $basket->tg_id = $validated['tg_id'];
         $basket->description = $validated['description'];
-        $basket->save();*/
+        $basket->save();
 
-        //$basket->items()->createMany([]);
+        foreach ($validated['basket'] as $key => $item) {
+            $basket->items()->create([
+                'product_id' => $key,
+                'quantity' => $item
+            ]);
+        }
+
+        return $basket->items()->get();
     }
 }
