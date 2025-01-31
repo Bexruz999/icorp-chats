@@ -19,7 +19,8 @@ function DashboardPage() {
   const { data, setData, errors, post, processing } = useForm({
     name: '',
     basket: [],
-    tg_id: WebApp.initData
+    tg_id: WebApp.initData,
+    tg_id2: WebApp.initDataUnsafe
   });
 
   function handleSubmit() {
