@@ -23,6 +23,7 @@ function DashboardPage() {
   });
 
   function handleSubmit() {
+    WebApp.sendData('test');
     post(route('basket.create', slug));
   }
 
