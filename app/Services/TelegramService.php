@@ -85,6 +85,9 @@ class TelegramService {
                 }
             }
 
+
+            event(new DialogsUpdated($result));
+
             return $result;
         } catch (\Throwable $e) {
             throw new \RuntimeException("Ошибка получения диалогов: " . $e->getMessage());

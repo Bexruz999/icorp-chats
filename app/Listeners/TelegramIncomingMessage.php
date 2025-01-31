@@ -18,6 +18,12 @@ class TelegramIncomingMessage extends SimpleEventHandler
     #[Handler]
     public function handleMessage(Incoming&Message $message): void
     {
-        TelegramMessage::dispatch($message);
+        $messageData = [
+            'id'      => $message->getId() ?? null,
+            'message' => $message->getText() ?? '',
+            'time'    => now()->format('H:i'),
+        ];
+
+        event(new TelegramMessage($messageData));
     }
 }

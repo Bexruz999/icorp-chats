@@ -16,13 +16,12 @@ class TelegramMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public Incoming&Message $message;
-
+    public array $message;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(Incoming&Message $message)
+    public function __construct(array $message)
     {
         $this->message = $message;
         var_dump($message);
@@ -37,6 +36,18 @@ class TelegramMessage implements ShouldBroadcast
     {
         return [
             new PrivateChannel('telegram-messages'),
+        ];
+    }
+
+    /**
+     * Преобразуем объект в массив
+     */
+    public function broadcastWith(): array
+    {
+        return [
+            'id'      => $this->message['id'] ?? null,
+            'message' => $this->message['message'] ?? '',
+            'time'    => $this->message['time'] ?? now()->format('H:i'),
         ];
     }
 }

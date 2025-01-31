@@ -18,6 +18,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 
 
+
 class MessengerController extends Controller
 {
     public function index(): Response
@@ -35,6 +36,7 @@ class MessengerController extends Controller
             ];
         }, $dialogs);
 
+        broadcast(new DialogsUpdated($chats))->toOthers();
         return Inertia::render('Messengers/Index', [
             'chats' => $chats
         ]);
@@ -48,14 +50,6 @@ class MessengerController extends Controller
         $this->telegramService = $telegramService;
     }
 
-//    public function getMessages( Request $request): JsonResponse
-//    {
-//
-//        $peerId = $request->integer("peerId");
-//        $phone = auth()->user()->account->connections[0]->phone;
-//        $messages = $this->telegramService->getMessages($phone, $peerId);
-//        return response()->json($messages);
-//    }
 
     public function getMessages(Request $request): JsonResponse
     {
