@@ -20,7 +20,7 @@ function DashboardPage() {
     name: '',
     basket: [],
     tg_id: WebApp.initData,
-    tg_id2: WebApp.initDataUnsafe
+    tg_id2: WebApp.initDataUnsafe.user.id
   });
 
   function handleSubmit() {
