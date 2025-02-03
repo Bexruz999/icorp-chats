@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Telegram\Bot\Api;
+use Telegram\Bot\Exceptions\TelegramSDKException;
 use Telegram\Bot\Keyboard\Keyboard;
 
 class BotController extends Controller
@@ -49,7 +50,11 @@ class BotController extends Controller
         $token = $request->token;
         $url = route('bot.webhook', ['slug' => $slug]);
 
-        $telegram = new Api($token);
+        try {
+            $telegram = new Api($token);
+        } catch (TelegramSDKException $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
 
         try {
             $result = $telegram->setWebhook(['url' => $url]);
