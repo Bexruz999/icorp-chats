@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bot_id')->constrained('bots');
+            $table->foreignId('bot_id')->nullable()->constrained('bots');
             $table->foreignId('account_id')->constrained('accounts');
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('logo')->nullable();
+            $table->string('currency')->default('UZS');
             $table->timestamps();
         });
     }
