@@ -181,7 +181,7 @@ class BotController extends Controller
         if ($shop->bot()->exists()) {
             $telegram = new Api($shop->bot->token);
             $telegram->sendMessage([
-                'chat_id' => $shop->bot->id,
+                'chat_id' => $validated['tg_id'],
                 'text' => $text
             ]);
 
