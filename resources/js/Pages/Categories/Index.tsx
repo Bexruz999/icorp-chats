@@ -19,7 +19,7 @@ const Index = () => {
         Категория
       </h1>
       <div className="flex items-center justify-between mb-6">
-        <FilterBar />
+        {/*<FilterBar />*/}
         {/*<Link className="btn-indigo focus:outline-none" href={route('shops.create')}>
           <span>Создать</span>
         </Link>*/}

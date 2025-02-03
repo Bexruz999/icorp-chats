@@ -16,13 +16,11 @@ function Index() {
     meta: { links }
   } = products;
 
-  console.log(products);
-
   return (
     <div>
       <h1 className="mb-8 text-3xl font-bold">Продукции</h1>
       <div className="flex items-center justify-between mb-6">
-        <FilterBar />
+        {/*<FilterBar />*/}
         {/*<Link
           className="btn-indigo focus:outline-none"
           href={route('products.create')}
@@ -50,9 +48,13 @@ function Index() {
             )
           },
           {
-            label: 'Slug',
-            name: 'slug',
-            renderCell: row => (<>{row.slug}</>)
+            label: 'Категория',
+            name: 'category',
+            renderCell: row => (<>{row.category.name}</>)
+          },{
+            label: 'Магазин',
+            name: 'shop',
+            renderCell: row => (<>{row.shop.name}</>)
           },
           {
             label: 'Описание',

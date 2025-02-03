@@ -62,6 +62,8 @@ export interface Product {
   price: number;
   discount_price: number;
   image: string;
+  category: Category;
+  shop: Shop;
 }
 
 export interface Account {

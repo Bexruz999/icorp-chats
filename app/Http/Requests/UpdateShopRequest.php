@@ -23,7 +23,8 @@ class UpdateShopRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'bot_id' => 'nullable|exists:bots,id'
+            'bot_id' => 'nullable|exists:bots,id',
+            'currency' => 'nullable'
         ];
     }
 }

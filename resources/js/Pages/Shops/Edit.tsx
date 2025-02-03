@@ -16,6 +16,7 @@ const Edit = () => {
   const { data, setData, errors, post, processing } = useForm({
     name: shop.name || '',
     bot_id: '',
+    currency: '',
 
     // NOTE: When working with Laravel PUT/PATCH requests and FormData
     // you SHOULD send POST request and fake the PUT request like this.
@@ -83,6 +84,18 @@ const Edit = () => {
             <FieldGroup label="Выбрать Telegram Bot" name="bot_id">
               <Select isClearable defaultValue={bots.findLast(elem => elem['selected'])} options={bots}
                       onChange={e => setBot(e)} />
+            </FieldGroup>
+            <FieldGroup
+              label="Валюта"
+              name="currency"
+              error={errors.currency}
+            >
+              <TextInput
+                name="currency"
+                error={errors.currency}
+                value={data.currency}
+                onChange={e => setData('currency', e.target.value)}
+              />
             </FieldGroup>
           </div>
           <div className="flex items-center px-8 py-4 bg-gray-100 border-t border-gray-200">

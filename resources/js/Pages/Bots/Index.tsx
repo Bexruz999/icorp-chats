@@ -20,7 +20,7 @@ const Index = () => {
         Боты
       </h1>
       <div className="flex items-center justify-between mb-6">
-        <FilterBar />
+        {/*<FilterBar />*/}
         <Link className="btn-indigo focus:outline-none" href={route('bots.create')}>
           <span>Создать</span>
         </Link>

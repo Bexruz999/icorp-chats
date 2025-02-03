@@ -22,7 +22,7 @@ class ProductController extends Controller
         return Inertia::render('Products/Index', [
             'filters' => \Illuminate\Support\Facades\Request::all('search', 'role', 'trashed'),
             'products' => new ProductCollection(
-                Product::whereIn('shop_id', Auth::user()->account->shops()->pluck('id'))->paginate()
+                Product::with('category', 'shop')->whereIn('shop_id', Auth::user()->account->shops()->pluck('id'))->paginate()
             ),
         ]);
     }

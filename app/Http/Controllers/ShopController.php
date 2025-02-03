@@ -109,12 +109,7 @@ class ShopController extends Controller
     {
         $shop = Shop::find($id);
 
-        $validated = $request->validated();
-
-        $shop->update([
-            'name' => $validated['name'],
-            'bot_id' => $validated['bot_id']
-        ]);
+        $shop->update($request->validated());
 
         return redirect()->route('shops.index')->with('success', 'Магазин изменен успешно');
     }
