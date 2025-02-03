@@ -27,6 +27,7 @@ function DashboardPage() {
     if (comment !== null) {
       data.description = comment;
       post(route('basket.create', slug));
+      WebApp.close();
     }
 
   }
