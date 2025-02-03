@@ -151,11 +151,12 @@ class BotController extends Controller
         $basket->description = $validated['description'];
         $basket->save();
 
-        $products = Product::whereIn('id', $validated['basket'])->get();
 
         foreach ($validated['basket'] as $key => $item) {
 
-            $product = $products->find($key);
+            $product = Product::findOrFail($key);
+
+
             $price = ($product->price > $product->discount_price && $product->discount_price > 0) ?
                 $product->discount_price : $product->price;
 
@@ -185,7 +186,7 @@ class BotController extends Controller
                 'text' => $text
             ]);
 
-            return response()->json(['success' => true]);
+            return redirect()->back()->with('success', 'Заказ Оформлен');
         }
 
         return response()->json(['success' => false]);
