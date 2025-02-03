@@ -6,6 +6,9 @@ import MainLayout from '@/Layouts/MainLayout';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import Echo from 'laravel-echo';
+import Pusher from 'pusher-js';
+
 const MessengerPage = ({ chats }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [selectedChat, setSelectedChat] = useState(null);
@@ -41,6 +44,33 @@ const MessengerPage = ({ chats }) => {
       });
   };
 
+  useEffect(() => {
+    window.Echo.private('telegram-messages').listen('TelegramMessage', e => {
+      console.log('Received message:', e);
+    });
+  });
+
+
+  useEffect(() => {
+    window.Pusher = Pusher;
+
+    window.Echo = new Echo({
+      broadcaster: 'pusher',
+      key: import.meta.env.VITE_PUSHER_APP_KEY,
+      cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER || 'mt1',
+      forceTLS: true,
+    });
+
+    window.Echo.private('dialogs')
+      .listen('.App\\Events\\DialogsUpdated', (event) => {
+        console.log('🔔 Новые данные из Laravel:', event);
+        setMessages(event.dialogs); // Обновляем сообщения
+      });
+
+    return () => {
+      window.Echo.leave('dialogs');
+    };
+  }, []);
 
   useEffect(() => {
     if (selectedChat) {
