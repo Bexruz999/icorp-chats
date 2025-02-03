@@ -32,6 +32,7 @@ class TelegramMessage implements ShouldBroadcast
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */
+
     public function broadcastOn(): array
     {
         return [
@@ -39,15 +40,17 @@ class TelegramMessage implements ShouldBroadcast
         ];
     }
 
+
     /**
      * Преобразуем объект в массив
      */
-    public function broadcastWith(): array
-    {
-        return [
-            'id'      => $this->message['id'] ?? null,
-            'message' => $this->message['message'] ?? '',
-            'time'    => $this->message['time'] ?? now()->format('H:i'),
-        ];
-    }
+
+//    public function broadcastWith(): array
+//    {
+//        return [
+//            'id'      => $this->message['id'] ?? null,
+//            'message' => $this->message['message'] ?? '',
+//            'time'    => date('H:i:s', $this->message['date'] ?? time()),
+//        ];
+//    }
 }

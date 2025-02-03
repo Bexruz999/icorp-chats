@@ -36,7 +36,7 @@ class MessengerController extends Controller
             ];
         }, $dialogs);
 
-        broadcast(new DialogsUpdated($chats))->toOthers();
+//        broadcast(new DialogsUpdated($chats))->toOthers();
         return Inertia::render('Messengers/Index', [
             'chats' => $chats
         ]);

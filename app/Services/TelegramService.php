@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Events\TelegramMessage;
 use danog\MadelineProto\API;
 use Illuminate\Support\Facades\File;
 
@@ -86,7 +87,7 @@ class TelegramService {
             }
 
 
-            event(new DialogsUpdated($result));
+//            event(new DialogsUpdated($result));
 
             return $result;
         } catch (\Throwable $e) {
@@ -209,11 +210,17 @@ class TelegramService {
                 return $a['id'] <=> $b['id'];
             });
 
+//            event(new TelegramMessage(end($result))); // Отправляем последнее сообщение в канал
+
             return $result;
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
     }
+
+
+//    use App\Events\TelegramMessage;
+
 
 
 

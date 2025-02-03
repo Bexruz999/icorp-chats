@@ -12,10 +12,10 @@ interface MainLayoutProps {
 
 export default function MainLayout({ title, children }: MainLayoutProps) {
   useEffect(() => {
-    window.Echo.private('telegram-messages').listen('TelegramMessage', e => {
+    window.Echo.private('telegram-messages').listen('TelegramMessage', (e) => {
       console.log('Received message:', e);
     });
-  });
+  }, []);
   return (
     <>
       <Head title={title} />
