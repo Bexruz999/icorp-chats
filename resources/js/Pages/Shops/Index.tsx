@@ -46,21 +46,13 @@ const Index = () => {
             )
           },
           {
-            label: 'Slug',
-            name: 'slug',
-
-            renderCell: row => (
-              <>{row.slug}</>
-            )
-          },
-          {
             label: 'Бот',
             name: 'bot',
 
             renderCell: row => (
               <>{row.bot ? row.bot.name: ''}</>
             )
-          }
+          },
         ]}
         rows={data}
         getRowDetailsUrl={row => route('shops.edit', row.id)}

@@ -122,7 +122,7 @@ class BotController extends Controller
         return response()->json(['ok' => true]);
     }
 
-    public function shop(Request $request, $slug) {
+    public function shop($slug) {
         $shop = Shop::with('categories', 'bot')->where(['slug' => $slug])->firstOrFail();
 
         return Inertia::render('MiniApp/Index')->with([
@@ -134,7 +134,7 @@ class BotController extends Controller
 
     public function addBasket(StoreBasketRequest $request, $slug)
     {
-        $shop = Shop::select(['id', 'slug', 'account_id'])->where('slug', $slug)->firstOrFail();
+        $shop = Shop::select(['id', 'slug', 'account_id', 'bot_id'])->where('slug', $slug)->firstOrFail();
 
         $validated = $request->validated();
 
@@ -153,6 +153,23 @@ class BotController extends Controller
             ]);
         }
 
-        return $basket->items()->get();
+        $text = "🛍 Корзина";
+        $total  = 0;
+        foreach ($basket->items as $item) {
+
+            $text.= "\n $item->quantity x $item->price $shop->currency: ".$item->product->name;
+
+            $total += $item->price * $item->quantity;
+
+        }
+
+        $text.= "\n\n💳 Итого:  ".$total." $shop->currency";
+        $telegram = new Api($shop->bot->token);
+        $telegram->sendMessage([
+            'chat_id' => $basket->tg_id,
+            'text' => $text
+        ]);
+
+        return response()->json(['success' => true]);
     }
 }

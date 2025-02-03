@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
+use function Symfony\Component\Translation\t;
 
 class ShopController extends Controller
 {
@@ -78,23 +79,26 @@ class ShopController extends Controller
 
         $bots = Auth::user()->account->bots()->doesntHave('shops')->pluck('name', 'id');
 
-        $options = [];
+        $options[] = ['label' => 'Нет', 'value' => null, 'selected' => true];
         if (isset($bots)) {
             foreach ($bots as $id => $bot) {
-                if ($shop->bot_id == $id) {
-                    $options[] = ['label' => $bot, 'value' => $id, 'selected' => true];
-                } else {
-                    $options[] = ['label' => $bot, 'value' => $id];
-                }
+                $options[] = [
+                    'label' => $bot,
+                    'value' => $id,
+                    'selected' => $shop->bot_id == $id
+                ];
             }
+        }
+
+        if ($shop->bot()->exists()) {
+            $options = array_merge($options, [
+                ['label' => $shop->bot->name, 'value' => $shop->bot->id, 'selected' => true]
+            ]);
         }
 
         return Inertia::render('Shops/Edit', [
             'shop' => new ShopResource($shop),
-            'bots' => array_merge($options, [
-                ['label' => 'Нет', 'value' => null],
-                ['label' => $shop->bot->name, 'value' => $shop->bot->id, 'selected' => true]
-            ])
+            'bots' => $options
         ]);
     }
 

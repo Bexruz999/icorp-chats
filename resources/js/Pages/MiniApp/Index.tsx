@@ -11,20 +11,22 @@ const Tab = `${({ active }) => active && `border-bottom: 2px solid black; opacit
 
 function DashboardPage() {
 
-  //const {id} = WebApp.initDataUnsafe.user
+  const {id} = WebApp.initDataUnsafe.user
 
   const { categories, bot, slug } = usePage<{categories: Category[], bot: Bot, slug: string}>().props;
 
   const { data, setData, errors, post, processing } = useForm({
     basket: [],
-    //tg_id: id
-    tg_id: 2092452523,
+    tg_id: id,
     description: 'Description'
   });
 
   function handleSubmit() {
-    WebApp.sendData('test');
-    post(route('basket.create', slug));
+
+    if (prompt('Комментарий к заказу') !== null) {
+      post(route('basket.create', slug));
+    }
+
   }
 
 
@@ -67,7 +69,7 @@ function DashboardPage() {
     categories.forEach((category) => {
       category.products.forEach((product: Product) => {
         if (basket.hasOwnProperty(product.id)) {
-          if (product.price > product.discount_price > 0) {
+          if (Number(product.price) > Number(product.discount_price) > 0) {
             total += basket[product.id] * product.discount_price;
           } else {
             total += basket[product.id] * product.price;
@@ -78,14 +80,9 @@ function DashboardPage() {
     return total;
   }
 
-  function sendBasket() {
-    fetch(route('basket.create'), )
-  }
-
   const inCartClass: string = "d-flex items-center justify-between";
   const addBtnClass: string = "btn-indigo rounded-lg w-full py-1";
 
-  console.log(data.basket);
   return (
     <>
       <div className="d-flex overflow-scroll p-2 z-10">

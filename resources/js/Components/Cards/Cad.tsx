@@ -27,12 +27,12 @@ export const Card = ({button, product, addToBasket }: CardProps) => {
           <CCardText>{product.description}</CCardText>
 
           <CCardText>Цена:
-            <span className={(product.price > product.discount_price) ? 'line-through' : ''}>
+            <span className={(Number(product.price) > Number(product.discount_price)) ? 'line-through' : ''}>
             <b>{product.price}</b>
           </span>
           </CCardText>
 
-          {(product.price > product.discount_price) ?
+          {(Number(product.price) > Number(product.discount_price)) ?
             <CCardText>
               Скидка: <b>{product.discount_price}</b>
             </CCardText>

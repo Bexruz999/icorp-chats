@@ -57,7 +57,7 @@ class CategoryController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Категория добавлен успешно');
+        return redirect()->route('shops.edit', $validated['shop_id'])->with('success', 'Категория добавлен успешно');
     }
 
     /**

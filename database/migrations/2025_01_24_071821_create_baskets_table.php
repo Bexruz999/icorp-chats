@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('account_id')->constrained('accounts');
             $table->bigInteger('tg_id');
             $table->text('description')->nullable();
+            $table->string('currency')->default('UZS');
             $table->timestamps();
         });
     }

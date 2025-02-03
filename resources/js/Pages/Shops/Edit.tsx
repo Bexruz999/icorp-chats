@@ -81,7 +81,7 @@ const Edit = () => {
               />
             </FieldGroup>
             <FieldGroup label="Выбрать Telegram Bot" name="bot_id">
-              <Select isClearable defaultValue={bots[1]} options={bots}
+              <Select isClearable defaultValue={bots.findLast(elem => elem['selected'])} options={bots}
                       onChange={e => setBot(e)} />
             </FieldGroup>
           </div>
