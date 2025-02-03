@@ -8,6 +8,7 @@ use App\Http\Resources\BotCollection;
 use App\Http\Resources\BotResource;
 use App\Models\Basket;
 use App\Models\Bot;
+use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -150,10 +151,18 @@ class BotController extends Controller
         $basket->description = $validated['description'];
         $basket->save();
 
+        $products = Product::whereIn('id', $validated['basket'])->get();
+
         foreach ($validated['basket'] as $key => $item) {
+
+            $product = $products->find($key);
+            $price = ($product->price > $product->discount_price && $product->discount_price > 0) ?
+                $product->discount_price : $product->price;
+
             $basket->items()->create([
                 'product_id' => $key,
-                'quantity' => $item
+                'quantity' => $item,
+                'price' => $price,
             ]);
         }
 
