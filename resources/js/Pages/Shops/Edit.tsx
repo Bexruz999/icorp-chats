@@ -112,7 +112,7 @@ const Edit = () => {
       </div>
 
       <div className="rounded">
-        <p className="text-xl border-2 my-5 p-2"><b>Ссылка на магазин: </b>{`${document.domain}/shop/${shop.slug}`}</p>
+        <p className="text-xl border-2 my-5 p-2"><b>Ссылка на магазин: </b>{`https://${document.domain}/shop/${shop.slug}`}</p>
       </div>
 
       <h2 className="mt-12 mb-6 text-2xl font-bold">Категории</h2>
