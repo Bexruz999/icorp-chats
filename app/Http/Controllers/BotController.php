@@ -168,12 +168,17 @@ class BotController extends Controller
         }
 
         $text.= "\n\n💳 Итого:  ".$total." $shop->currency";
-        $telegram = new Api($shop->bot->token);
-        $telegram->sendMessage([
-            'chat_id' => $basket->tg_id,
-            'text' => $text
-        ]);
 
-        return response()->json(['success' => true]);
+        if ($shop->bot()->exists()) {
+            $telegram = new Api($shop->bot->token);
+            $telegram->sendMessage([
+                'chat_id' => $shop->bot->id,
+                'text' => $text
+            ]);
+
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false]);
     }
 }

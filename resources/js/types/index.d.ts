@@ -36,6 +36,7 @@ export interface Shop {
   bot: Bot;
   account: Account;
   name: string;
+  currency: string;
   slug: string;
   logo: string;
   categories: Category[]

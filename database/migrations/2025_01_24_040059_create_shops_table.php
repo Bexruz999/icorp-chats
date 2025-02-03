@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('logo')->nullable();
-            $table->string('currency')->default('UZS');
+            $table->string('currency')->default('UZS')->nullable();
             $table->timestamps();
         });
     }
