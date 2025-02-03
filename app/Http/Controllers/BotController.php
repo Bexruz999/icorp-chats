@@ -58,7 +58,7 @@ class BotController extends Controller
         try {
             $result = $telegram->getMe();
 
-            if ($result->ok) {
+            if ($result->isBot) {
                 Log::info('Bot webhook set for '. $slug);
                 Auth::user()->account->bots()->create(array_merge(
                     $request->validated(),
