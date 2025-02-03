@@ -18,12 +18,14 @@ function DashboardPage() {
   const { data, setData, errors, post, processing } = useForm({
     basket: [],
     tg_id: id,
-    description: 'Description'
+    description: ''
   });
 
   function handleSubmit() {
 
-    if (prompt('Комментарий к заказу') !== null) {
+    let comment: string | null = prompt('Комментарий к заказу');
+    if (comment !== null) {
+      data.description = comment;
       post(route('basket.create', slug));
     }
 

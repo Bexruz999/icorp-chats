@@ -31,6 +31,10 @@ const Edit = () => {
     post(route('categories.update', category.id));
   }
 
+  function addProduct() {
+    router.get(route('products.create.category', category.id));
+  }
+
   function destroy() {
     if (confirm('Are you sure you want to delete this user?')) {
       router.delete(route('categories.destroy', category.id));
@@ -122,6 +126,17 @@ const Edit = () => {
         rows={category.products}
         getRowDetailsUrl={row => route('products.edit', row.id)}
       />
+
+      <div className="mt-6">
+        <LoadingButton
+          loading={processing}
+          type="button"
+          onClick={addProduct}
+          className="ml-auto btn-indigo"
+        >
+          Добавить Продукт
+        </LoadingButton>
+      </div>
     </div>
   );
 };

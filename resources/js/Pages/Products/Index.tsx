@@ -23,13 +23,13 @@ function Index() {
       <h1 className="mb-8 text-3xl font-bold">Продукции</h1>
       <div className="flex items-center justify-between mb-6">
         <FilterBar />
-        <Link
+        {/*<Link
           className="btn-indigo focus:outline-none"
           href={route('products.create')}
         >
           <span>Создать</span>
           <span className="hidden md:inline"> Продукция</span>
-        </Link>
+        </Link>*/}
       </div>
       <Table
         columns={[

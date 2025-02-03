@@ -27,8 +27,7 @@ class StoreProductResource extends FormRequest
             'short_description' => 'required|string',
             'price' => 'required|numeric',
             'discount_price' => 'nullable|numeric',
-            'category_id' => 'required|exists:categories,id',
-            'shop_id' => 'required|exists:shops,id',
+            'category' => 'required|exists:categories,id',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }

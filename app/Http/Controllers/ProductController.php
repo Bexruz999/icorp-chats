@@ -30,25 +30,10 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        $shops = Auth::user()->account->shops()->get();
-
-        $categories = Category::whereIn('shop_id', $shops->pluck('id'))->get();
-
-        $options = [];
-        foreach ($categories as $category) {
-            $options[] = ['label' => $category->name, 'value' => $category->id];
-        }
-
-        $shop_options = [];
-        foreach ($shops as $shop) {
-            $shop_options[] = ['label' => $shop->name, 'value' => $shop->id];
-        }
-
         return Inertia::render('Products/Create', [
-            'categories' => $options,
-            'shops' => $shop_options
+            'category' => $id
         ]);
     }
 
@@ -59,14 +44,16 @@ class ProductController extends Controller
     {
         $validated = $request->validated();
 
+        $category = Category::findOrFail($validated['category']);
+
         Product::create([
             'name' => $validated['name'],
             'description' => $validated['description'],
             'short_description' => $validated['short_description'],
             'price' => $validated['price'],
             'discount_price' => $validated['discount_price'],
-            'category_id' => $validated['category_id'],
-            'shop_id' => $validated['shop_id'],
+            'category_id' => $validated['category'],
+            'shop_id' => $category->shop_id,
             'image' => $request->has('image') ? $request->file('image')->store('products') : '',
             'slug' => Str::slug($validated['name'])
         ]);

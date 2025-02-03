@@ -9,11 +9,10 @@ import React from 'react';
 
 const Create = () => {
 
-  const { categories, shops } = usePage<{ categories: [], shops: [] }>().props;
+  const { category } = usePage<{ categories: [], shops: [] }>().props;
   const { data, setData, errors, post, processing } = useForm({
     name: '',
-    shop_id: shops.length > 0 ? shops[0].value : undefined,
-    category_id: categories.length > 0 ? categories[0].value : undefined,
+    category: category || '',
     price: '',
     discount_price: '',
     description: '',
@@ -78,25 +77,6 @@ const Create = () => {
                 onChange={e => setData('short_description', e.target.value)}
               />
             </FieldGroup>
-
-            <FieldGroup label="Категория" name="category_id" error={errors.category_id}>
-              <SelectInput
-                name="category_id"
-                error={errors.category_id}
-                onChange={e => setData('category_id', e.target.value)}
-                options={categories}
-              />
-            </FieldGroup>
-
-            <FieldGroup label="Магазин" name="category_id" error={errors.shop_id}>
-              <SelectInput
-                name="shop_id"
-                error={errors.shop_id}
-                onChange={e => setData('shop_id', e.target.value)}
-                options={shops}
-              />
-            </FieldGroup>
-
 
             <FieldGroup label="Цена" name="price" error={errors.price}>
               <TextInput
