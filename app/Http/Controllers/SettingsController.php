@@ -83,7 +83,7 @@ class SettingsController extends Controller
             ]);
         }
 
-        return Inertia::render("Settings/Index");
+        return Redirect::route('settings')->with('success', 'Телеграм канал подключен');
     }
 
     public function verifyPassword(Request $request) {

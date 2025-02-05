@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 
@@ -31,6 +32,7 @@ class SettingsService {
             'phone' => $phone
         ]);
 
+        Artisan::call("telegram-process:stop", ["phone" => $phone]);
         return self::STATUS_VERIFYED;
     }
 
@@ -43,12 +45,20 @@ class SettingsService {
             return self::STATUS_PASSWORD_NEED;
         }
 
+        $user = auth()->user()->load('account');
+
+        $user->account->connections()->create([
+            'phone' => $phone
+        ]);
+
+        Artisan::call("telegram-process:start", ["phone" => $phone]);
         return self::STATUS_VERIFYED;
     }
 
     public function deleteConnection(string $phone) {
         $storagePath = $this->getStoragePath($phone);
         File::deleteDirectory($storagePath);
+        Artisan::call("telegram-process:stop", ["phone" => $phone]);
         DB::table('connections')->where(['phone' => $phone, 'account_id' => auth()->user()->account->id])->delete();
     }
 
