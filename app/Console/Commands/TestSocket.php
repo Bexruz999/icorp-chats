@@ -28,8 +28,8 @@ class TestSocket extends Command
      */
     public function handle()
     {
-        // TelegramMessage::dispatch("test mesa");
-        $storage = storage_path() . '/app/telegram/+6282211915445.madeline';
-        TelegramIncomingMessage::startAndLoop($storage);
+         TelegramMessage::dispatch(["test mesa"]);
+//        $storage = storage_path() . '/app/telegram/6282211915445.madeline';
+//        TelegramIncomingMessage::startAndLoop($storage);
     }
 }

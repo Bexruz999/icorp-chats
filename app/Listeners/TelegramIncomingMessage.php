@@ -15,15 +15,15 @@ use danog\MadelineProto\SimpleEventHandler;
 class TelegramIncomingMessage extends SimpleEventHandler
 {
 
+
     #[Handler]
+
     public function handleMessage(Incoming&Message $message): void
     {
-        $messageData = [
-            'id'      => $message->getId() ?? null,
-            'message' => $message->getText() ?? '',
-            'time'    => now()->format('H:i'),
-        ];
-
-        event(new TelegramMessage($messageData));
+        TelegramMessage::dispatch([
+            'id'      => $message->chatId ?? null,
+            'last_message' => $message->message ?? '',
+            'time'    => date('H:i:s', $message->date ?? time()),
+        ]);
     }
 }

@@ -23,20 +23,25 @@ class MessengerController extends Controller
 {
     public function index(): Response
     {
-        $phone = auth()->user()->account->connections[0]->phone;
-        $dialogs = $this->telegramService->getDialogs($phone);
-        $chats = array_map(function ($dialog) {
-            return [
-                'id'     => $dialog["peer_id"],
-                'type'   => $dialog['type'],
-                'name'   =>  $dialog['title'],
-                'time'   => now()->toDateTimeString(),
-                'lastMessage' => $dialog['last_message'],
-                'unread' => $dialog['unread_count'],
-            ];
-        }, $dialogs);
+        $connections = auth()->user()->account->connections;
+        $chats = [];
 
-        broadcast(new DialogsUpdated($chats))->toOthers();
+        if(!$connections->empty()) {
+            $phone = $connections[0]->phone;
+            $dialogs = $this->telegramService->getDialogs($phone);
+            $chats = array_map(function ($dialog) {
+                return [
+                    'id'     => $dialog["peer_id"],
+                    'type'   => $dialog['type'],
+                    'name'   =>  $dialog['title'],
+                    'time'   => now()->toDateTimeString(),
+                    'lastMessage' => $dialog['last_message'],
+                    'unread' => $dialog['unread_count'],
+                ];
+            }, $dialogs);
+        }
+
+//        broadcast(new DialogsUpdated($chats))->toOthers();
         return Inertia::render('Messengers/Index', [
             'chats' => $chats
         ]);

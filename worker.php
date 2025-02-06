@@ -10,22 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 $app->make(Kernel::class)->bootstrap();
 
+if ($argc < 2) {
+    die("Ошибка: Укажите номер телефона как аргумент. Пример: php worker.php +998996042509\n");
+}
 
-$storage = storage_path() . '/app/telegram/+6282211915445.madeline';
+$phone = $argv[1];
+
+
+$storage = storage_path() . "/app/telegram/$phone.madeline";
 TelegramIncomingMessage::startAndLoop($storage);
-
-
-// Получаем все номера телефонов из БД
-//$phones = DB::table('connections')->pluck('phone')->toArray();
-
-if (empty($phones)) {
-    die("Нет активных номеров для запуска Telegram worker.\n");
-}
-
-foreach ($phones as $phone) {
-    $storage = storage_path() . "/app/telegram/{$phone}.madeline";
-    echo "Запускаем обработчик для номера: {$phone}\n";
-
-    TelegramIncomingMessage::startAndLoop($storage);
-}
-
