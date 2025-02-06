@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Events\TelegramMessage;
 use danog\MadelineProto\API;
 use Illuminate\Support\Facades\File;
+use App\Events\DialogsUpdated;
 
 
 class TelegramService {
@@ -25,6 +26,7 @@ class TelegramService {
         try {
             $dialogs = $MadelineProto->messages->getDialogs(limit: 100);
             $result = [];
+
 
 
             if (isset($dialogs['dialogs']) && is_array($dialogs['dialogs'])) {
@@ -87,7 +89,7 @@ class TelegramService {
             }
 
 
-//            event(new DialogsUpdated($result));
+            TelegramMessage::dispatch($result);
 
             return $result;
         } catch (\Throwable $e) {
@@ -209,6 +211,8 @@ class TelegramService {
             usort($result, function ($a, $b) {
                 return $a['id'] <=> $b['id'];
             });
+
+            TelegramMessage::dispatch($result);
 
 //            event(new TelegramMessage(end($result))); // Отправляем последнее сообщение в канал
 

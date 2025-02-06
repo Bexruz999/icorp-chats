@@ -24,7 +24,7 @@ class TelegramMessage implements ShouldBroadcast
     public function __construct(array $message)
     {
         $this->message = $message;
-        var_dump($message);
+//        var_dump($message);
     }
 
     /**
@@ -40,17 +40,4 @@ class TelegramMessage implements ShouldBroadcast
         ];
     }
 
-
-    /**
-     * Преобразуем объект в массив
-     */
-
-//    public function broadcastWith(): array
-//    {
-//        return [
-//            'id'      => $this->message['id'] ?? null,
-//            'message' => $this->message['message'] ?? '',
-//            'time'    => date('H:i:s', $this->message['date'] ?? time()),
-//        ];
-//    }
 }
