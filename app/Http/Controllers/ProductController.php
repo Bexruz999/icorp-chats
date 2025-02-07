@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProductResource;
 use App\Http\Resources\ProductCollection;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -30,10 +31,32 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($id)
+    public function createCategory($id)
     {
-        return Inertia::render('Products/Create', [
+        return Inertia::render('Products/CreateCategory', [
             'category' => $id
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $shops = Auth::user()->account->shops()->get();
+
+        $categories = Category::whereIn('shop_id', $shops->pluck('id'))->get();
+
+        $options = [];
+        foreach ($categories as $category) {
+            $options[] = [
+                'label' => "$category->name: (".$category->shop->name.')',
+                'value' => $category->id
+            ];
+        }
+
+        return Inertia::render('Products/Create', [
+            'categories' => $options
         ]);
     }
 
@@ -76,24 +99,20 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        $shops = Auth::user()->account->shops()->get();
-
-        $categories = Category::whereIn('shop_id', $shops->pluck('id'))->get();
+        $categories = Category::whereIn('shop_id',
+            Auth::user()->account->shops()->pluck('id'))->get();
 
         $options = [];
         foreach ($categories as $category) {
-            $options[] = ['label' => $category->name, 'value' => $category->id];
-        }
-
-        $shop_options = [];
-        foreach ($shops as $shop) {
-            $shop_options[] = ['label' => $shop->name, 'value' => $shop->id];
+            $options[] = [
+                'label' => "$category->name: (".$category->shop->name.')',
+                'value' => $category->id
+            ];
         }
 
         return Inertia::render('Products/Edit', [
             'product' => $product,
-            'categories' => $options,
-            'shops' => $shop_options
+            'categories' => $options
         ]);
     }
 
@@ -106,9 +125,15 @@ class ProductController extends Controller
 
         $validated = $request->validated();
 
-        $product->update(array_merge($validated, ['slug' => Str::slug($validated['name'])]));
+        $product->update(array_merge(
+            $validated,
+            [
+                'slug' => Str::slug($validated['name']),
+                'shop_id' => Category::findOrFail($validated['category_id'])->shop_id
+            ]
+        ));
 
-        if ($request->has('image') && ($request->file('image') !== "")) {
+        if ($request->has('image') && !is_null($request->file('image'))) {
             $product->update(['image' => $request->file('image')->store('products')]);
         }
 

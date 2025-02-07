@@ -20,9 +20,9 @@ const Index = () => {
       </h1>
       <div className="flex items-center justify-between mb-6">
         {/*<FilterBar />*/}
-        {/*<Link className="btn-indigo focus:outline-none" href={route('shops.create')}>
+        <Link className="btn-indigo focus:outline-none" href={route('categories.create')}>
           <span>Создать</span>
-        </Link>*/}
+        </Link>
       </div>
       <Table
         columns={[

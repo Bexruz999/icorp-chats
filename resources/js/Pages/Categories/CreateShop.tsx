@@ -7,13 +7,13 @@ import React from 'react';
 import FileInput from '@/Components/Form/FileInput';
 
 const Create = () => {
-  const { shops } = usePage<{shop: number}>().props
+  const { shop } = usePage<{shop: number}>().props
 
   const { data, setData, errors, post, processing } = useForm({
     name: '',
     description: '',
     image: '',
-    shop_id: '',
+    shop_id: shop || '',
   });
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

@@ -30,10 +30,20 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($id)
+    public function createShop($id)
+    {
+        return Inertia::render('Categories/CreateShop')->with([
+            'shop' => $id
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
         return Inertia::render('Categories/Create')->with([
-            'shop' => $id
+            //'shop' => $id
         ]);
     }
 

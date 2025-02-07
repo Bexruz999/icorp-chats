@@ -33,11 +33,11 @@ export default function MainMenu({ className }: MainMenuProps) {
         link="shops.index"
         icon={<Building size={20} />}
       />
-      <MainMenuItem
+      {/*<MainMenuItem
         text="Категории"
         link="categories.index"
         icon={<Building size={20} />}
-      />
+      />*/}
       <MainMenuItem
         text="Продукция"
         link="products.index"

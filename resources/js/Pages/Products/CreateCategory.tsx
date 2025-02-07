@@ -1,51 +1,32 @@
-import React from 'react';
-import { Head } from '@inertiajs/react';
-import { Link, usePage, useForm, router } from '@inertiajs/react';
+import { Link, useForm, usePage } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
-import DeleteButton from '@/Components/Button/DeleteButton';
 import LoadingButton from '@/Components/Button/LoadingButton';
 import TextInput from '@/Components/Form/TextInput';
 import SelectInput from '@/Components/Form/SelectInput';
-import { Product } from '@/types';
 import FieldGroup from '@/Components/Form/FieldGroup';
 import FileInput from '@/Components/Form/FileInput';
+import React from 'react';
 
-const Edit = () => {
-  const { product, categories, shops } = usePage<{ product: Product }>().props;
+const Create = () => {
+
+  const { category } = usePage<{ categories: [], shops: [] }>().props;
   const { data, setData, errors, post, processing } = useForm({
-    name: product.name || '',
-    description: product.description || '',
-    short_description: product.short_description || '',
-    image: '',
-    category_id: product.category_id || '',
-    price: product.price || '',
-    discount_price: product.discount_price || '',
-    _method: 'put'
+    name: '',
+    category: category || '',
+    price: '',
+    discount_price: '',
+    description: '',
+    short_description: '',
+    image: ''
   });
-
-  console.log(product);
-  console.log(data);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    post(route('products.update', product.id));
-  }
-
-  function destroy() {
-    if (confirm('Are you sure you want to delete this organization?')) {
-      router.delete(route('organizations.destroy', product.id));
-    }
-  }
-
-  function restore() {
-    if (confirm('Are you sure you want to restore this organization?')) {
-      router.put(route('organizations.restore', product.id));
-    }
+    post(route('products.store'));
   }
 
   return (
     <div>
-      <Head title={data.name} />
       <h1 className="mb-8 text-3xl font-bold">
         <Link
           href={route('products.index')}
@@ -53,8 +34,7 @@ const Edit = () => {
         >
           Продукция
         </Link>
-        <span className="mx-2 font-medium text-indigo-600">/</span>
-        {data.name}
+        <span className="font-medium text-indigo-600"> /</span> Создать
       </h1>
       <div className="max-w-3xl overflow-hidden bg-white rounded shadow">
         <form onSubmit={handleSubmit}>
@@ -98,16 +78,6 @@ const Edit = () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Категория" name="category_id" error={errors.category_id}>
-              <SelectInput
-                name="country"
-                error={errors.category_id}
-                value={data.category_id}
-                onChange={e => setData('category_id', e.target.value)}
-                options={categories}
-              />
-            </FieldGroup>
-
             <FieldGroup label="Цена" name="price" error={errors.price}>
               <TextInput
                 name="price"
@@ -119,24 +89,20 @@ const Edit = () => {
 
             <FieldGroup label="Скидочная Цена" name="discount_price" error={errors.discount_price}>
               <TextInput
-                name="discount_price"
+                name="price"
                 error={errors.discount_price}
                 value={data.discount_price}
                 onChange={e => setData('discount_price', e.target.value)}
               />
             </FieldGroup>
-
           </div>
-          <div className="flex items-center px-8 py-4 bg-gray-100 border-t border-gray-200">
-            <DeleteButton onDelete={destroy}>
-              Удалить продукт
-            </DeleteButton>
+          <div className="flex items-center justify-end px-8 py-4 bg-gray-100 border-t border-gray-200">
             <LoadingButton
               loading={processing}
               type="submit"
-              className="ml-auto btn-indigo"
+              className="btn-indigo"
             >
-              Обновить продукт
+              Создать продукт
             </LoadingButton>
           </div>
         </form>
@@ -150,6 +116,8 @@ const Edit = () => {
  *
  * [Learn more](https://inertiajs.com/pages#persistent-layouts)
  */
-Edit.layout = (page: React.ReactNode) => <MainLayout children={page} />;
+Create.layout = (page: React.ReactNode) => (
+  <MainLayout title="Create Organization" children={page} />
+);
 
-export default Edit;
+export default Create;

@@ -28,8 +28,6 @@ class UpdateProductResource extends FormRequest
             'price' => 'required|numeric',
             'discount_price' => 'nullable|numeric',
             'category_id' => 'required|exists:categories,id',
-            'shop_id' => 'required|exists:shops,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

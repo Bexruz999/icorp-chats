@@ -214,9 +214,9 @@ Route::resource('bots', BotController::class)->middleware('auth');
 
 Route::resource('shops', ShopController::class)->middleware('auth');
 
-Route::get('categories/create/{id}',[CategoryController::class, 'create'])->name('categories.create.shop');
+Route::get('categories/create/{id}',[CategoryController::class, 'createShop'])->name('categories.create.shop');
 Route::resource('categories', CategoryController::class)->middleware('auth');
-Route::get('products/create/{id}',[ProductController::class, 'create'])->name('products.create.category');
+Route::get('products/create/{id}',[ProductController::class, 'createCategory'])->name('products.create.category');
 Route::resource('products', ProductController::class)->middleware('auth');
 
 Route::post('/webhook/{slug}', [BotController::class, 'webhook'])->name('bot.webhook');

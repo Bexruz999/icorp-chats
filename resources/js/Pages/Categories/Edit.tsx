@@ -106,7 +106,7 @@ const Edit = () => {
 
           </div>
           <div className="flex items-center px-8 py-4 bg-gray-100 border-t border-gray-200">
-            <DeleteButton onDelete={destroy}>Удалить магазина</DeleteButton>
+            <DeleteButton onDelete={destroy}>Удалить</DeleteButton>
             <LoadingButton
               loading={processing}
               type="submit"

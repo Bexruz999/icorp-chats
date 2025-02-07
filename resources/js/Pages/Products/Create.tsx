@@ -9,10 +9,10 @@ import React from 'react';
 
 const Create = () => {
 
-  const { category } = usePage<{ categories: [], shops: [] }>().props;
+  const { categories } = usePage<{ categories: [], shops: [] }>().props;
   const { data, setData, errors, post, processing } = useForm({
     name: '',
-    category: category || '',
+    category: '',
     price: '',
     discount_price: '',
     description: '',
@@ -39,7 +39,7 @@ const Create = () => {
       <div className="max-w-3xl overflow-hidden bg-white rounded shadow">
         <form onSubmit={handleSubmit}>
           <div className="grid gap-8 p-8 lg:grid-cols-2">
-            <FieldGroup label="Name" name="name" error={errors.name}>
+            <FieldGroup label="Название" name="name" error={errors.name}>
               <TextInput
                 name="name"
                 error={errors.name}
@@ -78,6 +78,16 @@ const Create = () => {
               />
             </FieldGroup>
 
+            <FieldGroup label="Категория" name="category_id" error={errors.category}>
+              <SelectInput
+                name="category"
+                error={errors.category}
+                value={data.category}
+                onChange={e => setData('category', e.target.value)}
+                options={categories}
+              />
+            </FieldGroup>
+
             <FieldGroup label="Цена" name="price" error={errors.price}>
               <TextInput
                 name="price"
@@ -89,7 +99,7 @@ const Create = () => {
 
             <FieldGroup label="Скидочная Цена" name="discount_price" error={errors.discount_price}>
               <TextInput
-                name="price"
+                name="discount_price"
                 error={errors.discount_price}
                 value={data.discount_price}
                 onChange={e => setData('discount_price', e.target.value)}
