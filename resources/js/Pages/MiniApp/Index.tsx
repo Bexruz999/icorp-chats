@@ -11,25 +11,21 @@ const Tab = `${({ active }) => active && `border-bottom: 2px solid black; opacit
 
 function DashboardPage() {
 
-  const {id} = WebApp.initDataUnsafe.user
+  const {id} = WebApp.initDataUnsafe.user ?? false
 
   const { categories, bot, slug } = usePage<{categories: Category[], bot: Bot, slug: string}>().props;
 
   const { data, setData, errors, post, processing } = useForm({
     basket: [],
-    tg_id: id,
-    description: ''
+    tg_id: id ?? 2092452523,
+    description: 'description'
   });
 
   function handleSubmit() {
-
-    let comment: string | null = prompt('Комментарий к заказу');
-    if (comment !== null) {
-      data.description = comment;
-      post(route('basket.create', slug));
+    post(route('basket.create', slug));
+    setTimeout(() => {
       WebApp.close();
-    }
-
+    }, 500);
   }
 
 
@@ -60,7 +56,6 @@ function DashboardPage() {
 
   function selectTab({ type }: { type: string }) {
     setActive(type);
-    console.log(type);
   }
 
   function checkBasket() {

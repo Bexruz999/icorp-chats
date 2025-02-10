@@ -1,5 +1,5 @@
 import React from 'react';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { usePage, useForm, router } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import DeleteButton from '@/Components/Button/DeleteButton';
@@ -56,6 +56,12 @@ const Edit = () => {
       <Head title={`${data.name}`} />
       <div className="flex justify-start max-w-lg mb-8">
         <h1 className="text-3xl font-bold">
+          <Link
+            href={route('shops.edit', category.shop_id)}
+            className="text-indigo-600 hover:text-indigo-700"
+          >
+            Магазин <span>/ </span>
+          </Link>
           {data.name}
         </h1>
       </div>

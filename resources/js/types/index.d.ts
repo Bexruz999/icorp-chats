@@ -50,6 +50,7 @@ export interface Category {
   image: string;
   products: Product[];
   shop: Shop;
+  shop_id: number;
 }
 
 export interface Product {

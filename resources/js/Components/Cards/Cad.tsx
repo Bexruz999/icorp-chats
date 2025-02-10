@@ -24,7 +24,7 @@ export const Card = ({button, product, addToBasket }: CardProps) => {
       <CCardBody>
         <div className="d-flex flex-col justify-between h-full">
           <CCardTitle><b>{product.name}</b></CCardTitle>
-          <CCardText>{product.description}</CCardText>
+          <CCardText>{product.short_description}</CCardText>
 
           <CCardText>Цена:
             <span className={(Number(product.price) > Number(product.discount_price)) ? 'line-through' : ''}>

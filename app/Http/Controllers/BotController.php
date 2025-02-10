@@ -141,6 +141,7 @@ class BotController extends Controller
     {
         $shop = Shop::select(['id', 'slug', 'account_id', 'bot_id'])->where('slug', $slug)->firstOrFail();
 
+
         $validated = $request->validated();
 
         $basket = new Basket();
