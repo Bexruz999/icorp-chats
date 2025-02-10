@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBasketRequest;
 use App\Http\Requests\StoreBotRequest;
+use App\Http\Requests\UpdateBotRequest;
 use App\Http\Resources\BotCollection;
 use App\Http\Resources\BotResource;
 use App\Models\Basket;
@@ -100,9 +101,13 @@ class BotController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateBotRequest $request, string $id)
     {
-        //
+        $bot = Bot::find($id);
+
+        $bot->update($request->validated());
+
+        return redirect()->route('bots.index')->with('success', 'Бот успешно изменен');
     }
 
     /**
