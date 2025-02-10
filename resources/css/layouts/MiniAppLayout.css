@@ -28,3 +28,30 @@
 .active-content {
   display: flex;
 }
+
+.product_content {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 3em 3em 3em;
+}
+
+.product_content-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.product_content-title{
+  padding: 1em;
+  font-size: 24px;
+}
+
+.product_content-text {
+  padding: 1em;
+  font-size: 18px;
+}
