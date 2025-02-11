@@ -16,32 +16,24 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
+use danog\MadelineProto\API;
+use App\Listeners\TelegramIncomingMessage;
+
 
 
 
 class MessengerController extends Controller
 {
+
     public function index(): Response
     {
-        $connections = auth()->user()->account->connections;
-        $chats = [];
+        $api = new API('bot.madeline');
 
-        if(!$connections->empty()) {
-            $phone = $connections[0]->phone;
-            $dialogs = $this->telegramService->getDialogs($phone);
-            $chats = array_map(function ($dialog) {
-                return [
-                    'id'     => $dialog["peer_id"],
-                    'type'   => $dialog['type'],
-                    'name'   =>  $dialog['title'],
-                    'time'   => now()->toDateTimeString(),
-                    'lastMessage' => $dialog['last_message'],
-                    'unread' => $dialog['unread_count'],
-                ];
-            }, $dialogs);
-        }
+        $handler = $api->getEventHandler(TelegramIncomingMessage::class);
 
-//        broadcast(new DialogsUpdated($chats))->toOthers();
+        $chats = $handler->getDialogs();
+
+        var_dump($chats);
         return Inertia::render('Messengers/Index', [
             'chats' => $chats
         ]);
