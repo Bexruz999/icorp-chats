@@ -27,15 +27,25 @@ class MessengerController extends Controller
 
     public function index(): Response
     {
-        $api = new API('bot.madeline');
+        $phone = auth()->user()->account->connections()->first()->phone;
 
-        $handler = $api->getEventHandler(TelegramIncomingMessage::class);
+        //$api = new TelegramService;
+        $api = new API(storage_path("app/telegram/{$phone}.madeline"));
+        $chat = $api->messages->getDialogs();
 
-        $chats = $handler->getDialogs();
+        //$chats = $api->getDialogs($phone);
 
-        var_dump($chats);
+        //$handler = $api->getEventHandler(TelegramIncomingMessage::class);
+
+        //$chats = $handler->getDialogs();
+
+        //var_dump($chats);
+
+        //$handler = new TelegramIncomingMessage();
+
+
         return Inertia::render('Messengers/Index', [
-            'chats' => $chats
+            'chats' => $chat
         ]);
     }
 

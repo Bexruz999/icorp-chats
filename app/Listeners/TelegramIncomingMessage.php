@@ -27,9 +27,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
         $text = $message->message ?? '';
         $time = date('H:i:s', $message->date ?? time());
 
-        if ($chatId === null) {
-            return;
-        }
+        if ($chatId === null) {return;}
 
         $this->dialogs[$chatId] = [
             'peer' => $chatId,
@@ -42,6 +40,8 @@ class TelegramIncomingMessage extends SimpleEventHandler
             'users' => [],
             'chats' => [],
         ];
+
+        TelegramMessage::dispatch([$this->dialogs]);
     }
 
 

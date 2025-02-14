@@ -10,19 +10,18 @@ import axios from 'axios';
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 
-const MessengerPage = ({ chats }) => {
+const MessengerPage = ({ chats }: any) => {
+
+  console.log('chats data:', chats);
+
   const [inputValue, setInputValue] = useState<string>('');
   const [selectedChat, setSelectedChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [dialogs, setDialogs] = useState([]);
 
 
-
   const [isUserChatsOpen, setIsUserChatsOpen] = useState(true); // Контейнер для "user"
   const [isGroupChatsOpen, setIsGroupChatsOpen] = useState(true); // Контейнер для "chat"
-
-
-
 
 
   useEffect(() => {
@@ -32,15 +31,13 @@ const MessengerPage = ({ chats }) => {
   }, []);
 
 
-
-
   const handleSendMessage = () => {
     if (!inputValue.trim() || !selectedChat) return;
 
     axios
       .post('/messenger/send-message', {
-        peerId: selectedChat.id,
-        message: inputValue,
+        peerId: selectedChat.peer_id,
+        message: inputValue
       })
       .then((response) => {
         setMessages((prevMessages) => [
@@ -51,7 +48,7 @@ const MessengerPage = ({ chats }) => {
             time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
             content: inputValue,
             is_self: true
-          },
+          }
         ]);
         setInputValue('');
       })
@@ -61,12 +58,10 @@ const MessengerPage = ({ chats }) => {
   };
 
 
-
-
   useEffect(() => {
     if (selectedChat) {
       axios
-        .get('/messenger/messages', { params: { peerId: selectedChat.id } })
+        .get('/messenger/messages', { params: { peerId: selectedChat.peer_id } })
         .then((response) => {
           setMessages(response.data);
 
@@ -81,15 +76,14 @@ const MessengerPage = ({ chats }) => {
         .catch((error) => {
           console.error('Error fetching messages:', error);
         });
-        window.Echo.private('telegram-messages')
-          .listen('TelegramMessage', (e) => {
-            console.log("Обновленные диалоги:", e.message);
-            setMessages((prevMessages) => [...prevMessages, e.message]);
-          });
+      window.Echo.private('telegram-messages')
+        .listen('TelegramMessage', (e) => {
+          console.log('Обновленные диалоги:', e.message);
+          setMessages((prevMessages) => [...prevMessages, e.message]);
+        });
 
     }
   }, [selectedChat]);
-
 
 
   // Разделение чатов по типу
@@ -97,7 +91,7 @@ const MessengerPage = ({ chats }) => {
   const groupChats = chats.filter((chat) => chat.type === 'chat');
 
 
-
+  console.log('group chat:', groupChats);
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
@@ -117,26 +111,28 @@ const MessengerPage = ({ chats }) => {
             {isUserChatsOpen && (
               <div>
                 {userChats.map((chat) => (
+
                   <div
                     key={chat.id}
                     onClick={() => setSelectedChat(chat)}
                     className={`flex items-center justify-between p-2 rounded-lg cursor-pointer ${
-                      selectedChat?.id === chat.id ? 'bg-indigo-100' : ''
+                      selectedChat?.peer_id === chat.id ? 'bg-indigo-100' : ''
                     }`}
                   >
                     <div className="flex items-center space-x-3">
                       <div>
-                        <h3 className="font-bold">{chat.name}</h3>
+                        <h3 className="font-bold">{chat.title}</h3>
                         <p className="text-sm text-gray-500">{chat.time}</p>
                         <p className="text-sm text-gray-500">
-                          {chat.lastMessage.length > 30
-                            ? `${chat.lastMessage.slice(0, 30)}...`
-                            : chat.lastMessage}
+                          {chat.last_message.length > 30
+                            ? `${chat.last_message.slice(0, 30)}...`
+                            : chat.last_message}
                         </p>
                       </div>
                     </div>
                     {chat.unread > 0 && (
-                      <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      <span
+                        className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                       {chat.unread}
                     </span>
                     )}
@@ -162,22 +158,23 @@ const MessengerPage = ({ chats }) => {
                     key={chat.id}
                     onClick={() => setSelectedChat(chat)}
                     className={`flex items-center justify-between p-2 rounded-lg cursor-pointer ${
-                      selectedChat?.id === chat.id ? 'bg-indigo-100' : ''
+                      selectedChat?.peer_id === chat.id ? 'bg-indigo-100' : ''
                     }`}
                   >
                     <div className="flex items-center space-x-3">
                       <div>
-                        <h3 className="font-bold">{chat.name}</h3>
+                        <h3 className="font-bold">{chat.title}</h3>
                         <p className="text-sm text-gray-500">{chat.time}</p>
                         <p className="text-sm text-gray-500">
-                          {chat.lastMessage.length > 30
-                            ? `${chat.lastMessage.slice(0, 30)}...`
-                            : chat.lastMessage}
+                          {chat.last_message.length > 30
+                            ? `${chat.last_message.slice(0, 30)}...`
+                            : chat.last_message}
                         </p>
                       </div>
                     </div>
                     {chat.unread > 0 && (
-                      <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      <span
+                        className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                       {chat.unread}
                     </span>
                     )}
@@ -193,7 +190,7 @@ const MessengerPage = ({ chats }) => {
       {/* Chat Window */}
       <div className="w-3/4 flex flex-col bg-white">
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          <h2 className="text-xl font-bold">{selectedChat?.name || 'Select a chat'}</h2>
+          <h2 className="text-xl font-bold">{selectedChat?.title || 'Select a chat'}</h2>
         </div>
 
         <div className="flex-1 p-4 overflow-y-scroll">
@@ -201,7 +198,7 @@ const MessengerPage = ({ chats }) => {
             <div
               key={idx}
               className={`flex ${
-                msg.is_self  ? 'justify-end' : 'justify-start'
+                msg.is_self ? 'justify-end' : 'justify-start'
               } mb-4`}
             >
               <div

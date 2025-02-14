@@ -1,6 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
-import FilterBar from '@/Components/FilterBar/FilterBar';
 import Pagination from '@/Components/Pagination/Pagination';
 import { PaginatedData, Shop } from '@/types';
 import Table from '@/Components/Table/Table';

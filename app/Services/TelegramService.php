@@ -21,7 +21,7 @@ class TelegramService {
 
     public function getDialogs(string $phone)
     {
-        $MadelineProto = self::createMadelineProto($phone);
+        $MadelineProto = new API(storage_path("app/telegram/{$phone}.madeline"));
 
         try {
             $dialogs = $MadelineProto->messages->getDialogs(limit: 100);
@@ -88,8 +88,6 @@ class TelegramService {
                 }
             }
 
-
-            TelegramMessage::dispatch($result);
 
             return $result;
         } catch (\Throwable $e) {
@@ -211,10 +209,6 @@ class TelegramService {
             usort($result, function ($a, $b) {
                 return $a['id'] <=> $b['id'];
             });
-
-            TelegramMessage::dispatch($result);
-
-//            event(new TelegramMessage(end($result))); // Отправляем последнее сообщение в канал
 
             return $result;
         } catch (\Exception $e) {

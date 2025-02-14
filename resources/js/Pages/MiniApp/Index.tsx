@@ -32,7 +32,7 @@ function DashboardPage() {
   //console.log('test', initDataRaw, initData);
   const [active, setActive] = useState(tabNames[0]);
   const [basket, setBasket] = useState({});
-  const [currentProduct, setCurrentProduct] = useState();
+  const [currentProduct, setCurrentProduct] = useState({});
 
   function addToBasket(remove: boolean, id: number) {
     if (basket.hasOwnProperty(id) && basket[id] > 0) {
@@ -76,8 +76,17 @@ function DashboardPage() {
     )
   }
 
-  function showProduct(product: Product) {
-    setCurrentProduct(product);
+  function showProduct(product: Product|false) {
+
+    let product_content = document.getElementById('product_content')
+
+    if (product) {
+      setCurrentProduct(product);
+      product_content.classList.remove('d-none')
+    } else {
+      setCurrentProduct({});
+      product_content.classList.add('d-none')
+    }
   }
 
   function getTotalPrice() {
@@ -134,26 +143,28 @@ function DashboardPage() {
           | {getTotalPrice()}</button>
       </div>
 
-      <div className={currentProduct ? "product_content" : " d-none"}>
-        <div className="product_content-close" onClick={() => setCurrentProduct({})}>
+        <div id="product_content" className="d-none">
+        <div className="product_content-close" onClick={() => {
+          showProduct(false);
+        }}>
           <CircleX color="white" width="50px" />
         </div>
         <div style={{ background: 'white', padding: '5px', borderRadius: '5px' }}>
-          <img width="100%" src={currentProduct ? '/storage/' + currentProduct.image : 'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg'} />
+          <img width="100%" src={currentProduct.image ? '/storage/' + currentProduct.image : 'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg'} />
 
           <p className="product_content-title"><b>test</b></p>
           <div className="product_content-text">
             <p>fbwifbufu</p>
 
             <CCardText>Цена:
-              <span className={5 > 4 ? 'line-through' : ''}>
+              <span className={Number(currentProduct.price) > Number(currentProduct.discount_price) ? 'line-through' : ''}>
             <b>10</b>
           </span>
             </CCardText>
 
-            {(5 > 4) ?
+            {(Number(currentProduct.price) > Number(currentProduct.discount_price)) ?
               <CCardText>
-                Скидка: <b>9</b>
+                Скидка: <b>{Number(currentProduct.discount_price)}</b>
               </CCardText> : ''}
           </div>
 
