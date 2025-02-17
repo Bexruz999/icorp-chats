@@ -12,6 +12,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
@@ -29,11 +30,11 @@ class MessengerController extends Controller
     {
         $phone = auth()->user()->account->connections()->first()->phone;
 
-        //$api = new TelegramService;
-        $api = new API(storage_path("app/telegram/{$phone}.madeline"));
-        $chat = $api->messages->getDialogs();
+        $api = new TelegramService;
+        //$api = new API(storage_path("app/telegram/{$phone}.madeline"));
+        //$chat = $api->messages->getDialogs();
 
-        //$chats = $api->getDialogs($phone);
+        $chats = $api->getDialogs($phone);
 
         //$handler = $api->getEventHandler(TelegramIncomingMessage::class);
 
@@ -45,7 +46,7 @@ class MessengerController extends Controller
 
 
         return Inertia::render('Messengers/Index', [
-            'chats' => $chat
+            'chats' => $chats
         ]);
     }
 
@@ -62,8 +63,8 @@ class MessengerController extends Controller
     {
         $peerId = $request->integer('peerId');
         $phone = auth()->user()->account->connections[0]->phone;
+
         $messages = $this->telegramService->getMessages($phone, $peerId);
-//        exit(var_dump($messages));
         return response()->json($messages);
     }
 

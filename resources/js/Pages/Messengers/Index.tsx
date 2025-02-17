@@ -24,11 +24,11 @@ const MessengerPage = ({ chats }: any) => {
   const [isGroupChatsOpen, setIsGroupChatsOpen] = useState(true); // Контейнер для "chat"
 
 
-  useEffect(() => {
+  /*useEffect(() => {
     window.Echo.private('telegram-messages').listen('TelegramMessage', (e) => {
       console.log('New message:', e);
     });
-  }, []);
+  }, []);*/
 
 
   const handleSendMessage = () => {
@@ -78,8 +78,12 @@ const MessengerPage = ({ chats }: any) => {
         });
       window.Echo.private('telegram-messages')
         .listen('TelegramMessage', (e) => {
-          console.log('Обновленные диалоги:', e.message);
-          setMessages((prevMessages) => [...prevMessages, e.message]);
+          console.log('new:', e.message, selectedChat);
+          if (e.message.id === selectedChat.peer_id) {
+            setMessages((prevMessages) => {
+              return [...prevMessages, e.message];
+            });
+          }
         });
 
     }

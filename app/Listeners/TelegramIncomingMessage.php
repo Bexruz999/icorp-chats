@@ -23,25 +23,11 @@ class TelegramIncomingMessage extends SimpleEventHandler
 
     public function handleMessage(Incoming&Message $message): void
     {
-        $chatId = $message->chatId ?? null;
-        $text = $message->message ?? '';
-        $time = date('H:i:s', $message->date ?? time());
-
-        if ($chatId === null) {return;}
-
-        $this->dialogs[$chatId] = [
-            'peer' => $chatId,
-            'unread_count' => ($this->dialogs[$chatId]['unread_count'] ?? 0) + 1,
-            'top_message' => $message->id ?? null,
-            'messages' => [
-                'id' => $message->id ?? null,
-                'message' => $text,
-            ],
-            'users' => [],
-            'chats' => [],
-        ];
-
-        TelegramMessage::dispatch([$this->dialogs]);
+        TelegramMessage::dispatch([
+            'id'      => $message->chatId ?? null,
+            'content' => $message->message ?? '',
+            'time'    => date('H:i:s', $message->date ?? time()),
+        ]);
     }
 
 
@@ -124,15 +110,11 @@ class TelegramIncomingMessage extends SimpleEventHandler
                         'type' => $type,
                         'title' => $title,
                         'unread' => $unread_count,
-                        'lastMessage' => $last_message,
+                        'last_message' => $last_message,
                     ];
                 }
             }
 
-
-            TelegramMessage::dispatch($result);
-
-            var_dump($result);
             return $result;
         } catch (\Throwable $e) {
             throw new \RuntimeException("Ошибка получения диалогов: " . $e->getMessage());
