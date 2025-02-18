@@ -9,14 +9,17 @@ import axios from 'axios';
 
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
+import { find } from 'lodash';
 
 const MessengerPage = ({ chats }: any) => {
 
   console.log('chats data:', chats);
 
+  let m: object|[] = [];
+
   const [inputValue, setInputValue] = useState<string>('');
   const [selectedChat, setSelectedChat] = useState(null);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(m);
   const [dialogs, setDialogs] = useState([]);
 
 
@@ -40,16 +43,18 @@ const MessengerPage = ({ chats }: any) => {
         message: inputValue
       })
       .then((response) => {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          {
-            id: response.data.message_id,
-            sender: 'You',
-            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-            content: inputValue,
-            is_self: true
+
+        let shipped = {
+          id: response.data.message_id,
+          sender: 'You',
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          message: inputValue,
+          user: {
+            self: true
           }
-        ]);
+        };
+
+        setMessages((prevMessages) =>  [...prevMessages, shipped]);
         setInputValue('');
       })
       .catch((error) => {
@@ -57,6 +62,9 @@ const MessengerPage = ({ chats }: any) => {
       });
   };
 
+  const findChat = (peer_id: string) => {
+    return chats.find(chat => chat.peer_id === peer_id);
+  };
 
   useEffect(() => {
     if (selectedChat) {
@@ -79,7 +87,9 @@ const MessengerPage = ({ chats }: any) => {
       window.Echo.private('telegram-messages')
         .listen('TelegramMessage', (e) => {
           console.log('new:', e.message, selectedChat);
+          console.log('chats:', chats);
           if (e.message.id === selectedChat.peer_id) {
+            e.message.user.first_name = findChat(e.message.id).title
             setMessages((prevMessages) => {
               return [...prevMessages, e.message];
             });
@@ -93,7 +103,6 @@ const MessengerPage = ({ chats }: any) => {
   // Разделение чатов по типу
   const userChats = chats.filter((chat) => chat.type === 'user');
   const groupChats = chats.filter((chat) => chat.type === 'chat');
-
 
   console.log('group chat:', groupChats);
   return (
@@ -202,16 +211,16 @@ const MessengerPage = ({ chats }: any) => {
             <div
               key={idx}
               className={`flex ${
-                msg.is_self ? 'justify-end' : 'justify-start'
+                msg.user.self ? 'justify-end' : 'justify-start'
               } mb-4`}
             >
               <div
                 className={`relative p-4 rounded-lg max-w-full min-w-40  ${
-                  msg.is_self ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800'
+                  msg.user.self ? 'bg-gray-200 text-gray-800' :'bg-green-500 text-white'
                 }`}
               >
-                <p className="text-xs font-bold mb-1">{msg.is_self ? 'You' : `${msg.sender}`}</p>
-                <p className="text-sm">{msg.content}</p>
+                <p className="text-xs font-bold mb-1">{!msg.user.self ? `${msg.user.first_name}` : 'You'}</p>
+                <p className="text-sm">{msg.message}</p>
                 <p className="text-xs mt-1 ${
                   msg.is_self ? ' text-white' : 'text-gray-500'
                 }">{msg.time}</p>

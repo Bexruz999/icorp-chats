@@ -24,8 +24,13 @@ class TelegramIncomingMessage extends SimpleEventHandler
     public function handleMessage(Incoming&Message $message): void
     {
         TelegramMessage::dispatch([
-            'id'      => $message->chatId ?? null,
-            'content' => $message->message ?? '',
+            'message' => $message->message,
+            'id' => $message->senderId,
+            'content' => $message ?? '',
+            'user' => [
+                'id' => $message->senderId,
+                'self' => false
+            ],
             'time'    => date('H:i:s', $message->date ?? time()),
         ]);
     }

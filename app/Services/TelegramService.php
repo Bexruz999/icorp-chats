@@ -116,7 +116,7 @@ class TelegramService {
                 'limit' => 100,
             ]);
 
-            // Проверяем, есть ли сообщения в массиве
+            /*// Проверяем, есть ли сообщения в массиве
             $messageList = $messages['messages'] ?? [];
             if (empty($messageList)) {
                 return ['error' => 'Нет сообщений'];
@@ -124,7 +124,7 @@ class TelegramService {
 
             // Определяем идентификаторы пользователей и их данные
             $selfId = null;
-            $selfName = 'Unknown';
+            $selfName = 'Unknown5';
             $otherUserId = null;
 
             foreach ($messages['users'] as $user) {
@@ -208,9 +208,25 @@ class TelegramService {
             // Сортируем сообщения по ID
             usort($result, function ($a, $b) {
                 return $a['id'] <=> $b['id'];
-            });
+            });*/
 
-            return $result;
+            $collect = collect($messages['messages'])->sortBy('id');
+            $usersCollect = collect($messages['users']);
+
+            $test = [];
+            foreach ($collect->where('_', 'message') as $message) {
+
+                $test[] = [
+                    'id' => $message['id'],
+                    'user' => $usersCollect->select([
+                        'id', 'self', 'first_name', 'last_name', 'phone'
+                    ])->where('id', array_key_exists('from_id', $message) ? $message['from_id'] : $message['peer_id'])->first(),
+                    'message' => $message['message']
+                    //'fwd_from' => array_key_exists('fwd_from', $message) ? $message['fwd_from'] : false,
+                ];
+            }
+
+            return $test;
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
@@ -248,13 +264,3 @@ class TelegramService {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
