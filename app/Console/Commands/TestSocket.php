@@ -33,6 +33,7 @@ class TestSocket extends Command
          //TelegramMessage::dispatch(["test mesa"]);
 //        $storage = storage_path() . '/app/telegram/6282211915445.madeline';
 //        TelegramIncomingMessage::startAndLoop($storage);
+        auth()->user()->account()->connections()->first();
         $phone = User::first()->account->connections()->first()->phone;
         $api = new API(storage_path("app/telegram/{$phone}.madeline"));
         $chat = $api->messages->getDialogs();

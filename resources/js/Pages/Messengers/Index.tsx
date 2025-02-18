@@ -34,8 +34,9 @@ const MessengerPage = ({ chats }: any) => {
   }, []);*/
 
 
-  const handleSendMessage = () => {
-    if (!inputValue.trim() || !selectedChat) return;
+  const handleSendMessage = (event: Event) => {
+    if (!inputValue.trim() || !selectedChat || event.key !== 'Enter') return;
+
 
     axios
       .post('/messenger/send-message', {
@@ -216,7 +217,7 @@ const MessengerPage = ({ chats }: any) => {
             >
               <div
                 className={`relative p-4 rounded-lg max-w-full min-w-40  ${
-                  msg.user.self ? 'bg-gray-200 text-gray-800' :'bg-green-500 text-white'
+                  (msg.user.self ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800')
                 }`}
               >
                 <p className="text-xs font-bold mb-1">{!msg.user.self ? `${msg.user.first_name}` : 'You'}</p>
@@ -235,6 +236,7 @@ const MessengerPage = ({ chats }: any) => {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            onKeyPress={handleSendMessage}
             placeholder="Type your message here..."
             className="flex-1 border border-gray-300 rounded-lg p-2 mr-2"
           />
