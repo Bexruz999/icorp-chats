@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 //
 //use App\Http\Requests\MessengerStoreRequest;
 //use App\Http\Requests\MessengerUpdateRequest;
+use App\Events\TelegramMessageShipped;
 use App\Http\Resources\MessengerCollection;
 use App\Http\Resources\MessengerResource;
 use App\Models\Messenger;
+use App\Models\UserMessage;
 use App\Services\TelegramService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -77,10 +79,21 @@ class MessengerController extends Controller
             'message' => 'required|string',
         ]);
 
-        $phone = auth()->user()->account->connections[0]->phone;
+        $user = auth()->user();
+
+        $phone = $user->account->connections[0]->phone;
         $result = $this->telegramService->sendMessage($phone, $validated['peerId'], $validated['message']);
 
         if ($result['success']) {
+
+            $userMessage = UserMessage::create([
+                'user_id' => $user->id,
+                'chat_id' => $validated['peerId'],
+                'message_id' => $result['message_id'],
+            ]);
+
+            TelegramMessageShipped::dispatch($userMessage, $validated['message'], $user);
+
             return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
         }
 

@@ -59,10 +59,6 @@ Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard')
     ->middleware('auth');
 
-Route::get('/test', function () {
-    return Inertia::render('MiniApp/Index');
-})->name('miniApp.index');
-
 // Users
 
 Route::get('users', [UsersController::class, 'index'])
@@ -95,7 +91,7 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
 
 // Organizations
 
-Route::get('organizations', [OrganizationsController::class, 'index'])
+/*Route::get('organizations', [OrganizationsController::class, 'index'])
     ->name('organizations')
     ->middleware('auth');
 
@@ -121,7 +117,7 @@ Route::delete('organizations/{organization}', [OrganizationsController::class, '
 
 Route::put('organizations/{organization}/restore', [OrganizationsController::class, 'restore'])
     ->name('organizations.restore')
-    ->middleware('auth');
+    ->middleware('auth');*/
 
 // Messenger
 
@@ -143,7 +139,7 @@ Route::post('/messenger/send-message', [MessengerController::class, 'sendMessage
 
 // Contacts
 
-Route::get('contacts', [ContactsController::class, 'index'])
+/*Route::get('contacts', [ContactsController::class, 'index'])
     ->name('contacts')
     ->middleware('auth');
 
@@ -169,7 +165,7 @@ Route::delete('contacts/{contact}', [ContactsController::class, 'destroy'])
 
 Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
     ->name('contacts.restore')
-    ->middleware('auth');
+    ->middleware('auth');*/
 
 // Reports
 

@@ -13,59 +13,60 @@ import { find } from 'lodash';
 
 const MessengerPage = ({ chats }: any) => {
 
-  console.log('chats data:', chats);
-
-  let m: object|[] = [];
+  let m: object | [] = [];
 
   const [inputValue, setInputValue] = useState<string>('');
   const [selectedChat, setSelectedChat] = useState(null);
   const [messages, setMessages] = useState(m);
   const [dialogs, setDialogs] = useState([]);
 
-
   const [isUserChatsOpen, setIsUserChatsOpen] = useState(true); // Контейнер для "user"
   const [isGroupChatsOpen, setIsGroupChatsOpen] = useState(true); // Контейнер для "chat"
 
+  // Разделение чатов по типу
+  const userChats = chats.filter((chat) => chat.type === 'user');
+  const groupChats = chats.filter((chat) => chat.type === 'chat');
 
-  /*useEffect(() => {
-    window.Echo.private('telegram-messages').listen('TelegramMessage', (e) => {
-      console.log('New message:', e);
-    });
-  }, []);*/
+  useEffect(() => {
+  }, []);
 
-
+  // Отправка сообщений
   const handleSendMessage = (event: Event) => {
     if (!inputValue.trim() || !selectedChat || event.key !== 'Enter') return;
-
 
     axios
       .post('/messenger/send-message', {
         peerId: selectedChat.peer_id,
         message: inputValue
       })
-      .then((response) => {
-
-        let shipped = {
-          id: response.data.message_id,
-          sender: 'You',
-          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          message: inputValue,
-          user: {
-            self: true
-          }
-        };
-
-        setMessages((prevMessages) =>  [...prevMessages, shipped]);
-        setInputValue('');
-      })
+      .then((response) => {setInputValue('');})
       .catch((error) => {
         console.error('Error sending message:', error);
+      });
+
+    window.Echo.private('telegram-message-shipped')
+      .listen('TelegramMessageShipped', (response) => {
+        console.log(response);
+        let shipped = {
+          id: response.data.message_id,
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          message: response.data.message,
+          user: { self: true, },
+          sender: response.data.sender
+        };
+        setMessages((prevMessages) => [...prevMessages, shipped]);
+
+        setTimeout(function() {
+          let chat_window = document.getElementById('chat-window');
+          chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
+        }, 100);
       });
   };
 
   const findChat = (peer_id: string) => {
     return chats.find(chat => chat.peer_id === peer_id);
   };
+
 
   useEffect(() => {
     if (selectedChat) {
@@ -85,27 +86,29 @@ const MessengerPage = ({ chats }: any) => {
         .catch((error) => {
           console.error('Error fetching messages:', error);
         });
+
+      // Слушаем события новых сообщений
       window.Echo.private('telegram-messages')
         .listen('TelegramMessage', (e) => {
-          console.log('new:', e.message, selectedChat);
-          console.log('chats:', chats);
           if (e.message.id === selectedChat.peer_id) {
-            e.message.user.first_name = findChat(e.message.id).title
+            e.message.user.first_name = findChat(e.message.id).title;
+
+            console.debug(e.message);
+            console.debug(userChats);
+            console.debug(groupChats);
             setMessages((prevMessages) => {
               return [...prevMessages, e.message];
             });
+            setTimeout(function() {
+              let chat_window = document.getElementById('chat-window');
+              chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
+            }, 100);
           }
         });
 
     }
   }, [selectedChat]);
 
-
-  // Разделение чатов по типу
-  const userChats = chats.filter((chat) => chat.type === 'user');
-  const groupChats = chats.filter((chat) => chat.type === 'chat');
-
-  console.log('group chat:', groupChats);
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
@@ -207,7 +210,7 @@ const MessengerPage = ({ chats }: any) => {
           <h2 className="text-xl font-bold">{selectedChat?.title || 'Select a chat'}</h2>
         </div>
 
-        <div className="flex-1 p-4 overflow-y-scroll">
+        <div id="chat-window" className="flex-1 p-4 overflow-y-scroll">
           {messages.map((msg, idx) => (
             <div
               key={idx}
@@ -220,7 +223,7 @@ const MessengerPage = ({ chats }: any) => {
                   (msg.user.self ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800')
                 }`}
               >
-                <p className="text-xs font-bold mb-1">{!msg.user.self ? `${msg.user.first_name}` : 'You'}</p>
+                <p className="text-xs font-bold mb-1">{!msg.user.self ? msg.user.first_name : msg.sender ? msg.sender : msg.user.first_name}</p>
                 <p className="text-sm">{msg.message}</p>
                 <p className="text-xs mt-1 ${
                   msg.is_self ? ' text-white' : 'text-gray-500'
@@ -242,7 +245,7 @@ const MessengerPage = ({ chats }: any) => {
           />
           <button
             onClick={handleSendMessage}
-            className="bg-indigo-500 text-white px-4 py-2 rounded-lg"
+            className="bg-indigo-500 text-white px-4 py-3.5 rounded-lg"
           >
             Send
           </button>

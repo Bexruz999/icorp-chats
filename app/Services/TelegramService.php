@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Events\TelegramMessage;
+use App\Models\UserMessage;
 use danog\MadelineProto\API;
 use Illuminate\Support\Facades\File;
 use App\Events\DialogsUpdated;
@@ -213,15 +214,19 @@ class TelegramService {
             $collect = collect($messages['messages'])->sortBy('id');
             $usersCollect = collect($messages['users']);
 
+            $userMessages = UserMessage::with('user')->where('chat_id', $peerId)->get();
+
             $test = [];
             foreach ($collect->where('_', 'message') as $message) {
 
+                $sender = $userMessages->where('message_id', $message['id'])->first();
                 $test[] = [
                     'id' => $message['id'],
                     'user' => $usersCollect->select([
                         'id', 'self', 'first_name', 'last_name', 'phone'
                     ])->where('id', array_key_exists('from_id', $message) ? $message['from_id'] : $message['peer_id'])->first(),
-                    'message' => $message['message']
+                    'message' => $message['message'],
+                    'sender' => $sender->user->first_name ?? false,
                     //'fwd_from' => array_key_exists('fwd_from', $message) ? $message['fwd_from'] : false,
                 ];
             }
