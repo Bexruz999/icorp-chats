@@ -104,6 +104,33 @@ const MessengerPage = ({ chats }: any) => {
               chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
             }, 100);
           }
+
+          // Обновляем диалоги
+
+          let lastChat = false;
+          let toChat;
+          if (e.message.type === 'user') {toChat = userChats;}
+          else if(e.message.type === 'chat') {toChat = groupChats;}
+
+          if (toChat) {
+            toChat.map((chat) => {
+              if (chat.peer_id === e.message.id) {
+                chat.last_message = e.message.message;
+                lastChat = true;
+              }
+            });
+
+            if (lastChat) {
+              toChat.push({
+                peer_id: e.message.id,
+                type: e.message.type,
+                title: e.message.user.first_name,
+                last_message: e.message.message,
+                unread_count: 0
+              });
+            }
+          }
+
         });
 
     }
