@@ -117,7 +117,7 @@ const Edit = () => {
             >
               <TextInput
                 name="password"
-                type="text"
+                type="password"
                 error={errors.password}
                 value={data.password}
                 onChange={e => setData('password', e.target.value)}
