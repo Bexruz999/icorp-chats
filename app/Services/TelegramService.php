@@ -6,9 +6,11 @@ use App\Models\UserMessage;
 use Arr;
 use danog\MadelineProto\API;
 use danog\MadelineProto\Settings\AppInfo;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use App\Events\DialogsUpdated;
+use Illuminate\Support\Str;
 
 
 class TelegramService {
@@ -49,6 +51,8 @@ class TelegramService {
 
                     $user = $users->where('id', $dialog['peer'])->first();
                     $chat = $chats->where('id', $dialog['peer'])->first();
+                    $message = $messages->where('peer_id', $dialog['peer'])
+                        ->where('id', $dialog['top_message'])->first();
                     if ($chat) {
                         $title = Arr::get($chat,'title');
                         $type = 'chat';
@@ -61,9 +65,9 @@ class TelegramService {
                         'peer_id' => $dialog['peer'],
                         'title' => $title,
                         'type' => $type,
-                        'last_message' => Arr::get($messages->where('peer_id', $dialog['peer'])
-                            ->where('id', $dialog['top_message'])->first(), 'message', 'no message'),
-                        'unread_count' => $dialog['unread_count']
+                        'last_message' => Str::limit(Arr::get($message, 'message', 'no message'), 30),
+                        'unread_count' => $dialog['unread_count'],
+                        'time' => Carbon::createFromTimestamp(Arr::get($message, 'date'))->format('Y-m-d H:i:s')
                     ];
                 }
 
