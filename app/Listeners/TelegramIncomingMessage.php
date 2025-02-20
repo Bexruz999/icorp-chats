@@ -21,12 +21,10 @@ class TelegramIncomingMessage extends SimpleEventHandler
 
     public function handleMessage(Incoming&Message $message): void
     {
-        $a = '';
-        $b = '';
 
         TelegramMessage::dispatch([
             'message' => $message->message,
-            'id' => $message->senderId,
+            'id' => $message->chatId,
             'content' => $message ?? '',
             'user' => [
                 'id' => $message->senderId,

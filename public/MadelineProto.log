@@ -10065,3 +10065,2174 @@ Serialization:  	Connected to IPC socket!
 APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
 APIWrapper:     	Prompting final serialization...
 APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	It seems like the session is busy.
+Serialization:  	Telegram does not support starting multiple instances of the same session, make sure no other instance of the session is running.
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Exception:      	Undefined array key "chatId" in TelegramService.php:224
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Exception:      	Undefined array key "chat_id" in TelegramService.php:224
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Exception:      	You cannot use this method directly, use the getPwrChat, getInfo, getFullInfo methods instead (see https://docs.madelineproto.xyz for more info) in AbstractAPI.php:67
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Exception:      	Attempt to read property "date" on array in TelegramService.php:30
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Exception:      	Trying to access array offset on int in TelegramService.php:45
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Exception:      	Trying to access array offset on int in TelegramService.php:45
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Exception:      	Attempt to read property "peer" on array in TelegramService.php:48
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Exception:      	Attempt to read property "message" on array in TelegramService.php:51
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Exception:      	Trying to access array offset on null in TelegramService.php:52
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!

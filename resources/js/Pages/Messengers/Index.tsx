@@ -13,6 +13,8 @@ import { find } from 'lodash';
 
 const MessengerPage = ({ chats }: any) => {
 
+  console.debug(chats);
+
   let m: object | [] = [];
 
   const [inputValue, setInputValue] = useState<string>('');
@@ -24,11 +26,11 @@ const MessengerPage = ({ chats }: any) => {
   const [isGroupChatsOpen, setIsGroupChatsOpen] = useState(true); // Контейнер для "chat"
 
   // Разделение чатов по типу
-  const userChats = chats.filter((chat) => chat.type === 'user');
-  const groupChats = chats.filter((chat) => chat.type === 'chat');
+  const [userChats, setUserChats] = useState(chats.filter((chat) => chat.type === 'user'));
+  const [groupChats, setGroupChats] = useState(chats.filter((chat) => chat.type === 'chat'));
 
-  useEffect(() => {
-  }, []);
+  /*setUserChats(chats.filter((chat) => chat.type === 'user'));
+  setGroupChats(chats.filter((chat) => chat.type === 'chat'));*/
 
   // Отправка сообщений
   const handleSendMessage = (event: Event) => {
@@ -44,6 +46,7 @@ const MessengerPage = ({ chats }: any) => {
         console.error('Error sending message:', error);
       });
 
+    // Слушание отправленного сообщения
     window.Echo.private('telegram-message-shipped')
       .listen('TelegramMessageShipped', (response) => {
         console.log(response);
@@ -56,6 +59,7 @@ const MessengerPage = ({ chats }: any) => {
         };
         setMessages((prevMessages) => [...prevMessages, shipped]);
 
+        // Прокрутка к последнему сообщению
         setTimeout(function() {
           let chat_window = document.getElementById('chat-window');
           chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
@@ -101,35 +105,52 @@ const MessengerPage = ({ chats }: any) => {
             });
             setTimeout(function() {
               let chat_window = document.getElementById('chat-window');
-              chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
+              console.debug(chat_window)
+              if (chat_window) {
+                chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
+              }
             }, 100);
           }
 
           // Обновляем диалоги
 
           let lastChat = false;
-          let toChat;
-          if (e.message.type === 'user') {toChat = userChats;}
-          else if(e.message.type === 'chat') {toChat = groupChats;}
-
-          if (toChat) {
-            toChat.map((chat) => {
-              if (chat.peer_id === e.message.id) {
-                chat.last_message = e.message.message;
-                lastChat = true;
-              }
+          if (e.message.type === 'user') {
+            setUserChats((prevChats) => {
+              return prevChats.map((chat) => {
+                if (chat.peer_id === e.message.id) {
+                  chat.last_message = e.message.message;
+                  lastChat = true;
+                }
+                return chat;
+              });
             });
+          }
+          else if(e.message.type === 'chat') {
+            setGroupChats((prevChats) => {
+              return prevChats.map((chat) => {
+                if (chat.peer_id === e.message.id) {
+                  chat.last_message = e.message.message;
+                  lastChat = true;
+                }
+                return chat;
+              });
+            });
+          }
 
-            if (lastChat) {
-              toChat.push({
+            /*if (!lastChat) {
+              setChat((prevChats) => [...prevChats, {
                 peer_id: e.message.id,
                 type: e.message.type,
                 title: e.message.user.first_name,
                 last_message: e.message.message,
                 unread_count: 0
-              });
-            }
-          }
+              }]);
+            }*/
+            console.debug('userChat', userChats);
+            console.debug('groupChat', groupChats);
+            console.debug('last', lastChat);
+            console.debug(e)
 
         });
 
@@ -154,6 +175,7 @@ const MessengerPage = ({ chats }: any) => {
             </div>
             {isUserChatsOpen && (
               <div>
+                {console.debug(userChats)}
                 {userChats.map((chat) => (
 
                   <div
