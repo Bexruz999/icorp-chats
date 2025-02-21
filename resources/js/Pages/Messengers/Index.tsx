@@ -29,9 +29,6 @@ const MessengerPage = ({ chats }: any) => {
   const [userChats, setUserChats] = useState(chats.filter((chat) => chat.type === 'user'));
   const [groupChats, setGroupChats] = useState(chats.filter((chat) => chat.type === 'chat'));
 
-  /*setUserChats(chats.filter((chat) => chat.type === 'user'));
-  setGroupChats(chats.filter((chat) => chat.type === 'chat'));*/
-
   // Отправка сообщений
   const handleSendMessage = (event: Event) => {
     if (!inputValue.trim() || !selectedChat || event.key !== 'Enter') return;
@@ -45,19 +42,20 @@ const MessengerPage = ({ chats }: any) => {
       .catch((error) => {
         console.error('Error sending message:', error);
       });
+  };
 
+  useEffect(() => {
     // Слушание отправленного сообщения
     window.Echo.private('telegram-message-shipped')
       .listen('TelegramMessageShipped', (response) => {
         console.log(response);
-        let shipped = {
+        setMessages((prevMessages) => [...prevMessages, {
           id: response.data.message_id,
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           message: response.data.message,
           user: { self: true, },
           sender: response.data.sender
-        };
-        setMessages((prevMessages) => [...prevMessages, shipped]);
+        }]);
 
         // Прокрутка к последнему сообщению
         setTimeout(function() {
@@ -65,7 +63,7 @@ const MessengerPage = ({ chats }: any) => {
           chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
         }, 100);
       });
-  };
+  }, [])
 
   const findChat = (peer_id: string) => {
     return chats.find(chat => chat.peer_id === peer_id);
