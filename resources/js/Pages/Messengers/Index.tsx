@@ -1,44 +1,59 @@
-import { Link, usePage } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
-// import Pagination from '@/Components/Pagination/Pagination';
-// import FilterBar from '@/Components/FilterBar/FilterBar';
-// import { Messenger, PaginatedData } from '@/types';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Paperclip } from 'lucide-react';
+import { log } from 'node:util';
+import SelectFile from '@/Components/Messenger/SelectFile';
 
-
-import Echo from 'laravel-echo';
-import Pusher from 'pusher-js';
-import { find } from 'lodash';
+declare global {
+  interface Window {
+    Echo: any;
+  }
+}
 
 const MessengerPage = ({ chats }: any) => {
 
   console.debug(chats);
 
-  let m: object | [] = [];
+  let m: object[] = [];
+  let selectedChatType: {
+    peer_id: number | boolean,
+    title: string | null,
+    type: string | null,
+  } = {
+    peer_id: false,
+    title: null,
+    type: null
+  };
 
   const [inputValue, setInputValue] = useState<string>('');
-  const [selectedChat, setSelectedChat] = useState(null);
+  const [selectedChat, setSelectedChat] = useState(selectedChatType);
   const [messages, setMessages] = useState(m);
-  const [dialogs, setDialogs] = useState([]);
 
   const [isUserChatsOpen, setIsUserChatsOpen] = useState(true); // Контейнер для "user"
   const [isGroupChatsOpen, setIsGroupChatsOpen] = useState(true); // Контейнер для "chat"
 
   // Разделение чатов по типу
-  const [userChats, setUserChats] = useState(chats.filter((chat) => chat.type === 'user'));
-  const [groupChats, setGroupChats] = useState(chats.filter((chat) => chat.type === 'chat'));
+  const [userChats, setUserChats] = useState(chats.filter((chat: any) => chat.type === 'user'));
+  const [groupChats, setGroupChats] = useState(chats.filter((chat: any) => chat.type === 'chat'));
 
   // Отправка сообщений
-  const handleSendMessage = (event: Event) => {
-    if (!inputValue.trim() || !selectedChat || event.key !== 'Enter') return;
+  const handleSendMessage = (event: any) => {
+
+    if (
+      !inputValue.trim() ||
+      !selectedChat ||
+      (event.key !== 'Enter' && event.type === 'keydown')
+    ) return;
 
     axios
       .post('/messenger/send-message', {
         peerId: selectedChat.peer_id,
         message: inputValue
       })
-      .then((response) => {setInputValue('');})
+      .then(() => {
+        setInputValue('');
+      })
       .catch((error) => {
         console.error('Error sending message:', error);
       });
@@ -47,31 +62,31 @@ const MessengerPage = ({ chats }: any) => {
   useEffect(() => {
     // Слушание отправленного сообщения
     window.Echo.private('telegram-message-shipped')
-      .listen('TelegramMessageShipped', (response) => {
+      .listen('TelegramMessageShipped', (response: any) => {
         console.log(response);
-        setMessages((prevMessages) => [...prevMessages, {
+        setMessages((prevMessages: any) => [...prevMessages, {
           id: response.data.message_id,
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           message: response.data.message,
-          user: { self: true, },
+          user: { self: true },
           sender: response.data.sender
         }]);
 
         // Прокрутка к последнему сообщению
         setTimeout(function() {
-          let chat_window = document.getElementById('chat-window');
+          let chat_window: any = document.getElementById('chat-window');
           chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
         }, 100);
       });
-  }, [])
+  }, []);
 
   const findChat = (peer_id: string) => {
-    return chats.find(chat => chat.peer_id === peer_id);
+    return chats.find((chat: any) => chat.peer_id === peer_id);
   };
 
 
   useEffect(() => {
-    if (selectedChat) {
+    if (selectedChat.peer_id) {
       axios
         .get('/messenger/messages', { params: { peerId: selectedChat.peer_id } })
         .then((response) => {
@@ -91,19 +106,16 @@ const MessengerPage = ({ chats }: any) => {
 
       // Слушаем события новых сообщений
       window.Echo.private('telegram-messages')
-        .listen('TelegramMessage', (e) => {
+        .listen('TelegramMessage', (e: any) => {
           if (e.message.id === selectedChat.peer_id) {
             e.message.user.first_name = findChat(e.message.id).title;
 
-            console.debug(e.message);
-            console.debug(userChats);
-            console.debug(groupChats);
             setMessages((prevMessages) => {
               return [...prevMessages, e.message];
             });
             setTimeout(function() {
               let chat_window = document.getElementById('chat-window');
-              console.debug(chat_window)
+              console.debug(chat_window);
               if (chat_window) {
                 chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
               }
@@ -112,43 +124,41 @@ const MessengerPage = ({ chats }: any) => {
 
           // Обновляем диалоги
 
-          let lastChat = false;
+          let lastChat = true;
           if (e.message.type === 'user') {
-            setUserChats((prevChats) => {
-              return prevChats.map((chat) => {
+            setUserChats((prevChats: any) => {
+              prevChats.map((chat: any) => {
                 if (chat.peer_id === e.message.id) {
                   chat.last_message = e.message.message;
-                  lastChat = true;
+                  lastChat = false;
+                }
+                return chat;
+              });
+              if (lastChat) {
+                setUserChats((prevChats: any) => [...prevChats, {
+                  peer_id: e.message.id,
+                  type: e.message.type,
+                  title: e.message.user.first_name,
+                  last_message: e.message.message,
+                  unread_count: 0
+                }]);
+              }
+            });
+          } else if (e.message.type === 'chat') {
+            setGroupChats((prevChats: any) => {
+              return prevChats.map((chat: any) => {
+                if (chat.peer_id === e.message.id) {
+                  chat.last_message = e.message.message;
+                  lastChat = false;
                 }
                 return chat;
               });
             });
           }
-          else if(e.message.type === 'chat') {
-            setGroupChats((prevChats) => {
-              return prevChats.map((chat) => {
-                if (chat.peer_id === e.message.id) {
-                  chat.last_message = e.message.message;
-                  lastChat = true;
-                }
-                return chat;
-              });
-            });
-          }
-
-            /*if (!lastChat) {
-              setChat((prevChats) => [...prevChats, {
-                peer_id: e.message.id,
-                type: e.message.type,
-                title: e.message.user.first_name,
-                last_message: e.message.message,
-                unread_count: 0
-              }]);
-            }*/
-            console.debug('userChat', userChats);
-            console.debug('groupChat', groupChats);
-            console.debug('last', lastChat);
-            console.debug(e)
+          console.debug('userChat', userChats);
+          console.debug('groupChat', groupChats);
+          console.debug('last', lastChat);
+          console.debug(e);
 
         });
 
@@ -173,8 +183,7 @@ const MessengerPage = ({ chats }: any) => {
             </div>
             {isUserChatsOpen && (
               <div>
-                {console.debug(userChats)}
-                {userChats.map((chat) => (
+                {userChats.map((chat: any) => (
 
                   <div
                     key={chat.id}
@@ -217,7 +226,7 @@ const MessengerPage = ({ chats }: any) => {
             </div>
             {isGroupChatsOpen && (
               <div>
-                {groupChats.map((chat) => (
+                {groupChats.map((chat: any) => (
                   <div
                     key={chat.id}
                     onClick={() => setSelectedChat(chat)}
@@ -258,7 +267,7 @@ const MessengerPage = ({ chats }: any) => {
         </div>
 
         <div id="chat-window" className="flex-1 p-4 overflow-y-scroll">
-          {messages.map((msg, idx) => (
+          {messages.map((msg: any, idx: any) => (
             <div
               key={idx}
               className={`flex ${
@@ -270,7 +279,8 @@ const MessengerPage = ({ chats }: any) => {
                   (msg.user.self ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800')
                 }`}
               >
-                <p className="text-xs font-bold mb-1">{!msg.user.self ? msg.user.first_name : msg.sender ? msg.sender : msg.user.first_name}</p>
+                <p
+                  className="text-xs font-bold mb-1">{!msg.user.self ? msg.user.first_name : msg.sender ? msg.sender : msg.user.first_name}</p>
                 <p className="text-sm">{msg.message}</p>
                 <p className="text-xs mt-1 ${
                   msg.is_self ? ' text-white' : 'text-gray-500'
@@ -282,13 +292,14 @@ const MessengerPage = ({ chats }: any) => {
 
 
         <div className="p-4 border-t border-gray-200 flex items-center">
+          <SelectFile/>
           <input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            onKeyPress={handleSendMessage}
+            onKeyDown={handleSendMessage}
             placeholder="Type your message here..."
-            className="flex-1 border border-gray-300 rounded-lg p-2 mr-2"
+            className="flex-1 border border-gray-300 rounded-lg p-2 mx-3 z-10"
           />
           <button
             onClick={handleSendMessage}

@@ -1,0 +1,30 @@
+.select-file {
+  position: relative;
+}
+
+.select-file_menu {
+  position: absolute;
+  bottom: 0;
+  width: 200px;
+  padding-bottom: 50px;
+  left: -10px;
+}
+
+.select-file_menu ul {
+  border-radius: 4px;
+  background-color: #6574cd;
+  color: #fff;
+  overflow: hidden;
+}
+
+.select-file_menu li {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  /*border-radius: 4px;*/
+}
+
+.select-file_menu li:hover {
+  background: #2f365f;
+}

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Events\TelegramMessage;
@@ -13,9 +14,11 @@ use App\Events\DialogsUpdated;
 use Illuminate\Support\Str;
 
 
-class TelegramService {
+class TelegramService
+{
 
-    public static function createMadelineProto(string $phone): \danog\MadelineProto\API {
+    public static function createMadelineProto(string $phone): \danog\MadelineProto\API
+    {
         $settings = (new AppInfo)
             ->setApiId(intval(env("TELEGRAM_API_ID")))
             ->setApiHash(env('TELEGRAM_API_HASH'));
@@ -40,10 +43,12 @@ class TelegramService {
                 $dialogs = $MadelineProto->messages->getDialogs(offset_date: $date, limit: $limit);
 
                 // Check if we received any dialogs
-                if (count($dialogs['dialogs']) == 0) {break;}
+                if (count($dialogs['dialogs']) == 0) {
+                    break;
+                }
 
-                $users = collect($dialogs['users'])->select(['id', 'bot', 'first_name'])->where('bot', false);
-                $chats = collect($dialogs['chats'])->where('_', 'channel');
+                $users = collect($dialogs['users'])->where('bot', false);
+                $chats = collect($dialogs['chats'])->whereIn('_', ['channel', 'chat']);
                 $messages = collect($dialogs['messages']);
 
                 // Merge the dialogs with the existing ones
@@ -54,18 +59,21 @@ class TelegramService {
                     $message = $messages->where('peer_id', $dialog['peer'])
                         ->where('id', $dialog['top_message'])->first();
                     if ($chat) {
-                        $title = Arr::get($chat,'title');
+                        $title = Arr::get($chat, 'title');
                         $type = 'chat';
-                    } else {
+                    } else if ($user) {
                         $title = Arr::get($user, 'first_name');
                         $type = 'user';
+                    } else {
+                         // Skip non-existing users and channels
+                        continue;
                     }
 
                     $dialogsCollect[] = [
+                        'last_message' => Str::limit(Arr::get($message, 'message', 'no message'), 30),
                         'peer_id' => $dialog['peer'],
                         'title' => $title,
                         'type' => $type,
-                        'last_message' => Str::limit(Arr::get($message, 'message', 'no message'), 30),
                         'unread_count' => $dialog['unread_count'],
                         'time' => Carbon::createFromTimestamp(Arr::get($message, 'date'))->format('Y-m-d H:i:s')
                     ];
@@ -73,67 +81,7 @@ class TelegramService {
 
                 // Update the date to get the next set of dialogs
                 $date = (int)collect($dialogs['messages'])->sortBy('date')->first()['date'];
-                break;
             }
-
-            /*if (isset($dialogs['dialogs']) && is_array($dialogs['dialogs'])) {
-                foreach ($dialogs['dialogs'] as $dialog) {
-                    if (!is_array($dialog)) {
-                        continue;
-                    }
-
-                    $peer_id = $dialog['peer'] ?? null;
-                    $unread_count = $dialog['unread_count'] ?? 0;
-                    $top_message_id = $dialog['top_message'] ?? null;
-                    $title = 'Unknown';
-                    $type = 'unknown';
-                    $last_message = null;
-
-                    if (is_numeric($peer_id)) {
-                        if ($peer_id > 0) {
-                            $type = 'user';
-                            // Исключаем ботов
-                            $user = array_filter($dialogs['users'], function($u) use ($peer_id) {
-                                return $u['id'] === $peer_id && $u['bot'] != 1 && $u['support'] != 1;
-                            });
-                            $user = reset($user);
-                            if ($user) {
-                                $title = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? ''));
-                            } else {
-                                continue; // Пропускаем диалоги с ботами
-                            }
-                        } else {
-                            $type = 'chat';
-                            $chat_id = $peer_id;
-                            // Исключаем каналы
-                            $chat = array_filter($dialogs['chats'], fn($c) => $c['id'] === $chat_id && $c['_'] !== 'channel');
-                            $chat = reset($chat);
-                            if ($chat) {
-                                $title = $chat['title'] ?? 'Unknown Chat';
-                            } else {
-                                continue; // Пропускаем каналы
-                            }
-                        }
-                    }
-
-                    // Последнее сообщение
-                    if ($top_message_id) {
-                        $message = array_filter($dialogs['messages'], fn($m) => $m['id'] === $top_message_id);
-                        $message = reset($message);
-                        if ($message) {
-                            $last_message = $message['message'] ?? 'No message';
-                        }
-                    }
-
-                    $result[] = [
-                        "peer_id" => $peer_id,
-                        'type' => $type,
-                        'title' => $title,
-                        'unread_count' => $unread_count,
-                        'last_message' => $last_message,
-                    ];
-                }
-            }*/
 
             return $dialogsCollect;
         } catch (\Throwable $e) {
@@ -189,8 +137,6 @@ class TelegramService {
 //    use App\Events\TelegramMessage;
 
 
-
-
     public function sendMessage(string $phone, int $peerId, string $message): array
     {
         $MadelineProto = self::createMadelineProto($phone);
@@ -206,7 +152,9 @@ class TelegramService {
             return ['success' => false, 'error' => $e->getMessage()];
         }
     }
-    public static function getStoragePath(string $phone, string $path = 'app/telegram/') {
+
+    public static function getStoragePath(string $phone, string $path = 'app/telegram/')
+    {
         $path = storage_path($path);
 
         if (!File::exists($path)) {

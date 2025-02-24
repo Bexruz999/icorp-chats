@@ -23,8 +23,6 @@ use danog\MadelineProto\API;
 use App\Listeners\TelegramIncomingMessage;
 
 
-
-
 class MessengerController extends Controller
 {
 
@@ -69,7 +67,6 @@ class MessengerController extends Controller
         $messages = $this->telegramService->getMessages($phone, $peerId);
         return response()->json($messages);
     }
-
 
 
     public function sendMessage(Request $request): JsonResponse
@@ -143,5 +140,11 @@ class MessengerController extends Controller
         $messenger->restore();
 
         return Redirect::back()->with('success', 'Messenger restored.');
+    }
+
+    public function sendMedia(Request $request)
+    {
+        //return response()->json($request->file('file')->getClientOriginalName());
+        return response()->json(['success' => true, 'message' => $request->file('file')->getClientOriginalName()]);
     }
 }

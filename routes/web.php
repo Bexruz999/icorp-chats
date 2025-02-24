@@ -129,7 +129,10 @@ Route::get('messenger/messages', [MessengerController::class, 'getMessages'])
     ->middleware('auth');
 Route::post('/messenger/send-message', [MessengerController::class, 'sendMessage'])
     ->name('messenger.send-message')
-    ->middleware('auth');;
+    ->middleware('auth');
+Route::post('/messenger/send-media', [MessengerController::class, 'sendMedia'])
+    ->name('messenger.send-media')->middleware('auth')
+    ->middleware('auth');
 
 //
 //Route::post('messenger', [MessengerController::class, 'getDialogs'])
