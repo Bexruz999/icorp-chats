@@ -1,9 +1,8 @@
 import MainLayout from '@/Layouts/MainLayout';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Paperclip } from 'lucide-react';
-import { log } from 'node:util';
 import SelectFile from '@/Components/Messenger/SelectFile';
+import { log } from 'node:util';
 
 declare global {
   interface Window {
@@ -86,6 +85,7 @@ const MessengerPage = ({ chats }: any) => {
 
 
   useEffect(() => {
+    console.log(Boolean(selectedChat.peer_id));
     if (selectedChat.peer_id) {
       axios
         .get('/messenger/messages', { params: { peerId: selectedChat.peer_id } })
@@ -107,6 +107,7 @@ const MessengerPage = ({ chats }: any) => {
       // Слушаем события новых сообщений
       window.Echo.private('telegram-messages')
         .listen('TelegramMessage', (e: any) => {
+          console.log(e);
           if (e.message.id === selectedChat.peer_id) {
             e.message.user.first_name = findChat(e.message.id).title;
 
@@ -127,7 +128,7 @@ const MessengerPage = ({ chats }: any) => {
           let lastChat = true;
           if (e.message.type === 'user') {
             setUserChats((prevChats: any) => {
-              prevChats.map((chat: any) => {
+              prevChats = prevChats.map((chat: any) => {
                 if (chat.peer_id === e.message.id) {
                   chat.last_message = e.message.message;
                   lastChat = false;
@@ -135,14 +136,16 @@ const MessengerPage = ({ chats }: any) => {
                 return chat;
               });
               if (lastChat) {
-                setUserChats((prevChats: any) => [...prevChats, {
+                prevChats = [...prevChats, {
                   peer_id: e.message.id,
                   type: e.message.type,
                   title: e.message.user.first_name,
                   last_message: e.message.message,
                   unread_count: 0
-                }]);
+                }];
               }
+              console.log('prevChats:', prevChats);
+              return prevChats;
             });
           } else if (e.message.type === 'chat') {
             setGroupChats((prevChats: any) => {
@@ -155,10 +158,6 @@ const MessengerPage = ({ chats }: any) => {
               });
             });
           }
-          console.debug('userChat', userChats);
-          console.debug('groupChat', groupChats);
-          console.debug('last', lastChat);
-          console.debug(e);
 
         });
 
@@ -169,7 +168,7 @@ const MessengerPage = ({ chats }: any) => {
     <div className="flex h-screen">
       {/* Sidebar */}
       <div className="w-1/4 bg-gray-100 p-4 overflow-y-auto max-h-screen">
-        <h2 className="text-xl font-bold mb-4">Conversations</h2>
+        <h2 className="text-xl font-bold mb-4">Разговоры</h2>
 
         <div>
           {/* User Chats */}
@@ -178,11 +177,12 @@ const MessengerPage = ({ chats }: any) => {
               className="flex items-center justify-between cursor-pointer mb-2"
               onClick={() => setIsUserChatsOpen(!isUserChatsOpen)}
             >
-              <h3 className="font-bold">Private Chats</h3>
+              <h3 className="font-bold">Приватные чаты</h3>
               <span>{isUserChatsOpen ? '▲' : '▼'}</span>
             </div>
             {isUserChatsOpen && (
               <div>
+                {console.log(userChats)}
                 {userChats.map((chat: any) => (
 
                   <div
@@ -197,6 +197,8 @@ const MessengerPage = ({ chats }: any) => {
                         <h3 className="font-bold">{chat.title}</h3>
                         <p className="text-sm text-gray-500">{chat.time}</p>
                         <p className="text-sm text-gray-500">
+                          {console.debug('test test:')}
+                          {console.debug(chat)}
                           {chat.last_message.length > 30
                             ? `${chat.last_message.slice(0, 30)}...`
                             : chat.last_message}
@@ -266,6 +268,7 @@ const MessengerPage = ({ chats }: any) => {
           <h2 className="text-xl font-bold">{selectedChat?.title || 'Select a chat'}</h2>
         </div>
 
+        {/* Chat Window */}
         <div id="chat-window" className="flex-1 p-4 overflow-y-scroll">
           {messages.map((msg: any, idx: any) => (
             <div
@@ -281,6 +284,7 @@ const MessengerPage = ({ chats }: any) => {
               >
                 <p
                   className="text-xs font-bold mb-1">{!msg.user.self ? msg.user.first_name : msg.sender ? msg.sender : msg.user.first_name}</p>
+                {console.log('msg',msg)}
                 <p className="text-sm">{msg.message}</p>
                 <p className="text-xs mt-1 ${
                   msg.is_self ? ' text-white' : 'text-gray-500'
@@ -290,7 +294,7 @@ const MessengerPage = ({ chats }: any) => {
           ))}
         </div>
 
-
+        {/* Send Message */}
         <div className="p-4 border-t border-gray-200 flex items-center">
           <SelectFile/>
           <input

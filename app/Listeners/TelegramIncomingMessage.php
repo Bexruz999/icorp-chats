@@ -22,16 +22,16 @@ class TelegramIncomingMessage extends SimpleEventHandler
     public function handleMessage(Incoming&Message $message): void
     {
 
+        //$message = mb_convert_encoding($message, 'UTF-8', 'auto');
+
         TelegramMessage::dispatch([
-            'message' => $message->message,
             'id' => $message->chatId,
-            'content' => $message ?? '',
+            'message' => $message->message ?? '',
             'user' => [
                 'id' => $message->senderId,
                 'self' => false
             ],
             'time'    => date('H:i:s', $message->date ?? time()),
-            'test' => $message,
             'type' => (get_class($message) === GroupMessage::class) ? 'chat' : 'user',
         ]);
     }

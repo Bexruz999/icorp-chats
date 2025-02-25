@@ -31,6 +31,6 @@ class TestSocket extends Command
      */
     public function handle()
     {
-        TelegramMessageShipped::dispatch(["test mesa"]);
+        TelegramMessage::dispatch(["test mesa"]);
     }
 }
