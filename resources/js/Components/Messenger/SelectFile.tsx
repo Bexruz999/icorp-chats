@@ -13,7 +13,7 @@ const DropdownMenu: React.FC<props> = ({ selectedChat }) => {
   const [isPhotoPopupOpen, setIsPhotoPopupOpen] = useState(false);
   const [isDocumentPopupOpen, setIsDocumentPopupOpen] = useState(false);
 
-  const handleMouseEnter = () => {setDropdownVisible(true);};
+  const handleMouseEnter = () => {setDropdownVisible(selectedChat.peer_id);};
 
   const handleMouseLeave = () => {
     setTimeout(() => {setDropdownVisible(false);}, 300)
@@ -30,10 +30,10 @@ const DropdownMenu: React.FC<props> = ({ selectedChat }) => {
         {isDropdownVisible &&
           <div className="select-file_menu" onMouseLeave={handleMouseLeave}>
             <ul>
-              <li className="font-bold" onClick={() => setIsPhotoPopupOpen(true)}>
+              <li className="font-bold" onClick={() => setIsPhotoPopupOpen(selectedChat.peer_id)}>
                 <File className="pr-3" size="35"/>Фото или видео
               </li>
-              <li className="font-bold" onClick={() => setIsDocumentPopupOpen(true)}>
+              <li className="font-bold" onClick={() => setIsDocumentPopupOpen(selectedChat.peer_id)}>
                 <Image className="pr-3" size="35"/>Документ
               </li>
             </ul>
@@ -42,23 +42,14 @@ const DropdownMenu: React.FC<props> = ({ selectedChat }) => {
         {/* Фото или видео pop-up */}
         {isPhotoPopupOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-20">
-            <MediaUploader close={setIsPhotoPopupOpen} selectedChat={selectedChat}/>
+            <MediaUploader close={setIsPhotoPopupOpen} selectedChat={selectedChat} type="media"/>
           </div>
         )}
 
         {/* Dokument pop-up */}
         {isDocumentPopupOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white p-6 rounded-lg shadow-lg max-w-md">
-              <h2 className="text-xl font-semibold mb-4">Dokument yuklash</h2>
-              <p>Bu yerda hujjatlar yuklash oynasi bo'ladi.</p>
-              <button
-                className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                onClick={() => setIsDocumentPopupOpen(false)}
-              >
-                Yopish
-              </button>
-            </div>
+            <MediaUploader close={setIsDocumentPopupOpen} selectedChat={selectedChat}/>
           </div>
         )}
       </div>

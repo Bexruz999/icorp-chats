@@ -158,7 +158,7 @@ class TelegramService
         return "$path$phone.madeline";
     }
 
-    public function sendMedia(string $mediaType, int $chatId, string $uploadPath, ?string $message = ''): void
+    public function sendMedia(string $mediaType, int $chatId, string $uploadPath, string $fileName, ?string $message = ''): void
     {
         $user = auth()->user();
         $phone = $user->account->connections[0]->phone;
@@ -179,6 +179,10 @@ class TelegramService
                     'media' => [
                         '_' => $mediaType,
                         'file' => $uploadedFile,
+                        'attributes' => [[
+                                '_' => 'documentAttributeFilename',
+                                'file_name' => $fileName,
+                            ]],
                     ],
                     'message' => $message,
                     'grouped_id' => $_SESSION['grouped_id'],

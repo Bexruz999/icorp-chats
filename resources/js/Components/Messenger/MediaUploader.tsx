@@ -2,16 +2,19 @@
 import '../../../css/components/selectFile2.css';
 import axios from 'axios';
 import Loader from '@/Components/Animations/Loader';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 type props = {
   close: any,
-  selectedChat: any
+  selectedChat: any,
+  type?: string
 }
 
-const FileUploader: React.FC<props> = ({ close, selectedChat }) => {
+const FileUploader: React.FC<props> = ({ close, selectedChat, type = false }) => {
   const [files, setFiles] = useState([]);
   const [caption, setCaption] = useState('');
+
+  useEffect(() => {document.getElementById('fileInput').click()}, [])
 
   const generateRandomId = function() {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
@@ -77,7 +80,7 @@ const FileUploader: React.FC<props> = ({ close, selectedChat }) => {
   return (
     <div className="file-uploader-container">
       <div className="file-uploader-popup">
-        <h2 className="popup-title">Отправить изображений</h2>
+        <h2 className="popup-title">{type ? 'Отправить изображений' : 'Отправить Документы'}</h2>
 
         {files.length === 0 ? (
           ''
@@ -96,7 +99,7 @@ const FileUploader: React.FC<props> = ({ close, selectedChat }) => {
           id="fileInput"
           multiple
           className="file-input"
-          accept="image/jpeg, image/png, video/mp4"
+          accept={type === 'media' ? 'accept="image/jpeg, image/png, video/mp4"' : ''}
           onChange={handleFileChange}
         />
 
@@ -111,7 +114,10 @@ const FileUploader: React.FC<props> = ({ close, selectedChat }) => {
           <button className="add-btn" onClick={() => document.getElementById('fileInput').click()}>
             Добавить
           </button>
-          <button className="cancel-btn" onClick={() => close(false)}>
+          <button className="cancel-btn" onClick={() => {
+            close(false);
+            console.log(false);
+          }}>
             Закрыть
           </button>
           <button className="send-btn" onClick={handleSubmit}>
