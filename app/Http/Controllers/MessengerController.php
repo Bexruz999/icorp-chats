@@ -83,7 +83,8 @@ class MessengerController extends Controller
             $this->telegramService->sendMedia(
                 mediaType: $this->telegramService->getMediaTypeForMadelineProto($file),
                 chatId: $validated['peer_id'],
-                uploadPath: $filePath, fileName: $file->getClientOriginalName(),
+                uploadPath: storage_path('app/public/' . $filePath),
+                fileName: $file->getClientOriginalName(),
                 message: $validated['message']
             );
         }

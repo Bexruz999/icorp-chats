@@ -165,7 +165,7 @@ class TelegramService
 
         $MadelineProto = self::createMadelineProto($phone);
 
-        $uploadedFile = $MadelineProto->upload(storage_path('app/public/' . $uploadPath));
+        $uploadedFile = $MadelineProto->upload($uploadPath);
 
         if (!isset($_SESSION['grouped_id'])) {
             $_SESSION['grouped_id'] = mt_rand(1000000, 9999999);
