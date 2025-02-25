@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+
 import '../../../css/components/selectFile2.css';
 import axios from 'axios';
+import Loader from '@/Components/Animations/Loader';
+import React, { useState } from 'react';
 
-const FileUploader = ({ close }) => {
+type props = {
+  close: any,
+  selectedChat: any
+}
+
+const FileUploader: React.FC<props> = ({ close, selectedChat }) => {
   const [files, setFiles] = useState([]);
   const [caption, setCaption] = useState('');
-  const [compress, setCompress] = useState(true);
 
   const generateRandomId = function() {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
   }
 
-  const handleFileChange = (event) => {
+  const handleFileChange = (event: any) => {
     const selectedFiles = Array.from(event.target.files).map(file => {
       return {
         file,
@@ -23,37 +29,48 @@ const FileUploader = ({ close }) => {
     console.log(files, selectedFiles);
   };
 
-  const removeFile = (index) => {
+  const removeFile = (index:any) => {
     setFiles(files.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = async (e) => {
-    files.map((file) => {
-      const data = new FormData();
-      data.append('file', file.file);
-      data.append('file_uuid', file.uuid);
-      setFiles(files.map(file => {
-        if (file.uuid === file.uuid) {
-          file.status = 'uploading';
-        }
-        return file;
-      }))
-      try {
-        const response = axios.post(route('messenger.send-media'), data, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
+  const getStatus = (code: string, index: any) =>
+    code === 'queue' ? <button className="remove-btn" onClick={() => removeFile(index)}>❌</button> :
+      code === 'uploading' ? <div className="px-2"><Loader/></div> :
+        code === 'success' ? <div className="py-1 px-2">✅</div> : '';
 
-        setFiles(files.map(file => {
-          if (file.uuid === file.uuid) {file.status ='success';}
-          return file;
+  const handleSubmit = async (e: any) => {
+    files.map((file) => {
+      if (file.status === 'queue') {
+        const data = new FormData();
+        data.append('file', file.file);
+        data.append('file_uuid', file.uuid);
+        data.append('message', caption);
+        data.append('peer_id', selectedChat.peer_id);
+        setFiles(files.map(oldFile => {
+          if (file.uuid === oldFile.uuid) {
+            oldFile.status = 'uploading';
+          }
+          return oldFile;
         }))
-        //console.log(`✅ Fayl yuklandi: ${file.name} — ${response.data.path}`);
-      } catch (error) {
-        console.error(`❌ Xato: ${file.name}`, error);
+        try {
+          const response = axios.post(route('messenger.send-media'), data, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }).then((response) => {
+            if (response.status === 200 && response.data.success) {
+              setFiles(files.map(file => {
+                if (file.uuid === response.data.uuid) {file.status ='success';}
+                return file;
+              }))}
+          });
+
+          //console.log(`✅ Fayl yuklandi: ${file.name} — ${response.data.path}`);
+        } catch (error) {
+          console.error(`❌ Xato: ${file.name}`, error);
+        }
+        console.log(data, file);
       }
-      console.log(data, file);
     })
   };
 
@@ -69,9 +86,7 @@ const FileUploader = ({ close }) => {
             {files.map((file, index) => (
               <div key={index} className="file-preview">
                 <span>{file.file.name}</span>
-                <button className="remove-btn" onClick={() => removeFile(index)}>
-                  {file.status}
-                </button>
+                {getStatus(file.status, index)}
               </div>
             ))}
           </div>
@@ -81,17 +96,9 @@ const FileUploader = ({ close }) => {
           id="fileInput"
           multiple
           className="file-input"
+          accept="image/jpeg, image/png, video/mp4"
           onChange={handleFileChange}
         />
-
-        <label className="compress-checkbox">
-          <input
-            type="checkbox"
-            checked={compress}
-            onChange={(e) => setCompress(e.target.checked)}
-          />
-          Сжать изображение
-        </label>
 
         <textarea
           className="caption-input"
@@ -105,7 +112,7 @@ const FileUploader = ({ close }) => {
             Добавить
           </button>
           <button className="cancel-btn" onClick={() => close(false)}>
-            Отмена
+            Закрыть
           </button>
           <button className="send-btn" onClick={handleSubmit}>
             Отправить

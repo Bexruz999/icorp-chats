@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { File, Paperclip, Image } from 'lucide-react';
 import '../../../css/components/selectFile.css';
-import { sleep } from 'telegram/Helpers';
 import MediaUploader from '@/Components/Messenger/MediaUploader';
 
-const DropdownMenu = () => {
+type props = {
+  selectedChat: any
+}
+
+const DropdownMenu: React.FC<props> = ({ selectedChat }) => {
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isPhotoPopupOpen, setIsPhotoPopupOpen] = useState(false);
@@ -39,7 +42,7 @@ const DropdownMenu = () => {
         {/* Фото или видео pop-up */}
         {isPhotoPopupOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-20">
-            <MediaUploader close={setIsPhotoPopupOpen}/>
+            <MediaUploader close={setIsPhotoPopupOpen} selectedChat={selectedChat}/>
           </div>
         )}
 

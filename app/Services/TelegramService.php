@@ -2,35 +2,40 @@
 
 namespace App\Services;
 
-use App\Events\TelegramMessage;
 use App\Models\UserMessage;
 use Arr;
 use danog\MadelineProto\API;
+use danog\MadelineProto\Exception;
 use danog\MadelineProto\Settings\AppInfo;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
-use App\Events\DialogsUpdated;
 use Illuminate\Support\Str;
+use RuntimeException;
+use Storage;
+use Throwable;
 
 
 class TelegramService
 {
 
-    public static function createMadelineProto(string $phone): \danog\MadelineProto\API
+    public static function createMadelineProto(string $phone): string|API
     {
         $settings = (new AppInfo)
             ->setApiId(intval(env("TELEGRAM_API_ID")))
             ->setApiHash(env('TELEGRAM_API_HASH'));
 
-        $storagePath = storage_path("app/telegram/{$phone}.madeline");
+        $storagePath = storage_path("app/telegram/$phone.madeline");
 
-        return new API($storagePath, $settings);
+        try {
+            return new API($storagePath, $settings);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 
-    public function getDialogs(string $phone)
+    public function getDialogs(string $phone): array
     {
-        $MadelineProto = new API(storage_path("app/telegram/{$phone}.madeline"));
+        $MadelineProto = self::createMadelineProto($phone);
 
         try {
 
@@ -65,7 +70,7 @@ class TelegramService
                         $title = Arr::get($user, 'first_name');
                         $type = 'user';
                     } else {
-                         // Skip non-existing users and channels
+                        // Skip non-existing users and channels
                         continue;
                     }
 
@@ -84,14 +89,10 @@ class TelegramService
             }
 
             return $dialogsCollect;
-        } catch (\Throwable $e) {
-            throw new \RuntimeException("Ошибка получения диалогов: " . $e->getMessage());
-        } finally {
-            // Уничтожение экземпляра MadelineProto
-//            $MadelineProto->stop();
+        } catch (Throwable $e) {
+            throw new RuntimeException("Ошибка получения диалогов: " . $e->getMessage());
         }
     }
-
 
     /**
      * Получение последних сообщений для выбранного диалога.
@@ -133,19 +134,12 @@ class TelegramService
         }
     }
 
-
-//    use App\Events\TelegramMessage;
-
-
     public function sendMessage(string $phone, int $peerId, string $message): array
     {
         $MadelineProto = self::createMadelineProto($phone);
 
         try {
-            $result = $MadelineProto->messages->sendMessage([
-                'peer' => $peerId,
-                'message' => $message,
-            ]);
+            $result = $MadelineProto->messages->sendMessage(peer: $peerId, message: $message);
 
             return ['success' => true, 'message_id' => $result['id'] ?? null];
         } catch (\Exception $e) {
@@ -153,7 +147,7 @@ class TelegramService
         }
     }
 
-    public static function getStoragePath(string $phone, string $path = 'app/telegram/')
+    public static function getStoragePath(string $phone, string $path = 'app/telegram/'): string
     {
         $path = storage_path($path);
 
@@ -161,7 +155,58 @@ class TelegramService
             File::makeDirectory($path, 0777, true, true);
         }
 
-        return "{$path}{$phone}.madeline";
+        return "$path$phone.madeline";
+    }
+
+    public function sendMedia(string $mediaType, int $chatId, string $uploadPath, ?string $message = ''): void
+    {
+        $user = auth()->user();
+        $phone = $user->account->connections[0]->phone;
+
+        $MadelineProto = self::createMadelineProto($phone);
+
+        $uploadedFile = $MadelineProto->upload(storage_path('app/public/' . $uploadPath));
+
+        if (!isset($_SESSION['grouped_id'])) {
+            $_SESSION['grouped_id'] = mt_rand(1000000, 9999999);
+        }
+
+        $MadelineProto->messages->sendMultiMedia(
+            peer: $chatId,
+            multi_media: [
+                [
+                    '_' => 'inputSingleMedia',
+                    'media' => [
+                        '_' => $mediaType,
+                        'file' => $uploadedFile,
+                    ],
+                    'message' => $message,
+                    'grouped_id' => $_SESSION['grouped_id'],
+                ]
+            ]);
+
+        Storage::delete($uploadPath);
+    }
+
+    function getMediaTypeForMadelineProto($file)
+    {
+        $extension = $file->getClientOriginalExtension();
+
+        $mediaTypes = [
+            'jpg' => 'inputMediaUploadedPhoto',
+            'jpeg' => 'inputMediaUploadedPhoto',
+            'png' => 'inputMediaUploadedPhoto',
+            'gif' => 'inputMediaUploadedPhoto',
+            'mp4' => 'inputMediaUploadedDocument',
+            'mov' => 'inputMediaUploadedDocument',
+            'avi' => 'inputMediaUploadedDocument',
+            'mp3' => 'inputMediaUploadedDocument',
+            'ogg' => 'inputMediaUploadedDocument',
+            'pdf' => 'inputMediaUploadedDocument',
+            'zip' => 'inputMediaUploadedDocument',
+        ];
+
+        return $mediaTypes[$extension] ?? 'inputMediaUploadedDocument';
     }
 
 }

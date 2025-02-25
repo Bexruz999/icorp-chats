@@ -1,26 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-//
-//use App\Http\Requests\MessengerStoreRequest;
-//use App\Http\Requests\MessengerUpdateRequest;
+
 use App\Events\TelegramMessageShipped;
-use App\Http\Resources\MessengerCollection;
-use App\Http\Resources\MessengerResource;
-use App\Models\Messenger;
 use App\Models\UserMessage;
 use App\Services\TelegramService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Process;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
-use danog\MadelineProto\API;
-use App\Listeners\TelegramIncomingMessage;
 
 
 class MessengerController extends Controller
@@ -30,23 +18,8 @@ class MessengerController extends Controller
     {
         $phone = auth()->user()->account->connections()->first()->phone;
 
-        $api = new TelegramService;
-        //$api = new API(storage_path("app/telegram/{$phone}.madeline"));
-        //$chat = $api->messages->getDialogs();
-
-        $chats = $api->getDialogs($phone);
-
-        //$handler = $api->getEventHandler(TelegramIncomingMessage::class);
-
-        //$chats = $handler->getDialogs();
-
-        //var_dump($chats);
-
-        //$handler = new TelegramIncomingMessage();
-
-
         return Inertia::render('Messengers/Index', [
-            'chats' => $chats
+            'chats' => $this->telegramService->getDialogs($phone)
         ]);
     }
 
@@ -77,7 +50,6 @@ class MessengerController extends Controller
         ]);
 
         $user = auth()->user();
-
         $phone = $user->account->connections[0]->phone;
         $result = $this->telegramService->sendMessage($phone, $validated['peerId'], $validated['message']);
 
@@ -97,54 +69,29 @@ class MessengerController extends Controller
         return response()->json(['status' => 'error', 'error' => $result['error']], 500);
     }
 
-
-    public function create(): Response
-    {
-        return Inertia::render('Messengers/Create');
-    }
-
-    public function store(MessengerStoreRequest $request): RedirectResponse
-    {
-        Messenger::create(
-            $request->validated()
-        );
-
-        return Redirect::route('messengers')->with('success', 'Messenger created.');
-    }
-
-    public function edit(Messenger $messenger): Response
-    {
-        return Inertia::render('Messengers/Edit', [
-            'messenger' => new MessengerResource($messenger),
-        ]);
-    }
-
-    public function update(Messenger $messenger, MessengerUpdateRequest $request): RedirectResponse
-    {
-        $messenger->update(
-            $request->validated()
-        );
-
-        return Redirect::back()->with('success', 'Messenger updated.');
-    }
-
-    public function destroy(Messenger $messenger): RedirectResponse
-    {
-        $messenger->delete();
-
-        return Redirect::back()->with('success', 'Messenger deleted.');
-    }
-
-    public function restore(Messenger $messenger): RedirectResponse
-    {
-        $messenger->restore();
-
-        return Redirect::back()->with('success', 'Messenger restored.');
-    }
-
     public function sendMedia(Request $request)
     {
-        //return response()->json($request->file('file')->getClientOriginalName());
-        return response()->json(['success' => true, 'message' => $request->file('file')->getClientOriginalName()]);
+        $validated = $request->validate([
+            'peer_id' => 'required|numeric',
+            'message' => 'nullable|string|max:255'
+        ]);
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filePath = $file->store('uploads');
+
+            $this->telegramService->sendMedia(
+                mediaType: $this->telegramService->getMediaTypeForMadelineProto($file),
+                chatId: $validated['peer_id'],
+                uploadPath:  $filePath, message: $validated['message']
+            );
+        }
+        return response()->json([
+            'success' => true,
+            'message' => $request->file('file')->getClientOriginalName(),
+            'uuid' => $request->file_uuid,
+            'test' => storage_path('app/public/' . $filePath),
+            'test2' => $filePath
+        ]);
     }
 }
