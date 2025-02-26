@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\UserMessage;
 use Arr;
 use danog\MadelineProto\API;
+use danog\MadelineProto\EventHandler\Message\GroupMessage;
 use danog\MadelineProto\Exception;
 use danog\MadelineProto\Settings\AppInfo;
 use Illuminate\Support\Carbon;
@@ -124,7 +125,8 @@ class TelegramService
                     'user' => $usersCollect->select($select)->where('id', $from_id)->first(),
                     'message' => $message['message'],
                     'sender' => $sender->user->first_name ?? false,
-                    //'fwd_from' => array_key_exists('fwd_from', $message) ? $message['fwd_from'] : false,
+                    'time'   => Carbon::parse($message['date'])->timezone('+5')->format('H:i'),
+                    'media' => array_key_exists('media', $message) ? $message['media'] : false,
                 ];
             }
 

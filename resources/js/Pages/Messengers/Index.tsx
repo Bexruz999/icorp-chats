@@ -2,6 +2,7 @@ import MainLayout from '@/Layouts/MainLayout';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SelectFile from '@/Components/Messenger/SelectFile';
+import ImagePreview from '@/Components/Messenger/ImagePreview';
 
 declare global {
   interface Window {
@@ -61,7 +62,7 @@ const MessengerPage = ({ chats }: any) => {
       .listen('TelegramMessageShipped', (response: any) => {
         setMessages((prevMessages: any) => [...prevMessages, {
           id: response.data.message_id,
-          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          time: response.data.time,
           message: response.data.message,
           user: { self: true },
           sender: response.data.sender
@@ -105,6 +106,7 @@ const MessengerPage = ({ chats }: any) => {
           if (e.message.id === selectedChat.peer_id) {
             e.message.user.first_name = findChat(e.message.id).title;
 
+            console.log(e)
             setMessages((prevMessages) => {
               return [...prevMessages, e.message];
             });
@@ -256,24 +258,23 @@ const MessengerPage = ({ chats }: any) => {
 
         {/* Chat Window */}
         <div id="chat-window" className="flex-1 p-4 overflow-y-scroll">
+          {console.log(messages)}
           {messages.map((msg: any, idx: any) => (
             <div
               key={idx}
-              className={`flex ${
-                msg.user.self ? 'justify-end' : 'justify-start'
-              } mb-4`}
+              className={`flex ${msg.user.self ? 'justify-end' : 'justify-start'} mb-4`}
             >
               <div
-                className={`relative p-4 rounded-lg max-w-full min-w-40  ${
+                className={`relative p-4 rounded-lg max-w-full min-w-96  ${
                   (msg.user.self ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800')
                 }`}
               >
+                {console.log(msg)}
                 <p
-                  className="text-xs font-bold mb-1">{!msg.user.self ? msg.user.first_name : msg.sender ? msg.sender : msg.user.first_name}</p>
+                  className="text-xs font-bold mb-1">{msg.user.first_name}</p>
                 <p className="text-sm">{msg.message}</p>
-                <p className="text-xs mt-1 ${
-                  msg.is_self ? ' text-white' : 'text-gray-500'
-                }">{msg.time}</p>
+                <p className="text-xs mt-1">{msg.time}</p>
+                {msg.media !== false ?  <ImagePreview imageUrl='test' messageId={123}/> : ''}
               </div>
             </div>
           ))}

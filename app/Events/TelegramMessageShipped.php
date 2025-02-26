@@ -9,6 +9,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Carbon;
 
 class TelegramMessageShipped implements ShouldBroadcast
 {
@@ -26,7 +27,8 @@ class TelegramMessageShipped implements ShouldBroadcast
             'chat_id' => $result['chat_id'],
             'message_id' => $result['message_id'],
             'message' => $message,
-            'sender' => $user->first_name
+            'sender' => $user->first_name,
+            'time'   => Carbon::now()->timezone('+5')->format('H:i')
         ];
     }
 

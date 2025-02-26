@@ -9,6 +9,7 @@ use danog\MadelineProto\EventHandler\Message;
 use danog\MadelineProto\EventHandler\SimpleFilter\Incoming;
 use danog\MadelineProto\SimpleEventHandler;
 use danog\MadelineProto\EventHandler\Message\GroupMessage;
+use Illuminate\Support\Carbon;
 
 class TelegramIncomingMessage extends SimpleEventHandler
 {
@@ -31,7 +32,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
                 'id' => $message->senderId,
                 'self' => false
             ],
-            'time'    => date('H:i:s', $message->date ?? time()),
+            'time'   => Carbon::parse($message['date'])->timezone('+5')->format('H:i'),
             'type' => (get_class($message) === GroupMessage::class) ? 'chat' : 'user',
         ]);
     }
