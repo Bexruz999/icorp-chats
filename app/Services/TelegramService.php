@@ -5,9 +5,9 @@ namespace App\Services;
 use App\Models\UserMessage;
 use Arr;
 use danog\MadelineProto\API;
-use danog\MadelineProto\EventHandler\Message\GroupMessage;
 use danog\MadelineProto\Exception;
 use danog\MadelineProto\Settings\AppInfo;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -34,6 +34,19 @@ class TelegramService
         }
     }
 
+
+    /**
+     * Retrieve a list of dialogs (chats, groups, channels) for a given phone number.
+     *
+     * This function fetches the user's dialogs via MadelineProto, returning chat information.
+     * It can be useful for listing available chats to choose where to send messages or media.
+     *
+     * @param string $phone The phone number associated with the Telegram account.
+     *
+     * @return array The list of dialogs, including chat IDs, names, and types.
+     *
+     * @throws \Exception If fetching dialogs fails or the API returns an error.
+     */
     public function getDialogs(string $phone): array
     {
         $MadelineProto = self::createMadelineProto($phone);
@@ -95,6 +108,7 @@ class TelegramService
         }
     }
 
+
     /**
      * Получение последних сообщений для выбранного диалога.
      *
@@ -121,13 +135,14 @@ class TelegramService
                 $from_id = array_key_exists('from_id', $message) ? $message['from_id'] : $message['peer_id'];
                 $sender = $userMessages->where('message_id', $message['id'])->first();
                 $test[] = [
-                    'id' => $message,
-                    'user' => $usersCollect->select($select)->where('id', $from_id)->first(),
-                    'message' => $message['message'],
+                    'id'     => $message['id'],
+                    'user'   => $usersCollect->select($select)->where('id', $from_id)->first(),
+                    'message'=> $message['message'],
                     'sender' => $sender->user->first_name ?? false,
                     'time'   => Carbon::parse($message['date'])->timezone('+5')->format('H:i'),
-                    'media' => array_key_exists('media', $message) ? $message['media'] : false,
-                ];
+                    'media'  => Arr::get($message, 'media._', false),
+                    'test'   =>  Arr::get($message, 'media._', false) ? $message['media'] : '',
+                    ];
             }
 
             return $test;
@@ -136,6 +151,17 @@ class TelegramService
         }
     }
 
+
+    /**
+     *  Send a message to a specified chat ID via Telegram.
+     *
+     *  This function prepares and sends a message to a Telegram chat using MadelineProto.
+     *
+     * @param string $phone
+     * @param int $peerId
+     * @param string $message
+     * @return array
+     */
     public function sendMessage(string $phone, int $peerId, string $message): array
     {
         $MadelineProto = self::createMadelineProto($phone);
@@ -149,6 +175,7 @@ class TelegramService
         }
     }
 
+
     public static function getStoragePath(string $phone, string $path = 'app/telegram/'): string
     {
         $path = storage_path($path);
@@ -160,7 +187,28 @@ class TelegramService
         return "$path$phone.madeline";
     }
 
-    public function sendMedia(string $mediaType, int $chatId, string $uploadPath, string $fileName, ?string $message = ''): void
+
+    /**
+     * Send a media file to a specified chat ID via Telegram.
+     *
+     * This function handles sending various types of media (e.g., photo, video, document)
+     * to a Telegram chat using MadelineProto. It also supports adding an optional caption.
+     *
+     * @param string $mediaType The type of media to send (e.g., 'photo', 'video', 'document').
+     * @param int $chatId The ID of the chat to send the media to.
+     * @param string $uploadPath The file path where the media is stored on the server.
+     * @param string $fileName The name of the file being sent.
+     * @param string|null $message (Optional) A caption or message to send with the media.
+     *
+     * @return void
+     */
+    public function sendMedia(
+        string $mediaType,
+        int $chatId,
+        string $uploadPath,
+        string $fileName,
+        ?string $message = ''
+    ): void
     {
         $user = auth()->user();
         $phone = $user->account->connections[0]->phone;
@@ -194,7 +242,18 @@ class TelegramService
         Storage::delete($uploadPath);
     }
 
-    function getMediaTypeForMadelineProto($file)
+
+    /**
+     * Determine the appropriate media type for MadelineProto based on the file extension.
+     *
+     * This function maps common file extensions to the corresponding MadelineProto media type.
+     * It helps automatically choose the correct media type when sending files via Telegram.
+     *
+     * @param UploadedFile $file The file name or path.
+     *
+     * @return string The media type for MadelineProto (e.g., 'photo', 'video', 'document', 'audio').
+     */
+    function getMediaTypeForMadelineProto(UploadedFile $file): string
     {
         $extension = $file->getClientOriginalExtension();
 
@@ -215,4 +274,21 @@ class TelegramService
         return $mediaTypes[$extension] ?? 'inputMediaUploadedDocument';
     }
 
+    public function getMedia($message_id) {
+        $user = auth()->user();
+        $phone = $user->account->connections[0]->phone;
+
+        $MadelineProto = self::createMadelineProto($phone);
+
+        $message = $MadelineProto->messages->getMessages(['id' => [$message_id]]);
+
+        if ($message['messages'][0]['_'] !== 'messageEmpty') {
+            $media = $message['messages'][0]['media'];
+
+            $MadelineProto->downloadToBrowser($media);
+        } else {
+            abort(404);
+        }
+
+    }
 }

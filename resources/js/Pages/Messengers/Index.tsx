@@ -270,11 +270,10 @@ const MessengerPage = ({ chats }: any) => {
                 }`}
               >
                 {console.log(msg)}
-                <p
-                  className="text-xs font-bold mb-1">{msg.user.first_name}</p>
+                <p className="text-xs font-bold mb-1">{msg.user.first_name}</p>
+                {msg.media === 'messageMediaPhoto' ?  <ImagePreview imageUrl={route('messenger.get-media', msg.id)}/> : ''}
                 <p className="text-sm">{msg.message}</p>
                 <p className="text-xs mt-1">{msg.time}</p>
-                {msg.media !== false ?  <ImagePreview imageUrl='test' messageId={123}/> : ''}
               </div>
             </div>
           ))}

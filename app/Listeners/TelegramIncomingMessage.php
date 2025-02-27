@@ -23,8 +23,6 @@ class TelegramIncomingMessage extends SimpleEventHandler
     public function handleMessage(Incoming&Message $message): void
     {
 
-        //$message = mb_convert_encoding($message, 'UTF-8', 'auto');
-
         TelegramMessage::dispatch([
             'id' => $message->chatId,
             'message' => $message->message ?? '',
@@ -32,7 +30,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
                 'id' => $message->senderId,
                 'self' => false
             ],
-            'time'   => Carbon::parse($message['date'])->timezone('+5')->format('H:i'),
+            'time'   => Carbon::parse($message->date)->timezone('+5')->format('H:i'),
             'type' => (get_class($message) === GroupMessage::class) ? 'chat' : 'user',
         ]);
     }

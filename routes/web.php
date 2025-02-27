@@ -15,6 +15,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\AdminValid;
+use danog\MadelineProto\API;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MessengerController;
@@ -132,6 +133,9 @@ Route::post('/messenger/send-message', [MessengerController::class, 'sendMessage
     ->middleware('auth');
 Route::post('/messenger/send-media', [MessengerController::class, 'sendMedia'])
     ->name('messenger.send-media')->middleware('auth')
+    ->middleware('auth');
+Route::get('messenger/get_media/{message_id}', [MessengerController::class, 'getMedia'])
+    ->name('messenger.get-media')
     ->middleware('auth');
 
 //

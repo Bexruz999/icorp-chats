@@ -94,4 +94,8 @@ class MessengerController extends Controller
             'uuid' => $request->file_uuid
         ]);
     }
+
+    public function getMedia($message_id) {
+        $this->telegramService->getMedia($message_id);
+    }
 }

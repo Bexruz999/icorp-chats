@@ -31,6 +31,6 @@ class TestSocket extends Command
      */
     public function handle()
     {
-        TelegramMessage::dispatch(["test mesa"]);
+        \danog\MadelineProto\API::downloadServer(storage_path("app/telegram/+998339995959.madeline"));
     }
 }

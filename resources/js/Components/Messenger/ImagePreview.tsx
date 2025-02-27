@@ -1,27 +1,29 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function TelegramImageDownloader({ imageUrl, messageId }) {
+type props = { imageUrl: string }
+const ImagePreview: React.FC<props> = ({ imageUrl}) =>{
   const [downloading, setDownloading] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
 
   const downloadImage = async () => {
     try {
+
       setDownloading(true);
 
-      // Faylni yuklab olish
-      const response = await fetch(imageUrl);
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
+      // Download file
+      await fetch(imageUrl);
+      //const blob = await response.blob();
+      //const url = URL.createObjectURL(blob);
 
-      // Faylni saqlash
-      const link = document.createElement("a");
+      // Save file
+      /*const link = document.createElement("a");
       link.href = url;
       link.download = `telegram_image_${messageId}.jpg`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
 
-      URL.revokeObjectURL(url);
+      URL.revokeObjectURL(url);*/
 
       setDownloaded(true);
     } catch (error) {
@@ -30,6 +32,23 @@ export default function TelegramImageDownloader({ imageUrl, messageId }) {
       setDownloading(false);
     }
   };
+
+  const checkImageInCache = async (url: string):Promise<void> => {
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        cache: 'only-if-cached',
+        mode: 'same-origin' // CORS is necessary because of restrictions
+      });
+
+      if (response && response.ok) {
+        setDownloaded(true)
+      }
+    } catch (error) {
+    }
+  }
+
+  checkImageInCache(imageUrl);
 
   return (
     <div className="relative bg-black h-60 flex items-center justify-center rounded-b rounded-t w-full">
@@ -47,3 +66,5 @@ export default function TelegramImageDownloader({ imageUrl, messageId }) {
     </div>
   );
 }
+
+export default ImagePreview;
