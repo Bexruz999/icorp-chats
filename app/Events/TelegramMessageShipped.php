@@ -23,12 +23,16 @@ class TelegramMessageShipped implements ShouldBroadcast
     public function __construct($result, $message, $user)
     {
         $this->data = [
-            'user_id' => $result['user_id'],
             'chat_id' => $result['chat_id'],
-            'message_id' => $result['message_id'],
+            'id' => $result['message_id'],
             'message' => $message,
-            'sender' => $user->first_name,
-            'time'   => Carbon::now()->timezone('+5')->format('H:i')
+            'user' => [
+                'id' => $result['user_id'],
+                'self' => true,
+                'first_name' => $user->first_name
+            ],
+            'time' => Carbon::now()->timezone('+5')->format('H:i'),
+            'test' => $result
         ];
     }
 

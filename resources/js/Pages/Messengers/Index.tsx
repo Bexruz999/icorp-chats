@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SelectFile from '@/Components/Messenger/SelectFile';
 import ImagePreview from '@/Components/Messenger/ImagePreview';
+import VideoPreview from '@/Components/Messenger/videoPreview';
+import Preview from '@/Components/Messenger/Preview';
 
 declare global {
   interface Window {
@@ -57,19 +59,15 @@ const MessengerPage = ({ chats }: any) => {
   };
 
   useEffect(() => {
+    console.log('eifvh');
     // Слушание отправленного сообщения
     window.Echo.private('telegram-message-shipped')
       .listen('TelegramMessageShipped', (response: any) => {
-        setMessages((prevMessages: any) => [...prevMessages, {
-          id: response.data.message_id,
-          time: response.data.time,
-          message: response.data.message,
-          user: { self: true },
-          sender: response.data.sender
-        }]);
-
+        setMessages((prevMessages: any) => [...prevMessages, response.data]);
         // Прокрутка к последнему сообщению
+        console.log('response', response);
         setTimeout(function() {
+          console.log('response:', response)
           let chat_window: any = document.getElementById('chat-window');
           chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
         }, 100);
@@ -103,9 +101,8 @@ const MessengerPage = ({ chats }: any) => {
       // Слушаем события новых сообщений
       window.Echo.private('telegram-messages')
         .listen('TelegramMessage', (e: any) => {
-          if (e.message.id === selectedChat.peer_id) {
-            e.message.user.first_name = findChat(e.message.id).title;
-
+          if (e.message.chat_id === selectedChat.peer_id) {
+            e.message.user.first_name = findChat(e.message.chat_id).title;
             console.log(e)
             setMessages((prevMessages) => {
               return [...prevMessages, e.message];
@@ -159,7 +156,7 @@ const MessengerPage = ({ chats }: any) => {
   }, [selectedChat]);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex" style={{height: 'calc(100vh - 170px)'}}>
       {/* Sidebar */}
       <div className="w-1/4 bg-gray-100 p-4 overflow-y-auto max-h-screen">
         <h2 className="text-xl font-bold mb-4">Разговоры</h2>
@@ -252,6 +249,7 @@ const MessengerPage = ({ chats }: any) => {
 
       {/* Chat Window */}
       <div className="w-3/4 flex flex-col bg-white">
+
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
           <h2 className="text-xl font-bold">{selectedChat?.title || 'Select a chat'}</h2>
         </div>
@@ -271,7 +269,7 @@ const MessengerPage = ({ chats }: any) => {
               >
                 {console.log(msg)}
                 <p className="text-xs font-bold mb-1">{msg.user.first_name}</p>
-                {msg.media === 'messageMediaPhoto' ?  <ImagePreview imageUrl={route('messenger.get-media', msg.id)}/> : ''}
+                {msg.media && <Preview msg_id={msg.id} media={msg.media}/>}
                 <p className="text-sm">{msg.message}</p>
                 <p className="text-xs mt-1">{msg.time}</p>
               </div>
@@ -299,6 +297,7 @@ const MessengerPage = ({ chats }: any) => {
         </div>
 
       </div>
+
     </div>
   );
 };

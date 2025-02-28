@@ -99,7 +99,7 @@ const FileUploader: React.FC<props> = ({ close, selectedChat, type = false }) =>
           id="fileInput"
           multiple
           className="file-input"
-          accept={type === 'media' ? 'accept="image/jpeg, image/png, video/mp4"' : ''}
+          accept={type === 'media' ? "video/mp4, image/jpeg, image/png" : ''}
           onChange={handleFileChange}
         />
 

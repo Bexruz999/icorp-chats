@@ -120,32 +120,38 @@ class TelegramService
     {
         $MadelineProto = self::createMadelineProto($phone);
 
+        $messages = $MadelineProto->messages->getHistory(['peer' => $peerId, 'limit' => 100]);
+        $collect = collect($messages['messages'])->sortBy('id');
+        $usersCollect = collect($messages['users']);
+        $userMessages = UserMessage::with('user')->where('chat_id', $peerId)->get();
+
+        $result = [];
+        $select = ['id', 'self', 'first_name', 'last_name', 'phone'];
+        foreach ($collect->where('_', 'message') as $message) {
+
+            $from_id = array_key_exists('from_id', $message) ? $message['from_id'] : $message['peer_id'];
+            $sender = $userMessages->where('message_id', $message['id'])->first();
+
+            $media = Arr::get($message, 'media', false);
+
+            $msg_data = [
+                'id'     => $message['id'],
+                'user'   => $usersCollect->select($select)->where('id', $from_id)->first(),
+                'message'=> $message['message'],
+                'time'   => Carbon::parse($message['date'])->timezone('+5')->format('H:i'),
+            ];
+
+            if ($media) {
+                $msg_data['media'] = $media;
+            };
+
+            $result[] = $msg_data;
+        }
+
+        return $result;
         try {
-            $messages = $MadelineProto->messages->getHistory(['peer' => $peerId, 'limit' => 100]);
 
-            $collect = collect($messages['messages'])->sortBy('id');
-            $usersCollect = collect($messages['users']);
 
-            $userMessages = UserMessage::with('user')->where('chat_id', $peerId)->get();
-
-            $test = [];
-            $select = ['id', 'self', 'first_name', 'last_name', 'phone'];
-            foreach ($collect->where('_', 'message') as $message) {
-
-                $from_id = array_key_exists('from_id', $message) ? $message['from_id'] : $message['peer_id'];
-                $sender = $userMessages->where('message_id', $message['id'])->first();
-                $test[] = [
-                    'id'     => $message['id'],
-                    'user'   => $usersCollect->select($select)->where('id', $from_id)->first(),
-                    'message'=> $message['message'],
-                    'sender' => $sender->user->first_name ?? false,
-                    'time'   => Carbon::parse($message['date'])->timezone('+5')->format('H:i'),
-                    'media'  => Arr::get($message, 'media._', false),
-                    'test'   =>  Arr::get($message, 'media._', false) ? $message['media'] : '',
-                    ];
-            }
-
-            return $test;
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
