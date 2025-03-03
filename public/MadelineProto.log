@@ -9450,3 +9450,543 @@ Serialization:  	Connected to IPC socket!
 APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
 APIWrapper:     	Prompting final serialization...
 APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	It seems like the session is busy.
+Serialization:  	Telegram does not support starting multiple instances of the same session, make sure no other instance of the session is running.
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Exception:      	Could not connect to MadelineProto, please enable proc_open and remove open_basedir restrictions or disable webserver path rewrites to fix! If you already did that, make sure the CLI version of PHP is exactly the same as the web version (same version, extensions, et cetera) and check out the MadelineProto.log file for more info about the error that prevented the IPC server from starting. in API.php:318
+Exception:      	Attempt to read property "messages" on string in TelegramService.php:62
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	It seems like the session is busy.
+Serialization:  	Telegram does not support starting multiple instances of the same session, make sure no other instance of the session is running.
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/icorp-chats/storage/app/telegram/+998339995959.madeline/ipc (Permission denied) while connecting to IPC socket
+Serialization:  	Still waiting for exclusive session lock...
+Exception:      	Could not connect to MadelineProto, please enable proc_open and remove open_basedir restrictions or disable webserver path rewrites to fix! If you already did that, make sure the CLI version of PHP is exactly the same as the web version (same version, extensions, et cetera) and check out the MadelineProto.log file for more info about the error that prevented the IPC server from starting. in API.php:318
+Exception:      	Attempt to read property "messages" on string in TelegramService.php:62
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Wrapper:        	Connecting to callback IPC server...
+Wrapper:        	Connected to callback IPC server!
+Wrapper:        	Got ID 0 from callback IPC server!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Wrapper:        	Connecting to callback IPC server...
+Wrapper:        	Connected to callback IPC server!
+Wrapper:        	Got ID 0 from callback IPC server!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Wrapper:        	Connecting to callback IPC server...
+Wrapper:        	Connected to callback IPC server!
+Wrapper:        	Got ID 1 from callback IPC server!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+Wrapper:        	Connecting to callback IPC server...
+Wrapper:        	Connected to callback IPC server!
+Wrapper:        	Got ID 2 from callback IPC server!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
