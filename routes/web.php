@@ -123,20 +123,22 @@ Route::put('organizations/{organization}/restore', [OrganizationsController::cla
 // Messenger
 
 Route::get('messenger', [MessengerController::class, 'index'])
-    ->name('messengers')
-    ->middleware('auth');
+    ->name('messengers')->middleware('auth');
+
 Route::get('messenger/messages', [MessengerController::class, 'getMessages'])
-    ->name('messenger.messages')
-    ->middleware('auth');
+    ->name('messenger.messages')->middleware('auth');
+
 Route::post('/messenger/send-message', [MessengerController::class, 'sendMessage'])
-    ->name('messenger.send-message')
-    ->middleware('auth');
+    ->name('messenger.send-message')->middleware('auth');
+
 Route::post('/messenger/send-media', [MessengerController::class, 'sendMedia'])
-    ->name('messenger.send-media')->middleware('auth')
-    ->middleware('auth');
+    ->name('messenger.send-media')->middleware('auth');
+
+Route::post('/messenger/send-voice', [MessengerController::class, 'sendVoice'])
+    ->name('messenger.send-voice')->middleware('auth');
+
 Route::get('messenger/get_media/{message_id}', [MessengerController::class, 'getMedia'])
-    ->name('messenger.get-media')
-    ->middleware('auth');
+    ->name('messenger.get-media')->middleware('auth');
 
 //
 //Route::post('messenger', [MessengerController::class, 'getDialogs'])

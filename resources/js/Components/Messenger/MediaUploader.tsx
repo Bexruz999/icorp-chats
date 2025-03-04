@@ -57,9 +57,7 @@ const FileUploader: React.FC<props> = ({ close, selectedChat, type = false }) =>
         }))
         try {
           const response = axios.post(route('messenger.send-media'), data, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
+            headers: { 'Content-Type': 'multipart/form-data'},
           }).then((response) => {
             if (response.status === 200 && response.data.success) {
               setFiles(files.map(file => {

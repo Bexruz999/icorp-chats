@@ -2,9 +2,9 @@ import MainLayout from '@/Layouts/MainLayout';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SelectFile from '@/Components/Messenger/SelectFile';
-import ImagePreview from '@/Components/Messenger/ImagePreview';
-import VideoPreview from '@/Components/Messenger/videoPreview';
 import Preview from '@/Components/Messenger/Preview';
+import VoiceMessage from '@/Components/Messenger/VoiceMessage';
+import { SendHorizonal } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -26,6 +26,8 @@ const MessengerPage = ({ chats }: any) => {
   };
 
   const [inputValue, setInputValue] = useState<string>('');
+  const [recordedAudio, setRecordedAudio] = useState<Blob | null>(null);
+
   const [selectedChat, setSelectedChat] = useState(selectedChatType);
   const [messages, setMessages] = useState(m);
 
@@ -39,7 +41,10 @@ const MessengerPage = ({ chats }: any) => {
   // Отправка сообщений
   const handleSendMessage = (event: any) => {
 
-    if (
+    if (recordedAudio) {
+      handleAudioRecorded(recordedAudio);
+      return;
+    } else if (
       !inputValue.trim() ||
       !selectedChat ||
       (event.key !== 'Enter' && event.type === 'keydown')
@@ -67,7 +72,7 @@ const MessengerPage = ({ chats }: any) => {
         // Прокрутка к последнему сообщению
         console.log('response', response);
         setTimeout(function() {
-          console.log('response:', response)
+          console.log('response:', response);
           let chat_window: any = document.getElementById('chat-window');
           chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
         }, 100);
@@ -76,6 +81,26 @@ const MessengerPage = ({ chats }: any) => {
 
   const findChat = (peer_id: string) => {
     return chats.find((chat: any) => chat.peer_id === peer_id);
+  };
+
+  // VoiceMessage dan audioBlob kelganda chaqiriladi
+  const handleAudioRecorded = (blob: Blob) => {
+
+    const data = new FormData();
+    data.append('file', blob, "recorded-audio.ogg");
+    data.append('file_uuid', 'audio');
+    data.append('message', '');
+    data.append('peer_id', selectedChat.peer_id);
+    try {
+      const response = axios.post(route('messenger.send-voice'), data, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      }).then((response) => {
+      });
+    } catch (error) {
+      console.error(`❌ Xato: `, error);
+    }
+
+    console.log('Ota komponentga yuborilgan audio:', blob);
   };
 
 
@@ -103,7 +128,7 @@ const MessengerPage = ({ chats }: any) => {
         .listen('TelegramMessage', (e: any) => {
           if (e.message.chat_id === selectedChat.peer_id) {
             e.message.user.first_name = findChat(e.message.chat_id).title;
-            console.log(e)
+            console.log(e);
             setMessages((prevMessages) => {
               return [...prevMessages, e.message];
             });
@@ -156,7 +181,7 @@ const MessengerPage = ({ chats }: any) => {
   }, [selectedChat]);
 
   return (
-    <div className="flex" style={{height: 'calc(100vh - 170px)'}}>
+    <div className="flex" style={{ height: 'calc(100vh - 170px)' }}>
       {/* Sidebar */}
       <div className="w-1/4 bg-gray-100 p-4 overflow-y-auto max-h-screen">
         <h2 className="text-xl font-bold mb-4">Разговоры</h2>
@@ -256,7 +281,7 @@ const MessengerPage = ({ chats }: any) => {
 
         {/* Chat Window */}
         <div id="chat-window" className="flex-1 p-4 overflow-y-scroll">
-          {console.log(messages)}
+              {console.log(messages)}
           {messages.map((msg: any, idx: any) => (
             <div
               key={idx}
@@ -269,7 +294,7 @@ const MessengerPage = ({ chats }: any) => {
               >
                 {console.log(msg)}
                 <p className="text-xs font-bold mb-1">{msg.user.first_name}</p>
-                {msg.media && <Preview msg_id={msg.id} media={msg.media}/>}
+                {msg.media && <Preview msg_id={msg.id} media={msg.media} />}
                 <p className="text-sm">{msg.message}</p>
                 <p className="text-xs mt-1">{msg.time}</p>
               </div>
@@ -278,8 +303,9 @@ const MessengerPage = ({ chats }: any) => {
         </div>
 
         {/* Send Message */}
-        <div className="p-4 border-t border-gray-200 flex items-center">
-          <SelectFile selectedChat={selectedChat}/>
+        <div className="p-4 border-t border-gray-200 flex items-center" style={{ position: 'relative' }}>
+          <SelectFile selectedChat={selectedChat} />
+          <VoiceMessage onAudioRecorded={setRecordedAudio} />
           <input
             type="text"
             value={inputValue}
@@ -290,9 +316,9 @@ const MessengerPage = ({ chats }: any) => {
           />
           <button
             onClick={handleSendMessage}
-            className="bg-indigo-500 text-white px-4 py-3.5 rounded-lg"
+            className="bg-sky-500 text-white px-4 py-2 rounded-lg"
           >
-            Send
+            <SendHorizonal size="30" />
           </button>
         </div>
 

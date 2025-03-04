@@ -71,6 +71,7 @@ class MessengerController extends Controller
 
     public function sendMedia(Request $request)
     {
+
         $validated = $request->validate([
             'peer_id' => 'required|numeric',
             'message' => 'nullable|string|max:255'
@@ -92,6 +93,28 @@ class MessengerController extends Controller
             'success' => true,
             'message' => $request->file('file')->getClientOriginalName(),
             'uuid' => $request->file_uuid
+        ]);
+    }
+
+    public function sendVoice(Request $request)
+    {
+        $validated = $request->validate([
+            'peer_id' => 'required|numeric',
+            'file' => 'required|file|mimes:mp3,ogg,wav'
+        ]);
+
+        $file = $request->file('file');
+        $filePath = $file->store('uploads');
+
+        $this->telegramService->sendVoice(
+            chatId: $validated['peer_id'],
+            file: storage_path('app/public/' . $filePath),
+            fileName: $file->getClientOriginalName()
+        );
+
+        return response()->json([
+           'success' => true,
+           'message' => $file->getClientOriginalName(),
         ]);
     }
 

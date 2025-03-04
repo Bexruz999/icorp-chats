@@ -6,6 +6,7 @@ use App\Models\UserMessage;
 use Arr;
 use danog\MadelineProto\API;
 use danog\MadelineProto\Exception;
+use danog\MadelineProto\LocalFile;
 use danog\MadelineProto\Settings\AppInfo;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
@@ -210,13 +211,7 @@ class TelegramService
      *
      * @return void
      */
-    public function sendMedia(
-        string $mediaType,
-        int $chatId,
-        string $uploadPath,
-        string $fileName,
-        ?string $message = ''
-    ): void
+    public function sendMedia(string $mediaType, int $chatId, string $uploadPath, string $fileName, ?string $message = ''): void
     {
         $user = auth()->user();
         $phone = $user->account->connections[0]->phone;
@@ -250,6 +245,17 @@ class TelegramService
         Storage::delete($uploadPath);
     }
 
+
+    public function sendVoice($chatId, $file, $fileName) {
+        $user = auth()->user();
+        $phone = $user->account->connections[0]->phone;
+
+        $MadelineProto = self::createMadelineProto($phone);
+
+        $localFile = new LocalFile($file);
+
+        $sendMessage = $MadelineProto->sendVoice(peer: $chatId, file: $localFile,  fileName: $fileName);
+    }
 
     /**
      * Determine the appropriate media type for MadelineProto based on the file extension.
