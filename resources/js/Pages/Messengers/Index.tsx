@@ -1,11 +1,12 @@
 import MainLayout from '@/Layouts/MainLayout';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import SelectFile from '@/Components/Messenger/SelectFile';
 import Preview from '@/Components/Messenger/Preview';
-import VoiceMessage from '@/Components/Messenger/VoiceMessage';
+import VoiceMessage, { RefType } from '@/Components/Messenger/VoiceMessage';
 import { SendHorizonal } from 'lucide-react';
 import { VoiceContext } from '@/Components/Messenger/VoiceContext';
+import Emoji from '@/Components/Messenger/Emoji';
 
 declare global {
   interface Window {
@@ -39,12 +40,19 @@ const MessengerPage = ({ chats }: any) => {
   const [userChats, setUserChats] = useState(chats.filter((chat: any) => chat.type === 'user'));
   const [groupChats, setGroupChats] = useState(chats.filter((chat: any) => chat.type === 'chat'));
 
+  const voiceRef = useRef<RefType>();
+
   // Отправка сообщений
   const handleSendMessage = (event: any) => {
 
-    console.log(recordedAudio);
     if (recordedAudio) {
       handleAudioRecorded(recordedAudio);
+      console.log('Voiceref', voiceRef);
+      if (voiceRef.current) {
+        console.log('Voiceref', voiceRef);
+        voiceRef.current();
+        setRecordedAudio(null);
+      }
       return;
     } else if (
       !inputValue.trim() ||
@@ -65,12 +73,11 @@ const MessengerPage = ({ chats }: any) => {
       });
   };
 
-  useEffect(() => {
-    console.log('eifvh');
+ /* useEffect(() => {
     // Слушание отправленного сообщения
     window.Echo.private('telegram-message-shipped')
       .listen('TelegramMessageShipped', (response: any) => {
-        setMessages((prevMessages: any) => [...prevMessages, response.data]);
+        //setMessages((prevMessages: any) => [...prevMessages, response.data]);
         // Прокрутка к последнему сообщению
         console.log('response', response);
         setTimeout(function() {
@@ -79,7 +86,7 @@ const MessengerPage = ({ chats }: any) => {
           chat_window.scrollTo(0, (chat_window.scrollHeight + 1000));
         }, 100);
       });
-  }, []);
+  }, []);*/
 
   const findChat = (peer_id: string) => {
     return chats.find((chat: any) => chat.peer_id === peer_id);
@@ -104,6 +111,9 @@ const MessengerPage = ({ chats }: any) => {
     }
   };
 
+  const setInput = (value: string) => {
+    setInputValue((prev) => prev + value);
+  };
 
   useEffect(() => {
     if (selectedChat.peer_id) {
@@ -282,19 +292,15 @@ const MessengerPage = ({ chats }: any) => {
 
         {/* Chat Window */}
         <div id="chat-window" className="flex-1 p-4 overflow-y-scroll">
-              {console.log(messages)}
           {messages.map((msg: any, idx: any) => (
             <div
               key={idx}
               className={`flex ${msg.user.self ? 'justify-end' : 'justify-start'} mb-4`}
             >
-              <div
-                className={`relative p-4 rounded-lg max-w-full min-w-96  ${
+              <div className={`relative p-4 rounded-lg max-w-full min-w-96  ${
                   (msg.user.self ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800')
-                }`}
-              >
-                {console.log(msg)}
-                <p className="text-xs font-bold mb-1">{msg.user.first_name}</p>
+                }`}>
+                <p className="text-xs font-bold mb-1">{msg.user_name ? msg.user_name : msg.user.first_name}</p>
                 {msg.media && <Preview msg_id={msg.id} media={msg.media} />}
                 <p className="text-sm">{msg.message}</p>
                 <p className="text-xs mt-1">{msg.time}</p>
@@ -306,9 +312,8 @@ const MessengerPage = ({ chats }: any) => {
         {/* Send Message */}
         <div className="p-4 border-t border-gray-200 flex items-center" style={{ position: 'relative' }}>
           <SelectFile selectedChat={selectedChat} />
-          {/*<VoiceContext>
-            <VoiceMessage onAudioRecorded={setRecordedAudio} />
-          </VoiceContext>*/}
+          <VoiceMessage onAudioRecorded={setRecordedAudio} ref={voiceRef}/>
+          <Emoji selectedChat={selectedChat} setInput={setInput}/>
           <input
             type="text"
             value={inputValue}

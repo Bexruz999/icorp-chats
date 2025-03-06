@@ -9,7 +9,7 @@ export const VoiceProvider = (children: any) => {
 
   return (
     <VoiceContext.Provider value={{ voice, setVoice }}>
-      {children}
+      {this.context}
     </VoiceContext.Provider>
   );
 

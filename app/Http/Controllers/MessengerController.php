@@ -55,13 +55,11 @@ class MessengerController extends Controller
 
         if ($result['success']) {
 
-            $userMessage = UserMessage::create([
+            UserMessage::create([
                 'user_id' => $user->id,
                 'chat_id' => $validated['peerId'],
                 'message_id' => $result['message_id'],
             ]);
-
-            TelegramMessageShipped::dispatch($userMessage, $validated['message'], $user);
 
             return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
         }

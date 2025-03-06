@@ -16,13 +16,12 @@ type props = {
 }
 const FilePreview: React.FC<props> = ({ msg_id, media }) => {
   const renderPreview = () => {
-    console.log(media);
     switch (true) {
       case (media._ === 'messageMediaPhoto'):
         return <ImagePreview imageUrl={route('messenger.get-media', msg_id)} />;
       case media._ === 'messageMediaDocument' && media.document.mime_type.endsWith('mp4'):
         return <VideoPreview videoUrl={route('messenger.get-media', msg_id)} file_name={media.file_name} />;
-      case media._ === 'messageMediaDocument' && (media.document.mime_type.endsWith('mp3') || media.document.mime_type.endsWith('ogg')):
+      case (media._ === 'messageMediaDocument' || media._ === 'messageMediaVoice') && (media.document.mime_type.endsWith('mp3') || media.document.mime_type.endsWith('ogg')):
         return (
           <audio controls className="w-full">
             <source src={route('messenger.get-media', msg_id)} type={media.document.mime_type} />

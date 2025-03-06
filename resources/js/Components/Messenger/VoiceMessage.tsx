@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useRef, useEffect, useImperativeHandle, forwardRef, Ref } from 'react';
 import { CircleStop, CircleX, Mic, PauseCircle, PlayCircle } from 'lucide-react';
-import { VoiceContext } from '@/Components/Messenger/VoiceContext';
 
 interface VoiceMessageProps {
   onAudioRecorded: (audioBlob: any) => void;
+  ref: React.RefObject<HTMLDivElement>;
 }
 
 function formatTime(timeInSeconds) {
@@ -12,7 +12,7 @@ function formatTime(timeInSeconds) {
   return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
-function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
+function VoiceMessage({ onAudioRecorded }: VoiceMessageProps, ref: Ref) {
   // ----- Recording state -----
   const [isRecording, setIsRecording] = useState(false);
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
@@ -30,16 +30,11 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
   const audioContextRef = useRef(null);
   const sourceRef = useRef(null);
   const animationFrameRef = useRef(null);
-  const [voice, setVoice] = useContext(VoiceContext);
-
-  // Pause qilganda shu offset saqlanadi, resume qilganda shu offsetdan davom etiladi.
   const offsetRef = useRef(0);
-
-  // Ijro start bo‘lgan audioContext.currentTime
   const startTimeRef = useRef(0);
 
   // ===============================
-  // 1) AUDIO YOZISH
+  // 1) AUDIO
   // ===============================
   const startRecording = async () => {
 
@@ -102,11 +97,12 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
     onAudioRecorded(false);
   };
 
+  useImperativeHandle(ref, () => (cancelRecording));
+
   // ===============================
-  // 2) AUDIO IJROSI (PLAY, PAUSE)
+  // 2) (PLAY, PAUSE)
   // ===============================
 
-  // Ichki funksiyalar
   const stopAudio = (resetOffset = true) => {
     // Avvalgi ijro bo‘lsa, to‘xtatamiz
     if (sourceRef.current) {
@@ -125,7 +121,7 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
     setIsPaused(false);
   };
 
-  // Audio ijrosini yangidan boshlash yoki pause dan davom ettirish
+  // Audio Play
   const playAudio = () => {
     if (!audioBuffer || !audioContextRef.current) return;
 
@@ -171,7 +167,7 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
     animationFrameRef.current = requestAnimationFrame(updateTime);
   };
 
-  // Audio ijrosini pauza qilish
+  // Audio Pause
   const pauseAudio = () => {
     if (!sourceRef.current || !isPlaying) return;
 
@@ -195,7 +191,7 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
     cancelAnimationFrame(animationFrameRef.current);
   };
 
-  // Component unmount bo‘lganda resurslarni tozalash
+  // Close
   useEffect(() => {
     return () => {
       stopAudio();
@@ -207,7 +203,7 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
   }, []);
 
   // ===============================
-  // 3) STYLES (Minimal misol)
+  // 3) STYLES
   // ===============================
   const containerStyle = {
     width: 'calc(100% - 180px)',
@@ -243,13 +239,14 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
     borderRadius: '3px',
     width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%'
   };
+
   return (
     <div className="px-2">
 
       {isRecording ?
         <button onClick={stopRecording}><CircleStop color="red" /></button> :
         <button onClick={audioBuffer ? cancelRecording : startRecording}>
-          {audioBuffer ? <CircleX color="red" className="mr-2"/> : <Mic/>}
+          {audioBuffer ? <CircleX color="red" className="mr-2" /> : <Mic />}
         </button>
 
       }
@@ -288,4 +285,4 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
   );
 }
 
-export default VoiceMessage;
+export default forwardRef(VoiceMessage);

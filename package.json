@@ -27,6 +27,7 @@
     "telegram": "^2.26.16"
   },
   "devDependencies": {
+    "@emoji-mart/react": "^1.1.1",
     "@tailwindcss/forms": "^0.5.7",
     "@types/lodash": "^4.17.4",
     "@types/node": "^20.12.12",

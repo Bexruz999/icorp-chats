@@ -136,8 +136,10 @@ class TelegramService
 
                 $media = Arr::get($message, 'media', false);
 
+                $user_name = $userMessages->where('message_id', $message['id'])->first();
                 $msg_data = [
                     'id'     => $message['id'],
+                    'user_name' => $user_name ? $user_name->user->first_name : false,
                     'user'   => $usersCollect->select($select)->where('id', $from_id)->first(),
                     'message'=> $message['message'],
                     'time'   => Carbon::parse($message['date'])->timezone('+5')->format('H:i'),
