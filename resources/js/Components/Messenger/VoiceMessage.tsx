@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { CircleStop, Mic, PauseCircle, PlayCircle } from 'lucide-react';
-
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { CircleStop, CircleX, Mic, PauseCircle, PlayCircle } from 'lucide-react';
+import { VoiceContext } from '@/Components/Messenger/VoiceContext';
 
 interface VoiceMessageProps {
-  onAudioRecorded: (audioBlob: Blob) => void;
+  onAudioRecorded: (audioBlob: any) => void;
 }
 
 function formatTime(timeInSeconds) {
@@ -15,14 +15,14 @@ function formatTime(timeInSeconds) {
 function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
   // ----- Recording state -----
   const [isRecording, setIsRecording] = useState(false);
-  const [audioBlob, setAudioBlob] = useState(null);
+  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const [audioBuffer, setAudioBuffer] = useState(null);
 
   // ----- Player state -----
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);  // Joriy ijro vaqti (sekund)
-  const [duration, setDuration] = useState(0);        // Audio uzunligi (sekund)
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   // ----- Refs -----
   const mediaRecorderRef = useRef(null);
@@ -30,10 +30,11 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
   const audioContextRef = useRef(null);
   const sourceRef = useRef(null);
   const animationFrameRef = useRef(null);
+  const [voice, setVoice] = useContext(VoiceContext);
 
-  // Ijro boshidan boshlab qancha vaqt o‘tgani (sekund)
   // Pause qilganda shu offset saqlanadi, resume qilganda shu offsetdan davom etiladi.
   const offsetRef = useRef(0);
+
   // Ijro start bo‘lgan audioContext.currentTime
   const startTimeRef = useRef(0);
 
@@ -72,6 +73,7 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
           });
         };
 
+        // Set Handle
         onAudioRecorded(blob);
       };
 
@@ -89,6 +91,15 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
       mediaRecorderRef.current.stop();
       setIsRecording(false);
     }
+  };
+
+  const cancelRecording = () => {
+    setAudioBlob(null);
+    setCurrentTime(0);
+    setAudioBuffer(null);
+    setDuration(0);
+    setIsRecording(false);
+    onAudioRecorded(false);
   };
 
   // ===============================
@@ -234,11 +245,18 @@ function VoiceMessage({ onAudioRecorded }: VoiceMessageProps) {
   };
   return (
     <div className="px-2">
-      <button onClick={isRecording ? stopRecording : startRecording}>
-        {isRecording ? <CircleStop color="red" /> : <Mic />}
-      </button>
+
+      {isRecording ?
+        <button onClick={stopRecording}><CircleStop color="red" /></button> :
+        <button onClick={audioBuffer ? cancelRecording : startRecording}>
+          {audioBuffer ? <CircleX color="red" className="mr-2"/> : <Mic/>}
+        </button>
+
+      }
+
       {(audioBuffer && !isRecording) && (
         <div style={containerStyle}>
+
           {!isPlaying ? (
             <button
               onClick={playAudio}

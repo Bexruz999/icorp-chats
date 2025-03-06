@@ -5,6 +5,7 @@ import SelectFile from '@/Components/Messenger/SelectFile';
 import Preview from '@/Components/Messenger/Preview';
 import VoiceMessage from '@/Components/Messenger/VoiceMessage';
 import { SendHorizonal } from 'lucide-react';
+import { VoiceContext } from '@/Components/Messenger/VoiceContext';
 
 declare global {
   interface Window {
@@ -41,6 +42,7 @@ const MessengerPage = ({ chats }: any) => {
   // Отправка сообщений
   const handleSendMessage = (event: any) => {
 
+    console.log(recordedAudio);
     if (recordedAudio) {
       handleAudioRecorded(recordedAudio);
       return;
@@ -86,6 +88,7 @@ const MessengerPage = ({ chats }: any) => {
   // VoiceMessage dan audioBlob kelganda chaqiriladi
   const handleAudioRecorded = (blob: Blob) => {
 
+    console.log(blob);
     const data = new FormData();
     data.append('file', blob, "recorded-audio.ogg");
     data.append('file_uuid', 'audio');
@@ -97,10 +100,8 @@ const MessengerPage = ({ chats }: any) => {
       }).then((response) => {
       });
     } catch (error) {
-      console.error(`❌ Xato: `, error);
+      console.error(`error: `, error);
     }
-
-    console.log('Ota komponentga yuborilgan audio:', blob);
   };
 
 
@@ -305,7 +306,9 @@ const MessengerPage = ({ chats }: any) => {
         {/* Send Message */}
         <div className="p-4 border-t border-gray-200 flex items-center" style={{ position: 'relative' }}>
           <SelectFile selectedChat={selectedChat} />
-          <VoiceMessage onAudioRecorded={setRecordedAudio} />
+          <VoiceContext key>
+            <VoiceMessage onAudioRecorded={setRecordedAudio} />
+          </VoiceContext>
           <input
             type="text"
             value={inputValue}
