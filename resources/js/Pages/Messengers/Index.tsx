@@ -306,7 +306,7 @@ const MessengerPage = ({ chats }: any) => {
         {/* Send Message */}
         <div className="p-4 border-t border-gray-200 flex items-center" style={{ position: 'relative' }}>
           <SelectFile selectedChat={selectedChat} />
-          <VoiceContext key>
+          <VoiceContext>
             <VoiceMessage onAudioRecorded={setRecordedAudio} />
           </VoiceContext>
           <input
