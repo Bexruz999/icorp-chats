@@ -8,7 +8,6 @@ const EmojiInputExample: React.FC<{selectedChat: any, setInput: any}>=({ selecte
 
   const handleEmojiSelect = (emoji: any): void => {
     setInput(emoji.native)
-    //setShowPicker(false);
   };
 
   const handleMouseEnter = () => {

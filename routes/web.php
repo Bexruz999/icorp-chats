@@ -11,6 +11,7 @@ use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
@@ -213,11 +214,13 @@ Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'd
     ->name("settings.delete")
     ->middleware("auth");
 
-Route::resource('employees', EmployeesController::class)->middleware(AdminValid::class);
+Route::resource('employees', EmployeesController::class)->middleware('auth');
 
 Route::resource('bots', BotController::class)->middleware('auth');
 
 Route::resource('shops', ShopController::class)->middleware('auth');
+
+Route::resource('roles', RoleController::class)->middleware('auth');
 
 Route::get('categories/create/{id}',[CategoryController::class, 'createShop'])->name('categories.create.shop');
 Route::resource('categories', CategoryController::class)->middleware('auth');

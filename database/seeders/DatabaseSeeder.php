@@ -7,6 +7,8 @@ use App\Models\Contact;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $account = Account::create(['name' => 'Acme Corporation']);
+
+        //$role = Role::create(['name' => 'admin']);
+
+        //$mermission = Permission::create(['name' => 'edit_role']);
+
+        /*$account = Account::create(['name' => 'Acme Corporation']);
 
         User::factory()->create([
             'account_id' => $account->id,
@@ -35,6 +42,6 @@ class DatabaseSeeder extends Seeder
             ->create(['account_id' => $account->id])
             ->each(function ($contact) use ($organizations) {
                 $contact->update(['organization_id' => $organizations->random()->id]);
-            });
+            });*/
     }
 }
