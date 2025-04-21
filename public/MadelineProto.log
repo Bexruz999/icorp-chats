@@ -2499,3 +2499,98 @@ PingLoop, user_0724:       	Ping DC 2.0
 Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
 Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
 PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 8 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 1 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 13 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+Session, user_0724:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 5 outgoing messages in DC 2, 1 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 6 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+Session, user_0724:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 12 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
