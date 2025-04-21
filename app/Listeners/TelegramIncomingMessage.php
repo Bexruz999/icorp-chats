@@ -41,7 +41,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
             'chats' => [],
         ];
 
-        TelegramMessage::dispatch([$this->dialogs]);
+        TelegramMessage::dispatch($this->getDialogs());
     }
 
 
@@ -129,10 +129,6 @@ class TelegramIncomingMessage extends SimpleEventHandler
                 }
             }
 
-
-            TelegramMessage::dispatch($result);
-
-            var_dump($result);
             return $result;
         } catch (\Throwable $e) {
             throw new \RuntimeException("Ошибка получения диалогов: " . $e->getMessage());

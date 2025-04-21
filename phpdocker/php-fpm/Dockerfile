@@ -3,6 +3,7 @@ WORKDIR "/var/www"
 
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
+        supervisor \
         git \
         php8.3-gd \
         php8.3-pgsql \

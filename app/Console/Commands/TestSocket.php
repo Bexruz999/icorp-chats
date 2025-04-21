@@ -37,5 +37,6 @@ class TestSocket extends Command
         $api = new API(storage_path("app/telegram/{$phone}.madeline"));
         $chat = $api->messages->getDialogs();
         var_dump($chat);
+        TelegramMessage::dispatch(["test mesa"]);
     }
 }

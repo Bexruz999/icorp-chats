@@ -29,11 +29,11 @@ class MessengerController extends Controller
     {
         $phone = auth()->user()->account->connections()->first()->phone;
 
-        //$api = new TelegramService;
-        $api = new API(storage_path("app/telegram/{$phone}.madeline"));
-        $chat = $api->messages->getDialogs();
+        $api = new TelegramService;
+        //$api = new API(storage_path("app/telegram/{$phone}.madeline"));
+        //$chat = $api->messages->getDialogs();
 
-        //$chats = $api->getDialogs($phone);
+        $chats = $api->getDialogs($phone);
 
         //$handler = $api->getEventHandler(TelegramIncomingMessage::class);
 
@@ -45,7 +45,7 @@ class MessengerController extends Controller
 
 
         return Inertia::render('Messengers/Index', [
-            'chats' => $chat
+            'chats' => $chats
         ]);
     }
 

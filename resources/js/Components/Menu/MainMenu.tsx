@@ -59,7 +59,7 @@ export default function MainMenu({ className }: MainMenuProps) {
         icon={<MessageCircle size={20} />}
       />
 
-      {auth.user.owner ? <MainMenuItem text="Settings" link="settings" icon={<Printer size={20} />} /> : ''}
+      <MainMenuItem text="Settings" link="settings" icon={<Printer size={20} />} />
 
     </div>
   );

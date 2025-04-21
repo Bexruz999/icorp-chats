@@ -68,3 +68,2434 @@ Logger:         	Copyright (C) 2016-2025 Daniil Gentili
 Logger:         	Licensed under AGPLv3
 Logger:         	https://github.com/danog/MadelineProto
 Serialization:  	Got exclusive session lock!
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	Got exclusive session lock!
+MTProto:        	The database settings have changed!
+TL:             	Loading TL schemes...
+TL:             	Parsing TL_telegram_v186.tl...
+TL:             	Parsing TL_mtproto_v1.tl...
+TL:             	Parsing TL_secret.tl...
+MTProto:        	The prometheus settings have changed!
+MTProto:        	The serialization settings have changed!
+TL:             	Loading TL schemes...
+TL:             	Parsing TL_telegram_v186.tl...
+TL:             	Parsing TL_mtproto_v1.tl...
+TL:             	Parsing TL_secret.tl...
+DataCenter:     	Acquiring connect lock for 2!
+DataCenter:     	Connecting to DC 2
+DataCenterConnection: 	Restoring 0 messages to DC 2
+Session:        	Resetting session in DC 2.0 due to creating initial session...
+Connection:     	Connecting to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream 
+Connection:     	Connected to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream!
+DataCenterConnection: 	Acquiring lock in order to init auth for DC 2
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Generating permanent authorization key for DC 2...
+AuthKeyHandler: 	Requesting pq...
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with python_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with native_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2708777955860935333 = 1533604829 * 1766281577
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 0.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Generating temporary authorization key for DC 2...
+AuthKeyHandler: 	Requesting pq...
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with python_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with native_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2267867214710863261 = 1151368243 * 1969714927
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = -1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Binding authorization keys...
+WriteLoop:      	Skipping help.getConfig pending due to unbound keys in DC 2.0
+WriteLoop:      	Skipping help.getConfig pending due to unbound keys in DC 2.0
+DataCenterConnection: 	Bound temporary and permanent authorization keys, DC 2
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+MTProto:        	Updated config!
+MTProto:        	Starting update system
+APIWrapper:     	Prompting initial serialization...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+DataCenterConnection: 	Done initing auth for DC 2
+PingLoop:       	Ping DC 2.0
+MTProto:        	Updated config!
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+APIWrapper:     	Done initial serialization!
+APIWrapper:     	MadelineProto готов!
+Login:          	Отправка кода...
+Login:          	Код успешно отправлен! Как только Вы получите код Вам нужно использовать функцию completePhoneLogin.
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+MTProto:        	Will unreference instance
+DataCenterConnection: 	Disconnecting from shared DC 2
+Connection:     	Disconnecting from DC 2.0
+DataCenterConnection: 	Backed up  from DC 2.0
+Connection:     	Disconnected from DC 2.0
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 2
+MTProto:        	Unreferenced instance
+APIWrapper:     	Prompting final serialization...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+APIWrapper:     	Done final serialization!
+Serialization:  	Unlocking exclusive session lock!
+Serialization:  	Unlocked exclusive session lock!
+MTProto:        	Shutting down MadelineProto (MTProto)
+MTProto:        	Will unreference instance
+DataCenterConnection: 	Disconnecting from shared DC 2
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 2
+MTProto:        	Unreferenced instance
+MTProto:        	Successfully destroyed MadelineProto
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+AbstractServer: 	Starting IPC server /var/www/storage/app/telegram/+998339995959.madeline (process)
+ProcessRunner:  	Starting process with '/usr/bin/php' '-dhtml_errors=0' '-ddisplay_errors=0' '-dlog_errors=1' '/var/www/vendor/danog/madelineproto/src/Ipc/Runner/entry.php' 'madeline-ipc' '/var/www/storage/app/telegram/+998339995959.madeline' '1503488380'
+Serialization:  	MadelineProto is starting, please wait...
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	Got exclusive session lock!
+DataCenter:     	Acquiring connect lock for 2!
+DataCenter:     	Connecting to DC 2
+DataCenterConnection: 	Restoring 0 messages to DC 2
+Session:        	Resetting session in DC 2.0 due to creating initial session...
+Connection:     	Connecting to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream 
+Connection:     	Connected to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream!
+DataCenterConnection: 	Acquiring lock in order to init auth for DC 2
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Done initing auth for DC 2
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+PingLoop:       	Ping DC 2.0
+MTProto:        	AUTH_KEY_UNREGISTERED
+MTProto:        	Starting update system
+APIWrapper:     	MadelineProto готов!
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/ipcState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/ipcState.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer: 	Accepted IPC client connection!
+Login:          	Logging in as a normal user...
+AbstractServer: 	IPC server started successfully!
+Login:          	2FA активно, вам необходимо сначала вызвать функцию complete2falogin...
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+ProcessRunner:  	Got final message from worker: 
+ProcessRunner:  	Got final message from worker: 
+PingLoop:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer: 	Accepted IPC client connection!
+Login:          	Logging in as a normal user...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+Login:          	Мы залогинены!
+MTProto:        	Starting update system
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+Exception:      	file_put_contents(/etc/supervisor/conf.d/telegram_+998339995959.conf): Failed to open stream: No such file or directory in TelegramProcess.php:43
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+FeedLoop:       	Resumed update feed loop generic
+Session:        	Garbage collected 21 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 25 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 1 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+MinDatabase:    	Found 1 pending contexts
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelUserTyping
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+MinDatabase:    	Found 1 pending contexts
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelUserTyping
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateMessagePoll
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 6 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateMessagePoll
+Session:        	Garbage collected 6 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 7 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 7 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+AbstractServer: 	Starting IPC server /var/www/storage/app/telegram/+998339995959.madeline (process)
+ProcessRunner:  	Starting process with '/usr/bin/php' '-dhtml_errors=0' '-ddisplay_errors=0' '-dlog_errors=1' '/var/www/vendor/danog/madelineproto/src/Ipc/Runner/entry.php' 'madeline-ipc' '/var/www/storage/app/telegram/+998339995959.madeline' '498047326'
+Serialization:  	MadelineProto is starting, please wait...
+Exception:      	stream_socket_client(): Unable to connect to unix:///var/www/storage/app/telegram/+998339995959.madeline/ipc (Connection refused) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to unix:///var/www/storage/app/telegram/+998339995959.madeline/ipc (Connection refused) while connecting to IPC socket
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	Got exclusive session lock!
+DataCenter, user_0724:     	Acquiring connect lock for 2!
+DataCenter, user_0724:     	Connecting to DC 2
+DataCenterConnection, user_0724: 	Restoring 0 messages to DC 2
+Session, user_0724:        	Resetting session in DC 2.0 due to creating initial session...
+Connection, user_0724:     	Connecting to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream 
+Connection, user_0724:     	Connected to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream!
+DataCenterConnection, user_0724: 	Acquiring lock in order to init auth for DC 2
+DataCenterConnection, user_0724: 	Initing auth for DC 2
+DataCenterConnection, user_0724: 	Done initing auth for DC 2
+Session, user_0724:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+PingLoop, user_0724:       	Ping DC 2.0
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+MTProto, user_0724:        	Starting update system
+MTProto, user_0724:        	Obtaining updates after deserialization...
+APIWrapper, user_0724:     	MadelineProto готов!
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/ipcState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/ipcState.php.lock...
+AbstractServer, user_0724: 	Accepted IPC client connection!
+Exception, user_0724:      	Этот инстанс MadelineProto уже залогинен! in Login.php:185
+AbstractServer, user_0724: 	Got error while calling IPC method: \danog\MadelineProto\Exception: Этот инстанс MadelineProto уже залогинен! in /var/www/vendor/danog/madelineproto/src/Wrappers/Login.php:185
+Revision: 8.2.2
+TL Trace:
+
+AbstractServer.php(256):	phoneLogin()
+AbstractDriver.php(425):	clientRequest()
+AbstractDriver.php(562):	invokeMicrotasks()
+Revolt\EventLoop\Internal\{closure}()
+DriverSuspension.php(64):	resume()
+AbstractDriver.php(425):	Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(562):	invokeMicrotasks()
+Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(498):	start()
+AbstractDriver.php(553):	invokeCallbacks()
+Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(94):	resume()
+DriverSuspension.php(117):	Revolt\EventLoop\Internal\{closure}()
+Future.php(251):    	suspend()
+Execution.php(69):  	await()
+ParallelFilesystemDriver.php(210):	await()
+ParallelFilesystemDriver.php(204):	runFileTask()
+Filesystem.php(329):	write()
+functions.php(300): 	write()
+SessionPaths.php(160):	Amp\File\write()
+SessionPaths.php(285):	serialize()
+entry.php(116):     	storeIpcState()
+entry.php(154):     	danog\MadelineProto\Ipc\Runner\{closure}()
+FeedLoop, user_0724:       	Resumed update feed loop generic
+ProcessRunner:  	Got final message from worker: 
+ProcessRunner:  	Got final message from worker: 
+FeedLoop, user_0724:       	Resumed update feed loop channel -1001831342608
+FeedLoop, user_0724:       	Got channel too long update, getting difference...
+FeedLoop, user_0724:       	Resumed update feed loop channel -1001317934645
+FeedLoop, user_0724:       	Got channel too long update, getting difference...
+FeedLoop, user_0724:       	Resumed update feed loop channel -1002156916654
+FeedLoop, user_0724:       	Got channel too long update, getting difference...
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 13 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 8 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 8 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updates) received via the socket...
+SeqLoop, user_0724:        	Was fed updates of type updates...
+FeedLoop, user_0724:       	Resumed update feed loop channel -1001114591086
+MinDatabase, user_0724:    	Don't have origin info with min peer 1114591086, this may fail
+UpdateLoop, user_0724:     	Channel private, exiting getUpdate loop channel -1001114591086
+UpdateHandler, user_0724:  	Parsing updates (updates) received via the socket...
+SeqLoop, user_0724:        	Was fed updates of type updates...
+FeedLoop, user_0724:       	Resumed update feed loop channel -1001114591086
+FeedLoop, user_0724:       	Resumed update feed loop channel -1001114591086
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 13 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 13 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+UpdateHandler, user_0724:  	Parsing updates (updates) received via the socket...
+SeqLoop, user_0724:        	Was fed updates of type updates...
+FeedLoop, user_0724:       	Resumed update feed loop channel -1001114591086
+UpdateHandler, user_0724:  	Saving update of type updateEditChannelMessage
+FeedLoop, user_0724:       	Resumed update feed loop channel -1001114591086
+FeedLoop, user_0724:       	Got channel too long update, getting difference...
+FeedLoop, user_0724:       	Resumed update feed loop channel -1001114591086
+UpdateHandler, user_0724:  	Saving update of type updateEditChannelMessage
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateMessagePoll
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+Session, user_0724:        	Garbage collected 13 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+Session, user_0724:        	Garbage collected 12 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Session, user_0724:        	Garbage collected 12 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+Exception, user_0724:      	touch(): Unable to create file /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock because No such file or directory in AsyncTools.php:86
+entry, user_0724:          	\danog\MadelineProto\Exception: touch(): Unable to create file /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock because No such file or directory in /var/www/vendor/danog/madelineproto/src/AsyncTools.php:86
+Revision: 8.2.2
+TL Trace:
+
+exceptionErrorHandler()
+AsyncTools.php(86): 	touch()
+SessionPaths.php(148):	flock()
+APIWrapper.php(116):	serialize()
+MTProto.php(883):   	serialize()
+PeriodicLoopInternal.php(49):	serialize()
+PeriodicLoop.php(41):	danog\MadelineProto\Loop\Generic\{closure}()
+GenericLoop.php(55):	danog\Loop\{closure}()
+Loop.php(139):      	loop()
+Loop.php(166):      	loopInternal()
+AbstractDriver.php(597):	danog\Loop\{closure}()
+Revolt\EventLoop\Internal\{closure}()
+DriverSuspension.php(64):	resume()
+AbstractDriver.php(425):	Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(562):	invokeMicrotasks()
+Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(498):	start()
+AbstractDriver.php(553):	invokeCallbacks()
+Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(94):	resume()
+DriverSuspension.php(117):	Revolt\EventLoop\Internal\{closure}()
+Future.php(251):    	suspend()
+AbstractServer.php(176):	await()
+entry.php(119):     	waitShutdown()
+entry.php(154):     	danog\MadelineProto\Ipc\Runner\{closure}()
+MTProto, user_0724:        	Reporting: Surfaced: \danog\MadelineProto\Exception: touch(): Unable to create file /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock because No such file or directory in /var/www/vendor/danog/madelineproto/src/AsyncTools.php:86
+Revision: 8.2.2
+TL Trace:
+
+exceptionErrorHandler()
+AsyncTools.php(86): 	touch()
+SessionPaths.php(148):	flock()
+APIWrapper.php(116):	serialize()
+MTProto.php(883):   	serialize()
+PeriodicLoopInternal.php(49):	serialize()
+PeriodicLoop.php(41):	danog\MadelineProto\Loop\Generic\{closure}()
+GenericLoop.php(55):	danog\Loop\{closure}()
+Loop.php(139):      	loop()
+Loop.php(166):      	loopInternal()
+AbstractDriver.php(597):	danog\Loop\{closure}()
+Revolt\EventLoop\Internal\{closure}()
+DriverSuspension.php(64):	resume()
+AbstractDriver.php(425):	Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(562):	invokeMicrotasks()
+Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(498):	start()
+AbstractDriver.php(553):	invokeCallbacks()
+Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(94):	resume()
+DriverSuspension.php(117):	Revolt\EventLoop\Internal\{closure}()
+Future.php(251):    	suspend()
+AbstractServer.php(176):	await()
+entry.php(119):     	waitShutdown()
+entry.php(154):     	danog\MadelineProto\Ipc\Runner\{closure}()
+PingLoop, user_0724:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	Got exclusive session lock!
+MTProto:        	The database settings have changed!
+TL:             	Loading TL schemes...
+TL:             	Parsing TL_telegram_v186.tl...
+TL:             	Parsing TL_mtproto_v1.tl...
+TL:             	Parsing TL_secret.tl...
+MTProto:        	The prometheus settings have changed!
+MTProto:        	The serialization settings have changed!
+TL:             	Loading TL schemes...
+TL:             	Parsing TL_telegram_v186.tl...
+TL:             	Parsing TL_mtproto_v1.tl...
+TL:             	Parsing TL_secret.tl...
+DataCenter:     	Acquiring connect lock for 2!
+DataCenter:     	Connecting to DC 2
+DataCenterConnection: 	Restoring 0 messages to DC 2
+Session:        	Resetting session in DC 2.0 due to creating initial session...
+Connection:     	Connecting to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream 
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Connection:     	Connected to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream!
+DataCenterConnection: 	Acquiring lock in order to init auth for DC 2
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Generating permanent authorization key for DC 2...
+AuthKeyHandler: 	Requesting pq...
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with python_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with native_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2263834206764977519 = 1188133433 * 1905370343
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = -1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop, user_0724:       	Ping DC 2.0
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Generating temporary authorization key for DC 2...
+AuthKeyHandler: 	Requesting pq...
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with python_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with native_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 1485452284102158521 = 1053754183 * 1409676287
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 0.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Binding authorization keys...
+WriteLoop:      	Skipping help.getConfig pending due to unbound keys in DC 2.0
+WriteLoop:      	Skipping help.getConfig pending due to unbound keys in DC 2.0
+WriteLoop:      	Skipping help.getConfig pending due to unbound keys in DC 2.0
+WriteLoop:      	Skipping help.getConfig pending due to unbound keys in DC 2.0
+WriteLoop:      	NO MESSAGE SENT in write loop in DC 2.0, pending help.getConfig pending, help.getConfig pending
+WriteLoop:      	Skipping help.getConfig pending due to unbound keys in DC 2.0
+WriteLoop:      	Skipping help.getConfig pending due to unbound keys in DC 2.0
+WriteLoop:      	NO MESSAGE SENT in write loop in DC 2.0, pending help.getConfig pending, help.getConfig pending
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 6 incoming messages in DC 2, 0 left
+Session:        	Can't garbage collect auth.bindTempAuthKey with message ID 7495654247275699852 sent 2.066031356 seconds ago in DC 2, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 7 outgoing messages in DC 2, 1 left
+DataCenterConnection: 	Bound temporary and permanent authorization keys, DC 2
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+DataCenterConnection: 	Done initing auth for DC 2
+PingLoop:       	Ping DC 2.0
+MTProto:        	Updated config!
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+MTProto:        	Updated config!
+MTProto:        	Starting update system
+APIWrapper:     	Prompting initial serialization...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+APIWrapper:     	Done initial serialization!
+APIWrapper:     	MadelineProto готов!
+Login:          	Отправка кода...
+UpdateHandler, user_0724:  	Parsing updates (updateShortMessage) received via the socket...
+Login:          	Код успешно отправлен! Как только Вы получите код Вам нужно использовать функцию completePhoneLogin.
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+MTProto:        	Will unreference instance
+DataCenterConnection: 	Disconnecting from shared DC 2
+Connection:     	Disconnecting from DC 2.0
+DataCenterConnection: 	Backed up  from DC 2.0
+Connection:     	Disconnected from DC 2.0
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 2
+MTProto:        	Unreferenced instance
+APIWrapper:     	Prompting final serialization...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+APIWrapper:     	Done final serialization!
+Serialization:  	Unlocking exclusive session lock!
+Serialization:  	Unlocked exclusive session lock!
+MTProto:        	Shutting down MadelineProto (MTProto)
+MTProto:        	Will unreference instance
+DataCenterConnection: 	Disconnecting from shared DC 2
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 2
+MTProto:        	Unreferenced instance
+MTProto:        	Successfully destroyed MadelineProto
+FeedLoop, user_0724:       	Getdiff fed me message of type message in update feed loop generic...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateNewMessage
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updates) received via the socket...
+SeqLoop, user_0724:        	Was fed updates of type updates...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+MinDatabase, user_0724:    	Found 1 pending contexts
+UpdateHandler, user_0724:  	Parsing updates (updates) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateReadHistoryInbox
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Session, user_0724:        	Garbage collected 16 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+AbstractServer: 	Starting IPC server /var/www/storage/app/telegram/+998339995959.madeline (process)
+ProcessRunner:  	Starting process with '/usr/bin/php' '-dhtml_errors=0' '-ddisplay_errors=0' '-dlog_errors=1' '/var/www/vendor/danog/madelineproto/src/Ipc/Runner/entry.php' 'madeline-ipc' '/var/www/storage/app/telegram/+998339995959.madeline' '1424456680'
+Serialization:  	MadelineProto is starting, please wait...
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	Got exclusive session lock!
+DataCenter:     	Acquiring connect lock for 2!
+DataCenter:     	Connecting to DC 2
+DataCenterConnection: 	Restoring 0 messages to DC 2
+Session:        	Resetting session in DC 2.0 due to creating initial session...
+Connection:     	Connecting to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream 
+Connection:     	Connected to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream!
+DataCenterConnection: 	Acquiring lock in order to init auth for DC 2
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Done initing auth for DC 2
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+MTProto:        	AUTH_KEY_UNREGISTERED
+MTProto:        	Starting update system
+APIWrapper:     	MadelineProto готов!
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/ipcState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/ipcState.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer: 	Accepted IPC client connection!
+Login:          	Logging in as a normal user...
+AbstractServer: 	IPC server started successfully!
+Login:          	2FA активно, вам необходимо сначала вызвать функцию complete2falogin...
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+ProcessRunner:  	Got final message from worker: 
+ProcessRunner:  	Got final message from worker: 
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 12 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer: 	Accepted IPC client connection!
+Login:          	Logging in as a normal user...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+AbstractServer: 	Got error while calling IPC method: Телеграм возвратил RPC ошибку: The provided password hash is invalid. (400) (PASSWORD_HASH_INVALID), из-за /var/www/vendor/danog/madelineproto/src/RPCErrorException.php:513
+Revision: 8.2.2
+
+TL trace:
+['auth.checkPassword']
+ResponseHandler.php(405):	make()
+WrappedFuture.php(59):	danog\MadelineProto\MTProtoSession\{closure}()
+CallHandler.php(92):	await()
+CallHandler.php(45):	methodCallAsyncRead()
+Login.php(333):     	methodCallAsyncRead()
+AbstractServer.php(256):	complete2faLogin()
+AbstractDriver.php(425):	clientRequest()
+AbstractDriver.php(616):	invokeMicrotasks()
+Revolt\EventLoop\Internal\{closure}()
+DriverSuspension.php(64):	resume()
+AbstractDriver.php(425):	Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(616):	invokeMicrotasks()
+Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(497):	resume()
+AbstractDriver.php(553):	invokeCallbacks()
+Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(94):	resume()
+DriverSuspension.php(117):	Revolt\EventLoop\Internal\{closure}()
+Future.php(251):    	suspend()
+AbstractServer.php(176):	await()
+entry.php(119):     	waitShutdown()
+entry.php(154):     	danog\MadelineProto\Ipc\Runner\{closure}()
+
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Session:        	Garbage collected 12 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 15 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 13 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 2 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer: 	Accepted IPC client connection!
+Login:          	Logging in as a normal user...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Login:          	Мы залогинены!
+MTProto:        	Starting update system
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+Exception:      	file_put_contents(/etc/supervisor/conf.d/telegram_+998339995959.conf): Failed to open stream: Permission denied in TelegramProcess.php:43
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+FeedLoop:       	Resumed update feed loop generic
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateServiceNotification
+Session:        	Garbage collected 19 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 23 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 1 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 7 outgoing messages in DC 2, 3 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 2 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 3 outgoing messages in DC 2, 1 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 6 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 12 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateMessagePoll
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateMessagePoll
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 13 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 1 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 7 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 13 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 6 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 8 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 1 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 1 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 13 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 6 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 7 outgoing messages in DC 2, 3 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 6 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateChannelMessageViews
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer: 	Accepted IPC client connection!
+Exception:      	Этот инстанс MadelineProto уже залогинен! in Login.php:185
+AbstractServer: 	Got error while calling IPC method: \danog\MadelineProto\Exception: Этот инстанс MadelineProto уже залогинен! in /var/www/vendor/danog/madelineproto/src/Wrappers/Login.php:185
+Revision: 8.2.2
+TL Trace:
+
+AbstractServer.php(256):	phoneLogin()
+AbstractDriver.php(425):	clientRequest()
+AbstractDriver.php(562):	invokeMicrotasks()
+Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(498):	start()
+AbstractDriver.php(553):	invokeCallbacks()
+Revolt\EventLoop\Internal\{closure}()
+AbstractDriver.php(94):	resume()
+DriverSuspension.php(117):	Revolt\EventLoop\Internal\{closure}()
+Future.php(251):    	suspend()
+AbstractServer.php(176):	await()
+entry.php(119):     	waitShutdown()
+entry.php(154):     	danog\MadelineProto\Ipc\Runner\{closure}()
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 1 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	Got exclusive session lock!
+MTProto:        	The database settings have changed!
+TL:             	Loading TL schemes...
+TL:             	Parsing TL_telegram_v186.tl...
+TL:             	Parsing TL_mtproto_v1.tl...
+TL:             	Parsing TL_secret.tl...
+MTProto:        	The prometheus settings have changed!
+MTProto:        	The serialization settings have changed!
+TL:             	Loading TL schemes...
+TL:             	Parsing TL_telegram_v186.tl...
+TL:             	Parsing TL_mtproto_v1.tl...
+TL:             	Parsing TL_secret.tl...
+DataCenter:     	Acquiring connect lock for 2!
+DataCenter:     	Connecting to DC 2
+DataCenterConnection: 	Restoring 0 messages to DC 2
+Session:        	Resetting session in DC 2.0 due to creating initial session...
+Connection:     	Connecting to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream 
+Connection:     	Connected to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream!
+DataCenterConnection: 	Acquiring lock in order to init auth for DC 2
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Generating permanent authorization key for DC 2...
+AuthKeyHandler: 	Requesting pq...
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with python_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with native_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 1645397202888239249 = 1265082997 * 1300623917
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = -2.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Generating temporary authorization key for DC 2...
+AuthKeyHandler: 	Requesting pq...
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with python_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorizing with native_single (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2047416371333030647 = 1159382407 * 1765954321
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = -1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Binding authorization keys...
+WriteLoop:      	Skipping help.getConfig pending due to unbound keys in DC 2.0
+WriteLoop:      	Skipping help.getConfig pending due to unbound keys in DC 2.0
+DataCenterConnection: 	Bound temporary and permanent authorization keys, DC 2
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+MTProto:        	Updated config!
+MTProto:        	Starting update system
+APIWrapper:     	Prompting initial serialization...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+MTProto:        	Updated config!
+DataCenterConnection: 	Done initing auth for DC 2
+PingLoop:       	Ping DC 2.0
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+APIWrapper:     	Done initial serialization!
+APIWrapper:     	MadelineProto готов!
+Login:          	Отправка кода...
+UpdateHandler, user_0724:  	Parsing updates (updateShortMessage) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateNewMessage
+UpdateHandler, user_0724:  	Parsing updates (updateShortMessage) received via the socket...
+Login:          	Код успешно отправлен! Как только Вы получите код Вам нужно использовать функцию completePhoneLogin.
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+MTProto:        	Will unreference instance
+DataCenterConnection: 	Disconnecting from shared DC 2
+Connection:     	Disconnecting from DC 2.0
+DataCenterConnection: 	Backed up  from DC 2.0
+Connection:     	Disconnected from DC 2.0
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 2
+MTProto:        	Unreferenced instance
+APIWrapper:     	Prompting final serialization...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+APIWrapper:     	Done final serialization!
+Serialization:  	Unlocking exclusive session lock!
+Serialization:  	Unlocked exclusive session lock!
+MTProto:        	Shutting down MadelineProto (MTProto)
+MTProto:        	Will unreference instance
+DataCenterConnection: 	Disconnecting from shared DC 2
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 2
+MTProto:        	Unreferenced instance
+MTProto:        	Successfully destroyed MadelineProto
+FeedLoop, user_0724:       	Getdiff fed me message of type message in update feed loop generic...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateNewMessage
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+MinDatabase, user_0724:    	Found 1 pending contexts
+UpdateHandler, user_0724:  	Parsing updates (updates) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateReadHistoryInbox
+MinDatabase, user_0724:    	Found 1 pending contexts
+UpdateHandler, user_0724:  	Parsing updates (updates) received via the socket...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateReadHistoryInbox
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Session, user_0724:        	Garbage collected 7 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+AbstractServer: 	Starting IPC server /var/www/storage/app/telegram/+998339995959.madeline (process)
+ProcessRunner:  	Starting process with '/usr/bin/php' '-dhtml_errors=0' '-ddisplay_errors=0' '-dlog_errors=1' '/var/www/vendor/danog/madelineproto/src/Ipc/Runner/entry.php' 'madeline-ipc' '/var/www/storage/app/telegram/+998339995959.madeline' '1665428704'
+Serialization:  	MadelineProto is starting, please wait...
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	Got exclusive session lock!
+DataCenter:     	Acquiring connect lock for 2!
+DataCenter:     	Connecting to DC 2
+DataCenterConnection: 	Restoring 0 messages to DC 2
+Session:        	Resetting session in DC 2.0 due to creating initial session...
+Connection:     	Connecting to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream 
+Connection:     	Connected to DC 2.0 via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream!
+DataCenterConnection: 	Acquiring lock in order to init auth for DC 2
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Done initing auth for DC 2
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+PingLoop:       	Ping DC 2.0
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+MTProto:        	AUTH_KEY_UNREGISTERED
+MTProto:        	Starting update system
+APIWrapper:     	MadelineProto готов!
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/ipcState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/ipcState.php.lock...
+AbstractServer: 	Accepted IPC client connection!
+Login:          	Logging in as a normal user...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+AbstractServer: 	IPC server started successfully!
+Login:          	2FA активно, вам необходимо сначала вызвать функцию complete2falogin...
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+ProcessRunner:  	Got final message from worker: 
+ProcessRunner:  	Got final message from worker: 
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 13 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer: 	Accepted IPC client connection!
+Login:          	Logging in as a normal user...
+Session, user_0724:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+Session:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 10 outgoing messages in DC 2, 1 left
+PingLoop:       	Ping DC 2.0
+Login:          	Мы залогинены!
+MTProto:        	Starting update system
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper:     	Saved session!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+FeedLoop:       	Resumed update feed loop generic
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateServiceNotification
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 8 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 1 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer: 	Accepted IPC client connection!
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateServiceNotification
+MinDatabase:    	Found 291 pending contexts
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+Session:        	Garbage collected 19 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 20 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+UpdateHandler:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer: 	Accepted IPC client connection!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Session, user_0724:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 7 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer, user_0724: 	Accepted IPC client connection!
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 7 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer, user_0724: 	Accepted IPC client connection!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Session, user_0724:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer, user_0724: 	Accepted IPC client connection!
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+Session, user_0724:        	Garbage collected 6 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 8 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+Logger:         	MadelineProto 8.2.2
+Logger:         	Copyright (C) 2016-2025 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto can be translated in your language (current translation progress: 58%), go to https://weblate.madelineproto.xyz to contribute with the translation!
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	Connected to IPC socket!
+AbstractServer, user_0724: 	Accepted IPC client connection!
+APIWrapper:     	Shutting down MadelineProto (danog\MadelineProto\API)
+APIWrapper:     	Prompting final serialization...
+APIWrapper:     	Done final serialization!
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 10 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 7 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 11 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 12 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+Session, user_0724:        	Garbage collected 6 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 1 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateChannelMessageViews
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 13 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 9 outgoing messages in DC 2, 2 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+Session, user_0724:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+UpdateHandler, user_0724:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, user_0724:       	Resumed update feed loop generic
+UpdateHandler, user_0724:  	Saving update of type updateUserStatus
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 12 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 11 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 5 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/safe.php.lock...
+SessionPaths, user_0724:   	Waiting for exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+SessionPaths, user_0724:   	Got exclusive lock of /var/www/storage/app/telegram/+998339995959.madeline/lightState.php.lock...
+APIWrapper, user_0724:     	Saved session!
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 9 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 10 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
+PingLoop, user_0724:       	Ping DC 2.0
+Session, user_0724:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session, user_0724:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+PingLoop, user_0724:       	Ping DC 2.0
