@@ -1,25 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-//
-//use App\Http\Requests\MessengerStoreRequest;
-//use App\Http\Requests\MessengerUpdateRequest;
-use App\Http\Resources\MessengerCollection;
-use App\Http\Resources\MessengerResource;
-use App\Models\Messenger;
+
+use App\Events\TelegramMessageShipped;
+use App\Models\UserMessage;
 use App\Services\TelegramService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
-use danog\MadelineProto\API;
-use App\Listeners\TelegramIncomingMessage;
-
-
 
 
 class MessengerController extends Controller
@@ -29,23 +18,8 @@ class MessengerController extends Controller
     {
         $phone = auth()->user()->account->connections()->first()->phone;
 
-        $api = new TelegramService;
-        //$api = new API(storage_path("app/telegram/{$phone}.madeline"));
-        //$chat = $api->messages->getDialogs();
-
-        $chats = $api->getDialogs($phone);
-
-        //$handler = $api->getEventHandler(TelegramIncomingMessage::class);
-
-        //$chats = $handler->getDialogs();
-
-        //var_dump($chats);
-
-        //$handler = new TelegramIncomingMessage();
-
-
         return Inertia::render('Messengers/Index', [
-            'chats' => $chats
+            'chats' => $this->telegramService->getDialogs($phone)
         ]);
     }
 
@@ -62,11 +36,10 @@ class MessengerController extends Controller
     {
         $peerId = $request->integer('peerId');
         $phone = auth()->user()->account->connections[0]->phone;
+
         $messages = $this->telegramService->getMessages($phone, $peerId);
-//        exit(var_dump($messages));
         return response()->json($messages);
     }
-
 
 
     public function sendMessage(Request $request): JsonResponse
@@ -76,58 +49,74 @@ class MessengerController extends Controller
             'message' => 'required|string',
         ]);
 
-        $phone = auth()->user()->account->connections[0]->phone;
+        $user = auth()->user();
+        $phone = $user->account->connections[0]->phone;
         $result = $this->telegramService->sendMessage($phone, $validated['peerId'], $validated['message']);
 
         if ($result['success']) {
+
+            UserMessage::create([
+                'user_id' => $user->id,
+                'chat_id' => $validated['peerId'],
+                'message_id' => $result['message_id'],
+            ]);
+
             return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
         }
 
         return response()->json(['status' => 'error', 'error' => $result['error']], 500);
     }
 
-
-    public function create(): Response
+    public function sendMedia(Request $request)
     {
-        return Inertia::render('Messengers/Create');
-    }
 
-    public function store(MessengerStoreRequest $request): RedirectResponse
-    {
-        Messenger::create(
-            $request->validated()
-        );
+        $validated = $request->validate([
+            'peer_id' => 'required|numeric',
+            'message' => 'nullable|string|max:255'
+        ]);
 
-        return Redirect::route('messengers')->with('success', 'Messenger created.');
-    }
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filePath = $file->store('uploads');
 
-    public function edit(Messenger $messenger): Response
-    {
-        return Inertia::render('Messengers/Edit', [
-            'messenger' => new MessengerResource($messenger),
+            $this->telegramService->sendMedia(
+                mediaType: $this->telegramService->getMediaTypeForMadelineProto($file),
+                chatId: $validated['peer_id'],
+                uploadPath: storage_path('app/public/' . $filePath),
+                fileName: $file->getClientOriginalName(),
+                message: $validated['message']
+            );
+        }
+        return response()->json([
+            'success' => true,
+            'message' => $request->file('file')->getClientOriginalName(),
+            'uuid' => $request->file_uuid
         ]);
     }
 
-    public function update(Messenger $messenger, MessengerUpdateRequest $request): RedirectResponse
+    public function sendVoice(Request $request)
     {
-        $messenger->update(
-            $request->validated()
+        $validated = $request->validate([
+            'peer_id' => 'required|numeric',
+            'file' => 'required|file|mimes:mp3,ogg,wav'
+        ]);
+
+        $file = $request->file('file');
+        $filePath = $file->store('uploads');
+
+        $this->telegramService->sendVoice(
+            chatId: $validated['peer_id'],
+            file: storage_path('app/public/' . $filePath),
+            fileName: $file->getClientOriginalName()
         );
 
-        return Redirect::back()->with('success', 'Messenger updated.');
+        return response()->json([
+           'success' => true,
+           'message' => $file->getClientOriginalName(),
+        ]);
     }
 
-    public function destroy(Messenger $messenger): RedirectResponse
-    {
-        $messenger->delete();
-
-        return Redirect::back()->with('success', 'Messenger deleted.');
-    }
-
-    public function restore(Messenger $messenger): RedirectResponse
-    {
-        $messenger->restore();
-
-        return Redirect::back()->with('success', 'Messenger restored.');
+    public function getMedia($message_id) {
+        $this->telegramService->getMedia($message_id);
     }
 }

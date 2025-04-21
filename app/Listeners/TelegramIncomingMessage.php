@@ -4,171 +4,84 @@ declare(strict_types=1);
 namespace App\Listeners;
 
 use App\Events\TelegramMessage;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use danog\MadelineProto\EventHandler\Attributes\Handler;
+use danog\MadelineProto\EventHandler\Media\Audio;
+use danog\MadelineProto\EventHandler\Media\Document;
+use danog\MadelineProto\EventHandler\Media\Photo;
+use danog\MadelineProto\EventHandler\Media\Video;
+use danog\MadelineProto\EventHandler\Media\Voice;
 use danog\MadelineProto\EventHandler\Message;
-use danog\MadelineProto\EventHandler\Plugin\RestartPlugin;
-use danog\MadelineProto\EventHandler\SimpleFilter\Incoming;
 use danog\MadelineProto\SimpleEventHandler;
+use danog\MadelineProto\EventHandler\Message\GroupMessage;
+use Illuminate\Support\Carbon;
 
 class TelegramIncomingMessage extends SimpleEventHandler
 {
 
-    private array $dialogs = [];
-
-
-
     #[Handler]
-
-    public function handleMessage(Incoming&Message $message): void
+    public function handleMessage(Message $message): void
     {
-        $chatId = $message->chatId ?? null;
-        $text = $message->message ?? '';
-        $time = date('H:i:s', $message->date ?? time());
 
-        if ($chatId === null) {return;}
-
-        $this->dialogs[$chatId] = [
-            'peer' => $chatId,
-            'unread_count' => ($this->dialogs[$chatId]['unread_count'] ?? 0) + 1,
-            'top_message' => $message->id ?? null,
-            'messages' => [
-                'id' => $message->id ?? null,
-                'message' => $text,
+        $result = [
+            'id' => $message->id,
+            'chat_id' => $message->chatId,
+            'message' => $message->message ?? '',
+            'user' => [
+                'id' => $message->senderId,
+                'self' => $message->out
             ],
-            'users' => [],
-            'chats' => [],
+            'time'   => Carbon::parse($message->date)->timezone('+5')->format('H:i'),
+            'type' => (get_class($message) === GroupMessage::class) ? 'chat' : 'user'
         ];
 
-        TelegramMessage::dispatch($this->getDialogs());
-    }
-
-
-    public function getDialogs()
-    {
-
-        try {
-            $dialogs = $this->messages->getDialogs();
-            $result = [];
-
-
-
-            // Объединяем с теми, что были получены в handleMessage()
-            foreach ($this->dialogs as $chatId => $dialog) {
-                // Добавляем или обновляем диалог
-                $dialogs['dialogs'][] = [
-                    'peer' => $dialog['peer'],
-                    'unread_count' => $dialog['unread_count'],
-                    'top_message' => $dialog['top_message'],
-                    'messages' => [$dialog['messages']],
-                    'users' => $dialog['users'],
-                    'chats' => $dialog['chats'],
-                ];
-            }
-
-
-
-
-            if (isset($dialogs['dialogs']) && is_array($dialogs['dialogs'])) {
-                foreach ($dialogs['dialogs'] as $dialog) {
-                    if (!is_array($dialog)) {
-                        continue;
-                    }
-
-                    $peer_id = $dialog['peer'] ?? null;
-                    $unread_count = $dialog['unread_count'] ?? 0;
-                    $top_message_id = $dialog['top_message'] ?? null;
-                    $title = 'Unknown';
-                    $type = 'unknown';
-                    $last_message = null;
-
-                    if (is_numeric($peer_id)) {
-                        if ($peer_id > 0) {
-                            $type = 'user';
-                            // Исключаем ботов
-                            $user = array_filter($dialogs['users'], function($u) use ($peer_id) {
-                                return $u['id'] === $peer_id && $u['bot'] != 1 && $u['support'] != 1;
-                            });
-                            $user = reset($user);
-                            if ($user) {
-                                $title = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? ''));
-                            } else {
-                                continue; // Пропускаем диалоги с ботами
-                            }
-                        } else {
-                            $type = 'chat';
-                            $chat_id = $peer_id;
-                            // Исключаем каналы
-                            $chat = array_filter($dialogs['chats'], fn($c) => $c['id'] === $chat_id && $c['_'] !== 'channel');
-                            $chat = reset($chat);
-                            if ($chat) {
-                                $title = $chat['title'] ?? 'Unknown Chat';
-                            } else {
-                                continue; // Пропускаем каналы
-                            }
-                        }
-                    }
-
-                    // Последнее сообщение
-                    if ($top_message_id) {
-                        $message = array_filter($dialogs['messages'], fn($m) => $m['id'] === $top_message_id);
-                        $message = reset($message);
-                        if ($message) {
-                            $last_message = $message['message'] ?? 'No message';
-                        }
-                    }
-
-                    $result[] = [
-                        "peer_id" => $peer_id,
-                        'type' => $type,
-                        'title' => $title,
-                        'unread' => $unread_count,
-                        'lastMessage' => $last_message,
-                    ];
-                }
-            }
-
-            return $result;
-        } catch (\Throwable $e) {
-            throw new \RuntimeException("Ошибка получения диалогов: " . $e->getMessage());
-        } finally {
-            // Уничтожение экземпляра MadelineProto
-//            $MadelineProto->stop();
+        if ($message->media) {
+            $result['media'] = $this->formatMedia($message->media);
         }
+
+        TelegramMessage::dispatch($result);
     }
 
+    /*private function getTelegramMediaType($media): string|false
+    {
+        if ($media === null) {
+            return false;
+        }
+
+        $mediaClass = get_class($media);
+
+        return match (true) {
+            str_contains($mediaClass, 'Document') => 'messageMediaDocument',
+            str_contains($mediaClass, 'Photo') => 'messageMediaPhoto',
+            str_contains($mediaClass, 'Video') => 'messageMediaVideo',
+            str_contains($mediaClass, 'Audio') => 'messageMediaAudio',
+            default => false,
+        };
+    }*/
+
+    private function formatMedia($media): array
+    {
+        if (!$media) return [];
+
+        return [
+            '_' => $this->getTelegramMediaType($media),
+            'document' => [
+                'mime_type' => $media->mimeType ?? null,
+                'file_name' => $media->fileName ?? null,
+                'size' => $media->size ?? null,
+            ],
+            'caption' => $media->caption ?? null,
+        ];
+    }
+
+    private function getTelegramMediaType($media): string
+    {
+        return match (true) {
+            $media instanceof Document => 'messageMediaDocument',
+            $media instanceof Photo => 'messageMediaPhoto',
+            $media instanceof Video => 'messageMediaVideo',
+            $media instanceof Audio => 'messageMediaAudio',
+            $media instanceof Voice => 'messageMediaVoice',
+            default => 'messageMediaUnsupported',
+        };
+    }
 }
-
-
-
-//final class TelegramIncomingMessage extends SimpleEventHandler
-//{
-////    public $messages = ;
-//
-//    #[Handler]
-//    public function handleMessage(Incoming&Message $message): void
-//    {
-//        $telegramMsg = [
-//            'id' => $message->chatId ?? null,
-//            'last_message' => $message->message ?? '',
-//            'time' => date('H:i:s', $message->date ?? time()),
-//        ];
-//
-//        // Ограничим количество сохраненных сообщений
-//        if (count($telegramMsg) > 50) {
-//            array_shift($telegramMsg);
-//        }
-//    }
-//
-//    public function getLastMessages(): array
-//    {
-//        return $this->messages;
-//    }
-//}
-//
-//TelegramIncomingMessage::startAndLoop('bot.madeline');
-
-
-//$storage = storage_path() . '/app/telegram/62 822 11915445.madeline';
-//TelegramIncomingMessage::startAndLoop($storage);

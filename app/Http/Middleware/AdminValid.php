@@ -19,10 +19,10 @@ class AdminValid
         $routes = ['employees.create', 'employees.update', 'employees.destroy', 'employees.store', 'employees.edit'];
 
         if (in_array(Route::getCurrentRoute()->getName(), $routes)) {
-            if (auth()->user()->owner) {
+            if (auth()->check() && auth()->user()->owner) {
                 return $next($request);
             } else {
-                abort(Response::HTTP_FORBIDDEN);
+                return redirect()->route('dashboard');
             }
         }
         return $next($request);

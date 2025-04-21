@@ -120,6 +120,11 @@ export interface Organization {
   contacts: Contact[];
 }
 
+export interface Role {
+  id: number;
+  name: string;
+}
+
 export type PaginatedData<T> = {
   data: T[];
   links: {

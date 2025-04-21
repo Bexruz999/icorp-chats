@@ -19,11 +19,12 @@ class EmployeesController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
 
         return Inertia::render('Employees/Index', [
             'filters' => \Illuminate\Support\Facades\Request::all('search', 'role', 'trashed'),
             'users' => new UserCollection(
-                Auth::user()->account->users()->where('owner', false)->paginate()
+                $user->account->users()->whereNot('id', $user->id)->paginate()
             ),
         ]);
     }
@@ -33,6 +34,9 @@ class EmployeesController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))  abort(419);
+
         return Inertia::render('Employees/Create');
     }
 
@@ -41,9 +45,10 @@ class EmployeesController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        $user = Auth::user()->account->users()->create(
-            $request->validated()
-        );
+        $user = Auth::user();
+        if (!$user->hasRole('admin'))  abort(419);
+
+        $user->account->users()->create($request->validated());
 
         if ($request->hasFile('photo')) {
             $user->update([
@@ -67,7 +72,9 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
+        $auth = Auth::user();
         $user = User::findOrFail($id);
+        if (!$auth->hasRole('admin') && $user->owner) abort(419);
 
         return Inertia::render('Employees/Edit', [
             'user' => new UserResource($user),
@@ -79,6 +86,9 @@ class EmployeesController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
+
+        $auth = Auth::user();
+
         $user = User::findOrFail($id);
 
         $user->update(

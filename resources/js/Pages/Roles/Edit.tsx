@@ -8,12 +8,12 @@ import TextInput from '@/Components/Form/TextInput';
 import SelectInput from '@/Components/Form/SelectInput';
 import FileInput from '@/Components/Form/FileInput';
 import TrashedMessage from '@/Components/Messages/TrashedMessage';
-import { Employee } from '@/types';
+import { User } from '@/types';
 import FieldGroup from '@/Components/Form/FieldGroup';
 
 const Edit = () => {
   const { user } = usePage<{
-    user: Employee & { password: string; photo: File | null };
+    user: User & { password: string; photo: File | null };
   }>().props;
 
   const { data, setData, errors, post, processing } = useForm({
@@ -33,7 +33,7 @@ const Edit = () => {
     e.preventDefault();
 
     // NOTE: We are using POST method here, not PUT/PATCH. See comment above.
-    post(route('employees.update', user.id));
+    post(route('users.update', user.id));
   }
 
   function destroy() {
@@ -44,7 +44,7 @@ const Edit = () => {
 
   function restore() {
     if (confirm('Are you sure you want to restore this user?')) {
-      router.put(route('employees.restore', user.id));
+      router.put(route('users.restore', user.id));
     }
   }
 
@@ -54,10 +54,10 @@ const Edit = () => {
       <div className="flex justify-start max-w-lg mb-8">
         <h1 className="text-3xl font-bold">
           <Link
-            href={route('employees.index')}
+            href={route('users')}
             className="text-indigo-600 hover:text-indigo-700"
           >
-            Сотрудники
+            Users
           </Link>
           <span className="mx-2 font-medium text-indigo-600">/</span>
           {data.first_name} {data.last_name}
@@ -158,7 +158,7 @@ const Edit = () => {
               type="submit"
               className="ml-auto btn-indigo"
             >
-              Обновлять
+              Update User
             </LoadingButton>
           </div>
         </form>

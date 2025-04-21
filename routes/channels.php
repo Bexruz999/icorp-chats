@@ -11,3 +11,4 @@ use App\Models\User;
 //    return true;
 //});
 Broadcast::channel('telegram-messages', \App\Broadcasting\TelegrammessageChannel::class);
+Broadcast::channel('telegram-message-shipped', \App\Broadcasting\TelegrammessageChannel::class);

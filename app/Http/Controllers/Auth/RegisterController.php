@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -35,14 +36,20 @@ class RegisterController extends Controller
             'name' => $request->first_name,
         ]);
 
+        $role = Role::create(['name' => 'admin', 'team_id' => $account->id]);
+
         $user = User::create([
             'first_name' => $request->first_name,
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => bcrypt($password),
             'account_id' => $account->id,
-            'owner' => true
+            'owner' => false
         ]);
+
+        setPermissionsTeamId($role->id);
+
+        $user->assignRole($role);
 
         SendEmail::dispatch($request->email, $password);
 

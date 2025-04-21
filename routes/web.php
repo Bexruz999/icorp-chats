@@ -11,10 +11,12 @@ use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\AdminValid;
+use danog\MadelineProto\API;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MessengerController;
@@ -59,10 +61,6 @@ Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard')
     ->middleware('auth');
 
-Route::get('/test', function () {
-    return Inertia::render('MiniApp/Index');
-})->name('miniApp.index');
-
 // Users
 
 Route::get('users', [UsersController::class, 'index'])
@@ -95,7 +93,7 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
 
 // Organizations
 
-Route::get('organizations', [OrganizationsController::class, 'index'])
+/*Route::get('organizations', [OrganizationsController::class, 'index'])
     ->name('organizations')
     ->middleware('auth');
 
@@ -121,19 +119,27 @@ Route::delete('organizations/{organization}', [OrganizationsController::class, '
 
 Route::put('organizations/{organization}/restore', [OrganizationsController::class, 'restore'])
     ->name('organizations.restore')
-    ->middleware('auth');
+    ->middleware('auth');*/
 
 // Messenger
 
 Route::get('messenger', [MessengerController::class, 'index'])
-    ->name('messengers')
-    ->middleware('auth');
+    ->name('messengers')->middleware('auth');
+
 Route::get('messenger/messages', [MessengerController::class, 'getMessages'])
-    ->name('messenger.messages')
-    ->middleware('auth');
+    ->name('messenger.messages')->middleware('auth');
+
 Route::post('/messenger/send-message', [MessengerController::class, 'sendMessage'])
-    ->name('messenger.send-message')
-    ->middleware('auth');;
+    ->name('messenger.send-message')->middleware('auth');
+
+Route::post('/messenger/send-media', [MessengerController::class, 'sendMedia'])
+    ->name('messenger.send-media')->middleware('auth');
+
+Route::post('/messenger/send-voice', [MessengerController::class, 'sendVoice'])
+    ->name('messenger.send-voice')->middleware('auth');
+
+Route::get('messenger/get_media/{message_id}', [MessengerController::class, 'getMedia'])
+    ->name('messenger.get-media')->middleware('auth');
 
 //
 //Route::post('messenger', [MessengerController::class, 'getDialogs'])
@@ -143,7 +149,7 @@ Route::post('/messenger/send-message', [MessengerController::class, 'sendMessage
 
 // Contacts
 
-Route::get('contacts', [ContactsController::class, 'index'])
+/*Route::get('contacts', [ContactsController::class, 'index'])
     ->name('contacts')
     ->middleware('auth');
 
@@ -169,7 +175,7 @@ Route::delete('contacts/{contact}', [ContactsController::class, 'destroy'])
 
 Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
     ->name('contacts.restore')
-    ->middleware('auth');
+    ->middleware('auth');*/
 
 // Reports
 
@@ -208,11 +214,13 @@ Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'd
     ->name("settings.delete")
     ->middleware("auth");
 
-Route::resource('employees', EmployeesController::class)->middleware(AdminValid::class);
+Route::resource('employees', EmployeesController::class)->middleware('auth');
 
 Route::resource('bots', BotController::class)->middleware('auth');
 
 Route::resource('shops', ShopController::class)->middleware('auth');
+
+Route::resource('roles', RoleController::class)->middleware('auth');
 
 Route::get('categories/create/{id}',[CategoryController::class, 'createShop'])->name('categories.create.shop');
 Route::resource('categories', CategoryController::class)->middleware('auth');

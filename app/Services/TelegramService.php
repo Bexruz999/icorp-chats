@@ -1,100 +1,111 @@
 <?php
+
 namespace App\Services;
 
-use App\Events\TelegramMessage;
+use App\Models\UserMessage;
+use Arr;
 use danog\MadelineProto\API;
+use danog\MadelineProto\Exception;
+use danog\MadelineProto\LocalFile;
+use danog\MadelineProto\Settings\AppInfo;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
-use App\Events\DialogsUpdated;
+use Illuminate\Support\Str;
+use RuntimeException;
+use Storage;
+use Throwable;
 
 
-class TelegramService {
+class TelegramService
+{
 
-    public static function createMadelineProto(string $phone): \danog\MadelineProto\API {
-        $settings = (new \danog\MadelineProto\Settings\AppInfo)
+    public static function createMadelineProto(string $phone): string|API
+    {
+        $settings = (new AppInfo)
             ->setApiId(intval(env("TELEGRAM_API_ID")))
             ->setApiHash(env('TELEGRAM_API_HASH'));
 
-        $storagePath = storage_path("app/telegram/{$phone}.madeline");
-
-        return new \danog\MadelineProto\API($storagePath, $settings);
-    }
-
-    public function getDialogs(string $phone)
-    {
-        $MadelineProto = new API(storage_path("app/telegram/{$phone}.madeline"));
+        $storagePath = storage_path("app/telegram/$phone.madeline");
 
         try {
-            $dialogs = $MadelineProto->messages->getDialogs(limit: 100);
-            $result = [];
+            return new API($storagePath, $settings);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 
 
+    /**
+     * Retrieve a list of dialogs (chats, groups, channels) for a given phone number.
+     *
+     * This function fetches the user's dialogs via MadelineProto, returning chat information.
+     * It can be useful for listing available chats to choose where to send messages or media.
+     *
+     * @param string $phone The phone number associated with the Telegram account.
+     *
+     * @return array The list of dialogs, including chat IDs, names, and types.
+     *
+     * @throws \Exception If fetching dialogs fails or the API returns an error.
+     */
+    public function getDialogs(string $phone): array
+    {
+        $MadelineProto = self::createMadelineProto($phone);
 
-            if (isset($dialogs['dialogs']) && is_array($dialogs['dialogs'])) {
+        try {
+
+            $limit = 100; // Number of dialogs to fetch per page
+            $date = 0; // Start point (for the first request, it's 0)
+            $dialogsCollect = [];
+
+            while (true) {
+                // Get dialogs with pagination
+                $dialogs = $MadelineProto->messages->getDialogs(offset_date: $date, limit: $limit);
+
+                // Check if we received any dialogs
+                if (count($dialogs['dialogs']) == 0) {
+                    break;
+                }
+
+                $users = collect($dialogs['users'])->where('bot', false);
+                $chats = collect($dialogs['chats'])->whereIn('_', ['channel', 'chat']);
+                $messages = collect($dialogs['messages']);
+
+                // Merge the dialogs with the existing ones
                 foreach ($dialogs['dialogs'] as $dialog) {
-                    if (!is_array($dialog)) {
+
+                    $user = $users->where('id', $dialog['peer'])->first();
+                    $chat = $chats->where('id', $dialog['peer'])->first();
+                    $message = $messages->where('peer_id', $dialog['peer'])
+                        ->where('id', $dialog['top_message'])->first();
+                    if ($chat) {
+                        $title = Arr::get($chat, 'title');
+                        $type = 'chat';
+                    } else if ($user) {
+                        $title = Arr::get($user, 'first_name');
+                        $type = 'user';
+                    } else {
+                        // Skip non-existing users and channels
                         continue;
                     }
 
-                    $peer_id = $dialog['peer'] ?? null;
-                    $unread_count = $dialog['unread_count'] ?? 0;
-                    $top_message_id = $dialog['top_message'] ?? null;
-                    $title = 'Unknown';
-                    $type = 'unknown';
-                    $last_message = null;
-
-                    if (is_numeric($peer_id)) {
-                        if ($peer_id > 0) {
-                            $type = 'user';
-                            // Исключаем ботов
-                            $user = array_filter($dialogs['users'], function($u) use ($peer_id) {
-                                return $u['id'] === $peer_id && $u['bot'] != 1 && $u['support'] != 1;
-                            });
-                            $user = reset($user);
-                            if ($user) {
-                                $title = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? ''));
-                            } else {
-                                continue; // Пропускаем диалоги с ботами
-                            }
-                        } else {
-                            $type = 'chat';
-                            $chat_id = $peer_id;
-                            // Исключаем каналы
-                            $chat = array_filter($dialogs['chats'], fn($c) => $c['id'] === $chat_id && $c['_'] !== 'channel');
-                            $chat = reset($chat);
-                            if ($chat) {
-                                $title = $chat['title'] ?? 'Unknown Chat';
-                            } else {
-                                continue; // Пропускаем каналы
-                            }
-                        }
-                    }
-
-                    // Последнее сообщение
-                    if ($top_message_id) {
-                        $message = array_filter($dialogs['messages'], fn($m) => $m['id'] === $top_message_id);
-                        $message = reset($message);
-                        if ($message) {
-                            $last_message = $message['message'] ?? 'No message';
-                        }
-                    }
-
-                    $result[] = [
-                        "peer_id" => $peer_id,
-                        'type' => $type,
+                    $dialogsCollect[] = [
+                        'last_message' => Str::limit(Arr::get($message, 'message', 'no message'), 30),
+                        'peer_id' => $dialog['peer'],
                         'title' => $title,
-                        'unread_count' => $unread_count,
-                        'last_message' => $last_message,
+                        'type' => $type,
+                        'unread_count' => $dialog['unread_count'],
+                        'time' => Carbon::createFromTimestamp(Arr::get($message, 'date'))->format('Y-m-d H:i:s')
                     ];
                 }
+
+                // Update the date to get the next set of dialogs
+                $date = (int)collect($dialogs['messages'])->sortBy('date')->first()['date'];
             }
 
-
-            return $result;
-        } catch (\Throwable $e) {
-            throw new \RuntimeException("Ошибка получения диалогов: " . $e->getMessage());
-        } finally {
-            // Уничтожение экземпляра MadelineProto
-//            $MadelineProto->stop();
+            return $dialogsCollect;
+        } catch (Throwable $e) {
+            throw new RuntimeException("Ошибка получения диалогов: " . $e->getMessage());
         }
     }
 
@@ -108,153 +119,192 @@ class TelegramService {
      */
     public function getMessages(string $phone, int $peerId): array
     {
-        $MadelineProto = self::createMadelineProto($phone);
-
         try {
-            $messages = $MadelineProto->messages->getHistory([
-                'peer' => $peerId,
-                'limit' => 100,
-            ]);
 
-            // Проверяем, есть ли сообщения в массиве
-            $messageList = $messages['messages'] ?? [];
-            if (empty($messageList)) {
-                return ['error' => 'Нет сообщений'];
-            }
+            $MadelineProto = self::createMadelineProto($phone);
 
-            // Определяем идентификаторы пользователей и их данные
-            $selfId = null;
-            $selfName = 'Unknown';
-            $otherUserId = null;
+            $messages = $MadelineProto->messages->getHistory(['peer' => $peerId, 'limit' => 100]);
+            $collect = collect($messages['messages'])->sortBy('id');
+            $usersCollect = collect($messages['users']);
+            $userMessages = UserMessage::with('user')->where('chat_id', $peerId)->get();
 
-            foreach ($messages['users'] as $user) {
-                if (!empty($user['self'])) {
-                    $selfId = $user['id'];
-                    $selfName = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '')) ?: 'Unknown';
-                } else {
-                    $otherUserId = $user['id'];
-                }
-            }
+            $result = [];
+            $select = ['id', 'self', 'first_name', 'last_name', 'phone'];
+            foreach ($collect->where('_', 'message') as $message) {
 
-            // Обрабатываем сообщения
-            $result = array_map(function ($message) use ($selfId, $selfName, $otherUserId, $messages) {
-                $users = $messages['users'] ?? [];
-                $chats = $messages['chats'] ?? [];
-                $senderName = 'Unknown';
-                $isSelf = false;
+                $from_id = array_key_exists('from_id', $message) ? $message['from_id'] : $message['peer_id'];
 
-                if (!empty($chats)) {
-                    // Групповая переписка
-                    if (isset($message['from_id'])) {
-                        foreach ($users as $user) {
-                            if ($user['id'] === $message['from_id']) {
-                                $senderName = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '')) ?: 'Unknown';
-                                if ($user['self'] == 1) {
-                                    $isSelf = true;
-                                }
-                                break;
-                            }
-                        }
-                        foreach ($chats as $chat) {
-                            if ($chat['id'] === $message['from_id']) {
-                                $senderName = $chat['title'] ?? 'Unknown';
-                                if ($user['self'] == 1) {
-                                    $isSelf = true;
-                                }
-                                break;
-                            }
-                        }
-                    }
-                } elseif (!empty($users)) {
-                    // Личная переписка
-                    if (isset($message['from_id'])) {
-                        if ($message['from_id'] == $selfId) {
-                            $senderName = $selfName; // Имя текущего пользователя
-                            $isSelf = true;
-                        } elseif ($message['from_id'] == $otherUserId) {
-                            // Определяем имя другого пользователя
-                            foreach ($users as $user) {
-                                if ($user['id'] === $otherUserId) {
-                                    $firstName = $user['first_name'] ?? '';
-                                    $lastName = $user['last_name'] ?? '';
-                                    $senderName = trim("{$firstName} {$lastName}") ?: 'Unknown';
-                                    break;
-                                }
-                            }
-                        }
-                    } elseif (empty($message['out'])) {
-                        // Сообщения от другого пользователя, если `from_id` отсутствует
-                        foreach ($users as $user) {
-                            if ($user['id'] === $otherUserId) {
-                                $firstName = $user['first_name'] ?? '';
-                                $lastName = $user['last_name'] ?? '';
-                                $senderName = trim("{$firstName} {$lastName}") ?: 'Unknown';
+                $media = Arr::get($message, 'media', false);
 
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                return [
-                    'id' => $message['id'] ?? null,
-                    'sender' => $senderName,
-                    'content' => $message['message'] ?? '',
-                    'time' => isset($message['date']) ? date('H:i', $message['date']) : '',
-                    'is_self' => $isSelf, // Новое поле, чтобы указать, что это сообщение отправлено текущим пользователем
+                $user_name = $userMessages->where('message_id', $message['id'])->first();
+                $msg_data = [
+                    'id'     => $message['id'],
+                    'user_name' => $user_name ? $user_name->user->first_name : false,
+                    'user'   => $usersCollect->select($select)->where('id', $from_id)->first(),
+                    'message'=> $message['message'],
+                    'time'   => Carbon::parse($message['date'])->timezone('+5')->format('H:i'),
                 ];
-            }, $messageList);
 
-            // Сортируем сообщения по ID
-            usort($result, function ($a, $b) {
-                return $a['id'] <=> $b['id'];
-            });
+                if ($media) {
+                    $msg_data['media'] = $media;
+                    if ($media['_'] === 'messageMediaDocument') {
+                        $msg_data['media']['file_name'] = collect(Arr::get($media, 'document.attributes'))->where('_', 'documentAttributeFilename')->value('file_name');
+                    }
+                };
+
+                $result[] = $msg_data;
+            }
 
             return $result;
+
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
     }
 
 
-//    use App\Events\TelegramMessage;
-
-
-
-
+    /**
+     *  Send a message to a specified chat ID via Telegram.
+     *
+     *  This function prepares and sends a message to a Telegram chat using MadelineProto.
+     *
+     * @param string $phone
+     * @param int $peerId
+     * @param string $message
+     * @return array
+     */
     public function sendMessage(string $phone, int $peerId, string $message): array
     {
         $MadelineProto = self::createMadelineProto($phone);
 
         try {
-            $result = $MadelineProto->messages->sendMessage([
-                'peer' => $peerId,
-                'message' => $message,
-            ]);
+            $result = $MadelineProto->messages->sendMessage(peer: $peerId, message: $message);
 
             return ['success' => true, 'message_id' => $result['id'] ?? null];
         } catch (\Exception $e) {
             return ['success' => false, 'error' => $e->getMessage()];
         }
     }
-    public static function getStoragePath(string $phone, string $path = 'app/telegram/') {
+
+
+    public static function getStoragePath(string $phone, string $path = 'app/telegram/'): string
+    {
         $path = storage_path($path);
 
         if (!File::exists($path)) {
             File::makeDirectory($path, 0777, true, true);
         }
 
-        return "{$path}{$phone}.madeline";
+        return "$path$phone.madeline";
     }
 
+
+    /**
+     * Send a media file to a specified chat ID via Telegram.
+     *
+     * This function handles sending various types of media (e.g., photo, video, document)
+     * to a Telegram chat using MadelineProto. It also supports adding an optional caption.
+     *
+     * @param string $mediaType The type of media to send (e.g., 'photo', 'video', 'document').
+     * @param int $chatId The ID of the chat to send the media to.
+     * @param string $uploadPath The file path where the media is stored on the server.
+     * @param string $fileName The name of the file being sent.
+     * @param string|null $message (Optional) A caption or message to send with the media.
+     *
+     * @return void
+     */
+    public function sendMedia(string $mediaType, int $chatId, string $uploadPath, string $fileName, ?string $message = ''): void
+    {
+        $user = auth()->user();
+        $phone = $user->account->connections[0]->phone;
+
+        $MadelineProto = self::createMadelineProto($phone);
+
+        $uploadedFile = $MadelineProto->upload($uploadPath);
+
+        if (!isset($_SESSION['grouped_id'])) {
+            $_SESSION['grouped_id'] = mt_rand(1000000, 9999999);
+        }
+
+        $MadelineProto->messages->sendMultiMedia(
+            peer: $chatId,
+            multi_media: [
+                [
+                    '_' => 'inputSingleMedia',
+                    'media' => [
+                        '_' => $mediaType,
+                        'file' => $uploadedFile,
+                        'attributes' => [[
+                                '_' => 'documentAttributeFilename',
+                                'file_name' => $fileName,
+                            ]],
+                    ],
+                    'message' => $message,
+                    'grouped_id' => $_SESSION['grouped_id'],
+                ]
+            ]);
+
+        Storage::delete($uploadPath);
+    }
+
+
+    public function sendVoice($chatId, $file, $fileName) {
+        $user = auth()->user();
+        $phone = $user->account->connections[0]->phone;
+
+        $MadelineProto = self::createMadelineProto($phone);
+
+        $localFile = new LocalFile($file);
+
+        $sendMessage = $MadelineProto->sendVoice(peer: $chatId, file: $localFile,  fileName: $fileName);
+    }
+
+    /**
+     * Determine the appropriate media type for MadelineProto based on the file extension.
+     *
+     * This function maps common file extensions to the corresponding MadelineProto media type.
+     * It helps automatically choose the correct media type when sending files via Telegram.
+     *
+     * @param UploadedFile $file The file name or path.
+     *
+     * @return string The media type for MadelineProto (e.g., 'photo', 'video', 'document', 'audio').
+     */
+    function getMediaTypeForMadelineProto(UploadedFile $file): string
+    {
+        $extension = $file->getClientOriginalExtension();
+
+        $mediaTypes = [
+            'jpg' => 'inputMediaUploadedPhoto',
+            'jpeg' => 'inputMediaUploadedPhoto',
+            'png' => 'inputMediaUploadedPhoto',
+            'gif' => 'inputMediaUploadedPhoto',
+            'mp4' => 'inputMediaUploadedDocument',
+            'mov' => 'inputMediaUploadedDocument',
+            'avi' => 'inputMediaUploadedDocument',
+            'mp3' => 'inputMediaUploadedDocument',
+            'ogg' => 'inputMediaUploadedDocument',
+            'pdf' => 'inputMediaUploadedDocument',
+            'zip' => 'inputMediaUploadedDocument',
+        ];
+
+        return $mediaTypes[$extension] ?? 'inputMediaUploadedDocument';
+    }
+
+    public function getMedia($message_id) {
+        $user = auth()->user();
+        $phone = $user->account->connections[0]->phone;
+
+        $MadelineProto = self::createMadelineProto($phone);
+
+        $message = $MadelineProto->messages->getMessages(['id' => [$message_id]]);
+
+        if ($message['messages'][0]['_'] !== 'messageEmpty') {
+            $media = $message['messages'][0]['media'];
+
+            $MadelineProto->downloadToBrowser($media);
+        } else {
+            abort(404);
+        }
+
+    }
 }
-
-
-
-
-
-
-
-
-
-
