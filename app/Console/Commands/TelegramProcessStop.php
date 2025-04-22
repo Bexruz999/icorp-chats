@@ -28,9 +28,9 @@ class TelegramProcessStop extends Command
         $phone = $this->argument('phone');
 
         $programName = "telegram_$phone";
-        exec("sudo supervisorctl stop $programName");
+        exec("supervisorctl $programName");
         //unlink("/etc/supervisord.d/$programName.conf");
         unlink("/etc/supervisor/conf.d/$programName.conf");
-        exec("sudo supervisorctl reread && supervisorctl update");
+        exec("supervisorctl reread && supervisorctl update");
     }
 }

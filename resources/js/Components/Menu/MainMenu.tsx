@@ -1,5 +1,5 @@
 import MainMenuItem from '@/Components/Menu/MainMenuItem';
-import { Building, CircleGauge, MessageCircle, Printer, Users } from 'lucide-react';
+import { Building, CircleGauge, MessageCircle, Settings } from 'lucide-react';
 import { usePage } from '@inertiajs/react';
 import { PageProps } from '@/types';
 
@@ -64,7 +64,7 @@ export default function MainMenu({ className }: MainMenuProps) {
         icon={<MessageCircle size={20} />}
       />
 
-      <MainMenuItem text="Settings" link="settings" icon={<Printer size={20} />} />
+      <MainMenuItem text="Settings" link="settings" icon={<Settings size={20} />} />
 
     </div>
   );

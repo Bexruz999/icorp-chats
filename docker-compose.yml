@@ -32,6 +32,8 @@ services:
         volumes:
             - '.:/var/www'
             - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.3/fpm/conf.d/99-overrides.ini'
+        ports:
+          - '8080:8080'
 
     mailpit:
       image: anatomicjc/mailpit

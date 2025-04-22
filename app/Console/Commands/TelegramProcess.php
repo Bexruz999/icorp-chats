@@ -30,19 +30,20 @@ class TelegramProcess extends Command
 
         if(Storage::disk('local')->exists("telegram/$phone.madeline")) {
             $programName = "telegram_$phone";
-            $command = "/usr/bin/php " . base_path() . "/worker.php $phone";
+            $command = "/usr/bin/php " . base_path() . "/worker.php $phone; chown -R www-data:www-data /var/www/storage/telegram/$phone.madeline";
             $config = "
             [program:$programName]
             command=$command
             autostart=true
             autorestart=true
+            user=root
             stderr_logfile=/var/log/supervisor/$programName.err.log
             stdout_logfile=/var/log/supervisor/$programName.out.log
             ";
 
             file_put_contents("/etc/supervisor/conf.d/$programName.conf", $config);
             //file_put_contents("/etc/supervisord.d/$programName.conf", $config);
-            exec("sudo supervisorctl reread && sudo supervisorctl update && sudo supervisorctl start $programName");
+            exec("supervisorctl reread && supervisorctl update && supervisorctl start $programName");
 
         }  else {
             echo "Directory does not exists";

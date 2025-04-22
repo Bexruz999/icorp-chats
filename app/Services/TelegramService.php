@@ -105,6 +105,7 @@ class TelegramService
 
             return $dialogsCollect;
         } catch (Throwable $e) {
+            dd($MadelineProto);
             throw new RuntimeException("Ошибка получения диалогов: " . $e->getMessage());
         }
     }

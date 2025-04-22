@@ -14,6 +14,8 @@ class SettingsService {
     {
         $MadelineProto = TelegramService::createMadelineProto($phone);
 
+        //dd($MadelineProto);
+
         $MadelineProto->phoneLogin($phone);
     }
 
