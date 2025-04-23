@@ -9,19 +9,18 @@ use Spatie\Permission\Models\Role;
 
 class DashboardController extends Controller
 {
+
     public function index(): Response
     {
 
-        $user = User::find(2);
-
-        $account = $user->account;
+        /*$account = $user->account;
 
         //$role = Role::create(['name' => 'admin', 'team_id' => $account->id]);
 
         $role = Role::find(1);
         //$user->assignRole($role);
-        setPermissionsTeamId($user->account_id);
-        dd($user->hasRole('admin'));
+       */
+        dd(auth()->user()->roles()->get());
 
 
         return Inertia::render('Dashboard/Index');

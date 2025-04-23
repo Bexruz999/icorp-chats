@@ -26,7 +26,9 @@
     "react-use": "^17.4.0",
     "styled-components": "^6.1.14",
     "tailwindcss": "^3.4.3",
-    "telegram": "^2.26.16"
+    "telegram": "^2.26.16",
+    "@react-buddy/ide-toolbox": "^2.4.0",
+    "@react-buddy/palette-antd": "^5.3.0"
   },
   "devDependencies": {
     "@emoji-mart/react": "^1.1.1",

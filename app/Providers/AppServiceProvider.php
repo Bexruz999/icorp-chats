@@ -6,6 +6,7 @@ use App\Http\Middleware\TeamPermission;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\Kernel;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Routing\Middleware\SubstituteBindings;
@@ -41,9 +42,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->bootRoute();
 
-        \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::except([
-            'submit'
-        ]);
+        VerifyCsrfToken::except(['submit']);
 
         /** @var Kernel $kernel */
         $kernel = app()->make(Kernel::class);

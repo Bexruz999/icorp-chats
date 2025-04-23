@@ -16,6 +16,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\AdminValid;
+use App\Http\Middleware\SetSpatieTeamContext;
 use danog\MadelineProto\API;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +35,7 @@ use Inertia\Inertia;
 |
 */
 
-// Auth
+// LOGIN AND REGISTER
 
 Route::get('/register', [RegisterController::class, 'index'])
     ->name('register')
@@ -55,179 +56,174 @@ Route::post('login', [LoginController::class, 'store'])
 Route::delete('logout', [LoginController::class, 'destroy'])
     ->name('logout');
 
-// Dashboard
+// AUTHENTICATED ROUTES
 
-Route::get('/', [DashboardController::class, 'index'])
-    ->name('dashboard')
-    ->middleware('auth');
+Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
+    // Dashboard
 
-// Users
+    Route::get('/', [DashboardController::class, 'index'])
+        ->name('dashboard');
 
-Route::get('users', [UsersController::class, 'index'])
-    ->name('users')
-    ->middleware('auth');
+    // Users
 
-Route::get('users/create', [UsersController::class, 'create'])
-    ->name('users.create')
-    ->middleware('auth');
+    Route::get('users', [UsersController::class, 'index'])
+        ->name('users');
 
-Route::post('users', [UsersController::class, 'store'])
-    ->name('users.store')
-    ->middleware('auth');
+    Route::get('users/create', [UsersController::class, 'create'])
+        ->name('users.create');
 
-Route::get('users/{user}/edit', [UsersController::class, 'edit'])
-    ->name('users.edit')
-    ->middleware('auth');
+    Route::post('users', [UsersController::class, 'store'])
+        ->name('users.store');
 
-Route::put('users/{user}', [UsersController::class, 'update'])
-    ->name('users.update')
-    ->middleware('auth');
+    Route::get('users/{user}/edit', [UsersController::class, 'edit'])
+        ->name('users.edit');
 
-Route::delete('users/{user}', [UsersController::class, 'destroy'])
-    ->name('users.destroy')
-    ->middleware('auth');
+    Route::put('users/{user}', [UsersController::class, 'update'])
+        ->name('users.update');
 
-Route::put('users/{user}/restore', [UsersController::class, 'restore'])
-    ->name('users.restore')
-    ->middleware('auth');
+    Route::delete('users/{user}', [UsersController::class, 'destroy'])
+        ->name('users.destroy');
+
+    Route::put('users/{user}/restore', [UsersController::class, 'restore'])
+        ->name('users.restore');
+
+    Route::get('messenger', [MessengerController::class, 'index'])
+        ->name('messengers');
+
+    Route::get('messenger/messages', [MessengerController::class, 'getMessages'])
+        ->name('messenger.messages');
+
+    Route::post('/messenger/send-message', [MessengerController::class, 'sendMessage'])
+        ->name('messenger.send-message');
+
+    Route::post('/messenger/send-media', [MessengerController::class, 'sendMedia'])
+        ->name('messenger.send-media');
+
+    Route::post('/messenger/send-voice', [MessengerController::class, 'sendVoice'])
+        ->name('messenger.send-voice');
+
+    Route::get('messenger/get_media/{message_id}', [MessengerController::class, 'getMedia'])
+        ->name('messenger.get-media');
+
+    // Reports
+
+    Route::get('reports', [ReportsController::class, 'index'])
+        ->name('reports');
+
+// Images
+
+    Route::get('/img/{path}', [ImagesController::class, 'show'])
+        ->where('path', '.*')
+        ->name('image');
+
+// Settings
+    Route::get('/settings', [SettingsController::class, 'index'])
+        ->name("settings")
+        ->middleware("auth");
+
+    Route::get("/settings/telegram-chat/create", [SettingsController::class, 'createTelegramChat'])
+        ->name("settings.create-telegram-chat")
+        ->middleware("auth");
+
+    Route::post("/settings/send-code", [SettingsController::class, 'sendCode'])
+        ->name("settings.send-code")
+        ->middleware("auth");
+
+    Route::post("/settings/verify-code", [SettingsController::class, 'verifyCode'])
+        ->name("settings.verify-code")
+        ->middleware("auth");
+
+    Route::post("/settings/verify-password", [SettingsController::class, 'verifyPassword'])
+        ->name("settings.verify-password")
+        ->middleware("auth");
+
+    Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'deleteConnection'])
+        ->name("settings.delete")
+        ->middleware("auth");
+
+    Route::resource('employees', EmployeesController::class);
+
+    Route::resource('bots', BotController::class);
+
+    Route::resource('shops', ShopController::class);
+
+    Route::resource('roles', RoleController::class);
+});
 
 // Organizations
 
 /*Route::get('organizations', [OrganizationsController::class, 'index'])
     ->name('organizations')
-    ->middleware('auth');
+    ;
 
 Route::get('organizations/create', [OrganizationsController::class, 'create'])
     ->name('organizations.create')
-    ->middleware('auth');
+    ;
 
 Route::post('organizations', [OrganizationsController::class, 'store'])
     ->name('organizations.store')
-    ->middleware('auth');
+    ;
 
 Route::get('organizations/{organization}/edit', [OrganizationsController::class, 'edit'])
     ->name('organizations.edit')
-    ->middleware('auth');
+    ;
 
 Route::put('organizations/{organization}', [OrganizationsController::class, 'update'])
     ->name('organizations.update')
-    ->middleware('auth');
+    ;
 
 Route::delete('organizations/{organization}', [OrganizationsController::class, 'destroy'])
     ->name('organizations.destroy')
-    ->middleware('auth');
+    ;
 
 Route::put('organizations/{organization}/restore', [OrganizationsController::class, 'restore'])
     ->name('organizations.restore')
-    ->middleware('auth');*/
+    ;*/
 
 // Messenger
-
-Route::get('messenger', [MessengerController::class, 'index'])
-    ->name('messengers')->middleware('auth');
-
-Route::get('messenger/messages', [MessengerController::class, 'getMessages'])
-    ->name('messenger.messages')->middleware('auth');
-
-Route::post('/messenger/send-message', [MessengerController::class, 'sendMessage'])
-    ->name('messenger.send-message')->middleware('auth');
-
-Route::post('/messenger/send-media', [MessengerController::class, 'sendMedia'])
-    ->name('messenger.send-media')->middleware('auth');
-
-Route::post('/messenger/send-voice', [MessengerController::class, 'sendVoice'])
-    ->name('messenger.send-voice')->middleware('auth');
-
-Route::get('messenger/get_media/{message_id}', [MessengerController::class, 'getMedia'])
-    ->name('messenger.get-media')->middleware('auth');
 
 //
 //Route::post('messenger', [MessengerController::class, 'getDialogs'])
 //    ->name('messengers.getDialogs')
-//    ->middleware('auth')
+//
 //;
 
 // Contacts
 
 /*Route::get('contacts', [ContactsController::class, 'index'])
     ->name('contacts')
-    ->middleware('auth');
+    ;
 
 Route::get('contacts/create', [ContactsController::class, 'create'])
     ->name('contacts.create')
-    ->middleware('auth');
+    ;
 
 Route::post('contacts', [ContactsController::class, 'store'])
     ->name('contacts.store')
-    ->middleware('auth');
+    ;
 
 Route::get('contacts/{contact}/edit', [ContactsController::class, 'edit'])
     ->name('contacts.edit')
-    ->middleware('auth');
+    ;
 
 Route::put('contacts/{contact}', [ContactsController::class, 'update'])
     ->name('contacts.update')
-    ->middleware('auth');
+    ;
 
 Route::delete('contacts/{contact}', [ContactsController::class, 'destroy'])
     ->name('contacts.destroy')
-    ->middleware('auth');
+    ;
 
 Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
     ->name('contacts.restore')
-    ->middleware('auth');*/
+    ;*/
 
-// Reports
-
-Route::get('reports', [ReportsController::class, 'index'])
-    ->name('reports')
-    ->middleware('auth');
-
-// Images
-
-Route::get('/img/{path}', [ImagesController::class, 'show'])
-    ->where('path', '.*')
-    ->name('image');
-
-// Settings
-Route::get('/settings', [SettingsController::class, 'index'])
-    ->name("settings")
-    ->middleware("auth");
-
-Route::get("/settings/telegram-chat/create", [SettingsController::class, 'createTelegramChat'])
-    ->name("settings.create-telegram-chat")
-    ->middleware("auth");
-
-Route::post("/settings/send-code", [SettingsController::class, 'sendCode'])
-    ->name("settings.send-code")
-    ->middleware("auth");
-
-Route::post("/settings/verify-code", [SettingsController::class, 'verifyCode'])
-    ->name("settings.verify-code")
-    ->middleware("auth");
-
-Route::post("/settings/verify-password", [SettingsController::class, 'verifyPassword'])
-    ->name("settings.verify-password")
-    ->middleware("auth");
-
-Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'deleteConnection'])
-    ->name("settings.delete")
-    ->middleware("auth");
-
-Route::resource('employees', EmployeesController::class)->middleware('auth');
-
-Route::resource('bots', BotController::class)->middleware('auth');
-
-Route::resource('shops', ShopController::class)->middleware('auth');
-
-Route::resource('roles', RoleController::class)->middleware('auth');
-
-Route::get('categories/create/{id}',[CategoryController::class, 'createShop'])->name('categories.create.shop');
+Route::get('categories/create/{id}', [CategoryController::class, 'createShop'])->name('categories.create.shop');
 Route::resource('categories', CategoryController::class)->middleware('auth');
-Route::get('products/create/{id}',[ProductController::class, 'createCategory'])->name('products.create.category');
+Route::get('products/create/{id}', [ProductController::class, 'createCategory'])->name('products.create.category');
 Route::resource('products', ProductController::class)->middleware('auth');
 
 Route::post('/webhook/{slug}', [BotController::class, 'webhook'])->name('bot.webhook');
 Route::get('/shop/{slug}', [BotController::class, 'shop'])->name('bot.shop');
 Route::post('/basket/{slug}/store', [BotController::class, 'addBasket'])->name('basket.create')
-->middleware('guest');
+    ->middleware('guest');
