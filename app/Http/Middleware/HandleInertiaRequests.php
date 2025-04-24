@@ -36,8 +36,23 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'auth' => function () {
+                $user = auth()->user();
+
+                if ($user) {
+                    // Spatie team_id kontekstini o‘rnatamiz
+                    //app(\Spatie\Permission\PermissionRegistrar::class)->setPermissionsTeamId($user->account_id);
+
+                    return [
+                        'user' => new UserResource($user->load('account')),
+                        'roles' => $user->getRoleNames(),
+                        'permissions' => $user->getAllPermissions()->pluck('name'),
+                    ];
+                }
+
                 return [
-                    'user' => auth()->check() ? new UserResource(auth()->user()->load('account')) : null,
+                    'user' => null,
+                    'roles' => [],
+                    'permissions' => [],
                 ];
             },
             'flash' => function () use ($request) {

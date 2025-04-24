@@ -156,6 +156,8 @@ export type PageProps<
 > = T & {
   auth: {
     user: User;
+    permissions: string[];
+    roles: string[]
   };
   flash: {
     success: string | null;
