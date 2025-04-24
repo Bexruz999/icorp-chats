@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bots', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('account_id')->constrained('accounts');
+            $table->foreignId('account_id');
             $table->string('slug');
             $table->string('name');
             $table->string('token');

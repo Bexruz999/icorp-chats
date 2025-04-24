@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('baskets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('shop_id')->constrained('shops');
-            $table->foreignId('account_id')->constrained('accounts');
+            $table->foreignId('shop_id');
+            $table->foreignId('account_id');
             $table->bigInteger('tg_id');
             $table->text('description')->nullable();
             $table->timestamps();
