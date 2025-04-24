@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('connections', function (Blueprint $table) {
             $table->id();
             $table->string('phone');
-            $table->foreignId('account_id')->constrained('accounts')->onDelete('cascade');
+            $table->foreignId('account_id');
             $table->timestamps();
         });
     }
