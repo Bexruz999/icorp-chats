@@ -134,7 +134,6 @@ const MessengerPage = ({ chats }: any) => {
           console.error('Error fetching messages:', error);
         });
 
-      window.Echo.host = 'https://commni-amochat.icorp.uz:8081'
       // Слушаем события новых сообщений
       window.Echo.private('telegram-messages')
         .listen('TelegramMessage', (e: any) => {
