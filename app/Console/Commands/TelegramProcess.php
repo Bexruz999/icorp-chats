@@ -30,7 +30,7 @@ class TelegramProcess extends Command
 
         if(Storage::disk('local')->exists("telegram/$phone.madeline")) {
             $programName = "telegram_$phone";
-            $command = "/usr/bin/php " . base_path() . "/worker.php $phone; chown -R www-data:www-data /var/www/storage/telegram/$phone.madeline";
+            $command = "/usr/bin/php " . base_path() . "/worker.php $phone && chown -R www-data:www-data /var/www/storage/telegram/$phone.madeline";
             $config = "
             [program:$programName]
             command=$command

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "51ced929c6dd13c57162734d6d3bb5d7",
+    "content-hash": "b1e049e0e5cf39cec2806c181ad683c5",
     "packages": [
         {
             "name": "amphp/amp",
@@ -3516,6 +3516,61 @@
                 "source": "https://github.com/FakerPHP/Faker/tree/v1.23.1"
             },
             "time": "2024-01-02T13:46:09+00:00"
+        },
+        {
+            "name": "fcritic/amojo-api-client",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fcritic/amojo-api-client.git",
+                "reference": "2a0af430853a5100b6835fd1891a2c8b44c81c0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fcritic/amojo-api-client/zipball/2a0af430853a5100b6835fd1891a2c8b44c81c0c",
+                "reference": "2a0af430853a5100b6835fd1891a2c8b44c81c0c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.2",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AmoJo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vladislav Bochkarev",
+                    "email": "mrx.critic@gmail.com"
+                }
+            ],
+            "description": "PHP client for the amoCRM chat API service",
+            "keywords": [
+                "API chat",
+                "REST API",
+                "amoCRM",
+                "amojo",
+                "amojo api",
+                "client",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/fcritic/amojo-api-client/issues",
+                "source": "https://github.com/fcritic/amojo-api-client/tree/v1.3.0"
+            },
+            "time": "2025-04-22T16:28:25+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -14102,6 +14157,7 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2",
+        "ext-couchbase": "*",
         "ext-exif": "*",
         "ext-gd": "*"
     },
