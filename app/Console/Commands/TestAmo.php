@@ -26,7 +26,7 @@ class TestAmo extends Command
      */
     public function handle(AmoChatService $service)
     {
-        $response = $service->connect();
+        //$response = $service->connect();
 
         $response2 = $service->createChat();
 
