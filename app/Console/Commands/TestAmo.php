@@ -30,7 +30,6 @@ class TestAmo extends Command
 
         $response2 = $service->createChat();
 
-        $response3 = $service->sendMEssage($response2);
-        echo $response3;
+        $response3 = $service->sendMessage($response2);
     }
 }

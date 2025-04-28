@@ -61,7 +61,7 @@ class AmoChatService
         ];
     }
 
-    public function sendMEssage($data) {
+    public function sendMessage($data) {
 
         $message = (new TextMessage())->setUid('MSG_1014538')->setText('Hello');
         $conv = (new Conversation())->setId('chat-1234')->setRefId($data['refID']);
