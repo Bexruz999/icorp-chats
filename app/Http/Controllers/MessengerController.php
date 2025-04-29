@@ -60,7 +60,7 @@ class MessengerController extends Controller
                 'message_id' => $result['message_id'],
             ]);
 
-            return response()->json(['status' => 'success', 'message_id' => $result['message_id'], 'rs' => $result]);
+            return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
         }
 
         return response()->json(['status' => 'error', 'error' => $result['error']], 500);

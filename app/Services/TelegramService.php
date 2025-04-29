@@ -181,7 +181,7 @@ class TelegramService
         try {
             $result = $MadelineProto->messages->sendMessage(peer: $peerId, message: $message);
 
-            return ['success' => true, 'message_id' => $result['id'] ?? null, 'rs' => $result];
+            return ['success' => true, 'message_id' => Arr::get($result, '0.id') ?? null];
         } catch (\Exception $e) {
             return ['success' => false, 'error' => $e->getMessage()];
         }
