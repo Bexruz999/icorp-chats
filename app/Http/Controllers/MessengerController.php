@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserMessage;
+use App\Services\AmoChatService;
 use App\Services\TelegramService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -41,24 +42,25 @@ class MessengerController extends Controller
     }
 
 
-    public function sendMessage(Request $request): JsonResponse
+    public function sendMessage(Request $request, AmoChatService $amoChatService): JsonResponse
     {
-        $validated = $request->validate([
-            'peerId' => 'required|integer',
-            'message' => 'required|string',
-        ]);
+        $valid = $request->validate(['peerId' => 'required|integer', 'message' => 'required|string']);
 
         $user = auth()->user();
         $phone = $user->account->connections[0]->phone;
-        $result = $this->telegramService->sendMessage($phone, $validated['peerId'], $validated['message']);
+        $result = $this->telegramService->sendMessage($phone, $valid['peerId'], $valid['message']);
 
         if ($result['success']) {
 
             UserMessage::create([
-                'user_id' => $user->id,
-                'chat_id' => $validated['peerId'],
-                'message_id' => $result['message_id'],
+                'user_id'       => $user->id,
+                'chat_id'       => $valid['peerId'],
+                'message_id'    => $result['message_id']
             ]);
+
+            try {
+                $amoChatService->sendMessage($valid['peerId'], $result['message_id'], $valid['message']);
+            } catch (\Throwable $exception) {}
 
             return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
         }
@@ -68,7 +70,6 @@ class MessengerController extends Controller
 
     public function sendMedia(Request $request)
     {
-
         $validated = $request->validate([
             'peer_id' => 'required|numeric',
             'message' => 'nullable|string|max:255'
@@ -110,12 +111,13 @@ class MessengerController extends Controller
         );
 
         return response()->json([
-           'success' => true,
-           'message' => $file->getClientOriginalName(),
+            'success' => true,
+            'message' => $file->getClientOriginalName(),
         ]);
     }
 
-    public function getMedia($message_id) {
+    public function getMedia($message_id)
+    {
         $this->telegramService->getMedia($message_id);
     }
 }

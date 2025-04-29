@@ -38,27 +38,8 @@ class TelegramIncomingMessage extends SimpleEventHandler
             $result['media'] = $this->formatMedia($message->media);
         }
 
-        echo '';
-
         TelegramMessage::dispatch($result);
     }
-
-    /*private function getTelegramMediaType($media): string|false
-    {
-        if ($media === null) {
-            return false;
-        }
-
-        $mediaClass = get_class($media);
-
-        return match (true) {
-            str_contains($mediaClass, 'Document') => 'messageMediaDocument',
-            str_contains($mediaClass, 'Photo') => 'messageMediaPhoto',
-            str_contains($mediaClass, 'Video') => 'messageMediaVideo',
-            str_contains($mediaClass, 'Audio') => 'messageMediaAudio',
-            default => false,
-        };
-    }*/
 
     private function formatMedia($media): array
     {
