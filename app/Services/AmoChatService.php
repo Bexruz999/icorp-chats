@@ -4,7 +4,6 @@ namespace App\Services;
 
 use AmoJo\Client\AmoJoClient;
 use AmoJo\DTO\AbstractResponse;
-use AmoJo\DTO\ConnectResponse;
 use AmoJo\DTO\MessageResponse;
 use AmoJo\Models\Channel;
 use AmoJo\Models\Conversation;
@@ -12,23 +11,23 @@ use AmoJo\Models\Messages\TextMessage;
 use AmoJo\Models\Payload;
 use AmoJo\Models\Users\Sender;
 use AmoJo\Models\Users\ValueObject\UserProfile;
-use Cache;
 
 class AmoChatService
 {
-    private ConnectResponse|AbstractResponse $client;
+    private mixed $client;
     private string $avatar = 'https://picsum.photos/300/300';
 
     public function __construct()
     {
-        $this->client = Cache::remember('AMOChat_client_1', now()->addHour(), fn() => $this->connect());
+        //$this->client = Cache::remember('AMOChat_client_1', now()->addHour(), fn() => $this->connect());
+        $this->connect();
     }
 
-    public function connect(): ConnectResponse|AbstractResponse
+    public function connect(): void
     {
         $channel = new Channel(uid: config('amo.id'), secretKey: config('amo.secret_key'));
-        $client = new AmoJoClient(channel: $channel, segment: 'ru');
-        return $client->connect(accountUid: config('amo.account_id'), title: 'My channel');
+        $this->client = new AmoJoClient(channel: $channel, segment: 'ru');
+        $this->client->connect(accountUid: config('amo.account_id'), title: 'My channel');
     }
 
     public function disconnect($client): void
@@ -52,7 +51,7 @@ class AmoChatService
         $contact = (new Sender())
             ->setAvatar($this->avatar)
             ->setId("user-$peer_id")
-            ->setName('Ivan Ivanov')
+            ->setName('Ivan Divanov')
             ->setProfile((new UserProfile())->setPhone('+1464874556719'));
 
         $conv = $this->createChat($contact, $peer_id);

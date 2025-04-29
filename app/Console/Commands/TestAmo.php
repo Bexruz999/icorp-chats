@@ -24,12 +24,8 @@ class TestAmo extends Command
     /**
      * Execute the console command.
      */
-    public function handle(AmoChatService $service)
+    public function handle(AmoChatService $amoChatService)
     {
-        //$response = $service->connect();
-
-        $response2 = $service->createChat();
-
-        $response3 = $service->sendMessage($response2);
+        $amoChatService->sendMessage(86032, 86032, 'test3');
     }
 }

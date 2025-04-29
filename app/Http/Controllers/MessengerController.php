@@ -60,7 +60,9 @@ class MessengerController extends Controller
 
             try {
                 $amoChatService->sendMessage($valid['peerId'], $result['message_id'], $valid['message']);
-            } catch (\Throwable $exception) {}
+            } catch (\Throwable $exception) {
+
+            }
 
             return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
         }
