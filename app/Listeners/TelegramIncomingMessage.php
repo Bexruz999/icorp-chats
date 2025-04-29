@@ -14,6 +14,7 @@ use danog\MadelineProto\EventHandler\Message;
 use danog\MadelineProto\SimpleEventHandler;
 use danog\MadelineProto\EventHandler\Message\GroupMessage;
 use Illuminate\Support\Carbon;
+use Log;
 
 class TelegramIncomingMessage extends SimpleEventHandler
 {
@@ -22,23 +23,27 @@ class TelegramIncomingMessage extends SimpleEventHandler
     public function handleMessage(Message $message): void
     {
 
-        $result = [
-            'id' => $message->id,
-            'chat_id' => $message->chatId,
-            'message' => $message->message ?? '',
-            'user' => [
-                'id' => $message->senderId,
-                'self' => $message->out
-            ],
-            'time'   => Carbon::parse($message->date)->timezone('+5')->format('H:i'),
-            'type' => (get_class($message) === GroupMessage::class) ? 'chat' : 'user'
-        ];
+        try {
+            $result = [
+                'id' => $message->id,
+                'chat_id' => $message->chatId,
+                'message' => $message->message ?? '',
+                'user' => [
+                    'id' => $message->senderId,
+                    'self' => $message->out
+                ],
+                'time'   => Carbon::parse($message->date)->timezone('+5')->format('H:i'),
+                'type' => (get_class($message) === GroupMessage::class) ? 'chat' : 'user'
+            ];
 
-        if ($message->media) {
-            $result['media'] = $this->formatMedia($message->media);
+            if ($message->media) {
+                $result['media'] = $this->formatMedia($message->media);
+            }
+
+            TelegramMessage::dispatch($result);
+        } catch (\Exception $e) {
+            Log::error('Xabarni qayta ishlashda xatolik: ' . $e->getMessage());
         }
-
-        TelegramMessage::dispatch($result);
     }
 
     private function formatMedia($media): array

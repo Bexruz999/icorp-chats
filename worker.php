@@ -5,7 +5,6 @@ $app = require_once __DIR__ . '/bootstrap/app.php';
 
 use App\Listeners\TelegramIncomingMessage;
 use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Support\Facades\DB;
 
 
 $app->make(Kernel::class)->bootstrap();
