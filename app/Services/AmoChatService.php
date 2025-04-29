@@ -16,7 +16,7 @@ use Cache;
 
 class AmoChatService
 {
-    private AmoJoClient $client;
+    private ConnectResponse|AbstractResponse $client;
     private string $avatar = 'https://picsum.photos/300/300';
 
     public function __construct()
