@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\TelegramMessageShipped;
 use App\Models\UserMessage;
 use App\Services\TelegramService;
 use Illuminate\Http\JsonResponse;
@@ -61,7 +60,7 @@ class MessengerController extends Controller
                 'message_id' => $result['message_id'],
             ]);
 
-            return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
+            return response()->json(['status' => 'success', 'message_id' => $result['message_id'], 'rs' => $result]);
         }
 
         return response()->json(['status' => 'error', 'error' => $result['error']], 500);

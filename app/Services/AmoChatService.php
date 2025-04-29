@@ -9,7 +9,6 @@ use AmoJo\Models\Channel;
 use AmoJo\Models\Conversation;
 use AmoJo\Models\Messages\TextMessage;
 use AmoJo\Models\Payload;
-use AmoJo\Models\Users\Receiver;
 use AmoJo\Models\Users\Sender;
 use AmoJo\Models\Users\ValueObject\UserProfile;
 
@@ -21,12 +20,13 @@ class AmoChatService
     public function connect(): ConnectResponse|AbstractResponse
     {
 
-        $channel = new Channel(uid: '25dd1cbb-a999-4cb3-a34d-09b0431ff2b8', secretKey: '7b5e3cc7a7137e2638647d6c40290f05aa84c69a');
+        $channel = new Channel(uid: '25dd1cbb-a999-4cb3-a34d-09b0431ff2b8', secretKey: config('amo.secret_key'));
         $this->client = new AmoJoClient(channel: $channel, additionalMiddleware: [], segment: 'ru');
 
         $response = $this->client->connect(accountUid: config('amo.account_id'), title: 'My channel');
 
-        echo 'Scope ID: ' . $response->getScopeId(); //25dd1cbb-a999-4cb3-a34d-09b0431ff2b8_00db92bc-8371-4adc-9092-9cba4a3654faChat
+        echo 'Scope ID: ' . $response->getScopeId();
+        //25dd1cbb-a999-4cb3-a34d-09b0431ff2b8_00db92bc-8371-4adc-9092-9cba4a3654faChat
 
         return $response;
     }
