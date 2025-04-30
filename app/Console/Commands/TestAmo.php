@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Events\SendAmoCrmMessage;
 use App\Services\AmoChatService;
 use Illuminate\Console\Command;
 
@@ -26,6 +27,10 @@ class TestAmo extends Command
      */
     public function handle(AmoChatService $amoChatService)
     {
-        $amoChatService->sendMessage(86032, 86032, 'test3');
+        SendAmoCrmMessage::dispatch([
+            'peer_id' => 123,
+            'msg_id'  => 123,
+            'msg'     => 'test'
+        ]);
     }
 }
