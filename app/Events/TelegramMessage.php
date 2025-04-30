@@ -46,8 +46,13 @@ class TelegramMessage implements ShouldBroadcast
                 $result['media'] = $this->formatMedia($message->media);
             }
 
-            $this->message = $result;
             SendAmoCrmMessage::dispatch($result);
+            SendAmoCrmMessage::dispatch([
+                'peer_id' => 123,
+                'msg_id'  => 123,
+                'msg'     => 'test'
+            ]);
+            $this->message = $result;
 
         } catch (Exception $e) {
             Log::error('Xabarni qayta ishlashda xatolik: ' . $e->getMessage());
