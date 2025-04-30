@@ -2,26 +2,33 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
+use danog\MadelineProto\EventHandler\Message;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class SendAmoCrmMessage
+class SendAmoCrmMessage implements ShouldQueue
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $data;
+    public array $data;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(array $data)
+    public function __construct(array|Message $data)
     {
-        $this->data = $data;
+        if (is_array($data)) {
+            $this->data = $data;
+        } else {
+            $this->data = [
+                'chat_id' => $data->chatId,
+                'id' => $data->id,
+                'message' => $data->message,
+            ];
+        }
     }
 
     /**

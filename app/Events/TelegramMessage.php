@@ -46,12 +46,6 @@ class TelegramMessage implements ShouldBroadcast
             if ($message->media) {
                 $result['media'] = $this->formatMedia($message->media);
             }
-
-            (new AmoChatService())->sendMessage(
-                peer_id: $result['chat_id'],
-                msg_id: $result['id'],
-                msg: $result['message']
-            );
             $this->message = $result;
 
         } catch (Exception $e) {
