@@ -25,6 +25,7 @@ class SendMessageToAmoCrm implements ShouldQueue
                 msg_id: $data['id'],
                 msg: $data['message']
             );
+            Log::error('Error sending a message to AmoCRM: ');
         } catch (Exception $e) {
             error($e->getMessage());
             Log::error('Error sending a message to AmoCRM: ' . $e->getMessage());
