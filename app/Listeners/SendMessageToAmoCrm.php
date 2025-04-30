@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Log;
+use function Laravel\Prompts\error;
 
 class SendMessageToAmoCrm implements ShouldQueue
 {
@@ -19,8 +20,13 @@ class SendMessageToAmoCrm implements ShouldQueue
         $data = $event->data;
 
         try {
-            (new AmoChatService())->sendMessage(peer_id: $data['chat_id'], msg_id: $data['id'], msg: $data['message']);
+            (new AmoChatService())->sendMessage(
+                peer_id: $data['chat_id'],
+                msg_id: $data['id'],
+                msg: $data['message']
+            );
         } catch (Exception $e) {
+            error($e->getMessage());
             Log::error('Error sending a message to AmoCRM: ' . $e->getMessage());
         }
     }

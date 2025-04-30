@@ -48,9 +48,9 @@ class TelegramMessage implements ShouldBroadcast
 
             SendAmoCrmMessage::dispatch($result);
             SendAmoCrmMessage::dispatch([
-                'peer_id' => 123,
-                'msg_id'  => 123,
-                'msg'     => $message->message ?? ''
+                'peer_id' => 2340,
+                'id'  => 85456,
+                'message'     => $message->message ?? ''
             ]);
             $this->message = $result;
 

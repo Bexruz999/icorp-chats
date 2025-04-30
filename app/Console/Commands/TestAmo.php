@@ -28,9 +28,9 @@ class TestAmo extends Command
     public function handle(AmoChatService $amoChatService)
     {
         SendAmoCrmMessage::dispatch([
-            'peer_id' => 123,
-            'msg_id'  => 123,
-            'msg'     => 'test'
+            'chat_id' => 12345,
+            'id'  => 123566,
+            'message'     => 'ftftft'
         ]);
     }
 }
