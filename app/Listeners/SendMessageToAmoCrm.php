@@ -19,7 +19,7 @@ class SendMessageToAmoCrm implements ShouldQueue
         $data = $event->data;
 
         try {
-            (new AmoChatService())->sendMessage(peer_id: $data['peer_id'], msg_id: $data['id'], msg: $data['msg']);
+            (new AmoChatService())->sendMessage(peer_id: $data['chat_id'], msg_id: $data['id'], msg: $data['message']);
         } catch (Exception $e) {
             Log::error('Error sending a message to AmoCRM: ' . $e->getMessage());
         }

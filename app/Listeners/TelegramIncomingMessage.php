@@ -22,31 +22,4 @@ class TelegramIncomingMessage extends SimpleEventHandler
     {
         TelegramMessage::dispatch($message);
     }
-
-    private function formatMedia($media): array
-    {
-        if (!$media) return [];
-
-        return [
-            '_' => $this->getTelegramMediaType($media),
-            'document' => [
-                'mime_type' => $media->mimeType ?? null,
-                'file_name' => $media->fileName ?? null,
-                'size' => $media->size ?? null,
-            ],
-            'caption' => $media->caption ?? null,
-        ];
-    }
-
-    private function getTelegramMediaType($media): string
-    {
-        return match (true) {
-            $media instanceof Document  => 'messageMediaDocument',
-            $media instanceof Photo     => 'messageMediaPhoto',
-            $media instanceof Video     => 'messageMediaVideo',
-            $media instanceof Audio     => 'messageMediaAudio',
-            $media instanceof Voice     => 'messageMediaVoice',
-            default                     => 'messageMediaUnsupported',
-        };
-    }
 }
