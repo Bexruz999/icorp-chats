@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Services\AmoChatService;
 use danog\MadelineProto\EventHandler\Media\Audio;
 use danog\MadelineProto\EventHandler\Media\Document;
 use danog\MadelineProto\EventHandler\Media\Photo;
@@ -46,12 +47,11 @@ class TelegramMessage implements ShouldBroadcast
                 $result['media'] = $this->formatMedia($message->media);
             }
 
-            SendAmoCrmMessage::dispatch($result);
-            SendAmoCrmMessage::dispatch([
-                'peer_id' => 2340,
-                'id'  => 85456,
-                'message'     => $message->message ?? ''
-            ]);
+            (new AmoChatService())->sendMessage(
+                peer_id: $result['chat_id'],
+                msg_id: $result['id'],
+                msg: $result['message']
+            );
             $this->message = $result;
 
         } catch (Exception $e) {
