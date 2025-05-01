@@ -29,7 +29,7 @@ class TestAmo extends Command
     {
         SendAmoCrmMessage::dispatch([
             'chat_id' => 12345,
-            'id'  => 176567,
+            'id'  => 176569,
             'message'     => 'ftftftkeffeug'
         ]);
     }
