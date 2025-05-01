@@ -31,7 +31,7 @@ class TelegramMessage implements ShouldBroadcast
     public function __construct(Message $message)
     {
         try {
-            $result = [
+            /*$result = [
                 'id' => $message->id,
                 'chat_id' => $message->chatId,
                 'message' => $message->message ?? '',
@@ -46,7 +46,12 @@ class TelegramMessage implements ShouldBroadcast
             if ($message->media) {
                 $result['media'] = $this->formatMedia($message->media);
             }
-            $this->message = $result;
+            $this->message = $result;*/
+            SendAmoCrmMessage::dispatch([
+                'chat_id' => 12345,
+                'id'  => 176575,
+                'message'     => 'ftfsdggsg'
+            ]);
 
         } catch (Exception $e) {
             Log::error('Xabarni qayta ishlashda xatolik: ' . $e->getMessage());
