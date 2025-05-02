@@ -40,7 +40,8 @@ class TelegramMessage implements ShouldBroadcast
                     'self' => $message->out
                 ],
                 'time'   => Carbon::parse($message->date)->timezone('+5')->format('H:i'),
-                'type' => (get_class($message) === GroupMessage::class) ? 'chat' : 'user'
+                'type' => (get_class($message) === GroupMessage::class) ? 'chat' : 'user',
+                'debug' => $message
             ];
 
             if ($message->media) {

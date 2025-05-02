@@ -46,21 +46,23 @@ class AmoChatService
         return (new Conversation())->setId("chat-$chat_id")->setRefId($response->getConversationRefId());
     }
 
-    public function sendMessage($peer_id, $msg_id, $msg): MessageResponse|AbstractResponse
+    public function sendMessage($contact, $msg_id, $msg): MessageResponse|AbstractResponse
     {
-        $contact = (new Sender())
-            ->setAvatar($this->avatar)
-            ->setId("user-$peer_id")
-            ->setName('Ivan Divanov')
-            ->setProfile((new UserProfile())->setPhone('+1464874556719'));
+        $amo_contact = (new Sender())
+            ->setProfile((new UserProfile())->setPhone($contact['phone']))
+            ->setId("user-" . $contact['id'])
+            ->setName($contact['name'])
+            ->setAvatar($this->avatar);
 
-        $conv = $this->createChat($contact, $peer_id);
+        $conv = $this->createChat($amo_contact, $contact['id']);
 
         $message = (new TextMessage())->setUid("MSG_$msg_id")->setText($msg);
 
+        $payload = (new Payload())->setConversation($conv)->setSender($amo_contact)->setMessage($message);
+
         return $this->client->sendMessage(
             accountUid: config('amo.account_id'),
-            payload: (new Payload())->setConversation($conv)->setSender($contact)->setMessage($message),
+            payload: $payload,
             externalId: 'test'
         );
     }
