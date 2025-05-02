@@ -58,12 +58,10 @@ class MessengerController extends Controller
                 'message_id'    => $result['message_id']
             ]);
 
-
             $amoChatService->sendMessage(contact: [
                 'id' => $valid['peerId'],
                 'name' => $user->name
             ], msg_id: $result['message_id'], msg: $valid['message']);
-
 
             return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
         }
