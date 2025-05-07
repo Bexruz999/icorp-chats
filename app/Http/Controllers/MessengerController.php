@@ -50,8 +50,6 @@ class MessengerController extends Controller
         $phone = $user->account->connections[0]->phone;
         $result = $this->telegramService->sendMessage($phone, $valid['peerId'], $valid['message']);
 
-        dd($result);
-
         if ($result['success']) {
 
             UserMessage::create([
@@ -60,10 +58,10 @@ class MessengerController extends Controller
                 'message_id'    => $result['message_id']
             ]);
 
-            $amoChatService->sendMessage(contact: [
+           /* $amoChatService->sendMessage(contact: [
                 'id' => $valid['peerId'],
                 'name' => $user->name
-            ], msg_id: $result['message_id'], msg: $valid['message']);
+            ], msg_id: $result['message_id'], msg: $valid['message']);*/
 
             return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
         }
