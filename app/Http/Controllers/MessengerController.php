@@ -53,15 +53,27 @@ class MessengerController extends Controller
         if ($result['success']) {
 
             UserMessage::create([
-                'user_id'       => $user->id,
-                'chat_id'       => $valid['peerId'],
-                'message_id'    => $result['message_id']
+                'user_id' => $user->id,
+                'chat_id' => $valid['peerId'],
+                'message_id' => $result['message_id']
             ]);
 
-           /* $amoChatService->sendMessage(contact: [
-                'id' => $valid['peerId'],
-                'name' => $user->name
-            ], msg_id: $result['message_id'], msg: $valid['message']);*/
+            //dd($result);
+
+            $amoChatService->sendMessage(
+                contact: [
+                    'id' => $result['sender']['id'],
+                    'name' => $result['sender']['first_name'] ?? $result['sender']['username'],
+                    'phone' => $result['sender']['phone'] ?? '',
+                ],
+                msg_id: $result['message_id'],
+                msg: $valid['message'],
+                sender: [
+                    'id' => $valid['peerId'],
+                    'name' => $user->name,
+                    'phone' => $phone,
+                ]
+            );
 
             return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
         }

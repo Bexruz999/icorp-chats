@@ -46,7 +46,7 @@ class AmoChatService
         return (new Conversation())->setId("chat-$chat_id")->setRefId($response->getConversationRefId());
     }
 
-    public function sendMessage($contact, $msg_id, $msg): MessageResponse|AbstractResponse
+    public function sendMessage($contact, $msg_id, $msg, $sender = null): MessageResponse|AbstractResponse
     {
         $amo_contact = (new Sender())
             ->setProfile((new UserProfile())->setPhone($contact['phone']))
@@ -58,7 +58,19 @@ class AmoChatService
 
         $message = (new TextMessage())->setUid("MSG_$msg_id")->setText($msg);
 
-        $payload = (new Payload())->setConversation($conv)->setSender($amo_contact)->setMessage($message);
+        $payload = (new Payload())
+            ->setConversation($conv)
+            ->setSender($amo_contact)
+            ->setMessage($message);
+
+        if ($sender !== null) {
+            $amo_sender = (new Sender())
+                ->setProfile((new UserProfile())->setPhone($sender['phone']))
+                ->setId("user-" . $sender['id'])
+                ->setName($sender['name'])
+                ->setAvatar($this->avatar);
+            $payload->setSender($amo_sender);
+        }
 
         return $this->client->sendMessage(
             accountUid: config('amo.account_id'),

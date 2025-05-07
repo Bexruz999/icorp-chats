@@ -25,7 +25,7 @@ class TestAmo extends Command
     /**
      * Execute the console command.
      */
-    public function handle(AmoChatService $amoChatService)
+    public function handle()
     {
         SendAmoCrmMessage::dispatch([
             'chat_id' => 12345,
