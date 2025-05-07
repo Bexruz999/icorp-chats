@@ -32,5 +32,11 @@ class TestAmo extends Command
             'id'  => 176569,
             'message'     => 'ftftftkeffeug'
         ]);
+
+        /*SendAmoCrmMessage::dispatch([
+            'chat_id' => 12345,
+            'id'  => 176569,
+            'message'     => 'ftftftkeffeug'
+        ]);*/
     }
 }

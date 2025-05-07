@@ -9,7 +9,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "ext-couchbase": "*",
         "ext-exif": "*",
         "ext-gd": "*",
         "danog/madelineproto": "^8",

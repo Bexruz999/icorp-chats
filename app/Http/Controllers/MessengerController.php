@@ -50,6 +50,8 @@ class MessengerController extends Controller
         $phone = $user->account->connections[0]->phone;
         $result = $this->telegramService->sendMessage($phone, $valid['peerId'], $valid['message']);
 
+        dd($result);
+
         if ($result['success']) {
 
             UserMessage::create([
