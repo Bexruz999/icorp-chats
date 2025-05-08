@@ -9,6 +9,7 @@ use AmoJo\Models\Channel;
 use AmoJo\Models\Conversation;
 use AmoJo\Models\Messages\TextMessage;
 use AmoJo\Models\Payload;
+use AmoJo\Models\Users\Receiver;
 use AmoJo\Models\Users\Sender;
 use AmoJo\Models\Users\ValueObject\UserProfile;
 
@@ -48,7 +49,7 @@ class AmoChatService
 
     public function sendMessage($contact, $msg_id, $msg, $sender = null): MessageResponse|AbstractResponse
     {
-        $amo_contact = (new Sender())
+        $amo_contact = (new Receiver())
             ->setProfile((new UserProfile())->setPhone($contact['phone']))
             ->setId("user-" . $contact['id'])
             ->setName($contact['name'])
@@ -58,18 +59,19 @@ class AmoChatService
 
         $message = (new TextMessage())->setUid("MSG_$msg_id")->setText($msg);
 
-        $payload = (new Payload())
-            ->setConversation($conv)
-            ->setSender($amo_contact)
-            ->setMessage($message);
-
         if ($sender !== null) {
             $amo_sender = (new Sender())
-                ->setProfile((new UserProfile())->setPhone($sender['phone']))
-                ->setId("user-" . $sender['id'])
-                ->setName($sender['name'])
-                ->setAvatar($this->avatar);
-            $payload->setSender($amo_sender);
+                ->setRefId('3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9');
+            $payload = (new Payload())
+                ->setConversation($conv)
+                ->setSender($amo_sender)
+                ->setReceiver($amo_contact)
+                ->setMessage($message);
+        } else {
+            $payload = (new Payload())
+                ->setConversation($conv)
+                ->setSender($amo_contact)
+                ->setMessage($message);
         }
 
         return $this->client->sendMessage(
@@ -78,4 +80,17 @@ class AmoChatService
             externalId: 'test'
         );
     }
+
+
 }
+/*
+ * date
+ * in_array
+ * count
+ * array_key_exists
+ * mt_rand
+ * echo
+ * var_dump
+ *
+ *
+ */

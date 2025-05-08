@@ -62,16 +62,16 @@ class MessengerController extends Controller
 
             $amoChatService->sendMessage(
                 contact: [
-                    'id' => $result['sender']['id'],
-                    'name' => $result['sender']['first_name'] ?? $result['sender']['username'],
-                    'phone' => $result['sender']['phone'] ?? '',
+                    'id' => $valid['peerId'],
+                    'name' => $user->name,
+                    'phone' => $phone,
                 ],
                 msg_id: $result['message_id'],
                 msg: $valid['message'],
                 sender: [
-                    'id' => $valid['peerId'],
-                    'name' => $user->name,
-                    'phone' => $phone,
+                    'id' => $result['sender']['id'],
+                    'name' => $result['sender']['first_name'] ?? $result['sender']['username'],
+                    'phone' => $result['sender']['phone'] ?? '',
                 ]
             );
 
