@@ -83,14 +83,3 @@ class AmoChatService
 
 
 }
-/*
- * date
- * in_array
- * count
- * array_key_exists
- * mt_rand
- * echo
- * var_dump
- *
- *
- */
