@@ -168,6 +168,9 @@ Route::get('test', function () {
     $leads = $amo->leads();
     $account = $amo->account();
     $companies = $amo->companies();
+    $first_token = $amo->fetchAccessToken('N2+k)KDf"sLbqZr');
+
+    print_r($first_token);
 
     dd($amo, $leads, $account, $companies, $amo->account);
 });
