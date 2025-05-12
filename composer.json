@@ -12,6 +12,7 @@
         "ext-exif": "*",
         "ext-gd": "*",
         "danog/madelineproto": "^8",
+        "dotzero/amocrm": "^0.3.29",
         "fakerphp/faker": "^1.23",
         "fcritic/amojo-api-client": "^1.3",
         "guzzlehttp/guzzle": "^7.2",

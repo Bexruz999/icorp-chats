@@ -12,6 +12,11 @@ use AmoJo\Models\Payload;
 use AmoJo\Models\Users\Receiver;
 use AmoJo\Models\Users\Sender;
 use AmoJo\Models\Users\ValueObject\UserProfile;
+use GuzzleHttp\Promise\PromiseInterface;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
+use Log;
 
 class AmoChatService
 {
@@ -81,5 +86,19 @@ class AmoChatService
         );
     }
 
+    public function getUsers($with_amo_id = null): PromiseInterface|array|Response
+    {
+        $params = [];
 
+        if ($with_amo_id) {
+            $params['amo_id'] = $with_amo_id;
+        }
+
+        try {
+            return Http::withToken(config('amo.'))->get(config('amo.domain'));
+        } catch (ConnectionException $e) {
+            Log::error('Error: ' . $e->getMessage());
+            return [];
+        }
+    }
 }

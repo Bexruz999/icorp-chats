@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1e049e0e5cf39cec2806c181ad683c5",
+    "content-hash": "748ce75be4d45bbc791a286b66a866ae",
     "packages": [
         {
             "name": "amphp/amp",
@@ -3279,6 +3279,54 @@
                 }
             ],
             "time": "2024-02-05T11:56:58+00:00"
+        },
+        {
+            "name": "dotzero/amocrm",
+            "version": "v0.3.29",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dotzero/amocrm-php.git",
+                "reference": "469e525d539a440590e32cbbf6858727ab63cfb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dotzero/amocrm-php/zipball/469e525d539a440590e32cbbf6858727ab63cfb0",
+                "reference": "469e525d539a440590e32cbbf6858727ab63cfb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AmoCRM\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "dotzero",
+                    "email": "mail@dotzero.ru"
+                }
+            ],
+            "description": "Удобный и быстрый клиент для работы с API amoCRM",
+            "keywords": [
+                "amoCRM",
+                "api",
+                "crm"
+            ],
+            "support": {
+                "issues": "https://github.com/dotzero/amocrm-php/issues",
+                "source": "https://github.com/dotzero/amocrm-php/tree/v0.3.29"
+            },
+            "time": "2019-12-08T18:26:34+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",
@@ -14493,7 +14541,6 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2",
-        "ext-couchbase": "*",
         "ext-exif": "*",
         "ext-gd": "*"
     },
