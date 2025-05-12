@@ -36,7 +36,10 @@ class TestAmo extends Command
             'redirect_uri' => config('amo.redirect_uri'),
         ]);
 
-        var_dump($amo);
+        $leads = $amo->leads();
+        $account = $amo->account();
+
+        var_dump($amo, $leads, $account);
 
         /*$a = $amoChatService->getUsers(true);
         var_dump($a);*/
