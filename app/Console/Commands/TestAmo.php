@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Events\SendAmoCrmMessage;
 use App\Services\AmoChatService;
 use Illuminate\Console\Command;
+use Ufee\Amo\Oauthapi;
 
 class TestAmo extends Command
 {
@@ -28,8 +29,17 @@ class TestAmo extends Command
     public function handle(AmoChatService $amoChatService)
     {
 
-        $a = $amoChatService->getUsers(true);
-        var_dump($a);
+        $amo = Oauthapi::setInstance([
+            'domain' => config('amo.domain'),
+            'client_id' => config('amo.account_id'),
+            'client_secret' => config('amo.secret_key'),
+            'redirect_uri' => config('amo.redirect_uri'),
+        ]);
+
+        var_dump($amo);
+
+        /*$a = $amoChatService->getUsers(true);
+        var_dump($a);*/
         /*SendAmoCrmMessage::dispatch([
             'chat_id' => 12345,
             'id'  => 176569,

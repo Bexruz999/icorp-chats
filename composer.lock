@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "748ce75be4d45bbc791a286b66a866ae",
+    "content-hash": "c95645402dcd4c1cbd9de60d1ad9f5d3",
     "packages": [
         {
             "name": "amphp/amp",
@@ -10645,6 +10645,52 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.3.0"
             },
             "time": "2024-12-21T16:25:41+00:00"
+        },
+        {
+            "name": "ufee/amoapi",
+            "version": "0.9.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ufee/amoapi.git",
+                "reference": "704ab77ceb3c5b8cd48bfc8b6c6bec5a8cf4544a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ufee/amoapi/zipball/704ab77ceb3c5b8cd48bfc8b6c6bec5a8cf4544a",
+                "reference": "704ab77ceb3c5b8cd48bfc8b6c6bec5a8cf4544a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ufee\\Amo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vlad Ionov",
+                    "email": "vlad@ufee.ru",
+                    "role": "Creator"
+                }
+            ],
+            "description": "amoCRM API Client (https://www.amocrm.ru/developers/content/platform/abilities/)",
+            "homepage": "https://github.com/ufee",
+            "support": {
+                "email": "vlad@ufee.ru",
+                "issues": "https://github.com/ufee",
+                "source": "https://github.com/ufee/amoapi/tree/0.9.4.4"
+            },
+            "time": "2025-02-20T13:39:35+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
