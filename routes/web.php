@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MessengerController;
 use Inertia\Inertia;
+use Ufee\Amo\Oauthapi;
 
 
 /*
@@ -150,6 +151,20 @@ Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
     Route::resource('roles', RoleController::class);
 });
 
+
+Route::get('test', function () {
+    $amo = Oauthapi::setInstance([
+        'domain' => config('amo.domain'),
+        'client_id' => config('amo.account_id'),
+        'client_secret' => config('amo.secret_key'),
+        'redirect_uri' => config('amo.redirect_uri'),
+    ]);
+    $leads = $amo->leads();
+    $account = $amo->account();
+    $companies = $amo->companies();
+
+    dd($amo, $leads, $account, $companies);
+});
 // Organizations
 
 /*Route::get('organizations', [OrganizationsController::class, 'index'])
