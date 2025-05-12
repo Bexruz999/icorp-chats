@@ -163,7 +163,7 @@ Route::get('test', function () {
     $account = $amo->account();
     $companies = $amo->companies();
 
-    dd($amo, $leads, $account, $companies);
+    dd($amo, $leads, $account, $companies, $amo->account);
 });
 // Organizations
 
