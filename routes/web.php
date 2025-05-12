@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MessengerController;
 use Inertia\Inertia;
+use Ufee\Amo\Base\Storage\Oauth\FileStorage;
 use Ufee\Amo\Oauthapi;
 
 
@@ -153,6 +154,11 @@ Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
 
 
 Route::get('test', function () {
+
+    Oauthapi::setOauthStorage(
+        new FileStorage(['path' => public_path('auth')])
+    );
+
     $amo = Oauthapi::setInstance([
         'domain' => config('amo.domain'),
         'client_id' => config('amo.account_id'),
