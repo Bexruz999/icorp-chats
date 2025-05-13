@@ -37,7 +37,7 @@ class AmoApiService
              * Ловим обратный код
              */
             try {
-                $accessToken = $provider->getAccessToken((new AuthorizationCode)(), [
+                $accessToken = $provider->getAccessToken((new AuthorizationCode), [
                     'code' => $_GET['code'],
                 ]);
 
