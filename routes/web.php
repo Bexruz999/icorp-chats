@@ -168,9 +168,9 @@ Route::get('test', function () {
     $leads = $amo->leads();
     $account = $amo->account();
     $companies = $amo->companies();
-    $first_token = $amo->fetchAccessToken('N2+k)KDf"sLbqZr');
+    $first_auth_url = $amo->getOauthUrl($arg = ['mode' => 'popup', 'state' => 'amoapi']);
 
-    print_r($first_token);
+    print_r($first_auth_url);
 
     dd($amo, $leads, $account, $companies, $amo->account);
 });
