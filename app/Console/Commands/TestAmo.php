@@ -29,7 +29,16 @@ class TestAmo extends Command
     public function handle(AmoChatService $amoChatService)
     {
 
-        $amo = Oauthapi::setInstance([
+        $n = 7;
+
+        for ($i = 2; $i < $n; $i++) {
+            if ($n % $i == 0) {
+                echo '+';
+                break;
+            }
+        }
+
+        /*$amo = Oauthapi::setInstance([
             'domain' => config('amo.domain'),
             'client_id' => config('amo.account_id'),
             'client_secret' => config('amo.secret_key'),
@@ -39,7 +48,7 @@ class TestAmo extends Command
         $leads = $amo->leads();
         $account = $amo->account();
 
-        var_dump($amo, $leads, $account);
+        var_dump($amo, $leads, $account);*/
 
         /*$a = $amoChatService->getUsers(true);
         var_dump($a);*/

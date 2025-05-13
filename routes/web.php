@@ -153,28 +153,7 @@ Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
 });
 
 
-Route::get('test', function () {
-
-    Oauthapi::setOauthStorage(
-        new FileStorage(['path' => public_path('auth')])
-    );
-
-    $amo = Oauthapi::setInstance([
-        'domain' => config('amo.domain'),
-        'client_id' => config('amo.account_id'),
-        'client_secret' => config('amo.secret_key'),
-        'redirect_uri' => config('amo.redirect_uri'),
-    ]);
-    $leads = $amo->leads();
-    $account = $amo->account();
-    $companies = $amo->companies();
-    $first_auth_url = $amo->getOauthUrl(['mode' => 'popup', 'state' => 'amoapi']);
-
-    print_r($first_auth_url);
-    $leads = $amo->leads()->searchByCustomField('Москва', 'Город', 300);
-
-    dd($amo, $leads, $account, $companies);
-});
+Route::get('test', [\App\Services\AmoApiService::class, 'handle']);
 // Organizations
 
 /*Route::get('organizations', [OrganizationsController::class, 'index'])

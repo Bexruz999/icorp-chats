@@ -11,6 +11,7 @@
         "php": "^8.2",
         "ext-exif": "*",
         "ext-gd": "*",
+        "amocrm/oauth2-amocrm": "^3.0",
         "danog/madelineproto": "^8",
         "dotzero/amocrm": "^0.3.29",
         "fakerphp/faker": "^1.23",
