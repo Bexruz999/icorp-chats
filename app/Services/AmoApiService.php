@@ -16,7 +16,7 @@ class AmoApiService
         $provider = new AmoCRM([
             'clientId' => config('amo.integration_id'),
             'clientSecret' => config('amo.integration_secret_key'),
-            'redirectUri' => config('amo.integration_redirect_uri'),
+            'redirectUri' => config('amo.redirect_uri'),
         ]);
 
         if (isset($_GET['referer'])) {
