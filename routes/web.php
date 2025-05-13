@@ -168,11 +168,12 @@ Route::get('test', function () {
     $leads = $amo->leads();
     $account = $amo->account();
     $companies = $amo->companies();
-    $first_auth_url = $amo->getOauthUrl($arg = ['mode' => 'popup', 'state' => 'amoapi']);
+    $first_auth_url = $amo->getOauthUrl(['mode' => 'popup', 'state' => 'amoapi']);
 
     print_r($first_auth_url);
+    $leads = $amo->leads()->searchByCustomField('Москва', 'Город', 300);
 
-    dd($amo, $leads, $account, $companies, $amo->account);
+    dd($amo, $leads, $account, $companies);
 });
 // Organizations
 
