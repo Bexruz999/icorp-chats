@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('amo_tokens', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('account_id')->constrained('accounts');
+            $table->foreignId('account_id')->constrained('accounts')->cascadeOnDelete();
             $table->string('token')->nullable();
             $table->string('refresh_token')->nullable();
             $table->string('base_domain')->nullable();

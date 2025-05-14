@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id('id');
             $table->integer('account_id')->index();
             $table->integer('organization_id')->nullable()->index();
             $table->string('first_name', 25);
