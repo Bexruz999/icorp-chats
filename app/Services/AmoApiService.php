@@ -3,27 +3,16 @@
 namespace App\Services;
 
 use AmoCRM\OAuth2\Client\Provider\AmoCRM;
+use App\Models\AmoToken;
+use Arr;
 use Exception;
 use League\OAuth2\Client\Grant\AuthorizationCode;
 use League\OAuth2\Client\Grant\RefreshToken;
-use Str;
+use League\OAuth2\Client\Token\AccessToken;
 
 class AmoApiService
 {
-    public string $tokenFile;
-
-    /**
-     * @return string
-     */
-    public function getTokenFile(): string
-    {
-        if (empty($this->tokenFile)) {
-            $this->tokenFile = public_path() . '/token.json';
-        }
-        return $this->tokenFile;
-    }
-
-    public function handle()
+    public function handle(): void
     {
         $provider = new AmoCRM([
             'clientId' => config('amo.integration_id'),
@@ -35,42 +24,33 @@ class AmoApiService
             $provider->setBaseDomain($_GET['referer']);
         }
 
-
         if (!isset($_GET['request'])) {
-            /**
-             * Ловим обратный код
-             */
+
             try {
-                $accessToken = $provider->getAccessToken((new AuthorizationCode), [
-                    'code' => $_GET['code'],
-                ]);
+                $accessToken = $provider->getAccessToken((new AuthorizationCode), ['code' => $_GET['code']]);
 
                 if (!$accessToken->hasExpired()) {
                     $this->saveToken([
-                        'accessToken' => $accessToken->getToken(),
-                        'refreshToken' => $accessToken->getRefreshToken(),
-                        'expires' => $accessToken->getExpires(),
-                        'baseDomain' => $provider->getBaseDomain(),
+                        'token' => $accessToken->getToken(),
+                        'refresh_token' => $accessToken->getRefreshToken(),
+                        'expires_at' => $accessToken->getExpires(),
+                        'base_domain' => $provider->getBaseDomain(),
                     ]);
                 }
             } catch (Exception $e) {
                 die((string)$e);
             }
-
-            $ownerDetails = $provider->getResourceOwner($accessToken);
-
-            printf('Hello, %s!', $ownerDetails->getName());
         } else {
             $accessToken = $this->getToken();
 
-            $provider->setBaseDomain($accessToken->getValues()['baseDomain']);
+            $provider->setBaseDomain($accessToken->getValues()['base_domain']);
 
             /**
-             * Проверяем активен ли токен и делаем запрос или обновляем токен
+             * check if the token is active and make a request or update the token.
              */
             if ($accessToken->hasExpired()) {
                 /**
-                 * Получаем токен по рефрешу
+                 * get a token for a refresh
                  */
                 try {
                     $accessToken = $provider->getAccessToken(new RefreshToken(), [
@@ -78,80 +58,43 @@ class AmoApiService
                     ]);
 
                     $this->saveToken([
-                        'accessToken' => $accessToken->getToken(),
-                        'refreshToken' => $accessToken->getRefreshToken(),
-                        'expires' => $accessToken->getExpires(),
-                        'baseDomain' => $provider->getBaseDomain(),
+                        'token' => $accessToken->getToken(),
+                        'refresh_token' => $accessToken->getRefreshToken(),
+                        'expires_at' => $accessToken->getExpires(),
+                        'base_domain' => $provider->getBaseDomain(),
                     ]);
 
                 } catch (Exception $e) {
                     die((string)$e);
                 }
             }
-
-            $token = $accessToken->getToken();
-
-            try {
-                /**
-                 * Делаем запрос к АПИ
-                 */
-                $data = $provider->getHttpClient()
-                    ->request('GET', $provider->urlAccount() . 'api/v2/account', [
-                        'headers' => $provider->getHeaders($accessToken)
-                    ]);
-
-                $parsedBody = json_decode($data->getBody()->getContents(), true);
-                printf('ID аккаунта - %s, название - %s', $parsedBody['id'], $parsedBody['name']);
-            } catch (Exception $e) {
-                var_dump((string)$e);
-            }
         }
 
     }
-    public function saveToken($accessToken)
-    {
-        if (
-            isset($accessToken)
-            && isset($accessToken['accessToken'])
-            && isset($accessToken['refreshToken'])
-            && isset($accessToken['expires'])
-            && isset($accessToken['baseDomain'])
-        ) {
-            $data = [
-                'accessToken' => $accessToken['accessToken'],
-                'expires' => $accessToken['expires'],
-                'refreshToken' => $accessToken['refreshToken'],
-                'baseDomain' => $accessToken['baseDomain'],
-            ];
 
-            file_put_contents(TOKEN_FILE, json_encode($data));
+    public function saveToken($token)
+    {
+        if (Arr::has($token, ['token', 'refresh_token', 'expires_at', 'base_domain'])) {
+
+            $token['account_id'] = auth()->user()->account_id;
+
+            return AmoToken::query()->updateOrCreate([$token['token']], $token);
         } else {
-            exit('Invalid access token ' . var_export($accessToken, true));
+            exit('Invalid access token ' . var_export($token, true));
         }
     }
 
     /**
-     * @return \League\OAuth2\Client\Token\AccessToken
+     * @return AccessToken
      */
-    public function getToken()
+    public function getToken(): AccessToken
     {
-        $accessToken = json_decode(file_get_contents(TOKEN_FILE), true);
+        $token = AmoToken::query()->where('account_id', auth()->user()->account_id)->latest();
 
-        if (
-            isset($accessToken)
-            && isset($accessToken['accessToken'])
-            && isset($accessToken['refreshToken'])
-            && isset($accessToken['expires'])
-            && isset($accessToken['baseDomain'])
-        ) {
-            return new \League\OAuth2\Client\Token\AccessToken([
-                'access_token' => $accessToken['accessToken'],
-                'refresh_token' => $accessToken['refreshToken'],
-                'expires' => $accessToken['expires'],
-                'baseDomain' => $accessToken['baseDomain'],
-            ]);
+        if (Arr::has($token, ['token', 'refresh_token', 'expires_at', 'base_domain'])) {
+            return new AccessToken($token);
         } else {
-            exit('Invalid access token ' . var_export($accessToken, true));
+            exit('Invalid access token ' . var_export($token, true));
         }
     }
 }
