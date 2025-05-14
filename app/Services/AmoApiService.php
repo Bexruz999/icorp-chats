@@ -6,6 +6,7 @@ use AmoCRM\OAuth2\Client\Provider\AmoCRM;
 use Exception;
 use League\OAuth2\Client\Grant\AuthorizationCode;
 use League\OAuth2\Client\Grant\RefreshToken;
+use Str;
 
 class AmoApiService
 {
@@ -24,12 +25,14 @@ class AmoApiService
         }
 
         if (!isset($_GET['request'])) {
+            dd($_GET['code']);
             if (!isset($_GET['code'])) {
-                $_SESSION['oauth2state'] = bin2hex(random_bytes(16));
-                $authorizationUrl = $provider->getAuthorizationUrl(['state' => $_SESSION['oauth2state']]);
+                $state = Str::random(16);
+                session(['oauth2state' => $state]);
+                $authorizationUrl = $provider->getAuthorizationUrl(['state' => $state]);
                 header('Location: ' . $authorizationUrl);
-            } elseif (empty($_GET['state']) || empty($_SESSION['oauth2state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
-                unset($_SESSION['oauth2state']);
+            } elseif (empty($_GET['state']) || empty($state) || ($_GET['state'] !== $state)) {
+                unset($state);
                 exit('Invalid state');
             }
 
