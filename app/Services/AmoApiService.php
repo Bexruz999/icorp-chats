@@ -10,10 +10,21 @@ use Str;
 
 class AmoApiService
 {
+    public string $tokenFile;
+
+    /**
+     * @return string
+     */
+    public function getTokenFile(): string
+    {
+        if (empty($this->tokenFile)) {
+            $this->tokenFile = public_path() . '/token.json';
+        }
+        return $this->tokenFile;
+    }
+
     public function handle()
     {
-        define('TOKEN_FILE', public_path() . '/token.json');
-
         $provider = new AmoCRM([
             'clientId' => config('amo.integration_id'),
             'clientSecret' => config('amo.integration_secret_key'),
@@ -24,18 +35,8 @@ class AmoApiService
             $provider->setBaseDomain($_GET['referer']);
         }
 
-        if (!isset($_GET['request'])) {
-            dd($_GET['code']);
-            if (!isset($_GET['code'])) {
-                $state = Str::random(16);
-                session(['oauth2state' => $state]);
-                $authorizationUrl = $provider->getAuthorizationUrl(['state' => $state]);
-                header('Location: ' . $authorizationUrl);
-            } elseif (empty($_GET['state']) || empty($state) || ($_GET['state'] !== $state)) {
-                unset($state);
-                exit('Invalid state');
-            }
 
+        if (!isset($_GET['request'])) {
             /**
              * Ловим обратный код
              */
