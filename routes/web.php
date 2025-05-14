@@ -153,7 +153,7 @@ Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
 });
 
 
-Route::get('test', [\App\Services\AmoApiService::class, 'handle']);
+Route::get('test', [\App\Services\AmoApiService::class, 'getToken']);
 Route::get('/amocrm/oauth/redirect', [\App\Services\AmoApiService::class, 'handle']);
 // Organizations
 

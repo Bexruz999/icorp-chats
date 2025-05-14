@@ -26,7 +26,9 @@ class AmoApiService
 
     public function handle()
     {
-        if (isset($_GET['referer'])) {$this->provider->setBaseDomain($_GET['referer']);}
+        if (isset($_GET['referer'])) {
+            $this->provider->setBaseDomain($_GET['referer']);
+        }
 
         if (!isset($_GET['request'])) {
 
@@ -40,7 +42,9 @@ class AmoApiService
                 if (!$accessToken->hasExpired()) {
                     $this->saveToken($accessToken);
                 }
-            } catch (Exception $e) {die((string)$e);}
+            } catch (Exception $e) {
+                die((string)$e);
+            }
 
         }
         return redirect()->route('settings');
@@ -61,7 +65,9 @@ class AmoApiService
 
             return AmoToken::query()->updateOrCreate(['token' => $token['token']], $token);
 
-        } else {exit('Invalid access token ' . var_export($token, true));}
+        } else {
+            exit('Invalid access token ' . var_export($token, true));
+        }
     }
 
     /**
@@ -71,24 +77,24 @@ class AmoApiService
     {
         $token = AmoToken::query()->where('account_id', auth()->user()->account_id)->latest();
 
-        if (Arr::has($token, ['token', 'refresh_token', 'expires_at', 'base_domain'])) {
-            $token = new AccessToken($token);
-            $this->provider->setBaseDomain($token->getValues()['base_domain']);
+        $token = new AccessToken($token);
+        $this->provider->setBaseDomain($token->getValues()['base_domain']);
 
-            if ($token->hasExpired()) {
-                /**
-                 * get a token for a refresh
-                 */
-                try {
-                    $token = $this->provider->getAccessToken(new RefreshToken(), [
-                        'refresh_token' => $token->getRefreshToken(),
-                    ]);
+        if ($token->hasExpired()) {
+            /**
+             * get a token for a refresh
+             */
+            try {
+                $token = $this->provider->getAccessToken(new RefreshToken(), [
+                    'refresh_token' => $token->getRefreshToken()
+                ]);
 
-                    $this->saveToken($token);
+                $this->saveToken($token);
 
-                } catch (Exception $e) {die((string)$e);}
+            } catch (Exception $e) {
+                die((string)$e);
             }
-            return $token->getToken();
-        } else {exit('Invalid access token ' . var_export($token, true));}
+        }
+        return $token->getToken();
     }
 }
