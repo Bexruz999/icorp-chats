@@ -6,6 +6,8 @@ use AmoCRM\OAuth2\Client\Provider\AmoCRM;
 use App\Models\AmoToken;
 use Arr;
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use League\OAuth2\Client\Grant\AuthorizationCode;
 use League\OAuth2\Client\Grant\RefreshToken;
@@ -24,6 +26,10 @@ class AmoApiService
         ]);
     }
 
+    /**
+     * @return RedirectResponse|void
+     * @throws GuzzleException
+     */
     public function handle()
     {
         if (isset($_GET['referer'])) {
@@ -53,17 +59,17 @@ class AmoApiService
     public function saveToken($accessToken)
     {
         $token = [
-            'token' => $accessToken->getToken(),
+            'access_token' => $accessToken->getToken(),
             'refresh_token' => $accessToken->getRefreshToken(),
-            'expires_at' => $accessToken->getExpires(),
+            'expires' => $accessToken->getExpires(),
             'base_domain' => $this->provider->getBaseDomain(),
         ];
 
-        if (Arr::has($token, ['token', 'refresh_token', 'expires_at', 'base_domain'])) {
+        if (Arr::has($token, ['access_token', 'refresh_token', 'expires', 'base_domain'])) {
 
             $token['account_id'] = auth()->user()->account_id;
 
-            return AmoToken::query()->updateOrCreate(['token' => $token['token']], $token);
+            return AmoToken::query()->updateOrCreate(['base_domain' => $token['base_domain']], $token);
 
         } else {
             exit('Invalid access token ' . var_export($token, true));
@@ -71,19 +77,18 @@ class AmoApiService
     }
 
     /**
-     * @return AccessToken
+     * @throws GuzzleException
      */
-    public function getToken(): AccessToken
+    public function getToken(): AccessToken|string
     {
-        $token = AmoToken::query()->where('account_id', auth()->user()->account_id)->latest();
+        $token = AmoToken::query()->where('account_id', auth()->user()->account_id)->latest()->first();
 
-        $token = new AccessToken($token);
+        $token = new AccessToken($token->toArray());
         $this->provider->setBaseDomain($token->getValues()['base_domain']);
 
         if ($token->hasExpired()) {
-            /**
-             * get a token for a refresh
-             */
+
+            // get a token for a refresh
             try {
                 $token = $this->provider->getAccessToken(new RefreshToken(), [
                     'refresh_token' => $token->getRefreshToken()

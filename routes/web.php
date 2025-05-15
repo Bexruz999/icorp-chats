@@ -4,26 +4,20 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BotController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\ImagesController;
-use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
-use App\Http\Middleware\AdminValid;
 use App\Http\Middleware\SetSpatieTeamContext;
-use danog\MadelineProto\API;
+use App\Services\AmoApiService;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MessengerController;
-use Inertia\Inertia;
-use Ufee\Amo\Base\Storage\Oauth\FileStorage;
-use Ufee\Amo\Oauthapi;
 
 
 /*
@@ -153,8 +147,8 @@ Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
 });
 
 
-Route::get('test', [\App\Services\AmoApiService::class, 'getToken']);
-Route::get('/amocrm/oauth/redirect', [\App\Services\AmoApiService::class, 'handle']);
+Route::get('test', [AmoApiService::class, 'getToken']);
+Route::get('/amocrm/oauth/redirect', [AmoApiService::class, 'handle']);
 // Organizations
 
 /*Route::get('organizations', [OrganizationsController::class, 'index'])

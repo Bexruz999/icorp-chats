@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('amo_tokens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('account_id')->constrained('accounts')->cascadeOnDelete();
-            $table->text('token')->nullable();
+            
+            $table->text('access_token')->nullable();
             $table->text('refresh_token')->nullable();
             $table->string('base_domain')->nullable();
-            $table->bigInteger('expires_at')->nullable();
+            $table->bigInteger('expires')->nullable();
             $table->timestamps();
         });
     }
