@@ -25,6 +25,7 @@
         "laravel/tinker": "^2.9",
         "league/glide-symfony": "^2.0",
         "spatie/laravel-permission": "^6.16",
+        "symfony/psr-http-message-bridge": "^7.2",
         "tightenco/ziggy": "^2.2",
         "ufee/amoapi": "^0.9.4"
     },
