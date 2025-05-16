@@ -52,9 +52,36 @@ class AmoChatService
         return (new Conversation())->setId("chat-$chat_id")->setRefId($response->getConversationRefId());
     }
 
-    public function sendMessage($contact, $msg_id, $msg, $sender = null): MessageResponse|AbstractResponse
+    public function sendMessage($contact, $msg_id, $msg, $sender): MessageResponse|AbstractResponse
     {
         $amo_contact = (new Receiver())
+            ->setProfile((new UserProfile())->setPhone($contact['phone']))
+            ->setId("user-" . $contact['id'])
+            ->setName($contact['name'])
+            ->setAvatar($this->avatar);
+
+        $amo_sender = (new Sender())->setRefId('3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9');
+
+        $conv = $this->createChat($amo_contact, $contact['id']);
+
+        $message = (new TextMessage())->setUid("MSG_$msg_id")->setText($msg);
+
+        $payload = (new Payload())
+            ->setConversation($conv)
+            ->setSender($amo_sender)
+            ->setReceiver($amo_contact)
+            ->setMessage($message);
+
+        return $this->client->sendMessage(
+            accountUid: config('amo.account_id'),
+            payload: $payload,
+            externalId: 'test'
+        );
+    }
+
+    public function sendInMessage($contact, $msg_id, $msg)
+    {
+        $amo_contact = (new Sender())
             ->setProfile((new UserProfile())->setPhone($contact['phone']))
             ->setId("user-" . $contact['id'])
             ->setName($contact['name'])
@@ -64,20 +91,10 @@ class AmoChatService
 
         $message = (new TextMessage())->setUid("MSG_$msg_id")->setText($msg);
 
-        if ($sender !== null) {
-            $amo_sender = (new Sender())
-                ->setRefId('3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9');
-            $payload = (new Payload())
-                ->setConversation($conv)
-                ->setSender($amo_sender)
-                ->setReceiver($amo_contact)
-                ->setMessage($message);
-        } else {
-            $payload = (new Payload())
-                ->setConversation($conv)
-                ->setSender($amo_contact)
-                ->setMessage($message);
-        }
+        $payload = (new Payload())
+            ->setConversation($conv)
+            ->setSender($amo_contact)
+            ->setMessage($message);
 
         return $this->client->sendMessage(
             accountUid: config('amo.account_id'),

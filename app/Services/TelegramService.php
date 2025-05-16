@@ -60,7 +60,11 @@ class TelegramService
 
             while (true) {
                 // Get dialogs with pagination
-                $dialogs = $MadelineProto->messages->getDialogs(offset_date: $date, limit: $limit);
+                try {
+                    $dialogs = $MadelineProto->messages->getDialogs(offset_date: $date, limit: $limit);
+                } catch (Throwable) {
+                    $dialogs = [];
+                }
 
                 // Check if we received any dialogs
                 if (count($dialogs['dialogs']) == 0) {
@@ -150,7 +154,7 @@ class TelegramService
                     if ($media['_'] === 'messageMediaDocument') {
                         $msg_data['media']['file_name'] = collect(Arr::get($media, 'document.attributes'))->where('_', 'documentAttributeFilename')->value('file_name');
                     }
-                };
+                }
 
                 $result[] = $msg_data;
             }
@@ -223,10 +227,6 @@ class TelegramService
 
         $uploadedFile = $MadelineProto->upload($uploadPath);
 
-        if (!isset($_SESSION['grouped_id'])) {
-            $_SESSION['grouped_id'] = mt_rand(1000000, 9999999);
-        }
-
         $MadelineProto->messages->sendMultiMedia(
             peer: $chatId,
             multi_media: [
@@ -241,7 +241,6 @@ class TelegramService
                             ]],
                     ],
                     'message' => $message,
-                    'grouped_id' => $_SESSION['grouped_id'],
                 ]
             ]);
 
@@ -249,7 +248,8 @@ class TelegramService
     }
 
 
-    public function sendVoice($chatId, $file, $fileName) {
+    public function sendVoice($chatId, $file, $fileName): void
+    {
         $user = auth()->user();
         $phone = $user->account->connections[0]->phone;
 
@@ -257,7 +257,7 @@ class TelegramService
 
         $localFile = new LocalFile($file);
 
-        $sendMessage = $MadelineProto->sendVoice(peer: $chatId, file: $localFile,  fileName: $fileName);
+        $MadelineProto->sendVoice(peer: $chatId, file: $localFile,  fileName: $fileName);
     }
 
     /**
@@ -291,7 +291,8 @@ class TelegramService
         return $mediaTypes[$extension] ?? 'inputMediaUploadedDocument';
     }
 
-    public function getMedia($message_id) {
+    public function getMedia($message_id): void
+    {
         $user = auth()->user();
         $phone = $user->account->connections[0]->phone;
 

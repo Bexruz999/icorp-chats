@@ -137,6 +137,7 @@ const MessengerPage = ({ chats }: any) => {
       // Слушаем события новых сообщений
       window.Echo.private('telegram-messages')
         .listen('TelegramMessage', (e: any) => {
+          console.log(e.message);
           if (e.message.chat_id === selectedChat.peer_id) {
             e.message.user.first_name = findChat(e.message.chat_id).title;
             console.log(e);

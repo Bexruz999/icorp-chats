@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id('id');
-            $table->integer('account_id')->index();
+            $table->foreignId('account_id')->index();
+
             $table->string('first_name', 25);
             $table->string('last_name', 25)->nullable();
             $table->string('email', 50)->unique();
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->boolean('owner')->default(false);
             $table->string('photo', 100)->nullable();
+            $table->text('amojo_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

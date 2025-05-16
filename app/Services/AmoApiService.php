@@ -7,12 +7,13 @@ use App\Models\AmoToken;
 use Arr;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use League\OAuth2\Client\Grant\AuthorizationCode;
 use League\OAuth2\Client\Grant\RefreshToken;
 use League\OAuth2\Client\Token\AccessToken;
-use Psr\Http\Message\ResponseInterface;
 
 class AmoApiService
 {
@@ -101,18 +102,22 @@ class AmoApiService
                 die((string)$e);
             }
         }
-        return $token->getToken();
+        return $token;
     }
 
-    public function getAmoAccount(): string|ResponseInterface
+    /**
+     * @throws GuzzleException
+     * @throws ConnectionException
+     */
+    public function getAmoAccount()
     {
-        try {
-            return $this->provider->getHttpClient()
-                ->request('GET', $this->provider->urlAccount() . 'api/v2/account', [
-                    'headers' => $this->provider->getHeaders($this->getToken())
-                ]);
-        } catch (GuzzleException $e) {
-            return $e->getMessage();
-        }
+        $accessToken = $this->getToken();
+        $values = $accessToken->getValues();
+        $baseDomain = Arr::get($values, 'base_domain');
+        $url = "https://$baseDomain/api/v4/users?with=amojo_id";
+
+        $response = Http::withHeaders(['Authorization' => 'Bearer ' . $accessToken->getToken(),])->get($url);
+
+        return $response->json();
     }
 }
