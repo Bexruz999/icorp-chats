@@ -8,7 +8,6 @@ use App\Jobs\AmoSendMessage;
 use danog\MadelineProto\EventHandler\Attributes\Handler;
 use danog\MadelineProto\EventHandler\Message;
 use danog\MadelineProto\EventHandler\Message\PrivateMessage;
-use danog\MadelineProto\EventHandler\Update;
 use danog\MadelineProto\SimpleEventHandler;
 
 class TelegramIncomingMessage extends SimpleEventHandler
