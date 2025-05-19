@@ -83,6 +83,8 @@ Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
     Route::put('users/{user}/restore', [UsersController::class, 'restore'])
         ->name('users.restore');
 
+    // Messenger
+
     Route::get('messenger', [MessengerController::class, 'index'])
         ->name('messengers');
 

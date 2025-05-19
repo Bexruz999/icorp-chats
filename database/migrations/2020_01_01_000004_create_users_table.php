@@ -24,6 +24,7 @@ return new class extends Migration
             $table->boolean('owner')->default(false);
             $table->string('photo', 100)->nullable();
             $table->text('amojo_id')->nullable();
+            $table->integer('telegram_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

@@ -183,15 +183,20 @@ class TelegramService
 
         try {
             $result = $MadelineProto->messages->sendMessage(peer: $peerId, message: $message);
-            $self = $MadelineProto->getSelf();
+            $chat = $MadelineProto->getPwrChat($peerId);
 
-            return ['success' => true, 'message_id' => Arr::get($result, 'id') ?? null, 'sender' => $self];
+            return ['success' => true, 'result' => $result, 'chat' => $chat];
         } catch (\Exception $e) {
             return ['success' => false, 'error' => $e->getMessage()];
         }
     }
 
 
+    /**
+     * @param string $phone
+     * @param string $path
+     * @return string
+     */
     public static function getStoragePath(string $phone, string $path = 'app/telegram/'): string
     {
         $path = storage_path($path);
@@ -248,6 +253,15 @@ class TelegramService
     }
 
 
+    /**
+     *
+     *
+     *
+     * @param $chatId
+     * @param $file
+     * @param $fileName
+     * @return void
+     */
     public function sendVoice($chatId, $file, $fileName): void
     {
         $user = auth()->user();

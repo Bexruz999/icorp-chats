@@ -14,17 +14,20 @@ class AmoSendMessage implements ShouldQueue
     private int $message_id;
     private string $message;
     private array $out;
-    private array|null $in;
+    private array|null|string $sender = null;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(array $message, array $user, $in = null)
+    public function __construct($data)
     {
-        $this->message_id = $message['id'];
-        $this->message = $message['message'];
-        $this->out = ['id' => $message['chatId'], 'name' => $user['first_name'], 'phone' => $user['phone']];
-        $this->in = $in;
+        $result = $data['result'];
+        $chat = $data['chat'];
+
+        $this->message_id = $result['id'];
+        $this->message = $result['request']['body']['message'];
+        $this->out = ['id' => $chat['id'], 'name' => $chat['first_name'], 'phone' => $chat['phone']];
+        $this->sender = auth()->user()->amojo_id;
     }
 
     /**
@@ -33,6 +36,6 @@ class AmoSendMessage implements ShouldQueue
     public function handle(): void
     {
         $amo = new AmoChatService();
-        $amo->sendMessage(contact: $this->out, msg_id: $this->message_id, msg: $this->message);
+        $amo->sendMessage(contact: $this->out, msg_id: $this->message_id, msg: $this->message, sender: $this->sender);
     }
 }

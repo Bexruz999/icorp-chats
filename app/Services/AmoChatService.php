@@ -58,10 +58,12 @@ class AmoChatService
 
         $message = (new TextMessage())->setUid("MSG_$msg_id")->setText($msg);
 
-        $payload = (new Payload())->setConversation($conv)->setSender($amo_contact)->setMessage($message);
+        $payload = (new Payload())->setConversation($conv)->setMessage($message);
 
         if ($sender !== null) {
-            $payload->setReceiver((new Sender())->setRefId($sender));
+            $payload->setSender((new Sender())->setRefId($sender))->setReceiver($amo_contact);
+        } else {
+            $payload->setSender($amo_contact);
         }
 
         return $this->client->sendMessage(

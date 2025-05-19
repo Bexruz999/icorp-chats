@@ -33,6 +33,9 @@ class SettingsService {
         $user->account->connections()->create([
             'phone' => $phone
         ]);
+      /*  $user->update([
+            'telegram_id' => $authorization['']
+        ]);*/
 
         Artisan::call("telegram-process:stop", ["phone" => $phone]);
         return self::STATUS_VERIFYED;

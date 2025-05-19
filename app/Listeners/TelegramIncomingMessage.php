@@ -19,8 +19,10 @@ class TelegramIncomingMessage extends SimpleEventHandler
     {
         $fullInfo = $this->getFullInfo($message->senderId);
         TelegramMessage::dispatch($message);
-        if (!$message->out && get_class($message) === PrivateMessage::class) {
-            AmoIncomingMessage::dispatch($message, $fullInfo['User']);
+
+        if (get_class($message) === PrivateMessage::class) {
+            if (!$message->out) AmoIncomingMessage::dispatch($message, $fullInfo['User']);
+            else AmoIncomingMessage::dispatch($message, $fullInfo['Group']);
         }
     }
 }

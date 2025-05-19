@@ -46,22 +46,22 @@ class MessengerController extends Controller
 
         $user = auth()->user();
         $phone = $user->account->connections[0]->phone;
-        $result = $this->telegramService->sendMessage($phone, $valid['peerId'], $valid['message']);
+        $data = $this->telegramService->sendMessage($phone, $valid['peerId'], $valid['message']);
 
-        if ($result['success']) {
+        if ($data['success']) {
 
             UserMessage::create([
                 'user_id' => $user->id,
                 'chat_id' => $valid['peerId'],
-                'message_id' => $result['message_id']
+                'message_id' => $data['result']['id'],
             ]);
 
-            AmoSendMessage::dispatch(message: [], user: []);
+            AmoSendMessage::dispatch($data);
 
-            return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
+            return response()->json(['status' => 'success', 'message_id' => $data['result']['id'], 'data' => $data]);
         }
 
-        return response()->json(['status' => 'error', 'error' => $result['error']], 500);
+        return response()->json(['status' => 'error', 'error' => $data['error']], 500);
     }
 
     public function sendMedia(Request $request)
