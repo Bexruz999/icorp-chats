@@ -7,7 +7,7 @@ use danog\MadelineProto\EventHandler\Message;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
-class AmoSendMessage implements ShouldQueue
+class AmoIncomingMessage implements ShouldQueue
 {
     use Queueable;
 
@@ -19,11 +19,11 @@ class AmoSendMessage implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(array $message, array $user, $in = null)
+    public function __construct(Message $message, array $user, $in = null)
     {
-        $this->message_id = $message['id'];
-        $this->message = $message['message'];
-        $this->out = ['id' => $message['chatId'], 'name' => $user['first_name'], 'phone' => $user['phone']];
+        $this->message_id = $message->id;
+        $this->message = $message->message;
+        $this->out = ['id' => $message->chatId, 'name' => $user['first_name'], 'phone' => $user['phone']];
         $this->in = $in;
     }
 

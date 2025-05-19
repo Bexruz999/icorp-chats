@@ -4,7 +4,8 @@ declare(strict_types=1);
 namespace App\Listeners;
 
 use App\Events\TelegramMessage;
-use App\Jobs\AmoSendMessage;
+use App\Jobs\AmoIncomingMessage;
+use Arr;
 use danog\MadelineProto\EventHandler\Attributes\Handler;
 use danog\MadelineProto\EventHandler\Message;
 use danog\MadelineProto\EventHandler\Message\PrivateMessage;
@@ -18,6 +19,8 @@ class TelegramIncomingMessage extends SimpleEventHandler
     {
         $fullInfo = $this->getFullInfo($message->senderId);
         TelegramMessage::dispatch($message);
-        if (get_class($message) === PrivateMessage::class) AmoSendMessage::dispatch($message, $fullInfo['User']);
+        if (!$message->out && get_class($message) === PrivateMessage::class) {
+            AmoIncomingMessage::dispatch($message, $fullInfo['User']);
+        }
     }
 }

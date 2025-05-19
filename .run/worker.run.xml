@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="worker" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/worker.php" scriptParameters="+998997080724">
+    <method v="2" />
+  </configuration>
+</component>

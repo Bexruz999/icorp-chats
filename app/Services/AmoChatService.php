@@ -12,11 +12,6 @@ use AmoJo\Models\Payload;
 use AmoJo\Models\Users\Receiver;
 use AmoJo\Models\Users\Sender;
 use AmoJo\Models\Users\ValueObject\UserProfile;
-use GuzzleHttp\Promise\PromiseInterface;
-use Illuminate\Http\Client\ConnectionException;
-use Illuminate\Http\Client\Response;
-use Illuminate\Support\Facades\Http;
-use Log;
 
 class AmoChatService
 {
@@ -25,7 +20,6 @@ class AmoChatService
 
     public function __construct()
     {
-        //$this->client = Cache::remember('AMOChat_client_1', now()->addHour(), fn() => $this->connect());
         $this->connect();
     }
 
@@ -52,36 +46,9 @@ class AmoChatService
         return (new Conversation())->setId("chat-$chat_id")->setRefId($response->getConversationRefId());
     }
 
-    public function sendMessage($contact, $msg_id, $msg, $sender): MessageResponse|AbstractResponse
+    public function sendMessage($contact, $msg_id, $msg, $sender = null): MessageResponse|AbstractResponse
     {
-        $amo_contact = (new Receiver())
-            ->setProfile((new UserProfile())->setPhone($contact['phone']))
-            ->setId("user-" . $contact['id'])
-            ->setName($contact['name'])
-            ->setAvatar($this->avatar);
-
-        $amo_sender = (new Sender())->setRefId('3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9');
-
-        $conv = $this->createChat($amo_contact, $contact['id']);
-
-        $message = (new TextMessage())->setUid("MSG_$msg_id")->setText($msg);
-
-        $payload = (new Payload())
-            ->setConversation($conv)
-            ->setSender($amo_sender)
-            ->setReceiver($amo_contact)
-            ->setMessage($message);
-
-        return $this->client->sendMessage(
-            accountUid: config('amo.account_id'),
-            payload: $payload,
-            externalId: 'test'
-        );
-    }
-
-    public function sendInMessage($contact, $msg_id, $msg)
-    {
-        $amo_contact = (new Sender())
+        $amo_contact = ($sender ? new Receiver() : new Sender())
             ->setProfile((new UserProfile())->setPhone($contact['phone']))
             ->setId("user-" . $contact['id'])
             ->setName($contact['name'])
@@ -91,31 +58,14 @@ class AmoChatService
 
         $message = (new TextMessage())->setUid("MSG_$msg_id")->setText($msg);
 
-        $payload = (new Payload())
-            ->setConversation($conv)
-            ->setSender($amo_contact)
-            ->setMessage($message);
+        $payload = (new Payload())->setConversation($conv)->setSender($amo_contact)->setMessage($message);
+
+        if ($sender !== null) {
+            $payload->setReceiver((new Sender())->setRefId($sender));
+        }
 
         return $this->client->sendMessage(
-            accountUid: config('amo.account_id'),
-            payload: $payload,
-            externalId: 'test'
+            accountUid: config('amo.account_id'), payload: $payload, externalId: 'test'
         );
-    }
-
-    public function getUsers($with_amo_id = null): PromiseInterface|array|Response
-    {
-        $params = [];
-
-        if ($with_amo_id) {
-            $params['amo_id'] = $with_amo_id;
-        }
-
-        try {
-            return Http::withToken(config('amo.'))->get(config('amo.domain'));
-        } catch (ConnectionException $e) {
-            Log::error('Error: ' . $e->getMessage());
-            return [];
-        }
     }
 }

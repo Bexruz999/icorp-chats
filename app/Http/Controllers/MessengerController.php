@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\AmoSendMessage;
 use App\Models\UserMessage;
 use App\Services\AmoChatService;
 use App\Services\TelegramService;
@@ -13,6 +14,12 @@ use Inertia\Response;
 
 class MessengerController extends Controller
 {
+    protected TelegramService $telegramService;
+
+    public function __construct(TelegramService $telegramService)
+    {
+        $this->telegramService = $telegramService;
+    }
 
     public function index(): Response
     {
@@ -22,15 +29,6 @@ class MessengerController extends Controller
             'chats' => $this->telegramService->getDialogs($phone)
         ]);
     }
-
-
-    protected TelegramService $telegramService;
-
-    public function __construct(TelegramService $telegramService)
-    {
-        $this->telegramService = $telegramService;
-    }
-
 
     public function getMessages(Request $request): JsonResponse
     {
@@ -58,22 +56,7 @@ class MessengerController extends Controller
                 'message_id' => $result['message_id']
             ]);
 
-            //dd($result);
-
-            $amoChatService->sendMessage(
-                contact: [
-                    'id' => $valid['peerId'],
-                    'name' => $user->name,
-                    'phone' => $phone,
-                ],
-                msg_id: $result['message_id'],
-                msg: $valid['message'],
-                sender: [
-                    'id' => $result['sender']['id'],
-                    'name' => $result['sender']['first_name'] ?? $result['sender']['username'],
-                    'phone' => $result['sender']['phone'] ?? '',
-                ]
-            );
+            AmoSendMessage::dispatch(message: [], user: []);
 
             return response()->json(['status' => 'success', 'message_id' => $result['message_id']]);
         }
