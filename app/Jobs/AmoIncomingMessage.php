@@ -14,7 +14,7 @@ class AmoIncomingMessage implements ShouldQueue
     private int $message_id;
     private string $message;
     private array $out;
-    private array|null $in;
+    private array|null|string $in;
 
     /**
      * Create a new job instance.
@@ -33,6 +33,6 @@ class AmoIncomingMessage implements ShouldQueue
     public function handle(): void
     {
         $amo = new AmoChatService();
-        $amo->sendMessage(contact: $this->out, msg_id: $this->message_id, msg: $this->message);
+        $amo->sendMessage(contact: $this->out, msg_id: $this->message_id, msg: $this->message, sender: $this->in);
     }
 }

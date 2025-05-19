@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Events\SendAmoCrmMessage;
+use App\Models\User;
 use App\Services\AmoChatService;
+use Cache;
 use Illuminate\Console\Command;
 use Ufee\Amo\Oauthapi;
 
@@ -29,14 +31,12 @@ class TestAmo extends Command
     public function handle(AmoChatService $amoChatService)
     {
 
-        $n = 7;
+        $tgId = 781366976;
+        $user = Cache::remember('telegram_user_' . $tgId, 3600, function () use ($tgId) {
+            return User::where('telegram_id', $tgId)->first();
+        });
 
-        for ($i = 2; $i < $n; $i++) {
-            if ($n % $i == 0) {
-                echo '+';
-                break;
-            }
-        }
+        $amojoId = $user->amojo_id;
 
         /*$amo = Oauthapi::setInstance([
             'domain' => config('amo.domain'),

@@ -56,7 +56,7 @@ class MessengerController extends Controller
                 'message_id' => $data['result']['id'],
             ]);
 
-            AmoSendMessage::dispatch($data);
+            //AmoSendMessage::dispatch($data);
 
             return response()->json(['status' => 'success', 'message_id' => $data['result']['id'], 'data' => $data]);
         }
