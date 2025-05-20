@@ -21,8 +21,6 @@ class TelegramIncomingMessage extends SimpleEventHandler
         $fullInfo = $this->getFullInfo($message->senderId);
         TelegramMessage::dispatch($message);
 
-
-
         if (get_class($message) === PrivateMessage::class) {
 
             $amojoId = null;

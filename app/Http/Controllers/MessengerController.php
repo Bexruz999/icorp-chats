@@ -40,7 +40,7 @@ class MessengerController extends Controller
     }
 
 
-    public function sendMessage(Request $request, AmoChatService $amoChatService): JsonResponse
+    public function sendMessage(Request $request): JsonResponse
     {
         $valid = $request->validate(['peerId' => 'required|integer', 'message' => 'required|string']);
 
@@ -55,8 +55,6 @@ class MessengerController extends Controller
                 'chat_id' => $valid['peerId'],
                 'message_id' => $data['result']['id'],
             ]);
-
-            //AmoSendMessage::dispatch($data);
 
             return response()->json(['status' => 'success', 'message_id' => $data['result']['id'], 'data' => $data]);
         }
