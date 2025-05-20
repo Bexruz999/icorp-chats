@@ -27,7 +27,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             'http://127.0.0.1:8000/webhook/*',// <-- exclude this route
             'https://chats.karakul.uz/webhook/*',// <-- exclude this route
-            'https://67e6-84-54-82-215.ngrok-free.app/webhook/*'// <-- exclude this route
+            'https://67e6-84-54-82-215.ngrok-free.app/webhook/*',// <-- exclude this route
+            'https://commni-amochat.icorp.uz/location/*'
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

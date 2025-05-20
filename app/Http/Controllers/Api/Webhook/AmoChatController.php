@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Webhook;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AmoChatController extends Controller
@@ -19,7 +20,9 @@ class AmoChatController extends Controller
             return response()->json(['message' => 'Invalid signature'], 403);
         }
 
-        file_put_contents('webhook.json', $request->all());
+        $amoMessage = $request->post('message');
+        $sender = User::where('amojo_id', $amoMessage['sender']['id'])->firstOrFail();
+
 
         return response()->json(['message' => 'Webhook received successfully']);
     }
