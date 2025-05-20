@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Api\Webhook;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\TelegramService;
 use Illuminate\Http\Request;
+use Str;
 
 class AmoChatController extends Controller
 {
-    public function handle(Request $request)
+    public function handle(Request $request, TelegramService $telegram)
     {
         $signature = $request->header('X-Signature');
 
@@ -21,8 +23,12 @@ class AmoChatController extends Controller
         }
 
         $amoMessage = $request->post('message');
-        $sender = User::where('amojo_id', $amoMessage['sender']['id'])->firstOrFail();
+        $sender = User::where('amojo_id', $amoMessage['sender']['id'])
+            ->whereNotNull('telegram_id')
+            ->firstOrFail();
+        $receiver = Str::after($amoMessage['receiver']['receiver'], 'user-');
 
+        $telegram->sendMessage($sender->phone, $receiver, $amoMessage['message']['text']);
 
         return response()->json(['message' => 'Webhook received successfully']);
     }
