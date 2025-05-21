@@ -7,7 +7,6 @@ use AmoJo\DTO\AbstractResponse;
 use AmoJo\DTO\MessageResponse;
 use AmoJo\Models\Channel;
 use AmoJo\Models\Conversation;
-use AmoJo\Models\Messages\FileMessage;
 use AmoJo\Models\Messages\TextMessage;
 use AmoJo\Models\Payload;
 use AmoJo\Models\Users\Receiver;

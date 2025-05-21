@@ -5,12 +5,12 @@ namespace App\Services;
 use App\Models\UserMessage;
 use Arr;
 use danog\MadelineProto\API;
+use danog\MadelineProto\EventHandler\Media;
 use danog\MadelineProto\EventHandler\Media\Audio;
 use danog\MadelineProto\EventHandler\Media\Document;
 use danog\MadelineProto\EventHandler\Media\Photo;
 use danog\MadelineProto\EventHandler\Media\Video;
 use danog\MadelineProto\EventHandler\Media\Voice;
-use danog\MadelineProto\EventHandler\Message;
 use danog\MadelineProto\Exception;
 use danog\MadelineProto\LocalFile;
 use danog\MadelineProto\Settings\AppInfo;
@@ -118,7 +118,7 @@ class TelegramService
     }
 
     /**
-     * Получение последних сообщений для выбранного диалога.
+     * Getting the latest messages for the selected dialog.
      *
      * @param string $phone
      * @param int $peerId
@@ -215,22 +215,20 @@ class TelegramService
      * This function handles sending various types of media (e.g., photo, video, document)
      * to a Telegram chat using MadelineProto. It also supports adding an optional caption.
      *
-     * @param string $mediaType The type of media to send (e.g., 'photo', 'video', 'document').
+     * @param string $type
      * @param int $chatId The ID of the chat to send the media to.
-     * @param string $uploadPath The file path where the media is stored on the server.
+     * @param string $path
      * @param string $fileName The name of the file being sent.
      * @param string|null $message (Optional) A caption or message to send with the media.
-     *
-     * @return void
      */
-    public function sendMedia(string $mediaType, int $chatId, string $uploadPath, string $fileName, ?string $message = ''): void
+    public function sendMedia(string $type, int $chatId, string $path, string $fileName, ?string $message = ''): void
     {
         $user = auth()->user();
         $phone = $user->account->connections[0]->phone;
 
         $MadelineProto = self::createMadelineProto($phone);
 
-        $uploadedFile = $MadelineProto->upload($uploadPath);
+        $uploadedFile = $MadelineProto->upload($path);
 
         $MadelineProto->messages->sendMultiMedia(
             peer: $chatId,
@@ -238,7 +236,7 @@ class TelegramService
                 [
                     '_' => 'inputSingleMedia',
                     'media' => [
-                        '_' => $mediaType,
+                        '_' => $type,
                         'file' => $uploadedFile,
                         'attributes' => [[
                                 '_' => 'documentAttributeFilename',
@@ -249,7 +247,7 @@ class TelegramService
                 ]
             ]);
 
-        Storage::delete($uploadPath);
+        Storage::delete($path);
     }
 
     /**
@@ -313,7 +311,7 @@ class TelegramService
      *
      * @return void
      */
-    public function getMedia($message_id): void
+    public function getMedia(int $message_id): void
     {
         $user = auth()->user();
         $phone = $user->account->connections[0]->phone;
@@ -338,11 +336,11 @@ class TelegramService
      * This function determines the appropriate media type for Telegram based on the
      * provided media instance. It helps in identifying the type of media being sent or received.
      *
-     * @param Message $media The media instance to check.
+     * @param Media $media The media instance to check.
      *
      * @return string The Telegram media type (e.g., 'messageMediaDocument', 'messageMediaPhoto', etc.).
      */
-    public static function getTelegramMediaType(Message $media): string
+    public static function getTelegramMediaType(Media $media): string
     {
         return match (true) {
             $media instanceof Document  => 'messageMediaDocument',

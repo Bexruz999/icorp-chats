@@ -11,7 +11,7 @@ class AmoIncomingMessage implements ShouldQueue
 {
     use Queueable;
     private Message $message;
-    private array $out;
+    private array $contact;
     private array|null|string $in;
 
     /**
@@ -20,7 +20,7 @@ class AmoIncomingMessage implements ShouldQueue
     public function __construct(Message $message, array $user, $in = null)
     {
         $this->message = $message;
-        $this->out = ['id' => $message->chatId, 'name' => $user['first_name'], 'phone' => $user['phone']];
+        $this->contact = ['id' => $message->chatId, 'name' => $user['first_name'], 'phone' => $user['phone']];
         $this->in = $in;
     }
 
@@ -29,6 +29,6 @@ class AmoIncomingMessage implements ShouldQueue
      */
     public function handle(AmoChatService $amo): void
     {
-        $amo->sendMessage(contact: $this->out, msg: $this->message, sender: $this->in);
+        $amo->sendMessage(contact: $this->contact, msg: $this->message, sender: $this->in);
     }
 }
