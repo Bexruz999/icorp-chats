@@ -5,6 +5,12 @@ namespace App\Services;
 use App\Models\UserMessage;
 use Arr;
 use danog\MadelineProto\API;
+use danog\MadelineProto\EventHandler\Media\Audio;
+use danog\MadelineProto\EventHandler\Media\Document;
+use danog\MadelineProto\EventHandler\Media\Photo;
+use danog\MadelineProto\EventHandler\Media\Video;
+use danog\MadelineProto\EventHandler\Media\Voice;
+use danog\MadelineProto\EventHandler\Message;
 use danog\MadelineProto\Exception;
 use danog\MadelineProto\LocalFile;
 use danog\MadelineProto\Settings\AppInfo;
@@ -19,7 +25,6 @@ use Throwable;
 
 class TelegramService
 {
-
     public static function createMadelineProto(string $phone): string|API
     {
         $settings = (new AppInfo)
@@ -34,7 +39,6 @@ class TelegramService
             return $e->getMessage();
         }
     }
-
 
     /**
      * Retrieve a list of dialogs (chats, groups, channels) for a given phone number.
@@ -113,7 +117,6 @@ class TelegramService
         }
     }
 
-
     /**
      * Получение последних сообщений для выбранного диалога.
      *
@@ -166,7 +169,6 @@ class TelegramService
         }
     }
 
-
     /**
      *  Send a message to a specified chat ID via Telegram.
      *
@@ -191,7 +193,6 @@ class TelegramService
         }
     }
 
-
     /**
      * @param string $phone
      * @param string $path
@@ -207,7 +208,6 @@ class TelegramService
 
         return "$path$phone.madeline";
     }
-
 
     /**
      * Send a media file to a specified chat ID via Telegram.
@@ -252,10 +252,8 @@ class TelegramService
         Storage::delete($uploadPath);
     }
 
-
     /**
-     *
-     *
+     * Send a voice message to a specified chat ID via Telegram.
      *
      * @param $chatId
      * @param $file
@@ -305,6 +303,16 @@ class TelegramService
         return $mediaTypes[$extension] ?? 'inputMediaUploadedDocument';
     }
 
+    /**
+     * Download and display media from a Telegram message.
+     *
+     * This function retrieves the media associated with a specific message ID and
+     * sends it to the browser for download.
+     *
+     * @param int $message_id The ID of the message containing the media.
+     *
+     * @return void
+     */
     public function getMedia($message_id): void
     {
         $user = auth()->user();
@@ -322,5 +330,27 @@ class TelegramService
             abort(404);
         }
 
+    }
+
+    /**
+     * Get the Telegram media type based on the media instance.
+     *
+     * This function determines the appropriate media type for Telegram based on the
+     * provided media instance. It helps in identifying the type of media being sent or received.
+     *
+     * @param Message $media The media instance to check.
+     *
+     * @return string The Telegram media type (e.g., 'messageMediaDocument', 'messageMediaPhoto', etc.).
+     */
+    public static function getTelegramMediaType(Message $media): string
+    {
+        return match (true) {
+            $media instanceof Document  => 'messageMediaDocument',
+            $media instanceof Photo     => 'messageMediaPhoto',
+            $media instanceof Video     => 'messageMediaVideo',
+            $media instanceof Audio     => 'messageMediaAudio',
+            $media instanceof Voice     => 'messageMediaVoice',
+            default                     => 'messageMediaUnsupported',
+        };
     }
 }

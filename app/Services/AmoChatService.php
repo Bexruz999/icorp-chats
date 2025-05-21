@@ -13,6 +13,7 @@ use AmoJo\Models\Payload;
 use AmoJo\Models\Users\Receiver;
 use AmoJo\Models\Users\Sender;
 use AmoJo\Models\Users\ValueObject\UserProfile;
+use danog\MadelineProto\EventHandler\Message;
 
 class AmoChatService
 {
@@ -47,7 +48,7 @@ class AmoChatService
         return (new Conversation())->setId("chat-$chat_id")->setRefId($response->getConversationRefId());
     }
 
-    public function sendMessage($contact, $msg_id, $msg, $sender = null): MessageResponse|AbstractResponse
+    public function sendMessage($contact,Message $msg, $sender = null): MessageResponse|AbstractResponse
     {
         $amo_contact = ($sender ? new Receiver() : new Sender())
             ->setProfile((new UserProfile())->setPhone($contact['phone']))
@@ -57,7 +58,7 @@ class AmoChatService
 
         $conv = $this->createChat($amo_contact, $contact['id']);
 
-        $message = (new TextMessage())->setUid("MSG_$msg_id")->setText($msg);
+        $message = (new TextMessage())->setUid("MSG_$msg->id")->setText($msg->message);
 
         $payload = (new Payload())->setConversation($conv)->setMessage($message);
 

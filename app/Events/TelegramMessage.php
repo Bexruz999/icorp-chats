@@ -2,15 +2,11 @@
 
 namespace App\Events;
 
-use App\Services\AmoChatService;
-use danog\MadelineProto\EventHandler\Media\Audio;
-use danog\MadelineProto\EventHandler\Media\Document;
-use danog\MadelineProto\EventHandler\Media\Photo;
-use danog\MadelineProto\EventHandler\Media\Video;
-use danog\MadelineProto\EventHandler\Media\Voice;
+use App\Services\TelegramService;
 use danog\MadelineProto\EventHandler\Message;
 use danog\MadelineProto\EventHandler\Message\GroupMessage;
 use Exception;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
@@ -50,16 +46,15 @@ class TelegramMessage implements ShouldBroadcast
             $this->message = $result;
 
         } catch (Exception $e) {
-            Log::error('Xabarni qayta ishlashda xatolik: ' . $e->getMessage());
+            Log::error('Message processing error: ' . $e->getMessage());
         }
     }
 
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return array<int, \Illuminate\Broadcasting\Channel>
+     * @return array<int, Channel>
      */
-
     public function broadcastOn(): array
     {
         return [
@@ -67,12 +62,18 @@ class TelegramMessage implements ShouldBroadcast
         ];
     }
 
+    /**
+     * Returns the media as convenient for the frontend
+     *
+     * @param $media
+     * @return array
+     */
     private function formatMedia($media): array
     {
         if (!$media) return [];
 
         return [
-            '_' => $this->getTelegramMediaType($media),
+            '_' => TelegramService::getTelegramMediaType($media),
             'document' => [
                 'mime_type' => $media->mimeType ?? null,
                 'file_name' => $media->fileName ?? null,
@@ -81,17 +82,4 @@ class TelegramMessage implements ShouldBroadcast
             'caption' => $media->caption ?? null,
         ];
     }
-
-    private function getTelegramMediaType($media): string
-    {
-        return match (true) {
-            $media instanceof Document  => 'messageMediaDocument',
-            $media instanceof Photo     => 'messageMediaPhoto',
-            $media instanceof Video     => 'messageMediaVideo',
-            $media instanceof Audio     => 'messageMediaAudio',
-            $media instanceof Voice     => 'messageMediaVoice',
-            default                     => 'messageMediaUnsupported',
-        };
-    }
-
 }

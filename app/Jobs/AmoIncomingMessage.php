@@ -10,9 +10,7 @@ use Illuminate\Foundation\Queue\Queueable;
 class AmoIncomingMessage implements ShouldQueue
 {
     use Queueable;
-
-    private int $message_id;
-    private string $message;
+    private Message $message;
     private array $out;
     private array|null|string $in;
 
@@ -21,8 +19,7 @@ class AmoIncomingMessage implements ShouldQueue
      */
     public function __construct(Message $message, array $user, $in = null)
     {
-        $this->message_id = $message->id;
-        $this->message = $message->message;
+        $this->message = $message;
         $this->out = ['id' => $message->chatId, 'name' => $user['first_name'], 'phone' => $user['phone']];
         $this->in = $in;
     }
@@ -30,9 +27,8 @@ class AmoIncomingMessage implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle(AmoChatService $amo): void
     {
-        $amo = new AmoChatService();
-        $amo->sendMessage(contact: $this->out, msg_id: $this->message_id, msg: $this->message, sender: $this->in);
+        $amo->sendMessage(contact: $this->out, msg: $this->message, sender: $this->in);
     }
 }
