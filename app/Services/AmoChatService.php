@@ -76,9 +76,18 @@ class AmoChatService
 
     private function setMessage(array $message): AbstractMessage
     {
+        $a = $message;
+
+        $medias = [
+            TelegramService::PHOTO,
+            TelegramService::VIDEO,
+            TelegramService::AUDIO,
+            TelegramService::DOCUMENT,
+            TelegramService::VOICE
+        ];
 
         switch (true){
-            case ($message['media'] !== null):
+            case ($message['media'] !== null) && (in_array($message['mediaType'], $medias)):
                 return (new PictureMessage())
                     ->setUid("MSG_" . $message['id'])
                     ->setFileName($message['media']['fileName'])

@@ -6,7 +6,7 @@ namespace App\Listeners;
 use App\Events\TelegramMessage;
 use App\Jobs\AmoIncomingMessage;
 use App\Models\User;
-use Arr;
+use App\Services\TelegramService;
 use Cache;
 use danog\MadelineProto\EventHandler\Attributes\Handler;
 use danog\MadelineProto\EventHandler\Message;
@@ -37,7 +37,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
 
             $msg =  json_decode(json_encode($message), true);
             $fullInfo = $this->getFullInfo($message->senderId);
-
+            $msg['mediaType'] = $message->media ? TelegramService::getTelegramMediaType($message->media) : null;
             AmoIncomingMessage::dispatch($msg, $fullInfo['User'], $amojoId);
         }
     }

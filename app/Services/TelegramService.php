@@ -25,6 +25,12 @@ use Throwable;
 
 class TelegramService
 {
+    public const DOCUMENT = 'messageMediaDocument';
+    public const PHOTO = 'messageMediaPhoto';
+    public const VIDEO = 'messageMediaVideo';
+    public const AUDIO = 'messageMediaAudio';
+    public const VOICE = 'messageMediaVoice';
+    public const UNSUPPORTED = 'messageMediaUnsupported';
     public static function createMadelineProto(string $phone): string|API
     {
         $settings = (new AppInfo)
@@ -343,12 +349,12 @@ class TelegramService
     public static function getTelegramMediaType(Media $media): string
     {
         return match (true) {
-            $media instanceof Document  => 'messageMediaDocument',
-            $media instanceof Photo     => 'messageMediaPhoto',
-            $media instanceof Video     => 'messageMediaVideo',
-            $media instanceof Audio     => 'messageMediaAudio',
-            $media instanceof Voice     => 'messageMediaVoice',
-            default                     => 'messageMediaUnsupported',
+            $media instanceof Document => self::DOCUMENT,
+            $media instanceof Photo    => self::PHOTO,
+            $media instanceof Video    => self::VIDEO,
+            $media instanceof Audio    => self::AUDIO,
+            $media instanceof Voice    => self::VOICE,
+            default                    => self::UNSUPPORTED,
         };
     }
 }
