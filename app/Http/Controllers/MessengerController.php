@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\AmoSendMessage;
+
 use App\Models\UserMessage;
-use App\Services\AmoChatService;
 use App\Services\TelegramService;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -21,13 +21,20 @@ class MessengerController extends Controller
         $this->telegramService = $telegramService;
     }
 
+    /**
+     * Display a listing of the resource.
+     */
     public function index(): Response
     {
         $phone = auth()->user()->account->connections()->first()->phone;
 
-        return Inertia::render('Messengers/Index', [
-            'chats' => $this->telegramService->getDialogs($phone)
-        ]);
+        try {
+            return Inertia::render('Messengers/Index', [
+                'chats' => $this->telegramService->getDialogs($phone)
+            ]);
+        } catch (Exception $e) {
+            return Inertia::render('Error', ['status' => $e->getCode()]);
+        }
     }
 
     public function getMessages(Request $request): JsonResponse
@@ -74,9 +81,9 @@ class MessengerController extends Controller
             $filePath = $file->store('uploads');
 
             $this->telegramService->sendMedia(
-                mediaType: $this->telegramService->getMediaTypeForMadelineProto($file),
+                type: $this->telegramService->getMediaTypeForMadelineProto($file),
                 chatId: $validated['peer_id'],
-                uploadPath: storage_path('app/public/' . $filePath),
+                path: storage_path('app/public/' . $filePath),
                 fileName: $file->getClientOriginalName(),
                 message: $validated['message']
             );
@@ -110,7 +117,7 @@ class MessengerController extends Controller
         ]);
     }
 
-    public function getMedia($message_id)
+    public function getMedia($message_id): void
     {
         $this->telegramService->getMedia($message_id);
     }

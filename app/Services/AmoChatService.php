@@ -7,6 +7,8 @@ use AmoJo\DTO\AbstractResponse;
 use AmoJo\DTO\MessageResponse;
 use AmoJo\Models\Channel;
 use AmoJo\Models\Conversation;
+use AmoJo\Models\Messages\AbstractMessage;
+use AmoJo\Models\Messages\PictureMessage;
 use AmoJo\Models\Messages\TextMessage;
 use AmoJo\Models\Payload;
 use AmoJo\Models\Users\Receiver;
@@ -47,7 +49,7 @@ class AmoChatService
         return (new Conversation())->setId("chat-$chat_id")->setRefId($response->getConversationRefId());
     }
 
-    public function sendMessage($contact,Message $msg, $sender = null): MessageResponse|AbstractResponse
+    public function sendMessage($contact, Message $msg, $sender = null): MessageResponse|AbstractResponse
     {
         $amo_contact = ($sender ? new Receiver() : new Sender())
             ->setProfile((new UserProfile())->setPhone($contact['phone']))
@@ -57,7 +59,7 @@ class AmoChatService
 
         $conv = $this->createChat($amo_contact, $contact['id']);
 
-        $message = (new TextMessage())->setUid("MSG_$msg->id")->setText($msg->message);
+        $message = $this->setMessage($msg);
 
         $payload = (new Payload())->setConversation($conv)->setMessage($message);
 
@@ -70,5 +72,19 @@ class AmoChatService
         return $this->client->sendMessage(
             accountUid: config('amo.account_id'), payload: $payload, externalId: 'test'
         );
+    }
+
+    private function setMessage(Message $message): AbstractMessage
+    {
+        switch (true){
+            case ($message->media !== null):
+                return (new PictureMessage())
+                    ->setUid("MSG_$message->id")
+                    ->setFileName($message->media->fileName)
+                    ->setMimeType($message->media->mimeType)
+                    ->setText($message->message);
+            default:
+                return (new TextMessage())->setUid("MSG_$message->id")->setText($message->message);
+        }
     }
 }
