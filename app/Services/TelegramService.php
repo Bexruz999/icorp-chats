@@ -336,6 +336,23 @@ class TelegramService
 
     }
 
+    public function downloadMedia(int $message_id): void {
+        $user = auth()->user();
+        $phone = $user->account->connections[0]->phone;
+
+        $MadelineProto = self::createMadelineProto($phone);
+
+        $message = $MadelineProto->messages->getMessages(['id' => [$message_id]]);
+
+        if ($message['messages'][0]['_'] !== 'messageEmpty') {
+            $media = $message['messages'][0]['media'];
+
+            $MadelineProto->downloadToBrowser($media);
+        } else {
+            abort(404);
+        }
+    }
+
     /**
      * Get the Telegram media type based on the media instance.
      *
