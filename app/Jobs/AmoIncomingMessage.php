@@ -6,21 +6,22 @@ use App\Services\AmoChatService;
 use danog\MadelineProto\EventHandler\Message;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Queue\SerializesModels;
 
 class AmoIncomingMessage implements ShouldQueue
 {
-    use Queueable;
-    private Message $message;
+    use Queueable, SerializesModels;
+    private array $message;
     private array $contact;
     private array|null|string $in;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(Message $message, array $user, $in = null)
+    public function __construct(array $message, array $user, $in = null)
     {
         $this->message = $message;
-        $this->contact = ['id' => $message->chatId, 'name' => $user['first_name'], 'phone' => $user['phone']];
+        $this->contact = ['id' => $message['chatId'], 'name' => $user['first_name'], 'phone' => $user['phone']];
         $this->in = $in;
     }
 

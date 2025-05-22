@@ -6,6 +6,7 @@ namespace App\Listeners;
 use App\Events\TelegramMessage;
 use App\Jobs\AmoIncomingMessage;
 use App\Models\User;
+use Arr;
 use Cache;
 use danog\MadelineProto\EventHandler\Attributes\Handler;
 use danog\MadelineProto\EventHandler\Message;
@@ -21,6 +22,8 @@ class TelegramIncomingMessage extends SimpleEventHandler
         $fullInfo = $this->getFullInfo($message->senderId);
         TelegramMessage::dispatch($message);
 
+        $a = get_class($message) === PrivateMessage::class;
+
         if (get_class($message) === PrivateMessage::class) {
 
             $amojoId = null;
@@ -35,7 +38,20 @@ class TelegramIncomingMessage extends SimpleEventHandler
                 var_dump('amojo: ' . $amojoId);
             }
 
-            AmoIncomingMessage::dispatch($message, $fullInfo['User'], $amojoId);
+            $a = json_decode(json_encode($message), true);
+
+            AmoIncomingMessage::dispatch($a, $fullInfo['User'], $amojoId);
         }
+    }
+
+    public function utf8ize($d) {
+        if (is_array($d)) {
+            foreach ($d as $k => $v) {
+                $d[$k] = $this->utf8ize($v);
+            }
+        } elseif (is_string($d)) {
+            return mb_convert_encoding($d, 'UTF-8', 'auto');
+        }
+        return $d;
     }
 }

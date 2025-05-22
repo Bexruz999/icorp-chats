@@ -49,7 +49,7 @@ class AmoChatService
         return (new Conversation())->setId("chat-$chat_id")->setRefId($response->getConversationRefId());
     }
 
-    public function sendMessage($contact, Message $msg, $sender = null): MessageResponse|AbstractResponse
+    public function sendMessage($contact, array $msg, $sender = null): MessageResponse|AbstractResponse
     {
         $amo_contact = ($sender ? new Receiver() : new Sender())
             ->setProfile((new UserProfile())->setPhone($contact['phone']))
@@ -74,17 +74,20 @@ class AmoChatService
         );
     }
 
-    private function setMessage(Message $message): AbstractMessage
+    private function setMessage(array $message): AbstractMessage
     {
+        $a = ($message['media'] !== null);
+
         switch (true){
-            case ($message->media !== null):
+            case ($message['media'] !== null):
                 return (new PictureMessage())
-                    ->setUid("MSG_$message->id")
-                    ->setFileName($message->media->fileName)
-                    ->setMimeType($message->media->mimeType)
-                    ->setText($message->message);
+                    ->setUid("MSG_" . $message['id'])
+                    ->setFileName($message['media']['fileName'])
+                    ->setFileSize($message['media']['size'])
+                    ->setMedia(route('messenger.get-media', ['message_id' => $message['id']]))
+                    ->setText($message['message']);
             default:
-                return (new TextMessage())->setUid("MSG_$message->id")->setText($message->message);
+                return (new TextMessage())->setUid("MSG_" . $message['id'])->setText($message['message']);
         }
     }
 }

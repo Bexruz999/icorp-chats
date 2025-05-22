@@ -36,14 +36,13 @@ class TelegramMessage implements ShouldBroadcast
                     'self' => $message->out
                 ],
                 'time'   => Carbon::parse($message->date)->timezone('+5')->format('H:i'),
-                'type' => (get_class($message) === GroupMessage::class) ? 'chat' : 'user',
-                'debug' => collect($message)->all()
+                'type' => (get_class($message) === GroupMessage::class) ? 'chat' : 'user'
             ];
 
             if ($message->media) {
                 $result['media'] = $this->formatMedia($message->media);
             }
-            $this->message = $result;
+            $this->message =$result;
 
         } catch (Exception $e) {
             Log::error('Message processing error: ' . $e->getMessage());
@@ -72,7 +71,7 @@ class TelegramMessage implements ShouldBroadcast
     {
         if (!$media) return [];
 
-        return [
+        $a = [
             '_' => TelegramService::getTelegramMediaType($media),
             'document' => [
                 'mime_type' => $media->mimeType ?? null,
@@ -81,5 +80,7 @@ class TelegramMessage implements ShouldBroadcast
             ],
             'caption' => $media->caption ?? null,
         ];
+
+        return $a;
     }
 }
