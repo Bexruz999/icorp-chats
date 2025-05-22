@@ -76,7 +76,6 @@ class AmoChatService
 
     private function setMessage(array $message): AbstractMessage
     {
-        $a = ($message['media'] !== null);
 
         switch (true){
             case ($message['media'] !== null):

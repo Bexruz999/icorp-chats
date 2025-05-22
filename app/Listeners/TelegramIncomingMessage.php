@@ -19,10 +19,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
     #[Handler]
     public function handleMessage(Message $message): void
     {
-        $fullInfo = $this->getFullInfo($message->senderId);
         TelegramMessage::dispatch($message);
-
-        $a = get_class($message) === PrivateMessage::class;
 
         if (get_class($message) === PrivateMessage::class) {
 
@@ -38,20 +35,10 @@ class TelegramIncomingMessage extends SimpleEventHandler
                 var_dump('amojo: ' . $amojoId);
             }
 
-            $a = json_decode(json_encode($message), true);
+            $msg =  json_decode(json_encode($message), true);
+            $fullInfo = $this->getFullInfo($message->senderId);
 
-            AmoIncomingMessage::dispatch($a, $fullInfo['User'], $amojoId);
+            AmoIncomingMessage::dispatch($msg, $fullInfo['User'], $amojoId);
         }
-    }
-
-    public function utf8ize($d) {
-        if (is_array($d)) {
-            foreach ($d as $k => $v) {
-                $d[$k] = $this->utf8ize($v);
-            }
-        } elseif (is_string($d)) {
-            return mb_convert_encoding($d, 'UTF-8', 'auto');
-        }
-        return $d;
     }
 }
