@@ -330,7 +330,6 @@ class TelegramService
 
         if ($message['messages'][0]['_'] !== 'messageEmpty') {
             $media = $message['messages'][0]['media'];
-
             $MadelineProto->downloadToBrowser($media);
         } else {
             abort(404);

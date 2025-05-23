@@ -103,6 +103,8 @@ Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
 
     Route::get('messenger/get_media/{message_id}', [MessengerController::class, 'getMedia'])
         ->name('messenger.get-media');
+    Route::get('/messenger/get_media/{message_id}/{phone}', [AmoChatController::class, 'getMedia'])
+        ->name('tg.get-media');
 
     // Reports
 
