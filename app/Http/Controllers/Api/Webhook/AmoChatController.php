@@ -41,6 +41,6 @@ class AmoChatController extends Controller
 
     public function getMedia(TelegramService $telegram, $messageId, $phone)
     {
-       $telegram->getMedia($messageId, $phone);
+       $telegram->getMedia($messageId, "+$phone");
     }
 }
