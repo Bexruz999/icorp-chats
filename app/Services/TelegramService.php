@@ -328,7 +328,6 @@ class TelegramService
         $MadelineProto = self::createMadelineProto($phone);
 
         $message = $MadelineProto->messages->getMessages(['id' => [$message_id]]);
-        dd($phone, $message);
 
         if ($message['messages'][0]['_'] !== 'messageEmpty') {
             $media = $message['messages'][0]['media'];
