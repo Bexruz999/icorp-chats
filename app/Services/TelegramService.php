@@ -317,10 +317,12 @@ class TelegramService
      *
      * @return void
      */
-    public function getMedia(int $message_id): void
+    public function getMedia(int $message_id, $phone = null): void
     {
-        $user = auth()->user();
-        $phone = $user->account->connections[0]->phone;
+        if (is_null($phone)) {
+            $user = auth()->user();
+            $phone = $user->account->connections[0]->phone;
+        }
 
         $MadelineProto = self::createMadelineProto($phone);
 
@@ -334,23 +336,6 @@ class TelegramService
             abort(404);
         }
 
-    }
-
-    public function downloadMedia(int $message_id): void {
-        $user = auth()->user();
-        $phone = $user->account->connections[0]->phone;
-
-        $MadelineProto = self::createMadelineProto($phone);
-
-        $message = $MadelineProto->messages->getMessages(['id' => [$message_id]]);
-
-        if ($message['messages'][0]['_'] !== 'messageEmpty') {
-            $media = $message['messages'][0]['media'];
-
-            $MadelineProto->downloadToBrowser($media);
-        } else {
-            abort(404);
-        }
     }
 
     /**

@@ -37,7 +37,10 @@ class TelegramIncomingMessage extends SimpleEventHandler
 
             $msg =  json_decode(json_encode($message), true);
             $fullInfo = $this->getFullInfo($message->senderId);
-            $msg['mediaType'] = $message->media ? TelegramService::getTelegramMediaType($message->media) : null;
+            if ($message->media) {
+                $msg['mediaType'] = TelegramService::getTelegramMediaType($message->media);
+                $msg['self_phone'] = $this->getSelf()['phone'];
+            }
             AmoIncomingMessage::dispatch($msg, $fullInfo['User'], $amojoId);
         }
     }

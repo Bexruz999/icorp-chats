@@ -38,4 +38,9 @@ class AmoChatController extends Controller
 
         return response()->json(['status' => 'error'], 500);
     }
+
+    public function getMedia(TelegramService $telegram, $messageId, $phone)
+    {
+       $telegram->getMedia($phone, $messageId);
+    }
 }

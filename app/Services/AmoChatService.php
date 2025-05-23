@@ -92,7 +92,10 @@ class AmoChatService
                     ->setUid("MSG_" . $message['id'])
                     ->setFileName($message['media']['fileName'])
                     ->setFileSize($message['media']['size'])
-                    ->setMedia(route('messenger.get-media', ['message_id' => $message['id']]))
+                    ->setMedia(route('tg.get-media', [
+                        'message_id' => $message['id'],
+                        'phone' => $message['self_phone']
+                    ]))
                     ->setText($message['message']);
             default:
                 return (new TextMessage())->setUid("MSG_" . $message['id'])->setText($message['message']);

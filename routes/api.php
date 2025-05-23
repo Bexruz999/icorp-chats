@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/amochat/{scope_id}', [AmoChatController::class, 'handle']);
+Route::get('/messenger/get_media/{message_id}/{phone}', [AmoChatController::class, 'getMedia'])->name('tg.get-media');
