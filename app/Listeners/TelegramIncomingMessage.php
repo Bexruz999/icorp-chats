@@ -7,6 +7,7 @@ use App\Events\TelegramMessage;
 use App\Jobs\AmoIncomingMessage;
 use App\Models\User;
 use App\Services\TelegramService;
+use Arr;
 use Cache;
 use danog\MadelineProto\EventHandler\Attributes\Handler;
 use danog\MadelineProto\EventHandler\Message;
@@ -39,8 +40,9 @@ class TelegramIncomingMessage extends SimpleEventHandler
             $fullInfo = $this->getFullInfo($message->senderId);
             if ($message->media) {
                 $msg['mediaType'] = TelegramService::getTelegramMediaType($message->media);
-                $msg['self_phone'] = $this->getSelf()['phone'];
+                $msg['self_phone'] = Arr::get($this->getSelf(), 'phone', '998339995959');
             }
+            var_dump($this->getSelf()['phone']);
             AmoIncomingMessage::dispatch($msg, $fullInfo['User'], $amojoId);
         }
     }
