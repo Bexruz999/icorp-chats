@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Services\AmoChatService;
+use Arr;
 use danog\MadelineProto\EventHandler\Message;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -21,7 +22,7 @@ class AmoIncomingMessage implements ShouldQueue
     public function __construct(array $message, array $user, $in = null)
     {
         $this->message = $message;
-        $this->contact = ['id' => $message['chatId'], 'name' => $user['first_name'], 'phone' => $user['phone']];
+        $this->contact = ['id' => $message['chatId'], 'name' => $user['first_name'], 'phone' => Arr::get($user, 'phone', '998339995959')];
         $this->in = $in;
     }
 
