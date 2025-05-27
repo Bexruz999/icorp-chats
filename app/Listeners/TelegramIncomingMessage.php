@@ -43,7 +43,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
                 $self = $this->getSelf();
                 $msg['self_phone'] = Arr::get($this->getSelf(), 'phone', '998339995959');
             }
-            var_dump($this->getSelf()['phone']);
+            var_dump($this->getSelf()['phone'], route('tg.get-media', ['message_id' => $message->id, 'phone' => $this->getSelf()['phone']]));
             AmoIncomingMessage::dispatch($msg, $fullInfo['User'], $amojoId);
         }
     }
