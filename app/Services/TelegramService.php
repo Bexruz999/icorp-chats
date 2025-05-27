@@ -31,6 +31,21 @@ class TelegramService
     public const AUDIO = 'messageMediaAudio';
     public const VOICE = 'messageMediaVoice';
     public const UNSUPPORTED = 'messageMediaUnsupported';
+
+    const MediaTypes = [
+        'jpg' => 'inputMediaUploadedPhoto',
+        'jpeg' => 'inputMediaUploadedPhoto',
+        'png' => 'inputMediaUploadedPhoto',
+        'gif' => 'inputMediaUploadedPhoto',
+        'mp4' => 'inputMediaUploadedDocument',
+        'mov' => 'inputMediaUploadedDocument',
+        'avi' => 'inputMediaUploadedDocument',
+        'mp3' => 'inputMediaUploadedDocument',
+        'ogg' => 'inputMediaUploadedDocument',
+        'pdf' => 'inputMediaUploadedDocument',
+        'zip' => 'inputMediaUploadedDocument',
+    ];
+
     public static function createMadelineProto(string $phone): string|API
     {
         $settings = (new AppInfo)
@@ -221,39 +236,44 @@ class TelegramService
      * This function handles sending various types of media (e.g., photo, video, document)
      * to a Telegram chat using MadelineProto. It also supports adding an optional caption.
      *
+     * @param string $phone
+     * @param int $peerId
      * @param string $type
-     * @param int $chatId The ID of the chat to send the media to.
      * @param string $path
      * @param string $fileName The name of the file being sent.
      * @param string|null $message (Optional) A caption or message to send with the media.
      */
-    public function sendMedia(string $type, int $chatId, string $path, string $fileName, ?string $message = ''): void
+    public function sendMedia(string $phone, int $peerId, string $type, string $path, string $fileName, ?string $message = '')
     {
-        $user = auth()->user();
-        $phone = $user->account->connections[0]->phone;
-
         $MadelineProto = self::createMadelineProto($phone);
 
         $uploadedFile = $MadelineProto->upload($path);
 
-        $MadelineProto->messages->sendMultiMedia(
-            peer: $chatId,
-            multi_media: [
-                [
-                    '_' => 'inputSingleMedia',
-                    'media' => [
-                        '_' => $type,
-                        'file' => $uploadedFile,
-                        'attributes' => [[
+        try {
+            $result = $MadelineProto->messages->sendMultiMedia(
+                peer: $peerId,
+                multi_media: [
+                    [
+                        '_' => 'inputSingleMedia',
+                        'media' => [
+                            '_' => $type,
+                            'file' => $uploadedFile,
+                            'attributes' => [[
                                 '_' => 'documentAttributeFilename',
                                 'file_name' => $fileName,
                             ]],
-                    ],
-                    'message' => $message,
-                ]
-            ]);
+                        ],
+                        'message' => $message,
+                    ]
+                ]);
+            Storage::delete($path);
+            return ['success' => true, 'result' => $result];
+        } catch (Exception $e) {
+            Storage::delete($path);
+            return ['success' => false, 'error' => $e->getMessage()];
+        }
 
-        Storage::delete($path);
+
     }
 
     /**
@@ -282,29 +302,15 @@ class TelegramService
      * This function maps common file extensions to the corresponding MadelineProto media type.
      * It helps automatically choose the correct media type when sending files via Telegram.
      *
-     * @param UploadedFile $file The file name or path.
+     * @param UploadedFile|string $file The file name or path.
      *
      * @return string The media type for MadelineProto (e.g., 'photo', 'video', 'document', 'audio').
      */
-    function getMediaTypeForMadelineProto(UploadedFile $file): string
+    function getMediaTypeForMadelineProto(UploadedFile|string $file): string
     {
-        $extension = $file->getClientOriginalExtension();
+        $extension = is_string($file) ? pathinfo($file, PATHINFO_EXTENSION) : $file->getClientOriginalExtension();
 
-        $mediaTypes = [
-            'jpg' => 'inputMediaUploadedPhoto',
-            'jpeg' => 'inputMediaUploadedPhoto',
-            'png' => 'inputMediaUploadedPhoto',
-            'gif' => 'inputMediaUploadedPhoto',
-            'mp4' => 'inputMediaUploadedDocument',
-            'mov' => 'inputMediaUploadedDocument',
-            'avi' => 'inputMediaUploadedDocument',
-            'mp3' => 'inputMediaUploadedDocument',
-            'ogg' => 'inputMediaUploadedDocument',
-            'pdf' => 'inputMediaUploadedDocument',
-            'zip' => 'inputMediaUploadedDocument',
-        ];
-
-        return $mediaTypes[$extension] ?? 'inputMediaUploadedDocument';
+        return self::MediaTypes[$extension] ?? 'inputMediaUploadedDocument';
     }
 
     /**

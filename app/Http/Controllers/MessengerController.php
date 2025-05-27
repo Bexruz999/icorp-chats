@@ -81,8 +81,9 @@ class MessengerController extends Controller
             $filePath = $file->store('uploads');
 
             $this->telegramService->sendMedia(
+                phone: auth()->user()->getPhone(),
+                peerId: $validated['peer_id'],
                 type: $this->telegramService->getMediaTypeForMadelineProto($file),
-                chatId: $validated['peer_id'],
                 path: storage_path('app/public/' . $filePath),
                 fileName: $file->getClientOriginalName(),
                 message: $validated['message']
