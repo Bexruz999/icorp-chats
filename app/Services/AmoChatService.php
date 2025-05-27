@@ -91,16 +91,16 @@ class AmoChatService
 
 
         switch (true) {
-            case ($message['media'] !== null) && (in_array($message['mediaType'], $medias)):
+            case ($message['media'] !== null) && $message['mediaType'] === $medias:
                 $newMessage = (new PictureMessage());
                 break;
-            case ($message['media'] !== null) && ($message['mediaType'] === TelegramService::VIDEO):
+            case ($message['media'] !== null) && $message['mediaType'] === TelegramService::VIDEO:
                 $newMessage = (new VideoMessage());
                 break;
-            case ($message['media'] !== null) && ($message['mediaType'] === TelegramService::AUDIO):
+            case ($message['media'] !== null) && $message['mediaType'] === TelegramService::AUDIO:
                 $newMessage = (new VoiceMessage());
                 break;
-            case ($message['media'] !== null) && ($message['mediaType'] === TelegramService::DOCUMENT):
+            case ($message['media'] !== null) && $message['mediaType'] === TelegramService::DOCUMENT:
                 $newMessage = (new FileMessage());
                 break;
             default:
