@@ -92,22 +92,22 @@ class AmoChatService
 
         switch (true) {
             case ($message['media'] !== null) && (in_array($message['mediaType'], $medias)):
-                $message (new PictureMessage());
+                $newMessage = (new PictureMessage());
                 break;
             case ($message['media'] !== null) && ($message['mediaType'] === TelegramService::VIDEO):
-                $message (new VideoMessage());
+                $newMessage = (new VideoMessage());
                 break;
             case ($message['media'] !== null) && ($message['mediaType'] === TelegramService::AUDIO):
-                $message = (new VoiceMessage());
+                $newMessage = (new VoiceMessage());
                 break;
             case ($message['media'] !== null) && ($message['mediaType'] === TelegramService::DOCUMENT):
-                $message = (new FileMessage());
+                $newMessage = (new FileMessage());
                 break;
             default:
-                $message = (new TextMessage())->setText($message['message']);
+                $newMessage = (new TextMessage())->setText($message['message']);
         }
         if ($message['media'] !== null && in_array($message['mediaType'], $medias)) {
-            $message->setFileName($message['media']['fileName'])
+            $newMessage->setFileName($message['media']['fileName'])
                 ->setFileSize($message['media']['size'])
                 ->setMedia(route('tg.get-media', [
                     'message_id' => $message['id'], 'phone' => $message['self_phone']
@@ -115,8 +115,8 @@ class AmoChatService
                 ->setText($message['message']);
         }
 
-        $message->setUid("MSG_" . $message['id']);
+        $newMessage->setUid("MSG_" . $message['id']);
 
-        return $message;
+        return $newMessage;
     }
 }
