@@ -89,6 +89,8 @@ class User extends Authenticatable
             case 'user': return $query->where('owner', false);
             case 'owner': return $query->where('owner', true);
         }
+
+        return $query;
     }
 
     public function scopeFilter($query, array $filters)
@@ -108,5 +110,10 @@ class User extends Authenticatable
                 $query->onlyTrashed();
             }
         });
+    }
+
+    public function getPhone()
+    {
+        return $this->phone ?? $this->account->connections()->first()->phone;
     }
 }

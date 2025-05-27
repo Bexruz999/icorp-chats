@@ -26,7 +26,7 @@ class MessengerController extends Controller
      */
     public function index(): Response
     {
-        $phone = auth()->user()->account->connections()->first()->phone;
+        $phone = auth()->user()->getPhone();
 
         try {
             return Inertia::render('Messengers/Index', [
@@ -40,7 +40,7 @@ class MessengerController extends Controller
     public function getMessages(Request $request): JsonResponse
     {
         $peerId = $request->integer('peerId');
-        $phone = auth()->user()->account->connections[0]->phone;
+        $phone = auth()->user()->getPhone();
 
         $messages = $this->telegramService->getMessages($phone, $peerId);
         return response()->json($messages);
@@ -52,7 +52,7 @@ class MessengerController extends Controller
         $valid = $request->validate(['peerId' => 'required|integer', 'message' => 'required|string']);
 
         $user = auth()->user();
-        $phone = $user->account->connections[0]->phone;
+        $phone = $user->getPhone();
         $data = $this->telegramService->sendMessage($phone, $valid['peerId'], $valid['message']);
 
         if ($data['success']) {

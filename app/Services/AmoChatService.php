@@ -8,8 +8,11 @@ use AmoJo\DTO\MessageResponse;
 use AmoJo\Models\Channel;
 use AmoJo\Models\Conversation;
 use AmoJo\Models\Messages\AbstractMessage;
+use AmoJo\Models\Messages\FileMessage;
 use AmoJo\Models\Messages\PictureMessage;
 use AmoJo\Models\Messages\TextMessage;
+use AmoJo\Models\Messages\VideoMessage;
+use AmoJo\Models\Messages\VoiceMessage;
 use AmoJo\Models\Payload;
 use AmoJo\Models\Users\Receiver;
 use AmoJo\Models\Users\Sender;
@@ -86,19 +89,34 @@ class AmoChatService
             TelegramService::VOICE
         ];
 
-        switch (true){
+
+        switch (true) {
             case ($message['media'] !== null) && (in_array($message['mediaType'], $medias)):
-                return (new PictureMessage())
-                    ->setUid("MSG_" . $message['id'])
-                    ->setFileName($message['media']['fileName'])
-                    ->setFileSize($message['media']['size'])
-                    ->setMedia(route('tg.get-media', [
-                        'message_id' => $message['id'],
-                        'phone' => $message['self_phone']
-                    ]))
-                    ->setText($message['message']);
+                $message (new PictureMessage());
+                break;
+            case ($message['media'] !== null) && ($message['mediaType'] === TelegramService::VIDEO):
+                $message (new VideoMessage());
+                break;
+            case ($message['media'] !== null) && ($message['mediaType'] === TelegramService::AUDIO):
+                $message = (new VoiceMessage());
+                break;
+            case ($message['media'] !== null) && ($message['mediaType'] === TelegramService::DOCUMENT):
+                $message = (new FileMessage());
+                break;
             default:
-                return (new TextMessage())->setUid("MSG_" . $message['id'])->setText($message['message']);
+                $message = (new TextMessage())->setText($message['message']);
         }
+        if ($message['media'] !== null && in_array($message['mediaType'], $medias)) {
+            $message->setFileName($message['media']['fileName'])
+                ->setFileSize($message['media']['size'])
+                ->setMedia(route('tg.get-media', [
+                    'message_id' => $message['id'], 'phone' => $message['self_phone']
+                ]))
+                ->setText($message['message']);
+        }
+
+        $message->setUid("MSG_" . $message['id']);
+
+        return $message;
     }
 }

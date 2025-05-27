@@ -40,6 +40,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
             $fullInfo = $this->getFullInfo($message->senderId);
             if ($message->media) {
                 $msg['mediaType'] = TelegramService::getTelegramMediaType($message->media);
+                $self = $this->getSelf();
                 $msg['self_phone'] = Arr::get($this->getSelf(), 'phone', '998339995959');
             }
             var_dump($this->getSelf()['phone']);
