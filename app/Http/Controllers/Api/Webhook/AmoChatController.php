@@ -18,8 +18,6 @@ class AmoChatController extends Controller
         }
 
         $amoMessage = $request->post('message');
-        //file_put_contents('wmedia.json', json_encode($amoMessage, JSON_PRETTY_PRINT));
-        file_put_contents('wtext.json', json_encode($amoMessage, JSON_PRETTY_PRINT));
         $sender = User::where('amojo_id', $amoMessage['sender']['id'])
             ->whereNotNull('telegram_id')
             ->firstOrFail();
@@ -42,7 +40,6 @@ class AmoChatController extends Controller
         } else {
             return response()->json(['status' => 'error', 'message' => 'Unsupported message type'], 400);
         }
-        //$sendMessage = $telegram->sendMedia('', '', '', '', '');
 
         if ($sendMessage['success']) {
             UserMessage::create([
