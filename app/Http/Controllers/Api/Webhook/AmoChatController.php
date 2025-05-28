@@ -35,7 +35,7 @@ class AmoChatController extends Controller
                 phone: $sender->phone,
                 peerId: $receiver,
                 type: $telegram->getMediaTypeForMadelineProto($amoMessage['message']['file_name']),
-                path: $amoMessage['message']['file_path'],
+                path: $amoMessage['message']['media'],
                 fileName: $amoMessage['message']['file_name'], message: $amoMessage['message']['text']
             );
 

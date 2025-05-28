@@ -79,8 +79,6 @@ class AmoChatService
 
     private function setMessage(array $message): AbstractMessage
     {
-        $a = $message;
-
         $medias = [
             TelegramService::PHOTO,
             TelegramService::VIDEO,
@@ -89,23 +87,14 @@ class AmoChatService
             TelegramService::VOICE
         ];
 
+        $newMessage = match (true) {
+            ($message['media'] !== null) && $message['mediaType'] === $medias => (new PictureMessage()),
+            ($message['media'] !== null) && $message['mediaType'] === TelegramService::VIDEO => (new VideoMessage()),
+            ($message['media'] !== null) && $message['mediaType'] === TelegramService::AUDIO => (new VoiceMessage()),
+            ($message['media'] !== null) && $message['mediaType'] === TelegramService::DOCUMENT => (new FileMessage()),
+            default => (new TextMessage())->setText($message['message']),
+        };
 
-        switch (true) {
-            case ($message['media'] !== null) && $message['mediaType'] === $medias:
-                $newMessage = (new PictureMessage());
-                break;
-            case ($message['media'] !== null) && $message['mediaType'] === TelegramService::VIDEO:
-                $newMessage = (new VideoMessage());
-                break;
-            case ($message['media'] !== null) && $message['mediaType'] === TelegramService::AUDIO:
-                $newMessage = (new VoiceMessage());
-                break;
-            case ($message['media'] !== null) && $message['mediaType'] === TelegramService::DOCUMENT:
-                $newMessage = (new FileMessage());
-                break;
-            default:
-                $newMessage = (new TextMessage())->setText($message['message']);
-        }
         if ($message['media'] !== null && in_array($message['mediaType'], $medias)) {
             $newMessage->setFileName($message['media']['fileName'])
                 ->setFileSize($message['media']['size'])
