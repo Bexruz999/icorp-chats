@@ -22,7 +22,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
     {
         TelegramMessage::dispatch($message);
 
-        if (get_class($message) === PrivateMessage::class) {
+        if (get_class($message) === PrivateMessage::class && !Cache::has(key: "amocrm_$message->chatId-$message->id")) {
 
             $amojoId = null;
             if ($message->out) {
@@ -33,17 +33,14 @@ class TelegramIncomingMessage extends SimpleEventHandler
                 });
 
                 $amojoId = $user->amojo_id;
-                var_dump('amojo: ' . $amojoId);
             }
 
             $msg =  json_decode(json_encode($message), true);
             $fullInfo = $this->getFullInfo($message->senderId);
             if ($message->media) {
                 $msg['mediaType'] = TelegramService::getTelegramMediaType($message->media);
-                $self = $this->getSelf();
                 $msg['self_phone'] = Arr::get($this->getSelf(), 'phone', '998339995959');
             }
-            var_dump($this->getSelf()['phone'], route('tg.get-media', ['message_id' => $message->id, 'phone' => $this->getSelf()['phone']]));
             AmoIncomingMessage::dispatch($msg, $fullInfo['User'], $amojoId);
         }
     }

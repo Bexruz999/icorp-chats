@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Services\AmoChatService;
 use Arr;
-use danog\MadelineProto\EventHandler\Message;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\SerializesModels;

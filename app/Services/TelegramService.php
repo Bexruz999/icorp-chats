@@ -14,6 +14,7 @@ use danog\MadelineProto\EventHandler\Media\Voice;
 use danog\MadelineProto\Exception;
 use danog\MadelineProto\LocalFile;
 use danog\MadelineProto\Settings\AppInfo;
+use Error;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
@@ -191,6 +192,22 @@ class TelegramService
     }
 
     /**
+     * @param string $phone
+     * @param string $path
+     * @return string
+     */
+    public static function getStoragePath(string $phone, string $path = 'app/telegram/'): string
+    {
+        $path = storage_path($path);
+
+        if (!File::exists($path)) {
+            File::makeDirectory($path, 0777, true, true);
+        }
+
+        return "$path$phone.madeline";
+    }
+
+    /**
      *  Send a message to a specified chat ID via Telegram.
      *
      *  This function prepares and sends a message to a Telegram chat using MadelineProto.
@@ -215,22 +232,6 @@ class TelegramService
     }
 
     /**
-     * @param string $phone
-     * @param string $path
-     * @return string
-     */
-    public static function getStoragePath(string $phone, string $path = 'app/telegram/'): string
-    {
-        $path = storage_path($path);
-
-        if (!File::exists($path)) {
-            File::makeDirectory($path, 0777, true, true);
-        }
-
-        return "$path$phone.madeline";
-    }
-
-    /**
      * Send a media file to a specified chat ID via Telegram.
      *
      * This function handles sending various types of media (e.g., photo, video, document)
@@ -242,8 +243,9 @@ class TelegramService
      * @param string $path
      * @param string $fileName The name of the file being sent.
      * @param string|null $message (Optional) A caption or message to send with the media.
+     * @return array
      */
-    public function sendMedia(string $phone, int $peerId, string $type, string $path, string $fileName, ?string $message = '')
+    public function sendMedia(string $phone, int $peerId, string $type, string $path, string $fileName, ?string $message = ''): array
     {
         $MadelineProto = self::createMadelineProto($phone);
 
@@ -268,7 +270,7 @@ class TelegramService
                 ]);
             Storage::delete($path);
             return ['success' => true, 'result' => $result];
-        } catch (Exception $e) {
+        } catch (Error $e) {
             Storage::delete($path);
             return ['success' => false, 'error' => $e->getMessage()];
         }
@@ -311,6 +313,7 @@ class TelegramService
         $extension = is_string($file) ? pathinfo($file, PATHINFO_EXTENSION) : $file->getClientOriginalExtension();
 
         return self::MediaTypes[$extension] ?? 'inputMediaUploadedDocument';
+
     }
 
     /**
@@ -320,7 +323,7 @@ class TelegramService
      * sends it to the browser for download.
      *
      * @param int $message_id The ID of the message containing the media.
-     *
+     * @param null $phone
      * @return void
      */
     public function getMedia(int $message_id, $phone = null): void
@@ -330,7 +333,6 @@ class TelegramService
             $phone = $user->account->connections[0]->phone;
         }
 
-
         $MadelineProto = self::createMadelineProto($phone);
 
         $message = $MadelineProto->messages->getMessages(['id' => [$message_id]]);
@@ -338,10 +340,9 @@ class TelegramService
         if ($message['messages'][0]['_'] !== 'messageEmpty') {
             $media = $message['messages'][0]['media'];
             $MadelineProto->downloadToBrowser($media);
-        } else {
-            abort(404);
         }
-
+        // If the media is not found or unsupported, return a 404 error
+        abort(404);
     }
 
     /**

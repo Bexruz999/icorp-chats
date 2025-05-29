@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserMessage;
 use App\Services\TelegramService;
+use Cache;
 use Illuminate\Http\Request;
 use Str;
 
@@ -17,24 +18,24 @@ class AmoChatController extends Controller
             return response()->json(['message' => 'Invalid signature'], 403);
         }
 
-        $amoMessage = $request->post('message');
-        $sender = User::where('amojo_id', $amoMessage['sender']['id'])
+        $message = $request->post('message');
+        $sender = User::where('amojo_id', $message['sender']['id'])
             ->whereNotNull('telegram_id')
             ->firstOrFail();
 
-        $receiver = Str::after($amoMessage['receiver']['client_id'], 'user-');
+        $receiver = Str::after($message['receiver']['client_id'], 'user-');
 
-        if ($amoMessage['message']['type'] == 'text') {
+        if ($message['message']['type'] == 'text') {
             $sendMessage = $telegram->sendMessage(
-                phone: $sender->phone, peerId: $receiver, message: $amoMessage['message']['text']
+                phone: $sender->phone, peerId: $receiver, message: $message['message']['text']
             );
-        } elseif (in_array($amoMessage['message']['type'], ['file', 'video', 'picture', 'audio'])) {
+        } elseif (in_array($message['message']['type'], ['file', 'video', 'picture', 'audio'])) {
             $sendMessage = $telegram->sendMedia(
                 phone: $sender->phone,
                 peerId: $receiver,
-                type: $telegram->getMediaTypeForMadelineProto($amoMessage['message']['file_name']),
-                path: $amoMessage['message']['media'],
-                fileName: $amoMessage['message']['file_name'], message: $amoMessage['message']['text']
+                type: $telegram->getMediaTypeForMadelineProto($message['message']['file_name']),
+                path: $message['message']['media'],
+                fileName: $message['message']['file_name'], message: $message['message']['text']
             );
 
         } else {
@@ -47,6 +48,7 @@ class AmoChatController extends Controller
                 'chat_id' => $receiver,
                 'message_id' => $sendMessage['result']['id'],
             ]);
+            Cache::put(key: "from_amocrm_$receiver-{$sendMessage['result']['id']}", value: $sender->name, ttl: 86400);
             return response()->json(['message' => 'Webhook received successfully']);
         }
 

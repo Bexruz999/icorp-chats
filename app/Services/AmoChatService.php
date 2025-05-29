@@ -17,7 +17,6 @@ use AmoJo\Models\Payload;
 use AmoJo\Models\Users\Receiver;
 use AmoJo\Models\Users\Sender;
 use AmoJo\Models\Users\ValueObject\UserProfile;
-use danog\MadelineProto\EventHandler\Message;
 
 class AmoChatService
 {
@@ -62,9 +61,7 @@ class AmoChatService
 
         $conv = $this->createChat($amo_contact, $contact['id']);
 
-        $message = $this->setMessage($msg);
-
-        $payload = (new Payload())->setConversation($conv)->setMessage($message);
+        $payload = (new Payload())->setConversation($conv)->setMessage($this->setMessage($msg));
 
         if ($sender !== null) {
             $payload->setSender((new Sender())->setRefId($sender))->setReceiver($amo_contact);
@@ -72,39 +69,28 @@ class AmoChatService
             $payload->setSender($amo_contact);
         }
 
-        return $this->client->sendMessage(
-            accountUid: config('amo.account_id'), payload: $payload, externalId: 'test'
-        );
+        return $this->client->sendMessage(config('amo.account_id'), $payload, 'test');
     }
 
     private function setMessage(array $message): AbstractMessage
     {
-        $medias = [
-            TelegramService::PHOTO,
-            TelegramService::VIDEO,
-            TelegramService::AUDIO,
-            TelegramService::DOCUMENT,
-            TelegramService::VOICE
-        ];
-
-        $newMessage = match (true) {
-            ($message['media'] !== null) && $message['mediaType'] === $medias => (new PictureMessage()),
-            ($message['media'] !== null) && $message['mediaType'] === TelegramService::VIDEO => (new VideoMessage()),
-            ($message['media'] !== null) && $message['mediaType'] === TelegramService::AUDIO => (new VoiceMessage()),
-            ($message['media'] !== null) && $message['mediaType'] === TelegramService::DOCUMENT => (new FileMessage()),
-            default => (new TextMessage())->setText($message['message']),
-        };
-
-        if ($message['media'] !== null && in_array($message['mediaType'], $medias)) {
+        if (($message['media'] !== null)) {
+            $newMessage = match (true) {
+                $message['mediaType'] === TelegramService::PHOTO => (new PictureMessage()),
+                $message['mediaType'] === TelegramService::VIDEO => (new VideoMessage()),
+                $message['mediaType'] === TelegramService::AUDIO => (new VoiceMessage()),
+                $message['mediaType'] === TelegramService::DOCUMENT => (new FileMessage()),
+            };
             $newMessage->setFileName($message['media']['fileName'])
                 ->setFileSize($message['media']['size'])
                 ->setMedia(route('tg.get-media', [
                     'message_id' => $message['id'], 'phone' => $message['self_phone']
-                ]))
-                ->setText($message['message']);
+                ]));
+        } else {
+            $newMessage = (new TextMessage())->setText($message['message']);
         }
 
-        $newMessage->setUid("MSG_" . $message['id']);
+        $newMessage->setUid("MSG_" . $message['id'])->setText($message['message']);
 
         return $newMessage;
     }
