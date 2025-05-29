@@ -269,7 +269,7 @@ class TelegramService
                     ]
                 ]);
             Storage::delete($path);
-            return ['success' => true, 'result' => $result];
+            return ['success' => true, 'result' => Arr::get($result, 'updates.1.message', $result)];
         } catch (Error $e) {
             Storage::delete($path);
             return ['success' => false, 'error' => $e->getMessage()];

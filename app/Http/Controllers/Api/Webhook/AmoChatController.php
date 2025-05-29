@@ -37,6 +37,7 @@ class AmoChatController extends Controller
                 path: $message['message']['media'],
                 fileName: $message['message']['file_name'], message: $message['message']['text']
             );
+            file_put_contents('cache3.txt', json_encode($sendMessage, JSON_PRETTY_PRINT));
 
         } else {
             return response()->json(['status' => 'error', 'message' => 'Unsupported message type'], 400);
@@ -48,7 +49,8 @@ class AmoChatController extends Controller
                 'chat_id' => $receiver,
                 'message_id' => $sendMessage['result']['id'],
             ]);
-            Cache::put(key: "from_amocrm_$receiver-{$sendMessage['result']['id']}", value: $sender->name, ttl: 86400);
+            Cache::put(key: "amocrm_$receiver-{$sendMessage['result']['id']}", value: $sender->name, ttl: 86400);
+            file_put_contents('cache2.txt', Cache::has("amocrm_$receiver-{$sendMessage['result']['id']}"));
             return response()->json(['message' => 'Webhook received successfully']);
         }
 
