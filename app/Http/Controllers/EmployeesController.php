@@ -7,6 +7,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Services\AmoApiService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -32,12 +33,18 @@ class EmployeesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(AmoApiService $amoApiService)
     {
         $user = Auth::user();
-        if (!$user->hasRole('admin'))  abort(419);
+        $amoUsers = $amoApiService->getAmoAccount();
 
-        return Inertia::render('Employees/Create');
+        dd($amoUsers);
+
+        //if (!$user->hasRole('admin'))  abort(419);
+
+        return Inertia::render('Employees/Create', [
+            'connections' => $user->account->connections,
+        ]);
     }
 
     /**
@@ -46,7 +53,7 @@ class EmployeesController extends Controller
     public function store(UserStoreRequest $request)
     {
         $user = Auth::user();
-        if (!$user->hasRole('admin'))  abort(419);
+        //if (!$user->hasRole('admin'))  abort(419);
 
         $user->account->users()->create($request->validated());
 

@@ -1,19 +1,22 @@
-import { Link, useForm } from '@inertiajs/react';
+import { Link, useForm, usePage } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import LoadingButton from '@/Components/Button/LoadingButton';
 import TextInput from '@/Components/Form/TextInput';
 import SelectInput from '@/Components/Form/SelectInput';
 import FileInput from '@/Components/Form/FileInput';
 import FieldGroup from '@/Components/Form/FieldGroup';
+import { Employee } from '@/types';
 
 const Create = () => {
+  const phones = usePage().props;
+
   const { data, setData, errors, post, processing } = useForm({
     first_name: '',
     last_name: '',
     email: '',
     password: '',
     owner: '0',
-    photo: ''
+    photo: '',
   });
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -87,7 +90,7 @@ const Create = () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Owner" name="owner" error={errors.owner}>
+            {/*<FieldGroup label="Owner" name="owner" error={errors.owner}>
               <SelectInput
                 name="owner"
                 error={errors.owner}
@@ -98,15 +101,28 @@ const Create = () => {
                   { value: '0', label: 'No' }
                 ]}
               />
-            </FieldGroup>
+            </FieldGroup>*/}
 
-            <FieldGroup label="Photo" name="photo" error={errors.photo}>
+            {/*<FieldGroup label="Photo" name="photo" error={errors.photo}>
               <FileInput
                 name="photo"
                 accept="image/*"
                 error={errors.photo}
                 value={data.photo}
                 onChange={photo => setData('photo', photo as unknown as string)}
+              />
+            </FieldGroup>*/}
+            {console.log(phones)}
+            <FieldGroup label="Owner" name="owner" error={errors.owner}>
+              <SelectInput
+                name="owner"
+                error={errors.owner}
+                value={data.owner}
+                onChange={e => setData('owner', e.target.value)}
+                options={[
+                  { value: '1', label: 'Yes' },
+                  { value: '0', label: 'No' }
+                ]}
               />
             </FieldGroup>
           </div>

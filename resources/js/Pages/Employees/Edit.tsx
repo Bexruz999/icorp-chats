@@ -124,7 +124,7 @@ const Edit = () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Owner" name="owner" error={errors.owner}>
+            {/*<FieldGroup label="Owner" name="owner" error={errors.owner}>
               <SelectInput
                 name="owner"
                 error={errors.owner}
@@ -135,7 +135,7 @@ const Edit = () => {
                   { value: '0', label: 'No' }
                 ]}
               />
-            </FieldGroup>
+            </FieldGroup>*/}
 
             <FieldGroup label="Photo" name="photo" error={errors.photo}>
               <FileInput

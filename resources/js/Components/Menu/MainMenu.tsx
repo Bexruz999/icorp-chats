@@ -32,7 +32,7 @@ export default function MainMenu({ className }: MainMenuProps) {
       <MainMenuItem text="Роли"       link="roles.index"      icon={<Building/>}/>
       <MainMenuItem text="Messenger"  link="messengers"       icon={<MessageCircle/>}/>
 
-      {hasRole('admin') && <MainMenuItem text="Settings" link="settings" icon={<Settings/>}/>}
+      <MainMenuItem text="Settings" link="settings" icon={<Settings/>}/>
     </div>
   );
 }

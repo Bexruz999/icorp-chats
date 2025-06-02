@@ -85,6 +85,10 @@ class AmoApiService
     {
         $token = AmoToken::query()->where('account_id', auth()->user()->account_id)->latest()->first();
 
+        if (!$token) {
+            exit('Invalid access token ' . var_export($token, true));
+        }
+
         $token = new AccessToken($token->toArray());
         $this->provider->setBaseDomain($token->getValues()['base_domain']);
 
