@@ -21,7 +21,7 @@ class AmoIncomingMessage implements ShouldQueue
     public function __construct(array $message, array $user, $in = null)
     {
         $this->message = $message;
-        $this->contact = ['id' => $message['chatId'], 'name' => $user['first_name'], 'phone' => Arr::get($user, 'phone', '998339995959')];
+        $this->contact = ['id' => $message['chatId'], 'name' => $user['first_name'], 'phone' => Arr::get($user, 'phone', '')];
         $this->in = $in;
     }
 

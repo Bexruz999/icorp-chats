@@ -3,12 +3,10 @@ import MainLayout from '@/Layouts/MainLayout';
 import LoadingButton from '@/Components/Button/LoadingButton';
 import TextInput from '@/Components/Form/TextInput';
 import SelectInput from '@/Components/Form/SelectInput';
-import FileInput from '@/Components/Form/FileInput';
 import FieldGroup from '@/Components/Form/FieldGroup';
-import { Employee } from '@/types';
 
 const Create = () => {
-  const phones = usePage().props;
+  const { amoUsers } = usePage().props;
 
   const { data, setData, errors, post, processing } = useForm({
     first_name: '',
@@ -17,6 +15,7 @@ const Create = () => {
     password: '',
     owner: '0',
     photo: '',
+    amojo_id: null
   });
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -90,19 +89,6 @@ const Create = () => {
               />
             </FieldGroup>
 
-            {/*<FieldGroup label="Owner" name="owner" error={errors.owner}>
-              <SelectInput
-                name="owner"
-                error={errors.owner}
-                value={data.owner}
-                onChange={e => setData('owner', e.target.value)}
-                options={[
-                  { value: '1', label: 'Yes' },
-                  { value: '0', label: 'No' }
-                ]}
-              />
-            </FieldGroup>*/}
-
             {/*<FieldGroup label="Photo" name="photo" error={errors.photo}>
               <FileInput
                 name="photo"
@@ -112,7 +98,6 @@ const Create = () => {
                 onChange={photo => setData('photo', photo as unknown as string)}
               />
             </FieldGroup>*/}
-            {console.log(phones)}
             <FieldGroup label="Owner" name="owner" error={errors.owner}>
               <SelectInput
                 name="owner"
@@ -123,6 +108,18 @@ const Create = () => {
                   { value: '1', label: 'Yes' },
                   { value: '0', label: 'No' }
                 ]}
+              />
+            </FieldGroup>
+            <FieldGroup label="Amojo_id" name="amojo_id" error={errors.amojo_id}>
+              <SelectInput
+                name="amojo_id"
+                error={errors.amojo_id}
+                value={data.amojo_id}
+                onChange={e => setData('amojo_id', e.target.value)}
+                options={amoUsers.map(user => ({
+                  value: user.amojo_id,
+                  label: user.name,
+                }))}
               />
             </FieldGroup>
           </div>

@@ -32,7 +32,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
                 $msg['mediaType'] = TelegramService::getTelegramMediaType($message->media);
                 $msg['self_phone'] = Arr::get($this->getSelf(), 'phone', '');
             }
-            AmoIncomingMessage::dispatch(message: $msg, user: $fullInfo['User'], in: $amojoId);
+            AmoIncomingMessage::dispatch(message: $msg, user: $fullInfo['User'], in: ['amo_id' => $amojoId, ]);
         }
     }
 

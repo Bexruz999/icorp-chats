@@ -38,12 +38,12 @@ class EmployeesController extends Controller
         $user = Auth::user();
         $amoUsers = $amoApiService->getAmoAccount();
 
-        dd($amoUsers);
 
         //if (!$user->hasRole('admin'))  abort(419);
 
         return Inertia::render('Employees/Create', [
             'connections' => $user->account->connections,
+            'amoUsers' => $amoUsers,
         ]);
     }
 
@@ -85,6 +85,7 @@ class EmployeesController extends Controller
 
         return Inertia::render('Employees/Edit', [
             'user' => new UserResource($user),
+            'amo_users' => (new AmoApiService())->getAmoAccount(),
         ]);
     }
 
