@@ -13,23 +13,30 @@ class AmoIncomingMessage implements ShouldQueue
     use Queueable, SerializesModels;
     private array $message;
     private array $contact;
-    private array|null|string $in;
+    private array $connect;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(array $message, array $user, $in = null)
+    public function __construct(array $message, array $user, array $connect)
     {
         $this->message = $message;
-        $this->contact = ['id' => $message['chatId'], 'name' => $user['first_name'], 'phone' => Arr::get($user, 'phone', '')];
-        $this->in = $in;
+
+        $this->contact = [
+            'id' => $message['chatId'],
+            'name' => $user['first_name'],
+            'phone' => Arr::get($user, 'phone', '')
+        ];
+
+        $this->connect = $connect;
     }
 
     /**
      * Execute the job.
      */
-    public function handle(AmoChatService $amo): void
+    public function handle(): void
     {
-        $amo->sendMessage(contact: $this->contact, msg: $this->message, sender: $this->in);
+        $amo = new AmoChatService($this->connect);
+        $amo->sendMessage(contact: $this->contact, msg: $this->message);
     }
 }

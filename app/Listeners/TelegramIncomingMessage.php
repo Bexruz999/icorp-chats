@@ -28,10 +28,11 @@ class TelegramIncomingMessage extends SimpleEventHandler
     {
         TelegramMessage::dispatch($message);
 
-        if (get_class($message) === PrivateMessage::class && !Cache::has(key: "amocrm_$message->chatId-$message->id")) {
+        if (get_class($message) === PrivateMessage::class) {
 
             $connections = $this->getConnections($message);
-            $msg =  json_decode(json_encode($message), true);
+
+            $msg = json_decode(json_encode($message), true);
             $fullInfo = $this->getFullInfo($message->senderId);
 
             if ($message->media) {
@@ -39,7 +40,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
                 $msg['self_phone'] = Arr::get($this->getSelf(), 'phone', '');
             }
 
-            AmoIncomingMessage::dispatch(message: $msg, user: $fullInfo['User'], in: $connections);
+            AmoIncomingMessage::dispatch(message: $msg, user: $fullInfo['User'], connect: $connections);
         }
     }
 
@@ -49,18 +50,19 @@ class TelegramIncomingMessage extends SimpleEventHandler
      * @param Message $message The incoming message.
      * @return array|null The Connections or null if not found.
      */
-    protected function getConnections($message): ?array
+    protected function getConnections(Message $message): ?array
     {
-        if ($message->out) {
-            $tgId = $this->getId($message->senderId);
+        $message->out ? $tgId = $this->getId($message->senderId) : $tgId = $this->getSelf()['id'];
 
-            $user = Cache::remember('telegram_user_' . $tgId, 3600, function () use ($tgId) {
-                return User::where('telegram_id', $tgId)->first();
-            });
+        $user = Cache::remember('telegram_user_' . $tgId, 3600, function () use ($tgId) {
+            return User::where('telegram_id', $tgId)->first();
+        });
 
-            return $user ? ['telegram' => $user->telegram, 'amo' => $user->amo, 'amojo_id' => $user->amojo_id] : null;
-        }
-
-        return null;
+        return [
+            'out' => $message->out,
+            'telegram' => $user->telegram->toArray(),
+            'amo' => $user->amo->toArray(),
+            'user' => $user->toArray()
+        ];
     }
 }

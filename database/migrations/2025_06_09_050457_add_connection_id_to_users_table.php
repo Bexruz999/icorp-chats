@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('connection_id')->nullable()
-                ->after('telegram_id')
                 ->constrained('connections')
-                ->nullOnDelete()
-                ->index()
-                ->comment('Foreign key to the connections table, nullable if no connection exists');
+                ->nullOnDelete();
+
+            $table->foreignId('amo_connection_id')->nullable()
+                ->constrained('amo_connections')
+                ->nullOnDelete();
         });
     }
 
