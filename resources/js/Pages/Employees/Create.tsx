@@ -89,15 +89,6 @@ const Create = () => {
               />
             </FieldGroup>
 
-            {/*<FieldGroup label="Photo" name="photo" error={errors.photo}>
-              <FileInput
-                name="photo"
-                accept="image/*"
-                error={errors.photo}
-                value={data.photo}
-                onChange={photo => setData('photo', photo as unknown as string)}
-              />
-            </FieldGroup>*/}
             <FieldGroup label="Owner" name="owner" error={errors.owner}>
               <SelectInput
                 name="owner"

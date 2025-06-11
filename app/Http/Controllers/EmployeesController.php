@@ -10,7 +10,7 @@ use App\Models\User;
 use App\Services\AmoApiService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 class EmployeesController extends Controller
@@ -23,7 +23,7 @@ class EmployeesController extends Controller
         $user = Auth::user();
 
         return Inertia::render('Employees/Index', [
-            'filters' => \Illuminate\Support\Facades\Request::all('search', 'role', 'trashed'),
+            'filters' => Request::all('search', 'role', 'trashed'),
             'users' => new UserCollection(
                 $user->account->users()->whereNot('id', $user->id)->paginate()
             ),
@@ -37,7 +37,6 @@ class EmployeesController extends Controller
     {
         $user = Auth::user();
         $amoUsers = $amoApiService->getAmoAccount();
-
 
         //if (!$user->hasRole('admin'))  abort(419);
 
@@ -57,11 +56,11 @@ class EmployeesController extends Controller
 
         $user->account->users()->create($request->validated());
 
-        if ($request->hasFile('photo')) {
+        /*if ($request->hasFile('photo')) {
             $user->update([
                 'photo' => $request->file('photo')->store('users'),
             ]);
-        }
+        }*/
 
         return Redirect::route('employees.index')->with('success', 'Сотрудник создан.');
     }
@@ -77,15 +76,17 @@ class EmployeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit($id, AmoApiService $amoApiService)
     {
         $auth = Auth::user();
         $user = User::findOrFail($id);
         if (!$auth->hasRole('admin') && $user->owner) abort(419);
 
+        $amoUsers = $amoApiService->getAmoAccount();
+
         return Inertia::render('Employees/Edit', [
             'user' => new UserResource($user),
-            'amo_users' => (new AmoApiService())->getAmoAccount(),
+            'amo_users' => $amoUsers,
         ]);
     }
 
@@ -95,18 +96,14 @@ class EmployeesController extends Controller
     public function update(UserUpdateRequest $request, $id)
     {
 
-        $auth = Auth::user();
+        //$auth = Auth::user();
 
         $user = User::findOrFail($id);
 
-        $user->update(
-            $request->validated()
-        );
+        $user->update($request->validated());
 
         if ($request->hasFile('photo')) {
-            $user->update([
-                'photo' => $request->file('photo')->store('users'),
-            ]);
+            $user->update(['photo' => $request->file('photo')->store('users')]);
         }
 
         return Redirect::back()->with('success', 'Сотрудник обновлен.');

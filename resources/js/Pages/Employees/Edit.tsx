@@ -12,7 +12,7 @@ import { Employee } from '@/types';
 import FieldGroup from '@/Components/Form/FieldGroup';
 
 const Edit = () => {
-  const { user } = usePage<{
+  const { user, amo_users } = usePage<{
     user: Employee & { password: string; photo: File | null };
   }>().props;
 
@@ -23,6 +23,7 @@ const Edit = () => {
     password: user.password || '',
     owner: user.owner ? '1' : '0' || '0',
     photo: '',
+    amojo_id: user.amojo_id || null,
 
     // NOTE: When working with Laravel PUT/PATCH requests and FormData
     // you SHOULD send POST request and fake the PUT request like this.
@@ -63,7 +64,7 @@ const Edit = () => {
           {data.first_name} {data.last_name}
         </h1>
         {user.photo && (
-          <img className="block w-8 h-8 ml-4 rounded-full" src={user.photo} />
+          <img className="block w-8 h-8 ml-4 rounded-full" src={user.photo}  alt=""/>
         )}
       </div>
       {user.deleted_at && (
@@ -124,20 +125,20 @@ const Edit = () => {
               />
             </FieldGroup>
 
-            {/*<FieldGroup label="Owner" name="owner" error={errors.owner}>
+            <FieldGroup label="Amojo_id" name="amojo_id" error={errors.amojo_id}>
               <SelectInput
-                name="owner"
-                error={errors.owner}
-                value={data.owner}
-                onChange={e => setData('owner', e.target.value)}
-                options={[
-                  { value: '1', label: 'Yes' },
-                  { value: '0', label: 'No' }
-                ]}
+                name="amojo_id"
+                error={errors.amojo_id}
+                value={data.amojo_id}
+                onChange={e => setData('amojo_id', e.target.value)}
+                options={amo_users.map(user => ({
+                  value: user.amojo_id,
+                  label: user.name,
+                }))}
               />
-            </FieldGroup>*/}
+            </FieldGroup>
 
-            <FieldGroup label="Photo" name="photo" error={errors.photo}>
+            {/*<FieldGroup label="Photo" name="photo" error={errors.photo}>
               <FileInput
                 name="photo"
                 accept="image/*"
@@ -147,7 +148,7 @@ const Edit = () => {
                   setData('photo', photo as unknown as string);
                 }}
               />
-            </FieldGroup>
+            </FieldGroup>*/}
           </div>
           <div className="flex items-center px-8 py-4 bg-gray-100 border-t border-gray-200">
             {!user.deleted_at && (

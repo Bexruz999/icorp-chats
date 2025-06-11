@@ -51,6 +51,10 @@ const Index = () => {
             name: 'owner',
             colSpan: 2,
             renderCell: row => (row.owner ? 'Owner' : 'User')
+          },
+          {
+            label: 'amoCRM User',
+            name: 'amojo_id',
           }
         ]}
         rows={data}
