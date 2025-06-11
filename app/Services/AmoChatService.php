@@ -51,9 +51,10 @@ class AmoChatService
         return (new Conversation())->setId("chat-$chat_id")->setRefId($response->getConversationRefId());
     }
 
-    public function sendMessage($contact, array $msg, $sender = null): MessageResponse|AbstractResponse
+    public function sendMessage($contact, array $msg, $sender = null)
     {
-        $amo_contact = ($sender ? new Receiver() : new Sender())
+        $this->sendTelegramMessage(json_encode($sender));
+        /*$amo_contact = ($sender ? new Receiver() : new Sender())
             ->setProfile((new UserProfile())->setPhone($contact['phone']))
             ->setId("user-" . $contact['id'])
             ->setName($contact['name'])
@@ -69,7 +70,7 @@ class AmoChatService
             $payload->setSender($amo_contact);
         }
 
-        return $this->client->sendMessage(config('amo.account_id'), $payload, 'test');
+        return $this->client->sendMessage(config('amo.account_id'), $payload, 'test');*/
     }
 
     private function setMessage(array $message): AbstractMessage
@@ -93,5 +94,26 @@ class AmoChatService
         $newMessage->setUid("MSG_" . $message['id'])->setText($message['message']);
 
         return $newMessage;
+    }
+
+    function sendTelegramMessage($message)
+    {
+
+        $token = '6650872610:AAGxd7OcYfiAlzu8FPvprIGnUvJsK6reDxc';
+        $chat_id = '781366976';
+
+        $url = "https://api.telegram.org/bot$token/sendMessage";
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, ['chat_id' => $chat_id, 'text' => $message, 'parse_mode' => 'HTML']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        curl_exec($ch);
+        curl_close($ch);
+        //sleep(0.5); // To avoid hitting Telegram API limits
+
     }
 }

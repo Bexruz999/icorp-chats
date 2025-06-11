@@ -17,6 +17,12 @@ use danog\MadelineProto\SimpleEventHandler;
 class TelegramIncomingMessage extends SimpleEventHandler
 {
 
+    /**
+     * Handle incoming messages from Telegram.
+     *
+     * @param Message $message The incoming message.
+     * @return void
+     */
     #[Handler]
     public function handleMessage(Message $message): void
     {
@@ -24,19 +30,26 @@ class TelegramIncomingMessage extends SimpleEventHandler
 
         if (get_class($message) === PrivateMessage::class && !Cache::has(key: "amocrm_$message->chatId-$message->id")) {
 
-            $amojoId = $this->getAmojoId($message);
-
+            $connections = $this->getConnections($message);
             $msg =  json_decode(json_encode($message), true);
             $fullInfo = $this->getFullInfo($message->senderId);
+
             if ($message->media) {
                 $msg['mediaType'] = TelegramService::getTelegramMediaType($message->media);
                 $msg['self_phone'] = Arr::get($this->getSelf(), 'phone', '');
             }
-            AmoIncomingMessage::dispatch(message: $msg, user: $fullInfo['User'], in: ['amo_id' => $amojoId, ]);
+
+            AmoIncomingMessage::dispatch(message: $msg, user: $fullInfo['User'], in: $connections);
         }
     }
 
-    protected function getAmojoId($message)
+    /**
+     * Get the Connections for the sender of the message.
+     *
+     * @param Message $message The incoming message.
+     * @return array|null The Connections or null if not found.
+     */
+    protected function getConnections($message): ?array
     {
         if ($message->out) {
             $tgId = $this->getId($message->senderId);
@@ -45,7 +58,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
                 return User::where('telegram_id', $tgId)->first();
             });
 
-            return $user ? $user->amojo_id : null;
+            return $user ? ['telegram' => $user->telegram, 'amo' => $user->amo, 'amojo_id' => $user->amojo_id] : null;
         }
 
         return null;

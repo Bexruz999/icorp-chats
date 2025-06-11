@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -115,5 +116,14 @@ class User extends Authenticatable
     public function getPhone()
     {
         return $this->phone ?? $this->account->connections()->first()->phone;
+    }
+
+    public function amo(): BelongsTo
+    {
+        return $this->belongsTo(AmoConnection::class, 'amo_connection_id', 'id');
+    }
+
+    public function telegram(): BelongsTo {
+        return $this->belongsTo(Connection::class, 'connection_id', 'id');
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('amo_connections', function (Blueprint $table) {
             $table->id();
             $table->foreignId('account_id')->constrained()->onDelete('cascade');
-            $table->string('amo_id')->nullable();
+            $table->string('uid')->nullable();
             $table->string('amojo_id')->nullable();
             $table->string('secret_key')->nullable();
             $table->string('amo_account_id')->nullable();
