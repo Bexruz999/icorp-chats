@@ -1,9 +1,16 @@
-import { Previews } from '@react-buddy/ide-toolbox';
+import { ComponentPreview, Previews } from '@react-buddy/ide-toolbox';
 import { PaletteTree } from './palette';
+import SettingsPage from '../resources/js/Pages/Settings/Index';
 
 const ComponentPreviews = () => {
   return (
     <Previews palette={<PaletteTree />}>
+      <ComponentPreview path="/SettingsPage">
+        <SettingsPage />
+      </ComponentPreview>
+      <ComponentPreview path="/ComponentPreviews">
+        <ComponentPreviews />
+      </ComponentPreview>
     </Previews>
   );
 };

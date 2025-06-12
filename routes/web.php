@@ -109,13 +109,13 @@ Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
     Route::get('reports', [ReportsController::class, 'index'])
         ->name('reports');
 
-// Images
+    // Images
 
     Route::get('/img/{path}', [ImagesController::class, 'show'])
         ->where('path', '.*')
         ->name('image');
 
-// Settings
+    // Settings
     Route::get('/settings', [SettingsController::class, 'index'])
         ->name("settings")
         ->middleware("auth");
@@ -139,6 +139,12 @@ Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
     Route::delete("/settings/delete-connection/{id}", [SettingsController::class, 'deleteConnection'])
         ->name("settings.delete")
         ->middleware("auth");
+
+    // AmoCRM Connections
+    Route::get('/settings/amo-connection/create', [SettingsController::class, 'createAmoConnection'])->name('amo_connection.create');
+    Route::post('/settings/amo-connection', [SettingsController::class, 'storeAmoConnection'])->name('amo_connection.store');
+    Route::get('/settings/amo-connection/{amo_connection}/edit', [SettingsController::class, 'editAmoConnection'])->name('amo_connection.edit');
+    Route::put('/settings/amo-connection/{amo_connection}', [SettingsController::class, 'updateAmoConnection'])->name('amo_connection.update');
 
     Route::resource('employees', EmployeesController::class);
 
