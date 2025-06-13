@@ -1,0 +1,10 @@
+[Unit]
+Description=Supervisor Config Watcher
+
+[Service]
+Type=simple
+ExecStart=/home/bexruz/domains/icorp-chats/supervisor_config_watcher.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

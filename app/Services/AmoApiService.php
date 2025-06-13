@@ -123,11 +123,5 @@ class AmoApiService
         $response = Http::withHeaders(['Authorization' => 'Bearer ' . $accessToken->getToken(),])->get($url);
 
         return Arr::get($response->json(), '_embedded.users', []);
-        /*return [[
-            'id' => 12412002,
-            'name' => 'Test User',
-            'amojo_id' => '3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9',
-            'email' => 'test@test.com'
-        ]];*/
     }
 }
