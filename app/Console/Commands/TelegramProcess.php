@@ -44,38 +44,38 @@ stderr_logfile=/var/log/supervisor/$programName.err.log
 stdout_logfile=/var/log/supervisor/$programName.out.log
 ";
                 file_put_contents($localConfigPath, $config);
-                $this->info("Supervisor config fayli yaratildi: $localConfigPath");
-                $this->info("Root huquqiga ega servis bu faylni avtomatik /etc/supervisor/conf.d/ ga ko'chiradi va supervisorctl reload qiladi.");
+                $this->info("Created Supervisor config file: $localConfigPath");
+                $this->info("Root has the right to serve this file automatically /etc/supervisor/conf.d/ ga ko'chiradi va supervisorctl reload qiladi.");
             } else {
-                $this->error("Madeline fayli mavjud emas: telegram/$phone.madeline");
+                $this->error("Madeline file not available: telegram/$phone.madeline");
             }
         } elseif ($action === 'stop') {
-            // Localda config faylini o'chirish va processni to'xtatish
+            // Delete config file in local and stop process
             if (file_exists($localConfigPath)) {
                 unlink($localConfigPath);
-                $this->info("Local config fayli o'chirildi: $localConfigPath");
+                $this->info("Local config file deleted: $localConfigPath");
             } else {
-                $this->info("Local config fayli topilmadi: $localConfigPath");
+                $this->info("Local config file not found: $localConfigPath");
             }
-            // Localda supervisor o'rnatilgan bo'lsa, processni to'xtatish
+            // Stop the process if the supervisor is installed in the local
             if (app()->environment('local')) {
                 $stopCmd = "supervisorctl stop $programName";
                 exec($stopCmd, $output, $code);
                 if ($code === 0) {
-                    $this->info("Supervisor process to'xtatildi: $programName");
+                    $this->info("Supervisor process discontinued: $programName");
                 } else {
-                    $this->info("Supervisor process topilmadi yoki to'xtatilmadi: $programName");
+                    $this->info("Supervisor process not found or stopped: $programName");
                 }
-                // Config faylini ham o'chirishga harakat qilish
+                // Trying to delete the Config file too
                 $etcConfigPath = "/etc/supervisor/conf.d/$programName.conf";
                 if (file_exists($etcConfigPath)) {
                     @unlink($etcConfigPath);
                     exec("supervisorctl reread && supervisorctl update");
-                    $this->info("Supervisor config fayli o'chirildi va reload qilindi: $etcConfigPath");
+                    $this->info("Supervisor config file deleted and reloaded: $etcConfigPath");
                 }
             }
         } else {
-            $this->error("Noto'g'ri action. Faqat 'start' yoki 'stop' bo'lishi mumkin.");
+            $this->error("Incorrect action. Can only be 'start' or 'stop'.");
         }
     }
 }
