@@ -61,7 +61,7 @@ class SettingsService {
             'phone' => $phone
         ]);
 
-        Artisan::call("telegram-process:start", ["phone" => $phone]);
+        Artisan::call("telegram-process", ["action" => 'start', "phone" => $phone]);
         return self::STATUS_VERIFYED;
     }
 
