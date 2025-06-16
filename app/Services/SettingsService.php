@@ -42,7 +42,7 @@ class SettingsService {
 
         $user->account->connections()->create($connectionData);
 
-        Artisan::call("telegram-process:stop", ["phone" => $phone]);
+        Artisan::call("telegram-process", ["action" => 'start', "phone" => $phone]);
         return self::STATUS_VERIFYED;
     }
 
