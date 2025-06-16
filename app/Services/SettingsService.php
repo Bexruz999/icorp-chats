@@ -68,7 +68,7 @@ class SettingsService {
     public function deleteConnection(string $phone) {
         $storagePath = $this->getStoragePath($phone);
         File::deleteDirectory($storagePath);
-        Artisan::call("telegram-process:stop", ["phone" => $phone]);
+        Artisan::call("telegram-process", ["action" => 'stop', "phone" => $phone]);
         DB::table('connections')->where(['phone' => $phone, 'account_id' => auth()->user()->account->id])->delete();
     }
 
