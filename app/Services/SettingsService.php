@@ -57,9 +57,19 @@ class SettingsService {
 
         $user = auth()->user()->load('account');
 
-        $user->account->connections()->create([
-            'phone' => $phone
-        ]);
+        // Obtaining user data
+        $me = $MadelineProto->getSelf();
+        $connectionData = [
+            'phone' => $phone,
+            'telegram_id' => $me['id'] ?? null,
+            'first_name' => $me['first_name'] ?? null,
+            'last_name' => $me['last_name'] ?? null,
+        ];
+        if (!empty($me['username'])) {
+            $connectionData['user_name'] = $me['username'];
+        }
+
+        $user->account->connections()->create($connectionData);
 
         Artisan::call("telegram-process", ["action" => 'start', "phone" => $phone]);
         return self::STATUS_VERIFYED;
