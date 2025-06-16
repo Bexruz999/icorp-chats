@@ -66,15 +66,17 @@ class SettingsService {
     }
 
     public function deleteConnection(string $phone) {
-        $storagePath = $this->getStoragePath($phone);
+        // Logout from Telegram
+        try {
+            $MadelineProto = TelegramService::createMadelineProto($phone);
+            $MadelineProto->logOut();
+        } catch (\Throwable $e) {
+            // If there is an error in the Logout, the silent is transferred
+        }
+
+        $storagePath = TelegramService::getStoragePath($phone);
         File::deleteDirectory($storagePath);
         Artisan::call("telegram-process", ["action" => 'stop', "phone" => $phone]);
         DB::table('connections')->where(['phone' => $phone, 'account_id' => auth()->user()->account->id])->delete();
-    }
-
-
-
-    private function getStoragePath(string $phone): string {
-        return TelegramService::getStoragePath($phone, 'app/telegram/');
     }
 }
