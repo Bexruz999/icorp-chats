@@ -76,10 +76,13 @@ class EmployeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id, AmoApiService $amoApiService)
+    public function edit($id)
     {
         $auth = Auth::user();
         $user = User::findOrFail($id);
+
+        $amoApiService = new AmoApiService($user);
+
         if (!$auth->hasRole('admin') && $user->owner) abort(419);
 
         $amoUsers = $amoApiService->getAmoAccount();
@@ -95,9 +98,6 @@ class EmployeesController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-
-        //$auth = Auth::user();
-
         $user = User::findOrFail($id);
 
         $user->update($request->validated());

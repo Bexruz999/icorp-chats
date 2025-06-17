@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Account extends Model
 {
-    protected $with = ["connections"];
+    protected $with = ['connections', 'amoConnections'];
 
     public function users(): HasMany
     {
@@ -34,5 +34,9 @@ class Account extends Model
 
     public function shops(): HasMany {
         return $this->hasMany(Shop::class);
+    }
+
+    public function amoConnections(): HasMany {
+        return $this->hasMany(AmoConnection::class);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use AmoCRM\OAuth2\Client\Provider\AmoCRM;
 use App\Models\AmoToken;
+use App\Models\User;
 use Arr;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
@@ -14,6 +15,7 @@ use Illuminate\Support\Str;
 use League\OAuth2\Client\Grant\AuthorizationCode;
 use League\OAuth2\Client\Grant\RefreshToken;
 use League\OAuth2\Client\Token\AccessToken;
+use Log;
 
 class AmoApiService
 {
@@ -83,13 +85,15 @@ class AmoApiService
      */
     public function getToken(): AccessToken|string
     {
-        $token = AmoToken::query()->where('account_id', auth()->user()->account_id)->latest()->first();
+        $token = auth()->user()->account->amoConnections->findOrFail()->value('access_token');
+        Log::debug('AmoCRM token: ' . var_export($token, true));
 
         if (!$token) {
             exit('Invalid access token ' . var_export($token, true));
         }
 
         $token = new AccessToken($token->toArray());
+        Log::debug('AmoCRM token values: ' . var_export($token->getValues(), true));
         $this->provider->setBaseDomain($token->getValues()['base_domain']);
 
         if ($token->hasExpired()) {
@@ -101,6 +105,7 @@ class AmoApiService
                 ]);
 
                 $this->saveToken($token);
+                Log::debug('AmoCRM token saved: ' . var_export($token->getValues(), true));
 
             } catch (Exception $e) {
                 die((string)$e);
@@ -116,11 +121,13 @@ class AmoApiService
     public function getAmoAccount()
     {
         $accessToken = $this->getToken();
+        Log::debug('AmoCRM account: ' . var_export($accessToken, true));
         $values = $accessToken->getValues();
         $baseDomain = Arr::get($values, 'base_domain');
         $url = "https://$baseDomain/api/v4/users?with=amojo_id";
 
         $response = Http::withHeaders(['Authorization' => 'Bearer ' . $accessToken->getToken(),])->get($url);
+        Log::debug('AmoCRM response: ' . $response->body());
 
         return Arr::get($response->json(), '_embedded.users', []);
     }
