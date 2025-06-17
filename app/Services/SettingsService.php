@@ -93,7 +93,11 @@ class SettingsService {
         }
 
         $storagePath = TelegramService::getStoragePath($phone);
-        File::deleteDirectory($storagePath);
+        try {
+            File::deleteDirectory($storagePath);
+        } catch (\Throwable $e) {
+            Log::error("Failed to delete directory: $storagePath. Error: " . $e->getMessage());
+        }
         Artisan::call("telegram-process", ["action" => 'stop', "phone" => $phone]);
         DB::table('connections')->where(['phone' => $phone, 'account_id' => auth()->user()->account->id])->delete();
     }
