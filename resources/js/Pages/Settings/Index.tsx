@@ -12,7 +12,7 @@ interface AmoConnectionFormProps {
     amojo_id: string;
     secret_key: string;
     amo_account_id: string;
-    domain: string;
+    base_domain: string; // domain -> base_domain
   } | null;
   onSuccess?: () => void;
 }
@@ -27,7 +27,7 @@ const AmoConnectionForm: React.FC<AmoConnectionFormProps> = ({ amo_connection, o
     amojo_id: amo_connection?.amojo_id || '',
     secret_key: amo_connection?.secret_key || '',
     amo_account_id: amo_connection?.amo_account_id || '',
-    domain: amo_connection?.domain || ''
+    base_domain: amo_connection?.base_domain || '' // domain -> base_domain
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -87,14 +87,14 @@ const AmoConnectionForm: React.FC<AmoConnectionFormProps> = ({ amo_connection, o
         {errors.amo_account_id && <div className="text-red-500 text-sm mt-1">{errors.amo_account_id}</div>}
       </div>
       <div>
-        <label className="block font-bold mb-1">Domain</label>
+        <label className="block font-bold mb-1">Base Domain</label>
         <input
           type="text"
-          value={data.domain}
-          onChange={e => setData('domain', e.target.value)}
+          value={data.base_domain}
+          onChange={e => setData('base_domain', e.target.value)}
           className="input rounded-lg border border-gray-300 w-full px-3 py-2"
         />
-        {errors.domain && <div className="text-red-500 text-sm mt-1">{errors.domain}</div>}
+        {errors.base_domain && <div className="text-red-500 text-sm mt-1">{errors.base_domain}</div>}
       </div>
       <button
         type="submit"
@@ -115,7 +115,7 @@ function SettingsPage({ auth }: PageProps) {
       uid: string,
       amojo_id: string,
       amo_account_id: string,
-      domain: string
+      base_domain: string // domain -> base_domain
     }[]
   }>().props;
 
@@ -171,8 +171,8 @@ function SettingsPage({ auth }: PageProps) {
                 <td className="py-2 text-gray-800">{amo.amo_account_id}</td>
               </tr>
               <tr>
-                <td className="py-2 pr-4 font-bold text-indigo-600">Domain:</td>
-                <td className="py-2 text-gray-800">{amo.domain}</td>
+                <td className="py-2 pr-4 font-bold text-indigo-600">Base Domain:</td>
+                <td className="py-2 text-gray-800">{amo.base_domain}</td>
               </tr>
               </tbody>
             </table>
