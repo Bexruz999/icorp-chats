@@ -12,6 +12,6 @@ class Connection extends Model
     ];
 
     public function user() {
-        return $this->belongsTo(User::class, 'connection_id', 'id');
+        return $this->hasOne(User::class, 'connection_id', 'id');
     }
 }

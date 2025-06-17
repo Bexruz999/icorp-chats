@@ -158,8 +158,7 @@ Route::get('/messenger/get_media/{message_id}/{phone}', [AmoChatController::clas
     ->name('tg.get-media');
 
 
-Route::get('test', [AmoApiService::class, 'getToken']);
-Route::get('test2', [AmoApiService::class, 'getAmoAccount']);
+Route::get('/amocrm/connect', [AmoApiService::class, 'handle']);
 Route::get('/amocrm/oauth/redirect', [AmoApiService::class, 'handle']);
 Route::post('location/{scope_id}', [AmoChatController::class, 'handle']);
 // Organizations

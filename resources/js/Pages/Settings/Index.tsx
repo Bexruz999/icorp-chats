@@ -176,12 +176,21 @@ function SettingsPage({ auth }: PageProps) {
               </tr>
               </tbody>
             </table>
-            <button
-              onClick={() => openModal(amo)}
-              className={buttonClass + ' mt-6 w-full'}
-            >
-              Edit
-            </button>
+            <div className="flex gap-2 mt-6 items-center">
+              <button onClick={() => openModal(amo)} className={buttonClass + ' w-full'}>
+                Edit
+              </button>
+              {/* Agar access_token bo'lsa Connected badge, bo'lmasa Connect tugmasi */}
+              {'access_token' in amo && amo.access_token ? (
+                <span className="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-lg font-semibold w-full text-center">
+                  Connected
+                </span>
+              ) : (
+                <a href="/amocrm/connect" className={buttonClass + ' w-full text-center'}>
+                  Connect
+                </a>
+              )}
+            </div>
           </div>
         ) : (
           <div className="bg-white border border-blue-200 rounded-xl shadow-sm p-6 flex flex-col items-center">
