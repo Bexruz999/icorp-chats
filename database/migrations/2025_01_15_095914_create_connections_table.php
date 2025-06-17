@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('telegram_id')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('username')->nullable();
+            $table->string('user_name')->nullable();
             $table->timestamps();
         });
     }

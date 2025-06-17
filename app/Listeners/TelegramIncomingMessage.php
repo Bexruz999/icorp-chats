@@ -26,7 +26,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
     #[Handler]
     public function handleMessage(Message $message): void
     {
-        TelegramMessage::dispatch($message);
+        //TelegramMessage::dispatch($message);
 
         if (get_class($message) === PrivateMessage::class) {
 
