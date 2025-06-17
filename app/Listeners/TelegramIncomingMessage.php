@@ -13,6 +13,7 @@ use danog\MadelineProto\EventHandler\Attributes\Handler;
 use danog\MadelineProto\EventHandler\Message;
 use danog\MadelineProto\EventHandler\Message\PrivateMessage;
 use danog\MadelineProto\SimpleEventHandler;
+use Log;
 
 class TelegramIncomingMessage extends SimpleEventHandler
 {
@@ -27,10 +28,12 @@ class TelegramIncomingMessage extends SimpleEventHandler
     public function handleMessage(Message $message): void
     {
         //TelegramMessage::dispatch($message);
+        Log::debug('TelegramIncomingMessage: ' . json_encode($message));
 
         if (get_class($message) === PrivateMessage::class) {
 
             $connections = $this->getConnections($message);
+            Log::debug('TelegramIncomingMessage connections: ' . json_encode($connections));
 
             $msg = json_decode(json_encode($message), true);
             $fullInfo = $this->getFullInfo($message->senderId);
