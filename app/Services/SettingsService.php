@@ -74,6 +74,8 @@ class SettingsService {
             'last_name' => Arr::get($tgUser, 'last_name'),
             'user_name' => Arr::get($tgUser, 'username'),
         ];
+        $user->telegram_id = Arr::get($tgUser, 'id');
+        $user->save();
         Log::debug("Connection data sent for password verification: " . json_encode($connectionData));
 
         $user->account->connections()->create($connectionData);

@@ -10,4 +10,8 @@ class Connection extends Model
         "phone",
         "account_id"
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'connection_id', 'id');
+    }
 }

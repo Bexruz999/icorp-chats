@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('amojo_id')->nullable();
             $table->string('secret_key')->nullable();
             $table->string('amo_account_id')->nullable();
-            $table->string('domain')->nullable();
+            $table->string('base_domain')->nullable();
             $table->string('access_token')->nullable();
             $table->string('refresh_token')->nullable();
-            $table->bigInteger('expires_at')->nullable();
+            $table->bigInteger('expires')->nullable();
             $table->timestamps();
         });
     }

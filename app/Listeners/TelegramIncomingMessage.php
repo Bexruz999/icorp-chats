@@ -5,6 +5,7 @@ namespace App\Listeners;
 
 use App\Events\TelegramMessage;
 use App\Jobs\AmoIncomingMessage;
+use App\Models\Connection;
 use App\Models\User;
 use App\Services\TelegramService;
 use Arr;
@@ -57,15 +58,18 @@ class TelegramIncomingMessage extends SimpleEventHandler
     {
         $message->out ? $tgId = $this->getId($message->senderId) : $tgId = $this->getSelf()['id'];
 
-        $user = Cache::remember('telegram_user_' . $tgId, 3600, function () use ($tgId) {
-            return User::where('telegram_id', $tgId)->first();
+        $cacheKey = "connection_user_{$tgId}";
+        $user = Cache::remember($cacheKey, 360, function () use ($tgId) {
+            return optional(Connection::where('telegram_id', $tgId)->first())->user;
         });
+
+        Log::debug('TelegramIncomingMessage connections: ' . json_encode($user));
 
         return [
             'out' => $message->out,
-            'telegram' => $user->telegram->toArray(),
-            'amo' => $user->amo->toArray(),
-            'user' => $user->toArray()
+            'telegram' => $user?->telegram?->toArray() ?? [],
+            'amo' => $user?->amo?->toArray() ?? [],
+            'user' => $user?->toArray() ?? []
         ];
     }
 }

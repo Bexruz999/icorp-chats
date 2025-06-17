@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use AmoCRM\OAuth2\Client\Provider\AmoCRM;
+use App\Models\AmoConnection;
 use App\Models\AmoToken;
 use App\Models\User;
 use Arr;
@@ -73,7 +74,7 @@ class AmoApiService
 
             $token['account_id'] = auth()->user()->account_id;
 
-            return AmoToken::query()->updateOrCreate(['base_domain' => $token['base_domain']], $token);
+            return AmoConnection::query()->updateOrCreate(['base_domain' => $token['base_domain']], $token);
 
         } else {
             exit('Invalid access token ' . var_export($token, true));
@@ -85,7 +86,7 @@ class AmoApiService
      */
     public function getToken(): AccessToken|string
     {
-        $token = auth()->user()->account->amoConnections->findOrFail()->value('access_token');
+        $token = auth()->user()->account->amoConnections->firstOrFail();
         Log::debug('AmoCRM token: ' . var_export($token, true));
 
         if (!$token) {
@@ -100,6 +101,7 @@ class AmoApiService
 
             // get a token for a refresh
             try {
+                Log::debug('AmoCRM token expired: ' . var_export($token, true));
                 $token = $this->provider->getAccessToken(new RefreshToken(), [
                     'refresh_token' => $token->getRefreshToken()
                 ]);
