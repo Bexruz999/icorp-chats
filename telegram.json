@@ -1,0 +1,112 @@
+[
+  {
+    "_": "auth.authorization",
+    "setup_password_required": false,
+    "future_auth_token": {
+      "_": "bytes",
+      "bytes": "VfdQaDOC0koEgQuZnWFHX9\/w"
+    },
+    "user": {
+      "_": "user",
+      "self": true,
+      "contact": true,
+      "mutual_contact": true,
+      "deleted": false,
+      "bot": false,
+      "bot_chat_history": false,
+      "bot_nochats": false,
+      "verified": false,
+      "restricted": false,
+      "min": false,
+      "bot_inline_geo": false,
+      "support": false,
+      "scam": false,
+      "apply_min_photo": true,
+      "fake": false,
+      "bot_attach_menu": false,
+      "premium": false,
+      "attach_menu_enabled": false,
+      "bot_can_edit": false,
+      "close_friend": false,
+      "stories_hidden": false,
+      "stories_unavailable": true,
+      "contact_require_premium": false,
+      "bot_business": false,
+      "bot_has_main_app": false,
+      "id": 781366976,
+      "first_name": "Bexruz",
+      "username": "user0724",
+      "phone": "998997080724",
+      "photo": {
+        "_": "userProfilePhoto",
+        "has_video": false,
+        "personal": false,
+        "photo_id": 3355945608550655969,
+        "stripped_thumb": {
+          "_": "bytes",
+          "bytes": "AQgIa8Chjklvc96KKKwZsQ=="
+        },
+        "dc_id": 2
+      },
+      "status": {
+        "_": "userStatusOffline",
+        "was_online": 1750136648
+      }
+    }
+  },
+  {
+    "_": "account.password",
+    "has_recovery": false,
+    "has_secure_values": false,
+    "has_password": true,
+    "current_algo": {
+      "_": "passwordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow",
+      "salt1": {
+        "_": "bytes",
+        "bytes": "x3iOe9nftcAvh3U3rvYvVSr3ZlqBK2Ex\/aLcbA24n2zi\/mmkabdXqQ=="
+      },
+      "salt2": {
+        "_": "bytes",
+        "bytes": "AtbuZyBT\/5C3UbHouRQ5bw=="
+      },
+      "g": 3,
+      "p": {
+        "_": "bytes",
+        "bytes": "xxyuucaxyQSObFIvcPE\/c5gNQCOOPiHBSTTQN1Y9kw9IGYoKp8FAWCKUk9IlMPTb+jNvbgrJJROVQ67UTM58NyD9UfaUWHBaxozU\/mtrE6vcl0ZRKWkyhFTxj6+MWV9kJHf+lrsqlB1bzR1KyMxJiAcI+ps3jjxPOpBgvuZ8+aSkppWBEFGQfhYnU7VrD2tBDbp02KhLKhSzFE4O8ShHVP0X7ZUNWWW0ud1GWC2xF40WnGvEZbDW\/5yjko\/vW5rk5Bj8Feg+vqD4f6n\/Xu1wBQ3tKEn0e\/lZ2VaFDOkphR8NgRX2NbEF7i5OFdBLJFS\/b0+t8DSxBAMRnNjjuS\/MWw=="
+      }
+    },
+    "srp_B": {
+      "_": "bytes",
+      "bytes": "YUL4b6Ia6dW0rYhDpIwU\/aSklrX0GvJuOQcowIHtDLlDqZdFwEa7xzCGFWYHChkKj4lLph5\/hBllWxilPdF9\/hC4nqmA2wpE7II8TqqdHVImNl4HAmkCXcN3yMLFZVR8\/hb1C1rttVNhO5H1U+Ad8xU4jYJTmv92+1\/rtgsvHYUSN78ahJ2tqRE7mJsy1jHTKwSxkHDiH8jlGUQYG35\/bTnBf+0OoharbuiY4HZ6ytc5mI8sN1eM2VKxoSpaEFo7Jt8DNwXH+H1PmqNAQLE48PK\/L6PAkGJ4n1Bukd7Cs5rxY5pNFO4gp7Xi+\/BBzuMo69DlTMDFnAOVFVtdIccmug=="
+    },
+    "srp_id": 2784525606458228808,
+    "hint": "komp",
+    "new_algo": {
+      "_": "passwordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow",
+      "salt1": {
+        "_": "bytes",
+        "bytes": "x3iOe9nftcA="
+      },
+      "salt2": {
+        "_": "bytes",
+        "bytes": "AtbuZyBT\/5C3UbHouRQ5bw=="
+      },
+      "g": 3,
+      "p": {
+        "_": "bytes",
+        "bytes": "xxyuucaxyQSObFIvcPE\/c5gNQCOOPiHBSTTQN1Y9kw9IGYoKp8FAWCKUk9IlMPTb+jNvbgrJJROVQ67UTM58NyD9UfaUWHBaxozU\/mtrE6vcl0ZRKWkyhFTxj6+MWV9kJHf+lrsqlB1bzR1KyMxJiAcI+ps3jjxPOpBgvuZ8+aSkppWBEFGQfhYnU7VrD2tBDbp02KhLKhSzFE4O8ShHVP0X7ZUNWWW0ud1GWC2xF40WnGvEZbDW\/5yjko\/vW5rk5Bj8Feg+vqD4f6n\/Xu1wBQ3tKEn0e\/lZ2VaFDOkphR8NgRX2NbEF7i5OFdBLJFS\/b0+t8DSxBAMRnNjjuS\/MWw=="
+      }
+    },
+    "new_secure_algo": {
+      "_": "securePasswordKdfAlgoPBKDF2HMACSHA512iter100000",
+      "salt": {
+        "_": "bytes",
+        "bytes": "chlvV52eh+E="
+      }
+    },
+    "secure_random": {
+      "_": "bytes",
+      "bytes": "zTDmY4PDKwWnMSJYviTeJc1mTWQgK2BHUID32ge2hKVgnoy3Y8pyFfypZG6LYRgthgto5zkT3SZ5+WYEYFNZ\/f1zCfJ78xDrh8pOwA+Q4kVZyMgRWF0Uo8cs1DhzdUB\/fSHVQQ4TXam6kwB8dVwuuOXQSl6+FLn75EXJ2vWdneQ+eAwbDXxP77bjNYG5La0ZinA6xGUmOMIklEyk99RFQY\/WPjrayF7XNMK1hNJHjFEACMw\/RPaehSDdQubPEZVOojTnnFsQYh\/siWseFUU1MFwfT0O\/tdlr3bZcx3y43rO1CVRhEsxusqXqYUnuikTlGzHcXFFwIFNm+i0TxHgS7w=="
+    }
+  }
+]
