@@ -17,6 +17,12 @@ const Edit = () => {
     connections: { id: string; phone: string }[];
   }>().props;
 
+  // Debug uchun loglar
+  console.log('amo_users:', amo_users);
+  console.log('user:', user);
+  console.log('user.amojo_id:', user.amojo_id);
+
+
   const { data, setData, errors, post, processing } = useForm({
     first_name: user.first_name || '',
     last_name: user.last_name || '',
@@ -24,8 +30,8 @@ const Edit = () => {
     password: user.password || '',
     owner: user.owner ? '1' : '0' || '0',
     photo: '',
-    amojo_id: user.amojo_id || null,
-    connection_id: user.connection_id || '', // yangi maydon
+    amojo_id: user.amojo_id || '',
+    connection_id: user.connection_id || '',
 
     // NOTE: When working with Laravel PUT/PATCH requests and FormData
     // you SHOULD send POST request and fake the PUT request like this.
@@ -132,11 +138,14 @@ const Edit = () => {
                 name="amojo_id"
                 error={errors.amojo_id}
                 value={data.amojo_id}
-                onChange={e => setData('amojo_id', e.target.value)}
-                options={amo_users.map(user => ({
-                  value: user.amojo_id,
-                  label: user.name,
-                }))}
+                onChange={e => setData('amojo_id', String(e.target.value).trim())}
+                options={[
+                  { value: '', label: 'Select Amojo ID' },
+                  ...amo_users.map(user => ({
+                    value: user.amojo_id,
+                    label: user.name || user.amojo_id,
+                  })),
+                ]}
               />
             </FieldGroup>
 
@@ -145,12 +154,12 @@ const Edit = () => {
                 name="connection_id"
                 error={errors.connection_id}
                 value={data.connection_id}
-                onChange={e => setData('connection_id', e.target.value)}
+                onChange={e => setData('connection_id', String(e.target.value).trim())}
                 options={[
                   { value: '', label: 'Select connection' },
                   ...connections.map(connection => ({
                     value: connection.id,
-                    label: connection.phone,
+                    label: connection.phone || connection.id,
                   })),
                 ]}
               />

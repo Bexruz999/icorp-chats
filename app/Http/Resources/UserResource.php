@@ -14,7 +14,7 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $data = [
             'id' => $this->id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
@@ -24,6 +24,9 @@ class UserResource extends JsonResource
             'photo' => $this->photo ? url()->route('image', ['path' => $this->photo, 'w' => 60, 'h' => 60, 'fit' => 'crop']) : null,
             'deleted_at' => $this->deleted_at,
             'account' => new AccountResource($this->whenLoaded('account')),
+            'amojo_id' => $this->amojo_id,
+            'connection_id' => $this->connection_id
         ];
+        return $data;
     }
 }

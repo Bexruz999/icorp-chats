@@ -87,7 +87,7 @@ class EmployeesController extends Controller
         // Localda oddiy massivdan amo_users
         if (app()->environment('local')) {
             $amoUsers = [
-                ['amojo_id' => 'local_1', 'name' => 'Local User 1'],
+                ['amojo_id' => 'e7123126-d5eb-4df2-a146-1c702c17c3c4', 'name' => 'Local User 1'],
                 ['amojo_id' => 'local_2', 'name' => 'Local User 2'],
             ];
         } else {
