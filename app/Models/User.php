@@ -115,7 +115,7 @@ class User extends Authenticatable
 
     public function getPhone()
     {
-        return $this->phone ?? $this->account->connections()->first()->phone;
+        return $this->phone ?? $this->account->connections->first()->phone;
     }
 
     public function amo(): BelongsTo

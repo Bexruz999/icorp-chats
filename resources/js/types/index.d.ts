@@ -23,6 +23,8 @@ export interface Employee {
   password: string;
   deleted_at: string;
   account: Account;
+  amojo_id: int;
+  connection_id: int;
 }
 
 export interface Bot {

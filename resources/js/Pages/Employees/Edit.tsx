@@ -6,14 +6,15 @@ import DeleteButton from '@/Components/Button/DeleteButton';
 import LoadingButton from '@/Components/Button/LoadingButton';
 import TextInput from '@/Components/Form/TextInput';
 import SelectInput from '@/Components/Form/SelectInput';
-import FileInput from '@/Components/Form/FileInput';
 import TrashedMessage from '@/Components/Messages/TrashedMessage';
 import { Employee } from '@/types';
 import FieldGroup from '@/Components/Form/FieldGroup';
 
 const Edit = () => {
-  const { user, amo_users } = usePage<{
+  const { user, amo_users, connections } = usePage<{
     user: Employee & { password: string; photo: File | null };
+    amo_users: { amojo_id: string; name: string }[];
+    connections: { id: string; phone: string }[];
   }>().props;
 
   const { data, setData, errors, post, processing } = useForm({
@@ -24,6 +25,7 @@ const Edit = () => {
     owner: user.owner ? '1' : '0' || '0',
     photo: '',
     amojo_id: user.amojo_id || null,
+    connection_id: user.connection_id || '', // yangi maydon
 
     // NOTE: When working with Laravel PUT/PATCH requests and FormData
     // you SHOULD send POST request and fake the PUT request like this.
@@ -135,6 +137,22 @@ const Edit = () => {
                   value: user.amojo_id,
                   label: user.name,
                 }))}
+              />
+            </FieldGroup>
+
+            <FieldGroup label="Connection" name="connection_id" error={errors.connection_id}>
+              <SelectInput
+                name="connection_id"
+                error={errors.connection_id}
+                value={data.connection_id}
+                onChange={e => setData('connection_id', e.target.value)}
+                options={[
+                  { value: '', label: 'Select connection' },
+                  ...connections.map(connection => ({
+                    value: connection.id,
+                    label: connection.phone,
+                  })),
+                ]}
               />
             </FieldGroup>
 

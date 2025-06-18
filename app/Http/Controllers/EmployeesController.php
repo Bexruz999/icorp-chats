@@ -81,15 +81,24 @@ class EmployeesController extends Controller
         $auth = Auth::user();
         $user = User::findOrFail($id);
 
-        $amoApiService = new AmoApiService($user);
 
         if (!$auth->hasRole('admin') && $user->owner) abort(419);
 
-        $amoUsers = $amoApiService->getAmoAccount();
+        // Localda oddiy massivdan amo_users
+        if (app()->environment('local')) {
+            $amoUsers = [
+                ['amojo_id' => 'local_1', 'name' => 'Local User 1'],
+                ['amojo_id' => 'local_2', 'name' => 'Local User 2'],
+            ];
+        } else {
+            $amoApiService = new AmoApiService($user);
+            $amoUsers = $amoApiService->getAmoAccount();
+        }
 
         return Inertia::render('Employees/Edit', [
             'user' => new UserResource($user),
             'amo_users' => $amoUsers,
+            'connections' => $auth->account->connections,
         ]);
     }
 
