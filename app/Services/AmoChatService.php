@@ -67,6 +67,7 @@ class AmoChatService
         } else {
             $payload->setSender($amo_contact);
         }
+        \Log::debug('AmoChatService $payload: ' . json_encode($payload));
 
         return $this->client->sendMessage($this->connect['amo']['amo_account_id'], $payload, 'test');
     }
