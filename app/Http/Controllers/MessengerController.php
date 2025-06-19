@@ -10,6 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use Laravel\Reverb\Loggers\Log;
 
 
 class MessengerController extends Controller
@@ -33,6 +34,7 @@ class MessengerController extends Controller
                 'chats' => $this->telegramService->getDialogs($phone)
             ]);
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             return Inertia::render('Error', ['status' => $e->getCode()]);
         }
     }

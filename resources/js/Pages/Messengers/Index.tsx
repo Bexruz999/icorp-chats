@@ -192,6 +192,20 @@ const MessengerPage = ({ chats }: any) => {
     }
   }, [selectedChat]);
 
+  // Debug uchun loglar (useEffect ichida, bir marta chiqadi)
+  useEffect(() => {
+    console.log('MessengerPage chats:', chats);
+  }, [chats]);
+
+  // chats bo'sh yoki undefined bo'lsa, foydalanuvchiga xabar chiqaring
+  if (!chats || !Array.isArray(chats) || chats.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-gray-500 text-lg">Hech qanday chatlar topilmadi.</div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex" style={{ height: 'calc(100vh - 170px)' }}>
       {/* Sidebar */}
