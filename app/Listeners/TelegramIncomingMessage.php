@@ -58,10 +58,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
     {
         $message->out ? $tgId = $this->getId($message->senderId) : $tgId = $this->getSelf()['id'];
 
-        $cacheKey = "connection_user_{$tgId}";
-        $user = Cache::remember($cacheKey, 360, function () use ($tgId) {
-            return optional(Connection::where('telegram_id', $tgId)->first())->user;
-        });
+        $user = optional(Connection::where('telegram_id', $tgId)->first())->user;
 
         Log::debug('TelegramIncomingMessage getConnections: ' . json_encode($user));
 
