@@ -63,7 +63,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
             return optional(Connection::where('telegram_id', $tgId)->first())->user;
         });
 
-        Log::debug('TelegramIncomingMessage connections: ' . json_encode($user));
+        Log::debug('TelegramIncomingMessage getConnections: ' . json_encode($user));
 
         return [
             'out' => $message->out,

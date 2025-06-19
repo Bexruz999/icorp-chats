@@ -62,7 +62,7 @@ class AmoChatService
         $payload = (new Payload())->setConversation($conv)->setMessage($this->setMessage($msg));
 
         if ($this->connect['out']) {
-            $payload->setSender((new Sender())->setRefId($this->connect['amo']['amojo_id']));
+            $payload->setSender((new Sender())->setRefId($this->connect['user']['amojo_id']));
             $payload->setReceiver($amo_contact);
         } else {
             $payload->setSender($amo_contact);
