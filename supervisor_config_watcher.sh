@@ -1,5 +1,5 @@
 #!/bin/bash
-WATCH_DIR="/home/bexruz/domains/icorp-chats/storage/app"
+WATCH_DIR="/var/www/icorp-chats/storage/app"
 SUPERVISOR_DIR="/etc/supervisor/conf.d"
 
 while true; do
