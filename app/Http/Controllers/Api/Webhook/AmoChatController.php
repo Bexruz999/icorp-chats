@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Webhook;
 
 use App\Http\Controllers\Controller;
+use App\Models\AmoConnection;
 use App\Models\User;
 use App\Models\UserMessage;
 use App\Services\TelegramService;
@@ -20,13 +21,12 @@ class AmoChatController extends Controller
         }
 
         $message = $request->post('message');
-        $sender = User::where('amojo_id', $message['sender']['id'])
-            ->whereNotNull('telegram_id')
-            ->firstOrFail();
+        $amoConnection = AmoConnection::where('amojo_id', $message['sender']['id'])->firstOrFail();
+        $sender = $amoConnection->user()->whereNotNull('telegram_id')->firstOrFail();
 
         $receiver = Str::after($message['receiver']['client_id'], 'user-');
 
-        Log::debug('Receiver: ' . $receiver);
+        Log::debug('Receiver: ' . json_encode(['receiver' => $receiver, 'sender' => $sender]));
 
         if ($message['message']['type'] == 'text') {
 
