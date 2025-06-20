@@ -8,6 +8,7 @@ use App\Models\UserMessage;
 use App\Services\TelegramService;
 use Cache;
 use Illuminate\Http\Request;
+use Log;
 use Str;
 
 class AmoChatController extends Controller
@@ -25,11 +26,16 @@ class AmoChatController extends Controller
 
         $receiver = Str::after($message['receiver']['client_id'], 'user-');
 
+        Log::debug('Receiver: ' . $receiver);
+
         if ($message['message']['type'] == 'text') {
+
             $sendMessage = $telegram->sendMessage(
                 phone: $sender->phone, peerId: $receiver, message: $message['message']['text']
             );
+
         } elseif (in_array($message['message']['type'], ['file', 'video', 'picture', 'audio'])) {
+
             $sendMessage = $telegram->sendMedia(
                 phone: $sender->phone,
                 peerId: $receiver,
@@ -37,20 +43,23 @@ class AmoChatController extends Controller
                 path: $message['message']['media'],
                 fileName: $message['message']['file_name'], message: $message['message']['text']
             );
-            file_put_contents('cache3.txt', json_encode($sendMessage, JSON_PRETTY_PRINT));
 
         } else {
             return response()->json(['status' => 'error', 'message' => 'Unsupported message type'], 400);
         }
 
+        Log::debug('sendMessage: ' . json_encode($sendMessage));
+
         if ($sendMessage['success']) {
+
             UserMessage::create([
                 'user_id' => $sender->id,
                 'chat_id' => $receiver,
                 'message_id' => $sendMessage['result']['id'],
             ]);
+
             Cache::put(key: "amocrm_$receiver-{$sendMessage['result']['id']}", value: $sender->name, ttl: 86400);
-            file_put_contents('cache2.txt', Cache::has("amocrm_$receiver-{$sendMessage['result']['id']}"));
+
             return response()->json(['message' => 'Webhook received successfully']);
         }
 
