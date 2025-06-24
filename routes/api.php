@@ -8,4 +8,4 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/amochat/{scope_id}/{ht?}', [AmoChatController::class, 'handle']);
+Route::post('/amochat/{scope_id}', [AmoChatController::class, 'handle']);
