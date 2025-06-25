@@ -29,8 +29,8 @@ class TelegramIncomingMessage extends SimpleEventHandler
     public function handleMessage(Message $message): void
     {
         TelegramMessage::dispatch($message);
-        usleep(50000);
         Log::debug('TelegramIncomingMessage: ' . json_encode($message));
+        usleep(50000);
         Log::debug('Cache in: ' . "amocrm_$message->chatId-$message->id");
         Log::debug('Cache not has: ' . !Cache::has(key: "amocrm_$message->chatId-$message->id"));
 
