@@ -40,11 +40,12 @@ class AmoChatController extends Controller
             $sendMessage = $telegram->sendMessage(
                 phone: $sender->telegram->phone, peerId: $receiver, message: $message['message']['text']
             );
+            Cache::put(key: "amocrm_$receiver-{$sendMessage['result']['id']}", value: $sender->name, ttl: 86400);
 
         } elseif (in_array($message['message']['type'], ['file', 'video', 'picture', 'audio'])) {
 
             $sendMessage = $telegram->sendMedia(
-                phone: $sender->phone,
+                phone: $sender->telegram->phone,
                 peerId: $receiver,
                 type: $telegram->getMediaTypeForMadelineProto($message['message']['file_name']),
                 path: $message['message']['media'],
