@@ -33,7 +33,6 @@ class TelegramIncomingMessage extends SimpleEventHandler
         Log::debug('Cache in: ' . "amocrm_$message->chatId-$message->id");
         Log::debug('Cache not has: ' . !Cache::has(key: "amocrm_$message->chatId-$message->id"));
 
-        sleep(1);
         if (get_class($message) === PrivateMessage::class && !Cache::has(key: "amocrm_$message->chatId-$message->id")) {
 
             $connections = $this->getConnections($message);
