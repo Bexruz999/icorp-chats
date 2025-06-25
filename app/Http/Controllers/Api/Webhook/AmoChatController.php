@@ -55,11 +55,11 @@ class AmoChatController extends Controller
             return response()->json(['status' => 'error', 'message' => 'Unsupported message type'], 400);
         }
 
-        Log::debug('sendMessage: ' . json_encode($sendMessage));
 
         if ($sendMessage['success']) {
 
             Cache::put(key: "amocrm_$receiver-{$sendMessage['result']['id']}", value: $sender->name, ttl: 86400);
+            Log::debug('sendMessage: ' . json_encode($sendMessage));
             Log::debug('Cache out: ' . "amocrm_$receiver-{$sendMessage['result']['id']} " . Cache::has("amocrm_$receiver-{$sendMessage['result']['id']}"));
 
 
