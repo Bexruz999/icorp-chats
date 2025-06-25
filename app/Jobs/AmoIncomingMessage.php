@@ -39,11 +39,10 @@ class AmoIncomingMessage implements ShouldQueue
     public function handle(): void
     {
         Log::debug('This: ' . json_encode([$this->contact, $this->message, $this->connect]));
-        $id = Arr::get($this->message, 'id');
         try {
-            Log::debug('c:' . Cache::get("amocrm_{$this->connect['id']}-$id"));
+            Log::debug('c:' . Cache::get("amocrm_{$this->contact['id']}-{$this->message['id']}"));
         } catch (\Throwable $e) {
-            Log::debug("errorcha: $id".$e->getMessage() . json_encode($this->message));
+            Log::debug('errorcha: '.$e->getMessage() . json_encode($this->message));
         }
 
         if (!Cache::has("amocrm_{$this->connect['id']}-{$this->message['id']}")) {
