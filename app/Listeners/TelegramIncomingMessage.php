@@ -30,10 +30,8 @@ class TelegramIncomingMessage extends SimpleEventHandler
     {
         TelegramMessage::dispatch($message);
         Log::debug('TelegramIncomingMessage: ' . json_encode($message));
-        Log::debug('Cache in: ' . Cache::get("test123456", 'null'));
-        Log::debug('Cache not has: ' . !Cache::has(key: "amocrm_$message->chatId-$message->id"));
 
-        if (get_class($message) === PrivateMessage::class && !Cache::has(key: "amocrm_$message->chatId-$message->id")) {
+        if (get_class($message) === PrivateMessage::class) {
 
             $connections = $this->getConnections($message);
             Log::debug('TelegramIncomingMessage connections: ' . json_encode($connections));
