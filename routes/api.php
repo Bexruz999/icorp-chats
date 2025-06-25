@@ -26,8 +26,8 @@ if (empty($request->header('X-Signature'))) {
 
 $message = $request->post('message');
 Log::debug('message' . json_encode( $message));
-$amoConnection = AmoConnection::where('amojo_id', $message['sender']['id'])->firstOrFail();
-$sender = $amoConnection->user()->whereNotNull('telegram_id')->firstOrFail();
+//$amoConnection = AmoConnection::where('amojo_id', $message['sender']['id'])->firstOrFail();
+$sender =''; //$amoConnection->user()->whereNotNull('telegram_id')->firstOrFail();
 
 $receiver = Str::after($message['receiver']['client_id'], 'user-');
 
