@@ -60,6 +60,7 @@ class AmoChatController extends Controller
         Log::debug('sendMessage: ' . json_encode($sendMessage));
         if ($sendMessage['success']) {
 
+            Cache::put("test123456", "bla bla", 86400);
             Cache::put(key: "amocrm_$receiver-{$sendMessage['result']['id']}", value: $sender->name, ttl: 86400);
             Log::debug('Cache out: ' . "amocrm_$receiver-{$sendMessage['result']['id']} " . Cache::has("amocrm_$receiver-{$sendMessage['result']['id']}"));
 
