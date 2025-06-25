@@ -5,6 +5,7 @@ use App\Models\AmoConnection;
 use App\Models\UserMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 Route::post('/{scope_id}', [AmoChatController::class, 'handle'])
     ->where('scope_id', '.*');
 
@@ -17,13 +18,14 @@ Route::get('/user', function (Request $request) {
 $request = request();
 $telegram = new \App\Services\TelegramService();
 
-Log::debug('test' . json_encode([request()->all(), request()->headers->all()]));
+Log::debug('test' . json_encode([$request]));
 
 if (empty($request->header('X-Signature'))) {
     return response()->json(['message' => 'Invalid signature'], 403);
 }
 
 $message = $request->post('message');
+Log::debug('message' . $message);
 $amoConnection = AmoConnection::where('amojo_id', $message['sender']['id'])->firstOrFail();
 $sender = $amoConnection->user()->whereNotNull('telegram_id')->firstOrFail();
 
