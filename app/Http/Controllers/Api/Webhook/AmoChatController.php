@@ -33,7 +33,7 @@ class AmoChatController extends Controller
 
         $receiver = Str::after($message['receiver']['client_id'], 'user-');
 
-        Log::debug('Receiver: ' . $receiver);
+        Log::debug('Receiver: ' . $receiver . $message['message']['text']);
 
         if ($message['message']['type'] === 'text') {
 
