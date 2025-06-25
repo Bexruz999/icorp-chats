@@ -42,7 +42,7 @@ class AmoIncomingMessage implements ShouldQueue
         try {
             Log::debug('c:' . Cache::get("amocrm_{$this->connect['id']}-{$this->message['id']}"));
         } catch (\Throwable $e) {
-            Log::debug('errorcha: '.$e->getMessage());
+            Log::debug('errorcha: '.$e->getMessage() . json_encode($this->message));
         }
 
         if (!Cache::has("amocrm_{$this->connect['id']}-{$this->message['id']}")) {
