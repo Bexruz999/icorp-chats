@@ -20,7 +20,12 @@ class AmoChatController extends Controller
         }
 
         $message = $request->post('message');
-        $amoConnection = AmoConnection::where('amojo_id', $message['sender']['id'])->firstOrFail();
+        $amoConnection = AmoConnection::where('amojo_id', $message['sender']['id'])->first();
+
+        if (!$amoConnection) {
+            return response()->json(['message' => 'Invalid sender'], 403);
+        }
+
         $sender = $amoConnection->user()->whereNotNull('telegram_id')->firstOrFail();
 
         $receiver = Str::after($message['receiver']['client_id'], 'user-');
