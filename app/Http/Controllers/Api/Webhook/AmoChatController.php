@@ -15,13 +15,15 @@ class AmoChatController extends Controller
 {
     public function handle(Request $request, TelegramService $telegram)
     {
-        return abort(500);
         if (empty($request->header('X-Signature'))) {
             return response()->json(['message' => 'Invalid signature'], 403);
         }
+        //return abort(500);
 
         $message = $request->post('message');
         $amoConnection = AmoConnection::where('amojo_id', $message['sender']['id'])->first();
+
+        Log::debug('amoConnection' . json_encode($amoConnection));
 
         if (!$amoConnection) {
             return response()->json(['message' => 'Invalid sender'], 403);
