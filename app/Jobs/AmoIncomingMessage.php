@@ -40,6 +40,8 @@ class AmoIncomingMessage implements ShouldQueue
     {
         usleep(500000);
         Log::debug('cacher:' . Cache::get("amocrm_2092452523-{$this->message['id']}"));
+        sleep(1);
+        Log::debug('cacher2:' . Cache::get("test123456"));
         $amo = new AmoChatService($this->connect);
         Log::debug('This: ' . json_encode([$this->contact, $this->message, $this->connect]));
         $amo->sendMessage(contact: $this->contact, msg: $this->message);
