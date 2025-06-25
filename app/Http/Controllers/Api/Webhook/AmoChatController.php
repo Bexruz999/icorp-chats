@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Webhook;
 
 use App\Http\Controllers\Controller;
 use App\Models\AmoConnection;
+use App\Models\User;
 use App\Models\UserMessage;
 use App\Services\TelegramService;
 use Cache;
@@ -21,15 +22,8 @@ class AmoChatController extends Controller
         //return abort(500);
 
         $message = $request->post('message');
-        $amoConnection = AmoConnection::where('amojo_id', $message['sender']['id'])->first();
 
-        Log::debug('amoConnection: ' . json_encode($amoConnection));
-
-        if (!$amoConnection) {
-            return response()->json(['message' => 'Invalid sender'], 403);
-        }
-
-        $sender = $amoConnection->user()->whereNotNull('telegram_id')->first();
+        $sender = User::where('amojo_id', $message['sender']['id'])->whereNotNull('telegram_id')->first();
 
         Log::debug('sender: ' . json_encode($sender));
 
@@ -41,7 +35,7 @@ class AmoChatController extends Controller
 
         Log::debug('Receiver: ' . json_encode(['receiver' => $receiver, 'sender' => $sender]));
 
-        if ($message['message']['type'] == 'text') {
+        if ($message['message']['type'] === 'text') {
 
             $sendMessage = $telegram->sendMessage(
                 phone: $sender->phone, peerId: $receiver, message: $message['message']['text']
