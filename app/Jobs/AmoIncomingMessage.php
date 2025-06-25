@@ -41,8 +41,8 @@ class AmoIncomingMessage implements ShouldQueue
         sleep(1);
         if (!Cache::has("amocrm_{$this->connect['id']}-{$this->message['id']}")) {
             $amo = new AmoChatService($this->connect);
-            $amo->sendMessage(contact: $this->contact, msg: $this->message);
             Log::debug('This: ' . json_encode([$this->contact, $this->message, $this->connect]));
+            $amo->sendMessage(contact: $this->contact, msg: $this->message);
         }
     }
 }
