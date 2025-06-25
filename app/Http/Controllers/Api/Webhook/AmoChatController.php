@@ -23,7 +23,7 @@ class AmoChatController extends Controller
 
         $message = $request->post('message');
 
-        $sender = User::where('amojo_id', $message['sender']['id'])->whereNotNull('telegram_id')->first();
+        $sender = User::where('amojo_id', $message['sender']['id'])->whereNotNull('connection_id')->first();
 
         Log::debug('sender: ' . json_encode($sender));
 
@@ -33,12 +33,12 @@ class AmoChatController extends Controller
 
         $receiver = Str::after($message['receiver']['client_id'], 'user-');
 
-        Log::debug('Receiver: ' . json_encode(['receiver' => $receiver, 'sender' => $sender]));
+        Log::debug('Receiver: ' . $receiver);
 
         if ($message['message']['type'] === 'text') {
 
             $sendMessage = $telegram->sendMessage(
-                phone: $sender->phone, peerId: $receiver, message: $message['message']['text']
+                phone: $sender->telegram->phone, peerId: $receiver, message: $message['message']['text']
             );
 
         } elseif (in_array($message['message']['type'], ['file', 'video', 'picture', 'audio'])) {
