@@ -59,14 +59,13 @@ class AmoChatController extends Controller
 
         if ($sendMessage['success']) {
 
+            Cache::put(key: "amocrm_$receiver-{$sendMessage['result']['id']}", value: $sender->name, ttl: 86400);
+            Log::debug('Cache out: ' . "amocrm_$receiver-{$sendMessage['result']['id']}");
             UserMessage::create([
                 'user_id' => $sender->id,
                 'chat_id' => $receiver,
                 'message_id' => $sendMessage['result']['id'],
             ]);
-
-            Cache::put(key: "amocrm_$receiver-{$sendMessage['result']['id']}", value: $sender->name, ttl: 86400);
-            Log::debug('Cache out: ' . "amocrm_$receiver-{$sendMessage['result']['id']}");
 
             return response()->json(['message' => 'Webhook received successfully']);
         }
