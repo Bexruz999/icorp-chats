@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\Webhook;
 
 use App\Http\Controllers\Controller;
 use App\Models\AmoConnection;
-use App\Models\User;
 use App\Models\UserMessage;
 use App\Services\TelegramService;
 use Cache;
