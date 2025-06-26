@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Services\AmoChatService;
-use App\Models\UserMessage;
 use Arr;
 use Cache;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -41,9 +40,7 @@ class AmoIncomingMessage implements ShouldQueue
     {
         Log::debug('This: ' . json_encode([$this->contact, $this->message, $this->connect], JSON_THROW_ON_ERROR));
 
-        if (!Cache::has("amocrm_{$this->contact['id']}-{$this->message['id']}")) {
-            $amo = new AmoChatService($this->connect);
-            $amo->sendMessage(contact: $this->contact, msg: $this->message);
-        }
+        $amo = new AmoChatService($this->connect);
+        $amo->sendMessage(contact: $this->contact, msg: $this->message);
     }
 }
