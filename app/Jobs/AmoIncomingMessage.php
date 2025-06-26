@@ -41,22 +41,7 @@ class AmoIncomingMessage implements ShouldQueue
     public function handle(): void
     {
         Log::debug('This: ' . json_encode([$this->contact, $this->message, $this->connect], JSON_THROW_ON_ERROR));
-        try {
-            Log::debug('c:' . Cache::get("amocrm_{$this->contact['id']}-{$this->message['id']}"));
-        } catch (Throwable $e) {
-            Log::debug('errorcha: '.$e->getMessage() . json_encode($this->message, JSON_THROW_ON_ERROR));
-        }
-        $exists = UserMessage::query()
-            ->where( 'message_id', operator: $this->message['id'])
-            ->where('chat_id', $this->contact['id'])
-            ->exists();
 
-        if ($exists) {
-            Log::debug('Message already exists, not sending to AmoCRM');
-            return;
-        }
-
-        sleep(5);
         if (!Cache::has("amocrm_{$this->contact['id']}-{$this->message['id']}")) {
             $amo = new AmoChatService($this->connect);
             $amo->sendMessage(contact: $this->contact, msg: $this->message);
