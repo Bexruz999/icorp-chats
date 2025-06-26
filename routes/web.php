@@ -145,6 +145,7 @@ Route::middleware(['auth', SetSpatieTeamContext::class])->group(function () {
     Route::post('/settings/amo-connection', [SettingsController::class, 'storeAmoConnection'])->name('amo_connection.store');
     Route::get('/settings/amo-connection/{amo_connection}/edit', [SettingsController::class, 'editAmoConnection'])->name('amo_connection.edit');
     Route::put('/settings/amo-connection/{amo_connection}', [SettingsController::class, 'updateAmoConnection'])->name('amo_connection.update');
+    Route::delete('/settings/amo-connection/{id}', [SettingsController::class, 'deleteAmoConnection'])->name('amo_connection.delete');
 
     Route::resource('employees', EmployeesController::class);
 

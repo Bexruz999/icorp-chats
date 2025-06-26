@@ -122,6 +122,8 @@ function SettingsPage({ auth }: PageProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [editAmo, setEditAmo] = useState<any | null>(null);
 
+  const { delete: deleteAmo, processing: deleting } = useForm();
+
   const openModal = (amoConnection: any | null = null) => {
     setEditAmo(amoConnection);
     setModalOpen(true);
@@ -190,24 +192,21 @@ function SettingsPage({ auth }: PageProps) {
                   Connect
                 </a>
               )}
-              <form
-                method="POST"
-                action={`/settings/amo-connection/${amo.id}/delete`}
-                className="w-full"
-                onSubmit={e => {
-                  if (!window.confirm('Are you sure you want to delete this AmoCRM connection?')) {
-                    e.preventDefault();
+              <button
+                type="button"
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-semibold transition w-full"
+                disabled={deleting}
+                onClick={() => {
+                  if (window.confirm('Are you sure you want to delete this AmoCRM connection?')) {
+                    deleteAmo(`/settings/amo-connection/${amo.id}`, {
+                      method: 'delete',
+                      onSuccess: () => {},
+                    });
                   }
                 }}
               >
-                {/* Laravel needs csrf token for POST, but if using inertia, you may need to handle via JS */}
-                <button
-                  type="submit"
-                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-semibold transition w-full"
-                >
-                  Delete
-                </button>
-              </form>
+                Delete
+              </button>
             </div>
           </div>
         ) : (
