@@ -65,7 +65,7 @@ class TelegramIncomingMessage extends SimpleEventHandler
         return [
             'out' => $message->out,
             'telegram' => $user?->telegram?->toArray() ?? [],
-            'amo' => $user?->amo?->toArray() ?? $user->account?->amoConnections->toArray() ?? [],
+            'amo' => $user?->amo?->toArray() ?? [],
             'user' => $user?->toArray() ?? []
         ];
     }
