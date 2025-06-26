@@ -29,10 +29,14 @@ class AmoChatService
 
     public function connect(): void
     {
-        Log::debug('This: ' . json_encode([$this->connect]));
+        Log::debug('AmoChatService:  '. $this->connect['out']);
 
         $channel = new Channel(uid: $this->connect['amo']['uid'], secretKey: $this->connect['amo']['secret_key']);
+        Log::debug('AmoChatService $channel:  '. json_encode($channel));
+
         $this->client = new AmoJoClient(channel: $channel, segment: 'ru');
+        Log::debug('AmoChatService $channel:  '. json_encode($channel));
+
         $this->client->connect(accountUid: $this->connect['amo']['amo_account_id'], title: 'My channel');
     }
 
