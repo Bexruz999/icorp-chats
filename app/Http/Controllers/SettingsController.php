@@ -135,7 +135,7 @@ class SettingsController extends Controller
             'amojo_id' => 'required|string',
             'secret_key' => 'required|string',
             'amo_account_id' => 'required|string',
-            'domain' => 'required|string',
+            'base_domain' => 'required|string', // domain -> base_domain
         ]);
 
         $data['account_id'] = auth()->user()->account->id;
@@ -159,11 +159,18 @@ class SettingsController extends Controller
             'amojo_id' => 'required|string',
             'secret_key' => 'required|string',
             'amo_account_id' => 'required|string',
-            'domain' => 'required|string',
+            'base_domain' => 'required|string', // domain -> base_domain
         ]);
 
         $amo_connection->update($data);
 
         return redirect()->route('settings')->with('success', 'AmoCRM connection updated');
+    }
+
+    public function deleteAmoConnection($id): RedirectResponse
+    {
+        $amo = AmoConnection::findOrFail($id);
+        $amo->delete();
+        return redirect()->route('settings')->with('success', 'AmoCRM connection deleted');
     }
 }

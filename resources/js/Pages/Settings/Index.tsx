@@ -190,6 +190,24 @@ function SettingsPage({ auth }: PageProps) {
                   Connect
                 </a>
               )}
+              <form
+                method="POST"
+                action={`/settings/amo-connection/${amo.id}/delete`}
+                className="w-full"
+                onSubmit={e => {
+                  if (!window.confirm('Are you sure you want to delete this AmoCRM connection?')) {
+                    e.preventDefault();
+                  }
+                }}
+              >
+                {/* Laravel needs csrf token for POST, but if using inertia, you may need to handle via JS */}
+                <button
+                  type="submit"
+                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-semibold transition w-full"
+                >
+                  Delete
+                </button>
+              </form>
             </div>
           </div>
         ) : (
