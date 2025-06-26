@@ -57,22 +57,20 @@ stdout_logfile=/var/log/supervisor/$programName.out.log
             } else {
                 $this->info("Local config file not found: $localConfigPath");
             }
-            // Stop the process if the supervisor is installed in the local
-            if (app()->environment('local')) {
-                $stopCmd = "supervisorctl stop $programName";
-                exec($stopCmd, $output, $code);
-                if ($code === 0) {
-                    $this->info("Supervisor process discontinued: $programName");
-                } else {
-                    $this->info("Supervisor process not found or stopped: $programName");
-                }
-                // Trying to delete the Config file too
-                $etcConfigPath = "/etc/supervisor/conf.d/$programName.conf";
-                if (file_exists($etcConfigPath)) {
-                    @unlink($etcConfigPath);
-                    exec("supervisorctl reread && supervisorctl update");
-                    $this->info("Supervisor config file deleted and reloaded: $etcConfigPath");
-                }
+            // Stop the process and delete config in /etc/supervisor/conf.d/ for any environment
+            $stopCmd = "supervisorctl stop $programName";
+            exec($stopCmd, $output, $code);
+            if ($code === 0) {
+                $this->info("Supervisor process discontinued: $programName");
+            } else {
+                $this->info("Supervisor process not found or stopped: $programName");
+            }
+            // Trying to delete the Config file too
+            $etcConfigPath = "/etc/supervisor/conf.d/$programName.conf";
+            if (file_exists($etcConfigPath)) {
+                @unlink($etcConfigPath);
+                exec("supervisorctl reread && supervisorctl update");
+                $this->info("Supervisor config file deleted and reloaded: $etcConfigPath");
             }
         } else {
             $this->error("Incorrect action. Can only be 'start' or 'stop'.");

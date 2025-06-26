@@ -94,13 +94,14 @@ class SettingsService {
             // If there is an error in the Logout, the silent is transferred
         }
 
+        Artisan::call("telegram-process", ["action" => 'stop', "phone" => $phone]);
+
         $storagePath = TelegramService::getStoragePath($phone);
         try {
             File::deleteDirectory($storagePath);
         } catch (\Throwable $e) {
             Log::error("Failed to delete directory: $storagePath. Error: " . $e->getMessage());
         }
-        Artisan::call("telegram-process", ["action" => 'stop', "phone" => $phone]);
         DB::table('connections')->where(['phone' => $phone, 'account_id' => auth()->user()->account->id])->delete();
     }
 }
