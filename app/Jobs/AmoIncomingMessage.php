@@ -3,12 +3,14 @@
 namespace App\Jobs;
 
 use App\Services\AmoChatService;
+use App\Models\UserMessage;
 use Arr;
 use Cache;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Log;
+use Throwable;
 
 class AmoIncomingMessage implements ShouldQueue
 {
@@ -38,12 +40,20 @@ class AmoIncomingMessage implements ShouldQueue
      */
     public function handle(): void
     {
-        Log::debug('This: ' . json_encode([$this->contact, $this->message, $this->connect]));
+        Log::debug('This: ' . json_encode([$this->contact, $this->message, $this->connect], JSON_THROW_ON_ERROR));
         try {
             Log::debug('c:' . Cache::get("amocrm_{$this->contact['id']}-{$this->message['id']}"));
-        } catch (\Throwable $e) {
-            Log::debug('errorcha: '.$e->getMessage() . json_encode($this->message));
+        } catch (Throwable $e) {
+            Log::debug('errorcha: '.$e->getMessage() . json_encode($this->message, JSON_THROW_ON_ERROR));
         }
+
+        $exists = UserMessage::query()
+            ->where( 'message_id', $this->message['id'])
+            ->where('chat_id', $this->contact['id'])
+            ->exists();
+
+        if ($exists) {return;}
+
         sleep(5);
         if (!Cache::has("amocrm_{$this->contact['id']}-{$this->message['id']}")) {
             $amo = new AmoChatService($this->connect);
