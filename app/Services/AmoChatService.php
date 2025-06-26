@@ -15,6 +15,7 @@ use AmoJo\Models\Payload;
 use AmoJo\Models\Users\Receiver;
 use AmoJo\Models\Users\Sender;
 use AmoJo\Models\Users\ValueObject\UserProfile;
+use Log;
 
 class AmoChatService
 {
@@ -28,6 +29,8 @@ class AmoChatService
 
     public function connect(): void
     {
+        Log::debug('This: ' . json_encode([$this->connect]));
+
         $channel = new Channel(uid: $this->connect['amo']['uid'], secretKey: $this->connect['amo']['secret_key']);
         $this->client = new AmoJoClient(channel: $channel, segment: 'ru');
         $this->client->connect(accountUid: $this->connect['amo']['amo_account_id'], title: 'My channel');
