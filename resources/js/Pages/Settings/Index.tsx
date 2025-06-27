@@ -23,7 +23,7 @@ const AmoConnectionForm: React.FC<AmoConnectionFormProps> = ({ amo_connection, o
   const isEdit = !!amo_connection;
   const { data, setData, post, put, processing, errors } = useForm({
     uid: amo_connection?.uid || '',
-    amojo_id: isEdit ? (amo_connection?.amojo_id || '') : '',
+    // Amojo ID field is not used in both add and edit
     secret_key: amo_connection?.secret_key || '',
     amo_account_id: amo_connection?.amo_account_id || '',
     base_domain: amo_connection?.base_domain || ''
@@ -37,10 +37,11 @@ const AmoConnectionForm: React.FC<AmoConnectionFormProps> = ({ amo_connection, o
       }
     };
     if (isEdit && amo_connection?.id) {
-      put(`/settings/amo-connection/${amo_connection.id}`, options);
+      // Do not send amojo_id on edit
+      put(`/settings/amo-connection/${amo_connection.id}`, { ...options, data });
     } else {
-      const { amojo_id, ...rest } = data;
-      post('/settings/amo-connection', { ...options, data: rest });
+      // Do not send amojo_id on create
+      post('/settings/amo-connection', { ...options, data });
     }
   };
 
@@ -53,53 +54,37 @@ const AmoConnectionForm: React.FC<AmoConnectionFormProps> = ({ amo_connection, o
           value={data.uid}
           onChange={e => setData('uid', e.target.value)}
           className="input rounded-lg border border-gray-300 w-full px-3 py-2"
-          placeholder="Введите UID"
         />
         {errors.uid && <div className="text-red-500 text-sm mt-1">{errors.uid}</div>}
       </div>
-      {isEdit && (
-        <div>
-          <label className="block font-bold mb-1">Amojo ID</label>
-          <input
-            type="text"
-            value={data.amojo_id}
-            onChange={e => setData('amojo_id', e.target.value)}
-            className="input rounded-lg border border-gray-300 w-full px-3 py-2"
-            placeholder="Введите Amojo ID"
-          />
-          {errors.amojo_id && <div className="text-red-500 text-sm mt-1">{errors.amojo_id}</div>}
-        </div>
-      )}
+      {/* Amojo ID field is removed for both add and edit */}
       <div>
-        <label className="block font-bold mb-1">Секретный ключ</label>
+        <label className="block font-bold mb-1">Secret Key</label>
         <input
           type="text"
           value={data.secret_key}
           onChange={e => setData('secret_key', e.target.value)}
           className="input rounded-lg border border-gray-300 w-full px-3 py-2"
-          placeholder="Введите секретный ключ"
         />
         {errors.secret_key && <div className="text-red-500 text-sm mt-1">{errors.secret_key}</div>}
       </div>
       <div>
-        <label className="block font-bold mb-1">ID аккаунта Amo</label>
+        <label className="block font-bold mb-1">Amo Account ID</label>
         <input
           type="text"
           value={data.amo_account_id}
           onChange={e => setData('amo_account_id', e.target.value)}
           className="input rounded-lg border border-gray-300 w-full px-3 py-2"
-          placeholder="Введите ID аккаунта Amo"
         />
         {errors.amo_account_id && <div className="text-red-500 text-sm mt-1">{errors.amo_account_id}</div>}
       </div>
       <div>
-        <label className="block font-bold mb-1">Базовый домен</label>
+        <label className="block font-bold mb-1">Base Domain</label>
         <input
           type="text"
           value={data.base_domain}
           onChange={e => setData('base_domain', e.target.value)}
           className="input rounded-lg border border-gray-300 w-full px-3 py-2"
-          placeholder="Введите базовый домен"
         />
         {errors.base_domain && <div className="text-red-500 text-sm mt-1">{errors.base_domain}</div>}
       </div>
@@ -108,7 +93,7 @@ const AmoConnectionForm: React.FC<AmoConnectionFormProps> = ({ amo_connection, o
         className={buttonClass + ' w-full'}
         disabled={processing}
       >
-        {isEdit ? 'Сохранить' : 'Создать'}
+        {isEdit ? 'Update' : 'Create'}
       </button>
     </form>
   );
@@ -162,7 +147,7 @@ function SettingsPage() {
         </div>
       </div>
       <div className="mt-10">
-        <h1 className="mb-8 text-2xl font-semibold">Подключение AmoCRM</h1>
+        <h1 className="mb-8 text-2xl font-semibold">AmoCRM подключение</h1>
         {amo ? (
           <div className="bg-white border border-blue-200 rounded-xl shadow-sm p-6">
             <table className="min-w-full text-sm">
@@ -171,16 +156,13 @@ function SettingsPage() {
                 <td className="py-2 pr-4 font-bold text-indigo-600">UID:</td>
                 <td className="py-2 text-gray-800">{amo.uid}</td>
               </tr>
+              {/* Amojo ID row removed */}
               <tr>
-                <td className="py-2 pr-4 font-bold text-indigo-600">Amojo ID:</td>
-                <td className="py-2 text-gray-800">{amo.amojo_id}</td>
-              </tr>
-              <tr>
-                <td className="py-2 pr-4 font-bold text-indigo-600">ID аккаунта Amo:</td>
+                <td className="py-2 pr-4 font-bold text-indigo-600">Amo Account ID:</td>
                 <td className="py-2 text-gray-800">{amo.amo_account_id}</td>
               </tr>
               <tr>
-                <td className="py-2 pr-4 font-bold text-indigo-600">Базовый домен:</td>
+                <td className="py-2 pr-4 font-bold text-indigo-600">Base Domain:</td>
                 <td className="py-2 text-gray-800">{amo.base_domain}</td>
               </tr>
               </tbody>
@@ -189,6 +171,7 @@ function SettingsPage() {
               <button onClick={() => openModal(amo)} className={buttonClass + ' w-full'}>
                 Редактировать
               </button>
+              {/* Agar access_token bo'lsa Connected badge, bo'lmasa Connect tugmasi */}
               {'access_token' in amo && amo.access_token ? (
                 <span className="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-lg font-semibold w-full text-center">
                   Подключено

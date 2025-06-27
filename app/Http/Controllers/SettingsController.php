@@ -142,7 +142,7 @@ class SettingsController extends Controller
 
         AmoConnection::query()->create($data);
 
-        return redirect()->route('settings')->with('success', 'AmoCRM connection added');
+        return redirect()->route('settings')->with('success', 'Подключение AmoCRM добавлено');
     }
 
     public function editAmoConnection(AmoConnection $amo_connection): Response
@@ -156,7 +156,6 @@ class SettingsController extends Controller
     {
         $data = $request->validate([
             'uid' => 'required|string',
-            'amojo_id' => 'required|string', // faqat editda required
             'secret_key' => 'required|string',
             'amo_account_id' => 'required|string',
             'base_domain' => 'required|string', // domain -> base_domain
@@ -164,13 +163,13 @@ class SettingsController extends Controller
 
         $amo_connection->update($data);
 
-        return redirect()->route('settings')->with('success', 'AmoCRM connection updated');
+        return redirect()->route('settings')->with('success', 'Подключение AmoCRM обновлено');
     }
 
     public function deleteAmoConnection($id): RedirectResponse
     {
         $amo = AmoConnection::findOrFail($id);
         $amo->delete();
-        return redirect()->route('settings')->with('success', 'AmoCRM connection deleted');
+        return redirect()->route('settings')->with('success', 'Подключение AmoCRM удалено');
     }
 }
