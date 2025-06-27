@@ -133,7 +133,6 @@ class SettingsController extends Controller
     {
         $data = $request->validate([
             'uid' => 'required|string',
-            'amojo_id' => 'required|string',
             'secret_key' => 'required|string',
             'amo_account_id' => 'required|string',
             'base_domain' => 'required|string', // domain -> base_domain
@@ -157,7 +156,7 @@ class SettingsController extends Controller
     {
         $data = $request->validate([
             'uid' => 'required|string',
-            'amojo_id' => 'required|string',
+            'amojo_id' => 'required|string', // faqat editda required
             'secret_key' => 'required|string',
             'amo_account_id' => 'required|string',
             'base_domain' => 'required|string', // domain -> base_domain

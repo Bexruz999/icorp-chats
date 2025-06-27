@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('amo_account_id')->nullable();
             $table->text('base_domain')->nullable();
             $table->text('access_token')->nullable();
-            $table->string('refresh_token')->nullable();
+            $table->text('refresh_token')->nullable();
             $table->bigInteger('expires')->nullable();
             $table->timestamps();
         });

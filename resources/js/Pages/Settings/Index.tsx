@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import MainLayout from '@/Layouts/MainLayout';
-import { PageProps } from '@/types';
 import { Link, usePage, useForm } from '@inertiajs/react';
 import Table2 from '@/Components/Table/Table2';
 import EditModal from '@/Components/Settings/EditModal';
@@ -24,10 +23,10 @@ const AmoConnectionForm: React.FC<AmoConnectionFormProps> = ({ amo_connection, o
   const isEdit = !!amo_connection;
   const { data, setData, post, put, processing, errors } = useForm({
     uid: amo_connection?.uid || '',
-    amojo_id: amo_connection?.amojo_id || '',
+    amojo_id: isEdit ? (amo_connection?.amojo_id || '') : '',
     secret_key: amo_connection?.secret_key || '',
     amo_account_id: amo_connection?.amo_account_id || '',
-    base_domain: amo_connection?.base_domain || '' // domain -> base_domain
+    base_domain: amo_connection?.base_domain || ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -40,7 +39,8 @@ const AmoConnectionForm: React.FC<AmoConnectionFormProps> = ({ amo_connection, o
     if (isEdit && amo_connection?.id) {
       put(`/settings/amo-connection/${amo_connection.id}`, options);
     } else {
-      post('/settings/amo-connection', options);
+      const { amojo_id, ...rest } = data;
+      post('/settings/amo-connection', { ...options, data: rest });
     }
   };
 
@@ -53,46 +53,53 @@ const AmoConnectionForm: React.FC<AmoConnectionFormProps> = ({ amo_connection, o
           value={data.uid}
           onChange={e => setData('uid', e.target.value)}
           className="input rounded-lg border border-gray-300 w-full px-3 py-2"
+          placeholder="Введите UID"
         />
         {errors.uid && <div className="text-red-500 text-sm mt-1">{errors.uid}</div>}
       </div>
+      {isEdit && (
+        <div>
+          <label className="block font-bold mb-1">Amojo ID</label>
+          <input
+            type="text"
+            value={data.amojo_id}
+            onChange={e => setData('amojo_id', e.target.value)}
+            className="input rounded-lg border border-gray-300 w-full px-3 py-2"
+            placeholder="Введите Amojo ID"
+          />
+          {errors.amojo_id && <div className="text-red-500 text-sm mt-1">{errors.amojo_id}</div>}
+        </div>
+      )}
       <div>
-        <label className="block font-bold mb-1">Amojo ID</label>
-        <input
-          type="text"
-          value={data.amojo_id}
-          onChange={e => setData('amojo_id', e.target.value)}
-          className="input rounded-lg border border-gray-300 w-full px-3 py-2"
-        />
-        {errors.amojo_id && <div className="text-red-500 text-sm mt-1">{errors.amojo_id}</div>}
-      </div>
-      <div>
-        <label className="block font-bold mb-1">Secret Key</label>
+        <label className="block font-bold mb-1">Секретный ключ</label>
         <input
           type="text"
           value={data.secret_key}
           onChange={e => setData('secret_key', e.target.value)}
           className="input rounded-lg border border-gray-300 w-full px-3 py-2"
+          placeholder="Введите секретный ключ"
         />
         {errors.secret_key && <div className="text-red-500 text-sm mt-1">{errors.secret_key}</div>}
       </div>
       <div>
-        <label className="block font-bold mb-1">Amo Account ID</label>
+        <label className="block font-bold mb-1">ID аккаунта Amo</label>
         <input
           type="text"
           value={data.amo_account_id}
           onChange={e => setData('amo_account_id', e.target.value)}
           className="input rounded-lg border border-gray-300 w-full px-3 py-2"
+          placeholder="Введите ID аккаунта Amo"
         />
         {errors.amo_account_id && <div className="text-red-500 text-sm mt-1">{errors.amo_account_id}</div>}
       </div>
       <div>
-        <label className="block font-bold mb-1">Base Domain</label>
+        <label className="block font-bold mb-1">Базовый домен</label>
         <input
           type="text"
           value={data.base_domain}
           onChange={e => setData('base_domain', e.target.value)}
           className="input rounded-lg border border-gray-300 w-full px-3 py-2"
+          placeholder="Введите базовый домен"
         />
         {errors.base_domain && <div className="text-red-500 text-sm mt-1">{errors.base_domain}</div>}
       </div>
@@ -101,13 +108,13 @@ const AmoConnectionForm: React.FC<AmoConnectionFormProps> = ({ amo_connection, o
         className={buttonClass + ' w-full'}
         disabled={processing}
       >
-        {isEdit ? 'Update' : 'Create'}
+        {isEdit ? 'Сохранить' : 'Создать'}
       </button>
     </form>
   );
 };
 
-function SettingsPage({ auth }: PageProps) {
+function SettingsPage() {
   const { connections, amo_connections } = usePage<{
     connections: { id: number, phone: string }[],
     amo_connections: {
@@ -141,21 +148,21 @@ function SettingsPage({ auth }: PageProps) {
       <h1 className="mb-8 text-3xl font-bold">Настройки</h1>
       <div className="mb-6">
         <Link className={buttonClass} href={'/settings/telegram-chat/create'}>
-          Подключить личный телеграм
+          Подключить личный Telegram
         </Link>
       </div>
       <div className="mt-10">
-        <h1 className="mb-8 text-2xl font-semibold">Зарегестрированные номера</h1>
+        <h1 className="mb-8 text-2xl font-semibold">Зарегистрированные номера</h1>
         <div className="bg-white border border-blue-200 rounded-xl shadow-sm p-6">
           <Table2
-            columns={[{ label: 'номер', name: 'phone', colSpan: 2 }]}
+            columns={[{ label: 'Номер', name: 'phone', colSpan: 2 }]}
             rows={connections}
             rowDelete={row => route('settings.delete', row.id)}
           />
         </div>
       </div>
       <div className="mt-10">
-        <h1 className="mb-8 text-2xl font-semibold">AmoCRM Connection</h1>
+        <h1 className="mb-8 text-2xl font-semibold">Подключение AmoCRM</h1>
         {amo ? (
           <div className="bg-white border border-blue-200 rounded-xl shadow-sm p-6">
             <table className="min-w-full text-sm">
@@ -169,27 +176,26 @@ function SettingsPage({ auth }: PageProps) {
                 <td className="py-2 text-gray-800">{amo.amojo_id}</td>
               </tr>
               <tr>
-                <td className="py-2 pr-4 font-bold text-indigo-600">Amo Account ID:</td>
+                <td className="py-2 pr-4 font-bold text-indigo-600">ID аккаунта Amo:</td>
                 <td className="py-2 text-gray-800">{amo.amo_account_id}</td>
               </tr>
               <tr>
-                <td className="py-2 pr-4 font-bold text-indigo-600">Base Domain:</td>
+                <td className="py-2 pr-4 font-bold text-indigo-600">Базовый домен:</td>
                 <td className="py-2 text-gray-800">{amo.base_domain}</td>
               </tr>
               </tbody>
             </table>
             <div className="flex gap-2 mt-6 items-center">
               <button onClick={() => openModal(amo)} className={buttonClass + ' w-full'}>
-                Edit
+                Редактировать
               </button>
-              {/* Agar access_token bo'lsa Connected badge, bo'lmasa Connect tugmasi */}
               {'access_token' in amo && amo.access_token ? (
                 <span className="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-lg font-semibold w-full text-center">
-                  Connected
+                  Подключено
                 </span>
               ) : (
                 <a href="/amocrm/connect" className={buttonClass + ' w-full text-center'}>
-                  Connect
+                  Подключить
                 </a>
               )}
               <button
@@ -197,7 +203,7 @@ function SettingsPage({ auth }: PageProps) {
                 className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-semibold transition w-full"
                 disabled={deleting}
                 onClick={() => {
-                  if (window.confirm('Are you sure you want to delete this AmoCRM connection?')) {
+                  if (window.confirm('Вы уверены, что хотите удалить это подключение AmoCRM?')) {
                     deleteAmo(`/settings/amo-connection/${amo.id}`, {
                       method: 'delete',
                       onSuccess: () => {},
@@ -205,7 +211,7 @@ function SettingsPage({ auth }: PageProps) {
                   }
                 }}
               >
-                Delete
+                Удалить
               </button>
             </div>
           </div>
@@ -218,13 +224,13 @@ function SettingsPage({ auth }: PageProps) {
                 <path strokeLinecap="round" strokeLinejoin="round"
                       d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
               </svg>
-              <span>No AmoCRM connection found.</span>
+              <span>Подключение AmoCRM не найдено.</span>
             </div>
             <button
               onClick={() => openModal(null)}
               className={buttonClass + ' w-full'}
             >
-              Add AmoCRM Connection
+              Добавить подключение AmoCRM
             </button>
           </div>
         )}
