@@ -124,9 +124,14 @@ class EmployeesController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
+        $validated = $request->validated();
         $user = User::findOrFail($id);
 
-        $user->update($request->validated());
+        $amo_connection_id = $user->account->amoConnections()->first()->id;
+
+        $validated['amo_connection_id'] = $amo_connection_id;
+
+        $user->update($validated);
 
         if ($request->hasFile('photo')) {
             $user->update(['photo' => $request->file('photo')->store('users')]);
