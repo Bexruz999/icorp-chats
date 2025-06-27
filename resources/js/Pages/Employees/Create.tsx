@@ -6,7 +6,7 @@ import SelectInput from '@/Components/Form/SelectInput';
 import FieldGroup from '@/Components/Form/FieldGroup';
 
 const Create = () => {
-  const { amoUsers } = usePage().props;
+  const { amoUsers, connections } = usePage().props;
 
   const { data, setData, errors, post, processing } = useForm({
     first_name: '',
@@ -15,7 +15,8 @@ const Create = () => {
     password: '',
     owner: '0',
     photo: '',
-    amojo_id: null
+    amojo_id: null,
+    connection_id: null
   });
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -107,10 +108,38 @@ const Create = () => {
                 error={errors.amojo_id}
                 value={data.amojo_id}
                 onChange={e => setData('amojo_id', e.target.value)}
-                options={amoUsers.map(user => ({
-                  value: user.amojo_id,
-                  label: user.name,
-                }))}
+                options={
+                  amoUsers.length > 0
+                    ? [
+                        { value: '', label: 'Выберите Amojo ID' },
+                        ...amoUsers.map(user => ({
+                          value: user.amojo_id,
+                          label: user.name,
+                        }))
+                      ]
+                    : [{ value: '', label: 'Нет доступных Amojo ID' }]
+                }
+                disabled={amoUsers.length === 0}
+              />
+            </FieldGroup>
+            <FieldGroup label="Connection" name="connection_id" error={errors.connection_id}>
+              <SelectInput
+                name="connection_id"
+                error={errors.connection_id}
+                value={data.connection_id}
+                onChange={e => setData('connection_id', e.target.value)}
+                options={
+                  connections.length > 0
+                    ? [
+                        { value: '', label: 'Выберите подключение' },
+                        ...connections.map(conn => ({
+                          value: conn.id,
+                          label: conn.phone || conn.name || `ID: ${conn.id}`,
+                        }))
+                      ]
+                    : [{ value: '', label: 'Нет доступных подключений' }]
+                }
+                disabled={connections.length === 0}
               />
             </FieldGroup>
           </div>

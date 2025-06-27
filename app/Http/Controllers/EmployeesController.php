@@ -36,12 +36,20 @@ class EmployeesController extends Controller
     public function create(AmoApiService $amoApiService)
     {
         $user = Auth::user();
-        $amoUsers = $amoApiService->getAmoAccount();
 
-        //if (!$user->hasRole('admin'))  abort(419);
+        $connections = $user->account->connections;
+        // If no connections, send empty array
+        if (!$connections || $connections->isEmpty()) {
+            $connections = [];
+        }
+
+        $hasAmoConnection = $user->account->amoConnections()
+            ->whereNotNull(['access_token', 'refresh_token'])->exists();
+
+        $amoUsers = $hasAmoConnection ? $amoApiService->getAmoAccount() : [];
 
         return Inertia::render('Employees/Create', [
-            'connections' => $user->account->connections,
+            'connections' => $connections,
             'amoUsers' => $amoUsers,
         ]);
     }
@@ -81,10 +89,8 @@ class EmployeesController extends Controller
         $auth = Auth::user();
         $user = User::findOrFail($id);
 
-
         if (!$auth->hasRole('admin') && $user->owner) abort(419);
 
-        // Localda oddiy massivdan amo_users
         if (app()->environment('local')) {
             $amoUsers = [
                 ['amojo_id' => 'e7123126-d5eb-4df2-a146-1c702c17c3c4', 'name' => 'Local User 1'],
@@ -95,10 +101,21 @@ class EmployeesController extends Controller
             $amoUsers = $amoApiService->getAmoAccount();
         }
 
+        $connections = $auth->account->connections;
+        // If no connections, send empty array
+        if (!$connections || $connections->isEmpty()) {
+            $connections = [];
+        }
+
+        // If no amoUsers, send empty array
+        if (!$amoUsers || empty($amoUsers)) {
+            $amoUsers = [];
+        }
+
         return Inertia::render('Employees/Edit', [
             'user' => new UserResource($user),
             'amo_users' => $amoUsers,
-            'connections' => $auth->account->connections,
+            'connections' => $connections,
         ]);
     }
 

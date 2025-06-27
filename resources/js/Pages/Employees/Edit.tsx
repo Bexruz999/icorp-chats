@@ -139,13 +139,18 @@ const Edit = () => {
                 error={errors.amojo_id}
                 value={data.amojo_id}
                 onChange={e => setData('amojo_id', String(e.target.value).trim())}
-                options={[
-                  { value: '', label: 'Select Amojo ID' },
-                  ...amo_users.map(user => ({
-                    value: user.amojo_id,
-                    label: user.name || user.amojo_id,
-                  })),
-                ]}
+                options={
+                  amo_users.length > 0
+                    ? [
+                        { value: '', label: 'Выберите Amojo ID' },
+                        ...amo_users.map(user => ({
+                          value: user.amojo_id,
+                          label: user.name || user.amojo_id,
+                        })),
+                      ]
+                    : [{ value: '', label: 'Нет доступных Amojo ID' }]
+                }
+                disabled={amo_users.length === 0}
               />
             </FieldGroup>
 
@@ -155,13 +160,18 @@ const Edit = () => {
                 error={errors.connection_id}
                 value={data.connection_id}
                 onChange={e => setData('connection_id', String(e.target.value).trim())}
-                options={[
-                  { value: '', label: 'Select connection' },
-                  ...connections.map(connection => ({
-                    value: connection.id,
-                    label: connection.phone || connection.id,
-                  })),
-                ]}
+                options={
+                  connections.length > 0
+                    ? [
+                        { value: '', label: 'Выберите подключение' },
+                        ...connections.map(connection => ({
+                          value: connection.id,
+                          label: connection.phone || connection.id,
+                        })),
+                      ]
+                    : [{ value: '', label: 'Нет доступных подключений' }]
+                }
+                disabled={connections.length === 0}
               />
             </FieldGroup>
 
