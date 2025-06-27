@@ -4,8 +4,6 @@ namespace App\Services;
 
 use AmoCRM\OAuth2\Client\Provider\AmoCRM;
 use App\Models\AmoConnection;
-use App\Models\AmoToken;
-use App\Models\User;
 use Arr;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
@@ -76,9 +74,9 @@ class AmoApiService
 
             return AmoConnection::query()->updateOrCreate(['base_domain' => $token['base_domain']], $token);
 
-        } else {
-            exit('Invalid access token ' . var_export($token, true));
         }
+
+        exit('Invalid access token ' . var_export($token, true));
     }
 
     /**
