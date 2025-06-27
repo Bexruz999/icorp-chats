@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('amo_connections', function (Blueprint $table) {
             $table->id();
             $table->foreignId('account_id')->constrained()->onDelete('cascade');
-            $table->string('uid')->nullable();
-            $table->string('amojo_id')->nullable();
-            $table->string('secret_key')->nullable();
-            $table->string('amo_account_id')->nullable();
-            $table->string('base_domain')->nullable();
-            $table->string('access_token')->nullable();
+            $table->text('uid')->nullable();
+            $table->text('amojo_id')->nullable();
+            $table->text('secret_key')->nullable();
+            $table->text('amo_account_id')->nullable();
+            $table->text('base_domain')->nullable();
+            $table->text('access_token')->nullable();
             $table->string('refresh_token')->nullable();
             $table->bigInteger('expires')->nullable();
             $table->timestamps();

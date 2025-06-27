@@ -81,6 +81,7 @@ class SettingsController extends Controller
 
         $status = $this->settingsService->verifyTelegramCode($code, $phone);
 
+
         if ($status === SettingsService::STATUS_PASSWORD_NEED) {
             return Inertia::render('Settings/CreateTelegramChat', [
                 'state' => self::STATE_PASSWORD_VERIFY,
