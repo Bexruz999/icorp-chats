@@ -6,7 +6,6 @@ namespace App\Listeners;
 use App\Events\TelegramMessage;
 use App\Jobs\AmoIncomingMessage;
 use App\Models\Connection;
-use App\Models\User;
 use App\Services\TelegramService;
 use Arr;
 use Cache;
@@ -31,7 +30,6 @@ class TelegramIncomingMessage extends SimpleEventHandler
         TelegramMessage::dispatch($message);
         Log::debug('TelegramIncomingMessage: ' . json_encode($message));
 
-        Log::debug('In: ' . "amocrm_$message->senderId-$message->id");
         if (get_class($message) === PrivateMessage::class && !Cache::has("amocrm_$message->chatId-$message->id")) {
 
             $connections = $this->getConnections($message);
@@ -60,8 +58,6 @@ class TelegramIncomingMessage extends SimpleEventHandler
         $message->out ? $tgId = $this->getId($message->senderId) : $tgId = $this->getSelf()['id'];
 
         $user = optional(Connection::where('telegram_id', $tgId)->first())->user;
-
-        Log::debug('TelegramIncomingMessage getConnections: ' . json_encode($user));
 
         return [
             'out' => $message->out,

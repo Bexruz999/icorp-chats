@@ -4,9 +4,10 @@ import LoadingButton from '@/Components/Button/LoadingButton';
 import TextInput from '@/Components/Form/TextInput';
 import SelectInput from '@/Components/Form/SelectInput';
 import FieldGroup from '@/Components/Form/FieldGroup';
+import React from 'react';
 
 const Create = () => {
-  const { amoUsers, connections } = usePage().props;
+ const { amoUsers, connections } = usePage<{ amoUsers: { amojo_id: string; name: string }[]; connections: { id: string; phone?: string; name?: string }[] }>().props;
 
   const { data, setData, errors, post, processing } = useForm({
     first_name: '',
@@ -15,8 +16,8 @@ const Create = () => {
     password: '',
     owner: '0',
     photo: '',
-    amojo_id: null,
-    connection_id: null
+    amojo_id: '',
+    connection_id: ''
   });
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -90,18 +91,6 @@ const Create = () => {
               />
             </FieldGroup>
 
-            <FieldGroup label="Owner" name="owner" error={errors.owner}>
-              <SelectInput
-                name="owner"
-                error={errors.owner}
-                value={data.owner}
-                onChange={e => setData('owner', e.target.value)}
-                options={[
-                  { value: '1', label: 'Yes' },
-                  { value: '0', label: 'No' }
-                ]}
-              />
-            </FieldGroup>
             <FieldGroup label="Amojo_id" name="amojo_id" error={errors.amojo_id}>
               <SelectInput
                 name="amojo_id"

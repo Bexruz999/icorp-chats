@@ -91,14 +91,17 @@ class EmployeesController extends Controller
 
         if (!$auth->hasRole('admin') && $user->owner) abort(419);
 
-        if (app()->environment('local')) {
+        if (app()->environment('local') || ) {
             $amoUsers = [
                 ['amojo_id' => 'e7123126-d5eb-4df2-a146-1c702c17c3c4', 'name' => 'Local User 1'],
                 ['amojo_id' => 'local_2', 'name' => 'Local User 2'],
             ];
         } else {
             $amoApiService = new AmoApiService($user);
-            $amoUsers = $amoApiService->getAmoAccount();
+            $hasAmoConnection = $user->account->amoConnections()
+                ->whereNotNull(['access_token', 'refresh_token'])->exists();
+
+            $amoUsers = $hasAmoConnection ? $amoApiService->getAmoAccount() : [];
         }
 
         $connections = $auth->account->connections;

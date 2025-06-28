@@ -1,6 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
-import FilterBar from '@/Components/FilterBar/FilterBar';
 import Pagination from '@/Components/Pagination/Pagination';
 import { PaginatedData, User } from '@/types';
 import Table from '@/Components/Table/Table';
@@ -18,7 +17,6 @@ const Index = () => {
     <div>
       <h1 className="mb-8 text-3xl font-bold">Сотрудники</h1>
       <div className="flex items-center justify-between mb-6">
-        <FilterBar />
         <Link className="btn-indigo focus:outline-none" href={route('employees.create')}>
           <span>Создать</span>
         </Link>
