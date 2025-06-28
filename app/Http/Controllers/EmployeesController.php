@@ -38,9 +38,15 @@ class EmployeesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(AmoApiService $amoApiService)
+    public function create()
     {
         $user = Auth::user();
+
+        if (!$user->hasRole('admin')) {
+            abort(419);
+        }
+
+        $amoApiService = new AmoApiService($user);
 
         $connections = $user->account->connections;
         // If no connections, send empty array

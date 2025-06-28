@@ -21,9 +21,9 @@ use Log;
 class AmoApiService
 {
     protected AmoCRM $provider;
-    protected Authenticatable|null|User $user;
+    protected User|null $user;
 
-    public function __construct($user)
+    public function __construct(User $user)
     {
         $this->user = $user ?? auth()->user();
         $this->provider = new AmoCRM([
