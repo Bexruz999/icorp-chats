@@ -6,6 +6,8 @@ use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
+use App\Jobs\SendGeneratedPasswordToEmail;
+use App\Mail\SendPassword;
 use App\Models\User;
 use App\Services\AmoApiService;
 use GuzzleHttp\Exception\GuzzleException;
@@ -17,6 +19,7 @@ use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 use Log;
+use Mail;
 
 class EmployeesController extends Controller
 {
@@ -67,6 +70,7 @@ class EmployeesController extends Controller
                 'amo_connection' => 'Ошибка подключения к AmoCRM. Проверьте соединение.',
             ]);
         }
+
         return Inertia::render('Employees/Create', [
             'connections' => $connections,
             'amoUsers' => $amoUsers ?? [],
@@ -79,9 +83,21 @@ class EmployeesController extends Controller
     public function store(UserStoreRequest $request): RedirectResponse
     {
         $user = Auth::user();
-        //if (!$user->hasRole('admin'))  abort(419);
+        if (!$user->hasRole('admin')) {
+            abort(419);
+        }
 
-        $user->account->users()->create($request->validated());
+        $validated = $request->validated();
+        $validated['amo_connection_id'] = $user->account->amoConnections()->first()->id ?? null;
+        if (empty($validated['password'])) {
+            // Generate a random password
+            $validated['password'] = \Str::random(10);
+            // Optionally, send the password to the user's email
+            SendGeneratedPasswordToEmail::dispatch($validated['email'], $validated['password']);
+        }
+
+
+        $user->account->users()->create($validated);
 
         /*if ($request->hasFile('photo')) {
             $user->update([
@@ -165,7 +181,6 @@ class EmployeesController extends Controller
         $validated['amo_connection_id'] = $amo_connection_id;
 
         $user->update($validated);
-
 
 
         return Redirect::back()->with('success', 'Сотрудник обновлен.');
