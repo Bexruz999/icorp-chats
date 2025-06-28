@@ -8,17 +8,22 @@ use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Services\AmoApiService;
+use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
+use Inertia\Response;
+use Log;
 
 class EmployeesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response
     {
         $user = Auth::user();
 
@@ -46,18 +51,26 @@ class EmployeesController extends Controller
         $hasAmoConnection = $user->account->amoConnections()
             ->whereNotNull(['access_token', 'refresh_token'])->exists();
 
-        $amoUsers = $hasAmoConnection ? $amoApiService->getAmoAccount() : [];
-
+        try {
+            $amoUsers = $hasAmoConnection ? $amoApiService->getAmoAccount() : [];
+        } catch (GuzzleException $e) {
+            Log::error($e->getMessage());
+        } catch (ConnectionException $e) {
+            Log::error('Connection error: ' . $e->getMessage());
+            return Redirect::back()->withErrors([
+                'amo_connection' => 'Ошибка подключения к AmoCRM. Проверьте соединение.',
+            ]);
+        }
         return Inertia::render('Employees/Create', [
             'connections' => $connections,
-            'amoUsers' => $amoUsers,
+            'amoUsers' => $amoUsers ?? [],
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserStoreRequest $request)
+    public function store(UserStoreRequest $request): RedirectResponse
     {
         $user = Auth::user();
         //if (!$user->hasRole('admin'))  abort(419);
@@ -76,7 +89,7 @@ class EmployeesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(User $user): void
     {
         //
     }
@@ -89,9 +102,11 @@ class EmployeesController extends Controller
         $auth = Auth::user();
         $user = User::findOrFail($id);
 
-        if (!$auth->hasRole('admin') && $user->owner) abort(419);
+        if ($user->owner && !$auth->hasRole('admin')) {
+            abort(419);
+        }
 
-        if (app()->environment('local') || ) {
+        if (app()->environment('local')) {
             $amoUsers = [
                 ['amojo_id' => 'e7123126-d5eb-4df2-a146-1c702c17c3c4', 'name' => 'Local User 1'],
                 ['amojo_id' => 'local_2', 'name' => 'Local User 2'],
@@ -101,7 +116,16 @@ class EmployeesController extends Controller
             $hasAmoConnection = $user->account->amoConnections()
                 ->whereNotNull(['access_token', 'refresh_token'])->exists();
 
-            $amoUsers = $hasAmoConnection ? $amoApiService->getAmoAccount() : [];
+            try {
+                $amoUsers = $hasAmoConnection ? $amoApiService->getAmoAccount() : [];
+            } catch (GuzzleException $e) {
+                Log::error($e->getMessage());
+            } catch (ConnectionException $e) {
+                Log::error('Connection error: ' . $e->getMessage());
+                return Redirect::back()->withErrors([
+                    'amo_connection' => 'Ошибка подключения к AmoCRM. Проверьте соединение.',
+                ]);
+            }
         }
 
         $connections = $auth->account->connections;
@@ -111,7 +135,7 @@ class EmployeesController extends Controller
         }
 
         // If no amoUsers, send empty array
-        if (!$amoUsers || empty($amoUsers)) {
+        if (empty($amoUsers)) {
             $amoUsers = [];
         }
 
@@ -125,7 +149,7 @@ class EmployeesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserUpdateRequest $request, $id)
+    public function update(UserUpdateRequest $request, $id): RedirectResponse
     {
         $validated = $request->validated();
         $user = User::findOrFail($id);
@@ -136,9 +160,7 @@ class EmployeesController extends Controller
 
         $user->update($validated);
 
-        if ($request->hasFile('photo')) {
-            $user->update(['photo' => $request->file('photo')->store('users')]);
-        }
+
 
         return Redirect::back()->with('success', 'Сотрудник обновлен.');
     }
@@ -146,7 +168,7 @@ class EmployeesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(User $user): void
     {
         //
     }

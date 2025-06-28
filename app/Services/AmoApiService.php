@@ -4,9 +4,11 @@ namespace App\Services;
 
 use AmoCRM\OAuth2\Client\Provider\AmoCRM;
 use App\Models\AmoConnection;
+use App\Models\User;
 use Arr;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Http;
@@ -19,9 +21,11 @@ use Log;
 class AmoApiService
 {
     protected AmoCRM $provider;
+    protected Authenticatable|null|User $user;
 
-    public function __construct()
+    public function __construct($user)
     {
+        $this->user = $user ?? auth()->user();
         $this->provider = new AmoCRM([
             'clientId' => config('amo.integration_id'),
             'clientSecret' => config('amo.integration_secret_key'),
@@ -70,7 +74,7 @@ class AmoApiService
 
         if (Arr::has($token, ['access_token', 'refresh_token', 'expires', 'base_domain'])) {
 
-            $token['account_id'] = auth()->user()->account_id;
+            $token['account_id'] = $this->user->account_id;
 
             return AmoConnection::query()->updateOrCreate(['base_domain' => $token['base_domain']], $token);
 
