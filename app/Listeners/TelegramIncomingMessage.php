@@ -56,10 +56,10 @@ class TelegramIncomingMessage extends SimpleEventHandler
     protected function getConnections(Message $message): ?array
     {
         $message->out ? $tgId = $this->getId($message->senderId) : $tgId = $this->getSelf()['id'];
+        Log::debug('TelegramIncomingMessage get conn: ' . json_encode($tgId));
 
         $user = optional(Connection::where('telegram_id', $tgId)->first())->user;
 
-        Log::debug('TelegramIncomingMessage get conn: ' . json_encode($user));
 
         return [
             'out' => $message->out,
