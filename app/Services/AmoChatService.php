@@ -29,7 +29,7 @@ class AmoChatService
 
     public function connect(): void
     {
-        Log::debug('AmoChatService:  '. $this->connect['out']);
+        Log::debug('AmoChatService:  '. json_encode($this->connect));
 
         $channel = new Channel(uid: $this->connect['amo']['uid'], secretKey: $this->connect['amo']['secret_key']);
 
