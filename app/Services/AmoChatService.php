@@ -62,9 +62,12 @@ class AmoChatService
             ->setName($contact['name'])
             ->setAvatar($this->avatar);
 
+        Log::debug('AmoChatService $amo_contact:  '. $this->connect['out']);
+
         $conv = $this->createChat($amo_contact, $contact['id']);
 
         $payload = (new Payload())->setConversation($conv)->setMessage($this->setMessage($msg));
+        Log::debug('AmoChatService $payload:  '. $this->connect['out']);
 
         if ($this->connect['out']) {
             $payload->setSender((new Sender())->setRefId($this->connect['user']['amojo_id']));
