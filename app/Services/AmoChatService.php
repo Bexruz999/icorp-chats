@@ -34,6 +34,7 @@ class AmoChatService
         $channel = new Channel(uid: $this->connect['amo']['uid'], secretKey: $this->connect['amo']['secret_key']);
 
         $this->client = new AmoJoClient(channel: $channel, segment: 'ru');
+        Log::debug('AmoChatService client:  '. json_encode($this->client));
 
         $this->client->connect(accountUid: $this->connect['amo']['amo_account_id'], title: 'My channel');
     }
@@ -45,6 +46,7 @@ class AmoChatService
 
     public function createChat($contact, $chat_id): Conversation
     {
+        Log::debug('AmoChatService create chat:  '. json_encode($this->connect));
         $response = $this->client->createChat(
             accountUid: config('amo.account_id'),
             conversation: (new Conversation())->setId("chat-$chat_id"),
