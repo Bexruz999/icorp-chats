@@ -8,7 +8,6 @@ use App\Models\User;
 use Arr;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Http;
@@ -25,7 +24,7 @@ class AmoApiService
 
     public function __construct(User $user)
     {
-        $this->user = $user ?? auth()->user();
+        $this->user = auth()->user() ?? $user;
         Log::debug('this user: ' . json_encode([$this->user, $user]));
         $this->provider = new AmoCRM([
             'clientId' => config('amo.integration_id'),
