@@ -26,7 +26,7 @@ class AmoApiService
     public function __construct(User $user)
     {
         $this->user = $user ?? auth()->user();
-        Log::debug('this user: ' . var_export($this->user, true));
+        Log::debug('this user: ' . json_encode([$this->user, $user]));
         $this->provider = new AmoCRM([
             'clientId' => config('amo.integration_id'),
             'clientSecret' => config('amo.integration_secret_key'),
