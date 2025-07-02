@@ -60,7 +60,7 @@ class AmoApiService
             }
 
         }
-        return redirect()->route('settings');
+        return redirect()->route('employees.index')->with('success', 'Подключите ползователя AmoCRM');
     }
 
     public function saveToken($accessToken)
@@ -75,6 +75,8 @@ class AmoApiService
         if (Arr::has($token, ['access_token', 'refresh_token', 'expires', 'base_domain'])) {
 
             $token['account_id'] = $this->user->account_id;
+
+            Log::debug('updateOrCreate AmoCRM token: ' . json_encode($token));
 
             return AmoConnection::query()->updateOrCreate(['base_domain' => $token['base_domain']], $token);
 

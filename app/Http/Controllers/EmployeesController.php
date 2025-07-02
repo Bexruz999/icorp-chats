@@ -20,6 +20,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Log;
 use Mail;
+use Str;
 
 class EmployeesController extends Controller
 {
@@ -89,13 +90,15 @@ class EmployeesController extends Controller
 
         $validated = $request->validated();
         $validated['amo_connection_id'] = $user->account->amoConnections()->first()->id ?? null;
+
+        Log::debug('employes validated: ' . json_encode($validated));
+
         if (empty($validated['password'])) {
             // Generate a random password
-            $validated['password'] = \Str::random(10);
+            $validated['password'] = Str::random(10);
             // Optionally, send the password to the user's email
             SendGeneratedPasswordToEmail::dispatch($validated['email'], $validated['password']);
         }
-
 
         $user->account->users()->create($validated);
 
@@ -176,9 +179,14 @@ class EmployeesController extends Controller
         $validated = $request->validated();
         $user = User::findOrFail($id);
 
+
+        $connection = $user->account->connections()
+            ->where('id', $validated['connection_id'] ?? null)
+            ->first();
         $amo_connection_id = $user->account->amoConnections()->first()->id;
 
         $validated['amo_connection_id'] = $amo_connection_id;
+        $validated['telegram_id'] = $connection->telegram_id ?? null;
 
         $user->update($validated);
 
