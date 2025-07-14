@@ -20,8 +20,8 @@
         "inertiajs/inertia-laravel": "^1.0",
         "irazasyed/telegram-bot-sdk": "^3.14",
         "laravel/framework": "^11.1",
+        "laravel/passport": "^13.0",
         "laravel/reverb": "^1.0",
-        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "league/glide-symfony": "^2.0",
         "spatie/laravel-permission": "^6.16",
@@ -77,7 +77,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

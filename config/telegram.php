@@ -3,6 +3,10 @@
 use Telegram\Bot\Commands\HelpCommand;
 
 return [
+
+    'app_id' => env('TELEGRAM_API_ID', ''),
+    'app_hash' => env('TELEGRAM_API_HASH', ''),
+
     /*
     |--------------------------------------------------------------------------
     | Your Telegram Bots

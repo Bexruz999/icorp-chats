@@ -1,0 +1,616 @@
+[
+  {
+    "result": {
+      "ru": {
+        "id": "25dd1cbb-a999-4cb3-a34d-09b0431ff2b8",
+        "code": "uz.commni",
+        "secret_key": "7b5e3cc7a7137e2638647d6c40290f05aa84c69a",
+        "name": "Comni",
+        "webhook_url": "https://commni-amochat.icorp.uz/location/:scope_id",
+        "enabled": true,
+        "test_mode": true,
+        "allowed_acc_list": [
+          {
+            "id": "e5236518-2bcf-4e4a-bad5-527382c4169d",
+            "external_id": "amocrm:30800226"
+          },
+          {
+            "id": "b90c9fe3-31b3-4e33-9a3d-f39673dc53d0",
+            "external_id": "amocrm:30987994"
+          },
+          {
+            "id": "00db92bc-8371-4adc-9092-9cba4a3654fa",
+            "external_id": "amocrm:32374598"
+          }
+        ],
+        "contact_email": "begmatirmatov@gmail.com",
+        "write_first": true,
+        "webhook_url_v2": "https://commni-amochat.icorp.uz/location/:scope_id",
+        "time_window": {
+          "enabled": false,
+          "expires": 0,
+          "tags": null,
+          "need_template": false
+        },
+        "bot": {
+          "id": "44746639-8c75-4fb7-af15-667f09798ed7",
+          "name": "Comni",
+          "is_bot": true
+        },
+        "webhook_events": [
+          "messages"
+        ],
+        "saves_files": true,
+        "supports_voice": true,
+        "supports_delivery_notification": true,
+        "icon": "https://st1.amocrm.ru/origins_icons/uz.commni.svg?1745406798",
+        "opposite_platform_enabled": false,
+        "client_uuid": "05a5c46a-89eb-45a1-a2dc-88a695b9fa5f"
+      }
+    },
+    "error": null,
+    "sekret_key": "1XsFzjSCNqz43GR4tKux46ETlnRA1lMZBSGS5mMdrmnlOx5FS9ZXHCps9sT5FJpr"
+  },
+  {
+    "_": "danog\\MadelineProto\\EventHandler\\Message\\PrivateMessage",
+    "message": "Test",
+    "fwdInfo": null,
+    "command": null,
+    "commandType": null,
+    "commandArgs": null,
+    "protected": false,
+    "matches": null,
+    "matchesAll": null,
+    "media": null,
+    "fromScheduled": false,
+    "viaBotId": null,
+    "editDate": null,
+    "editHide": false,
+    "keyboard": null,
+    "imported": false,
+    "psaType": null,
+    "nextSent": null,
+    "views": null,
+    "forwards": null,
+    "signature": null,
+    "entities": [],
+    "groupedId": null,
+    "poll": null,
+    "scheduled": false,
+    "id": 74225,
+    "out": true,
+    "chatId": 2092452523,
+    "senderId": 781366976,
+    "replyToMsgId": null,
+    "date": 1747637371,
+    "topicId": null,
+    "threadId": null,
+    "replyToScheduled": false,
+    "mentioned": false,
+    "silent": false,
+    "ttlPeriod": null
+  },
+  {
+    "_": "danog\\MadelineProto\\EventHandler\\Message\\PrivateMessage",
+    "message": "Test",
+    "fwdInfo": null,
+    "command": null,
+    "commandType": null,
+    "commandArgs": null,
+    "protected": false,
+    "matches": null,
+    "matchesAll": null,
+    "media": null,
+    "fromScheduled": false,
+    "viaBotId": null,
+    "editDate": null,
+    "editHide": false,
+    "keyboard": null,
+    "imported": false,
+    "psaType": null,
+    "nextSent": null,
+    "views": null,
+    "forwards": null,
+    "signature": null,
+    "entities": [],
+    "groupedId": null,
+    "poll": null,
+    "scheduled": false,
+    "id": 74226,
+    "out": false,
+    "chatId": 2092452523,
+    "senderId": 2092452523,
+    "replyToMsgId": null,
+    "date": 1747637551,
+    "topicId": null,
+    "threadId": null,
+    "replyToScheduled": false,
+    "mentioned": false,
+    "silent": false,
+    "ttlPeriod": null
+  },
+  {
+    "_": "danog\\MadelineProto\\EventHandler\\Message\\GroupMessage",
+    "message": "",
+    "fwdInfo": null,
+    "command": null,
+    "commandType": null,
+    "commandArgs": null,
+    "protected": false,
+    "matches": null,
+    "matchesAll": null,
+    "media": {
+      "size": 55291,
+      "fileName": "5294025106672185812_x_2.jpg",
+      "fileExt": ".jpg",
+      "creationDate": 1747890446,
+      "mimeType": "image\/jpeg",
+      "ttl": null,
+      "spoiler": true,
+      "botApiFileId": "AgACAgIAAyEFAASeXLWNAANPaC6zThvgiOqyOXb_mqqMEXfoKPEAAtTxMRvJJ3hJ3uoTYigAASaOAQADAgADeAADLwQ",
+      "botApiFileUniqueId": "AQAD1PExG8kneEl9",
+      "encrypted": false,
+      "thumb": null,
+      "thumbHeight": null,
+      "thumbWidth": null,
+      "protected": false,
+      "hasStickers": true
+    },
+    "fromScheduled": false,
+    "viaBotId": null,
+    "editDate": 1747890938,
+    "editHide": true,
+    "keyboard": null,
+    "imported": false,
+    "psaType": null,
+    "nextSent": null,
+    "views": null,
+    "forwards": null,
+    "signature": null,
+    "entities": [],
+    "groupedId": null,
+    "poll": null,
+    "scheduled": false,
+    "id": 79,
+    "out": false,
+    "chatId": -1002656875917,
+    "senderId": 1859460661,
+    "replyToMsgId": null,
+    "date": 1747890921,
+    "topicId": null,
+    "threadId": null,
+    "replyToScheduled": false,
+    "mentioned": false,
+    "silent": false,
+    "ttlPeriod": null
+  },
+  {
+    "_": "danog\\MadelineProto\\EventHandler\\Message\\PrivateMessage",
+    "message": "Test",
+    "fwdInfo": null,
+    "command": null,
+    "commandType": null,
+    "commandArgs": null,
+    "protected": false,
+    "matches": null,
+    "matchesAll": null,
+    "media": null,
+    "fromScheduled": false,
+    "viaBotId": null,
+    "editDate": null,
+    "editHide": false,
+    "keyboard": null,
+    "imported": false,
+    "psaType": null,
+    "nextSent": null,
+    "views": null,
+    "forwards": null,
+    "signature": null,
+    "entities": [],
+    "groupedId": null,
+    "poll": null,
+    "scheduled": false,
+    "id": 75926,
+    "out": false,
+    "chatId": 2092452523,
+    "senderId": 2092452523,
+    "replyToMsgId": null,
+    "date": 1750143464,
+    "topicId": null,
+    "threadId": null,
+    "replyToScheduled": false,
+    "mentioned": false,
+    "silent": false,
+    "ttlPeriod": null
+  },
+  [
+    {
+      "account_id": "00db92bc-8371-4adc-9092-9cba4a3654fa",
+      "time": 1750855380,
+      "message": {
+        "receiver": {
+          "id": "dabebe78-2fa6-43ea-8620-8531d923efab",
+          "name": "Mardon_M\ud83d\udc3e",
+          "phone": "998951573727",
+          "client_id": "user-6246315740"
+        },
+        "sender": {
+          "id": "3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9",
+          "name": "zla31339"
+        },
+        "source": {
+          "external_id": "test"
+        },
+        "conversation": {
+          "id": "29c7f5fa-ecef-4998-abff-3239bcf9c552",
+          "client_id": "chat-6246315740"
+        },
+        "timestamp": 1750855380,
+        "msec_timestamp": 1750855380732,
+        "message": {
+          "id": "5da94e46-ef43-4fc4-af74-7f416ee8ee46",
+          "type": "text",
+          "text": "hnfgh",
+          "markup": null,
+          "tag": "",
+          "media": "",
+          "thumbnail": "",
+          "file_name": "",
+          "file_size": 0
+        }
+      }
+    },
+    {
+      "accept-encoding": [
+        "gzip"
+      ],
+      "x-trace-id": [
+        "455661d7-bdf3-4b33-abb5-7da019a9b73a"
+      ],
+      "x-signature": [
+        "09fc08453800d5a4847759a497125c74a0106eb7"
+      ],
+      "x-priority": [
+        "high"
+      ],
+      "content-type": [
+        "application\/json"
+      ],
+      "content-length": [
+        "629"
+      ],
+      "connection": [
+        "close"
+      ],
+      "user-agent": [
+        "amoCRM amoJo\/1.0"
+      ],
+      "host": [
+        "commni-amochat.icorp.uz"
+      ]
+    }
+  ],
+  [
+    [],
+    {
+      "connection": [
+        "keep-alive"
+      ],
+      "accept-encoding": [
+        "gzip, deflate, br"
+      ],
+      "host": [
+        "commni-amochat.icorp.uz"
+      ],
+      "postman-token": [
+        "e04b1463-359e-4376-94c6-9232c1989e04"
+      ],
+      "cache-control": [
+        "no-cache"
+      ],
+      "accept": [
+        "*\/*"
+      ]
+    },
+    {
+      "_": "danog\\MadelineProto\\EventHandler\\Message\\PrivateMessage",
+      "message": "Hdudd",
+      "fwdInfo": null,
+      "command": null,
+      "commandType": null,
+      "commandArgs": null,
+      "protected": false,
+      "matches": null,
+      "matchesAll": null,
+      "media": null,
+      "fromScheduled": false,
+      "viaBotId": null,
+      "editDate": null,
+      "editHide": false,
+      "keyboard": null,
+      "imported": false,
+      "psaType": null,
+      "nextSent": null,
+      "views": null,
+      "forwards": null,
+      "signature": null,
+      "entities": [],
+      "groupedId": null,
+      "poll": null,
+      "scheduled": false,
+      "id": 77176,
+      "out": false,
+      "chatId": 2092452523,
+      "senderId": 2092452523,
+      "replyToMsgId": null,
+      "date": 1750870659,
+      "topicId": null,
+      "threadId": null,
+      "replyToScheduled": false,
+      "mentioned": false,
+      "silent": false,
+      "ttlPeriod": null
+    }
+  ],
+  [
+    {
+      "out": false,
+      "telegram": {
+        "id": 11,
+        "phone": "+998997080724",
+        "account_id": 1,
+        "telegram_id": 781366976,
+        "user_name": "user0724",
+        "first_name": "Bexruz",
+        "last_name": null,
+        "created_at": "2025-06-26T09:22:50.000000Z",
+        "updated_at": "2025-06-26T09:22:50.000000Z"
+      },
+      "amo": {
+        "id": 3,
+        "account_id": 1,
+        "uid": "25dd1cbb-a999-4cb3-a34d-09b0431ff2b8",
+        "amojo_id": "3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9",
+        "secret_key": "7b5e3cc7a7137e2638647d6c40290f05aa84c69a7b5e3cc7a7137e2638647d6c40290f05aa84c69a",
+        "amo_account_id": "00db92bc-8371-4adc-9092-9cba4a3654fa",
+        "base_domain": "zla31339.amocrm.ru",
+        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImViOTA4NzBlMjE0M2Q1MDU4ZDQ4ZTVlYjQxYmUzODNmNTdjODIzNzE4NTg3MmJmYTZhMjNiNTI0NDc2M2Q1NDg5ODg0MTMzYWYwNjdjMmQ5In0.eyJhdWQiOiIwNWE1YzQ2YS04OWViLTQ1YTEtYTJkYy04OGE2OTViOWZhNWYiLCJqdGkiOiJlYjkwODcwZTIxNDNkNTA1OGQ0OGU1ZWI0MWJlMzgzZjU3YzgyMzcxODU4NzJiZmE2YTIzYjUyNDQ3NjNkNTQ4OTg4NDEzM2FmMDY3YzJkOSIsImlhdCI6MTc1MDkzNTg3OSwibmJmIjoxNzUwOTM1ODc5LCJleHAiOjE3NTEwMjIyNzksInN1YiI6IjEyNDEyMDAyIiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjMyMzc0NTk4LCJiYXNlX2RvbWFpbiI6ImFtb2NybS5ydSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiMDM1YzBhMGUtNmMxMC00NTdkLWJmZjctOGIyOTFhYTU2NjA2IiwiYXBpX2RvbWFpbiI6ImFwaS1iLmFtb2NybS5ydSJ9.f_c3Flk924CF33Z0bCYm_V50vT0VvCvQJvEgOSOM3fmg8t8PxyK4oYmzkCCD_C5KURssuICAK07TKIxMDdCYHVUbWWn9Zf4i81nwfFHB1-MHDdcIKDpgtG-5hY7YJOS2A8S_wVZHyUwlGwqUqMeUT-X2fZcmVe0pc9qhiJZVKKzoGqXfrBFVMYHgaPQVYG6hmvmao7UN66yYIS_hg4w4HuSk7wR1Bfmx7CBn-R2xCxl4zLUym1uosBs6RN-fhqlHEfQMvh5vueKOHaM3lyIacbpJCmeqxWE9EMP6f6FWV29XIONBgQYxG8oFv4RRRQ3HHsea33uE59fYXmsLROJ5jw",
+        "refresh_token": "def502005f72923774d8670d4add869cb505583f8780b55f4cb86cbb0ccd8846acde2cfe096a56b4f8ccc84ccdfefd794a2212917d1788b5ed37ea9f2ba88abc8732ca998648f7504676e11cf3c9b05bd8c192cc853da5d75664151ce3ac59edd212724b3eb864b561019672378c7712e4e87239ab96b3d9fb564634d6d52dad873ba048c1c30e613d5583a8b92321257c198d270dc852a9153cee8ee00392c094c2c93732368ed7c44f22f9a78e48e3642ba4896c598fa8ce00e2576e8dff81f93adefa83933d88b97d1b776c79db27a4858538c86c7613861aa442a687af441502f5becfca7ebdef25589238a16d038ef67b343ade84627295265c0d7971b516a6a94adb2366a3ae1f8b3249409d43ca3b20053e3722484ff484b8531740661d28ded3a909bc04306df16a975f136c39e28548d14054c1ea4afc5dfc68e22ff7958beb8c66fe678359a127fd1562c718799956b0ed27f74bc15d056d4da416c1022db6a046531a49e18977d0f1e3e902f77338f0c181f5d5c2d69e35da597ed63724966d8afde9d23d8ee2fea58c0a9bda06e584763b913067a58561d214d3037da359148b139ccded5e9084ea480f8ef31d9ce5cd615be49e161fb3123fcf3cb33fb090b440d7297a27fe6502fc71e898716538d2c2c904a4924783517a4670c6eebb66cc374559b72a57ebd9",
+        "expires": 1751022280,
+        "created_at": "2025-06-26T10:43:50.000000Z",
+        "updated_at": "2025-06-26T11:04:40.000000Z"
+      },
+      "user": {
+        "id": 2,
+        "account_id": 1,
+        "first_name": "\u0418\u0432\u0430\u043d",
+        "last_name": "\u0418\u0432\u0430\u043d\u043e\u0432",
+        "email": "thjtjy@aaa.com",
+        "phone": null,
+        "email_verified_at": null,
+        "owner": false,
+        "photo": null,
+        "created_at": "2025-05-15T09:45:36.000000Z",
+        "updated_at": "2025-06-26T11:35:17.000000Z",
+        "deleted_at": null,
+        "amojo_id": "3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9",
+        "telegram_id": 781366976,
+        "connection_id": 11,
+        "amo_connection_id": 3,
+        "telegram": {
+          "id": 11,
+          "phone": "+998997080724",
+          "account_id": 1,
+          "telegram_id": 781366976,
+          "user_name": "user0724",
+          "first_name": "Bexruz",
+          "last_name": null,
+          "created_at": "2025-06-26T09:22:50.000000Z",
+          "updated_at": "2025-06-26T09:22:50.000000Z"
+        },
+        "amo": {
+          "id": 3,
+          "account_id": 1,
+          "uid": "25dd1cbb-a999-4cb3-a34d-09b0431ff2b8",
+          "amojo_id": "3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9",
+          "secret_key": "7b5e3cc7a7137e2638647d6c40290f05aa84c69a7b5e3cc7a7137e2638647d6c40290f05aa84c69a",
+          "amo_account_id": "00db92bc-8371-4adc-9092-9cba4a3654fa",
+          "base_domain": "zla31339.amocrm.ru",
+          "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImViOTA4NzBlMjE0M2Q1MDU4ZDQ4ZTVlYjQxYmUzODNmNTdjODIzNzE4NTg3MmJmYTZhMjNiNTI0NDc2M2Q1NDg5ODg0MTMzYWYwNjdjMmQ5In0.eyJhdWQiOiIwNWE1YzQ2YS04OWViLTQ1YTEtYTJkYy04OGE2OTViOWZhNWYiLCJqdGkiOiJlYjkwODcwZTIxNDNkNTA1OGQ0OGU1ZWI0MWJlMzgzZjU3YzgyMzcxODU4NzJiZmE2YTIzYjUyNDQ3NjNkNTQ4OTg4NDEzM2FmMDY3YzJkOSIsImlhdCI6MTc1MDkzNTg3OSwibmJmIjoxNzUwOTM1ODc5LCJleHAiOjE3NTEwMjIyNzksInN1YiI6IjEyNDEyMDAyIiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjMyMzc0NTk4LCJiYXNlX2RvbWFpbiI6ImFtb2NybS5ydSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiMDM1YzBhMGUtNmMxMC00NTdkLWJmZjctOGIyOTFhYTU2NjA2IiwiYXBpX2RvbWFpbiI6ImFwaS1iLmFtb2NybS5ydSJ9.f_c3Flk924CF33Z0bCYm_V50vT0VvCvQJvEgOSOM3fmg8t8PxyK4oYmzkCCD_C5KURssuICAK07TKIxMDdCYHVUbWWn9Zf4i81nwfFHB1-MHDdcIKDpgtG-5hY7YJOS2A8S_wVZHyUwlGwqUqMeUT-X2fZcmVe0pc9qhiJZVKKzoGqXfrBFVMYHgaPQVYG6hmvmao7UN66yYIS_hg4w4HuSk7wR1Bfmx7CBn-R2xCxl4zLUym1uosBs6RN-fhqlHEfQMvh5vueKOHaM3lyIacbpJCmeqxWE9EMP6f6FWV29XIONBgQYxG8oFv4RRRQ3HHsea33uE59fYXmsLROJ5jw",
+          "refresh_token": "def502005f72923774d8670d4add869cb505583f8780b55f4cb86cbb0ccd8846acde2cfe096a56b4f8ccc84ccdfefd794a2212917d1788b5ed37ea9f2ba88abc8732ca998648f7504676e11cf3c9b05bd8c192cc853da5d75664151ce3ac59edd212724b3eb864b561019672378c7712e4e87239ab96b3d9fb564634d6d52dad873ba048c1c30e613d5583a8b92321257c198d270dc852a9153cee8ee00392c094c2c93732368ed7c44f22f9a78e48e3642ba4896c598fa8ce00e2576e8dff81f93adefa83933d88b97d1b776c79db27a4858538c86c7613861aa442a687af441502f5becfca7ebdef25589238a16d038ef67b343ade84627295265c0d7971b516a6a94adb2366a3ae1f8b3249409d43ca3b20053e3722484ff484b8531740661d28ded3a909bc04306df16a975f136c39e28548d14054c1ea4afc5dfc68e22ff7958beb8c66fe678359a127fd1562c718799956b0ed27f74bc15d056d4da416c1022db6a046531a49e18977d0f1e3e902f77338f0c181f5d5c2d69e35da597ed63724966d8afde9d23d8ee2fea58c0a9bda06e584763b913067a58561d214d3037da359148b139ccded5e9084ea480f8ef31d9ce5cd615be49e161fb3123fcf3cb33fb090b440d7297a27fe6502fc71e898716538d2c2c904a4924783517a4670c6eebb66cc374559b72a57ebd9",
+          "expires": 1751022280,
+          "created_at": "2025-06-26T10:43:50.000000Z",
+          "updated_at": "2025-06-26T11:04:40.000000Z"
+        }
+      }
+    },
+    {
+      "out": false,
+      "telegram": {
+        "id": 3,
+        "account_id": 3,
+        "phone": "+998997080724",
+        "telegram_id": 781366976,
+        "first_name": "Bexruz",
+        "last_name": null,
+        "user_name": "user0724",
+        "created_at": "2025-06-30T10:14:21.000000Z",
+        "updated_at": "2025-06-30T10:14:21.000000Z"
+      },
+      "amo": {
+        "id": 4,
+        "account_id": 3,
+        "uid": "05a5c46a-89eb-45a1-a2dc-88a695b9fa5f",
+        "amojo_id": null,
+        "secret_key": "1XsFzjSCNqz43GR4tKux46ETlnRA1lMZBSGS5mMdrmnlOx5FS9ZXHCps9sT5FJpr",
+        "amo_account_id": "00db92bc-8371-4adc-9092-9cba4a3654fa",
+        "base_domain": "zla31339.amocrm.ru",
+        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImYyMDBlNWE4NjcxZjIxNzZmNWQyNzM1NmE5Y2NiNDVlN2Y0YzNmMDcyZTNhZjkxNTk0YWYwMzVkNTE5NmJlNjgzNTIwZDAxNDEzMDVkNDM4In0.eyJhdWQiOiIwNWE1YzQ2YS04OWViLTQ1YTEtYTJkYy04OGE2OTViOWZhNWYiLCJqdGkiOiJmMjAwZTVhODY3MWYyMTc2ZjVkMjczNTZhOWNjYjQ1ZTdmNGMzZjA3MmUzYWY5MTU5NGFmMDM1ZDUxOTZiZTY4MzUyMGQwMTQxMzA1ZDQzOCIsImlhdCI6MTc1MTI3ODM1NCwibmJmIjoxNzUxMjc4MzU0LCJleHAiOjE3NTEzNjQ3NTQsInN1YiI6IjEyNDEyMDAyIiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjMyMzc0NTk4LCJiYXNlX2RvbWFpbiI6ImFtb2NybS5ydSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiMDU5YjhhNjEtN2RlYi00NjY1LThlMWMtM2EyMjE2ODAwNDg0IiwiYXBpX2RvbWFpbiI6ImFwaS1iLmFtb2NybS5ydSJ9.JS_ufKFerUrFktl6zT0sC4GN9pEeD7Z062eF2nVW5PCTu6n0oLfoNb7J32We4cRsoQVyK3UI2PPWoHZ0Wpgir2wmMxVnXqbcFzoAXHCPF0u5eYiQlnSprEVl0UAbLmhriA_9fgZ-uctl3y5l19RfTj6dzaOuJ7_-V_plgfzJDdJ4EGZk5hlAe7OsdbJjGcQtZverdpabEObTF_7wrLXQ-7TK4MoXyWuG5DtCf0qRCwrprkxaxVjCm52HGstSB3py15c6PZ1GR8fLNZJ1Ir1Ncwt-_ex73KtlfoRSNXuqrahojnLUZnlx7UCAxghhLy4hTiLVppzKLzMjLr-Ekm3Qww",
+        "refresh_token": "def50200987836783d05c108bc691d236a8652a4c080018a264860e12ceb58193b9745f2ea0552a778bd8049ac6960a64a308c883be28df74d638cf0278a90f246691558efe34cdac7a2e5d99923546e96a82e09a14163e12132f0aa86c4fbb0ecf6e64fd64e1404305c59c04a9f8438d528f31b761c9878194cd25008174fc276624c36285ad01aedfd150e5c3a1ab39af4bcc8f6a69f8fc774b0f47a9981a3a762fa311251dd22159e4371a79c6869238a6ddbbda625033228ee6f0842d7832e9c73dcb01f9d63cf6d8048ca99e79a3098f2c7dc8589e689d7dbe49d886505b8f5d4c8e811e81dd0930f23f90981c15fdcd2050eb73da98245ed168648071df3e48b357dd9c8692370836bb4f25d4e6e940f6168853f10c63cb19b9b6c887b77e11a7fd52935593c92b2dded0b80ffc26117473f11348f8e4738451d730f6ac18f96fa6d965688cd6b272e6f2afa746754752082f6587777f95deb2f84bc32dfe6e894000193693dc89badcc5809ff01b0ba69a3786738ed7438746d695c0fdd24455ec34a87c8cd534ebf97ee687fe3b070761325fea0a5fb1f7685aaa30fc6ba59c6df2281211187d250ef837e9ab5fab06593eb78919ae070cae6cf8cb4445db079e503074b89a1880235364d1221f760b0c2be1bade26f0cd13fe0d1a434e5f243e7fee04fc3294c72b4bf",
+        "expires": 1751364754,
+        "created_at": "2025-06-30T10:11:12.000000Z",
+        "updated_at": "2025-06-30T10:12:34.000000Z"
+      },
+      "user": {
+        "id": 8,
+        "account_id": 3,
+        "first_name": "telagram",
+        "last_name": "amocrm",
+        "email": "test@google.com",
+        "phone": "+998997080724",
+        "email_verified_at": null,
+        "owner": false,
+        "photo": null,
+        "amojo_id": "3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9",
+        "telegram_id": 781366976,
+        "created_at": "2025-06-30T10:19:07.000000Z",
+        "updated_at": "2025-06-30T10:19:07.000000Z",
+        "deleted_at": null,
+        "connection_id": 3,
+        "amo_connection_id": 4,
+        "telegram": {
+          "id": 3,
+          "account_id": 3,
+          "phone": "+998997080724",
+          "telegram_id": 781366976,
+          "first_name": "Bexruz",
+          "last_name": null,
+          "user_name": "user0724",
+          "created_at": "2025-06-30T10:14:21.000000Z",
+          "updated_at": "2025-06-30T10:14:21.000000Z"
+        },
+        "amo": {
+          "id": 4,
+          "account_id": 3,
+          "uid": "05a5c46a-89eb-45a1-a2dc-88a695b9fa5f",
+          "amojo_id": null,
+          "secret_key": "1XsFzjSCNqz43GR4tKux46ETlnRA1lMZBSGS5mMdrmnlOx5FS9ZXHCps9sT5FJpr",
+          "amo_account_id": "00db92bc-8371-4adc-9092-9cba4a3654fa",
+          "base_domain": "zla31339.amocrm.ru",
+          "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImYyMDBlNWE4NjcxZjIxNzZmNWQyNzM1NmE5Y2NiNDVlN2Y0YzNmMDcyZTNhZjkxNTk0YWYwMzVkNTE5NmJlNjgzNTIwZDAxNDEzMDVkNDM4In0.eyJhdWQiOiIwNWE1YzQ2YS04OWViLTQ1YTEtYTJkYy04OGE2OTViOWZhNWYiLCJqdGkiOiJmMjAwZTVhODY3MWYyMTc2ZjVkMjczNTZhOWNjYjQ1ZTdmNGMzZjA3MmUzYWY5MTU5NGFmMDM1ZDUxOTZiZTY4MzUyMGQwMTQxMzA1ZDQzOCIsImlhdCI6MTc1MTI3ODM1NCwibmJmIjoxNzUxMjc4MzU0LCJleHAiOjE3NTEzNjQ3NTQsInN1YiI6IjEyNDEyMDAyIiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjMyMzc0NTk4LCJiYXNlX2RvbWFpbiI6ImFtb2NybS5ydSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiMDU5YjhhNjEtN2RlYi00NjY1LThlMWMtM2EyMjE2ODAwNDg0IiwiYXBpX2RvbWFpbiI6ImFwaS1iLmFtb2NybS5ydSJ9.JS_ufKFerUrFktl6zT0sC4GN9pEeD7Z062eF2nVW5PCTu6n0oLfoNb7J32We4cRsoQVyK3UI2PPWoHZ0Wpgir2wmMxVnXqbcFzoAXHCPF0u5eYiQlnSprEVl0UAbLmhriA_9fgZ-uctl3y5l19RfTj6dzaOuJ7_-V_plgfzJDdJ4EGZk5hlAe7OsdbJjGcQtZverdpabEObTF_7wrLXQ-7TK4MoXyWuG5DtCf0qRCwrprkxaxVjCm52HGstSB3py15c6PZ1GR8fLNZJ1Ir1Ncwt-_ex73KtlfoRSNXuqrahojnLUZnlx7UCAxghhLy4hTiLVppzKLzMjLr-Ekm3Qww",
+          "refresh_token": "def50200987836783d05c108bc691d236a8652a4c080018a264860e12ceb58193b9745f2ea0552a778bd8049ac6960a64a308c883be28df74d638cf0278a90f246691558efe34cdac7a2e5d99923546e96a82e09a14163e12132f0aa86c4fbb0ecf6e64fd64e1404305c59c04a9f8438d528f31b761c9878194cd25008174fc276624c36285ad01aedfd150e5c3a1ab39af4bcc8f6a69f8fc774b0f47a9981a3a762fa311251dd22159e4371a79c6869238a6ddbbda625033228ee6f0842d7832e9c73dcb01f9d63cf6d8048ca99e79a3098f2c7dc8589e689d7dbe49d886505b8f5d4c8e811e81dd0930f23f90981c15fdcd2050eb73da98245ed168648071df3e48b357dd9c8692370836bb4f25d4e6e940f6168853f10c63cb19b9b6c887b77e11a7fd52935593c92b2dded0b80ffc26117473f11348f8e4738451d730f6ac18f96fa6d965688cd6b272e6f2afa746754752082f6587777f95deb2f84bc32dfe6e894000193693dc89badcc5809ff01b0ba69a3786738ed7438746d695c0fdd24455ec34a87c8cd534ebf97ee687fe3b070761325fea0a5fb1f7685aaa30fc6ba59c6df2281211187d250ef837e9ab5fab06593eb78919ae070cae6cf8cb4445db079e503074b89a1880235364d1221f760b0c2be1bade26f0cd13fe0d1a434e5f243e7fee04fc3294c72b4bf",
+          "expires": 1751364754,
+          "created_at": "2025-06-30T10:11:12.000000Z",
+          "updated_at": "2025-06-30T10:12:34.000000Z"
+        }
+      }
+    }
+  ],
+  [
+    {
+      "id": 2092452523,
+      "name": "Bexruz",
+      "phone": "998339995959"
+    },
+    {
+      "_": "danog\\MadelineProto\\EventHandler\\Message\\PrivateMessage",
+      "message": "ghght",
+      "fwdInfo": null,
+      "command": null,
+      "commandType": null,
+      "commandArgs": null,
+      "protected": false,
+      "matches": null,
+      "matchesAll": null,
+      "media": null,
+      "fromScheduled": false,
+      "viaBotId": null,
+      "editDate": null,
+      "editHide": false,
+      "keyboard": null,
+      "imported": false,
+      "psaType": null,
+      "nextSent": null,
+      "views": null,
+      "forwards": null,
+      "signature": null,
+      "entities": [],
+      "groupedId": null,
+      "poll": null,
+      "scheduled": false,
+      "id": 77590,
+      "out": false,
+      "chatId": 2092452523,
+      "senderId": 2092452523,
+      "replyToMsgId": null,
+      "date": 1751281007,
+      "topicId": null,
+      "threadId": null,
+      "replyToScheduled": false,
+      "mentioned": false,
+      "silent": false,
+      "ttlPeriod": null
+    },
+    {
+      "out": false,
+      "telegram": {
+        "id": 3,
+        "account_id": 3,
+        "phone": "+998997080724",
+        "telegram_id": 781366976,
+        "first_name": "Bexruz",
+        "last_name": null,
+        "user_name": "user0724",
+        "created_at": "2025-06-30T10:14:21.000000Z",
+        "updated_at": "2025-06-30T10:14:21.000000Z"
+      },
+      "amo": {
+        "id": 4,
+        "account_id": 3,
+        "uid": "05a5c46a-89eb-45a1-a2dc-88a695b9fa5f",
+        "amojo_id": "3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9",
+        "secret_key": "1XsFzjSCNqz43GR4tKux46ETlnRA1lMZBSGS5mMdrmnlOx5FS9ZXHCps9sT5FJpr",
+        "amo_account_id": "00db92bc-8371-4adc-9092-9cba4a3654fa",
+        "base_domain": "zla31339.amocrm.ru",
+        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImYyMDBlNWE4NjcxZjIxNzZmNWQyNzM1NmE5Y2NiNDVlN2Y0YzNmMDcyZTNhZjkxNTk0YWYwMzVkNTE5NmJlNjgzNTIwZDAxNDEzMDVkNDM4In0.eyJhdWQiOiIwNWE1YzQ2YS04OWViLTQ1YTEtYTJkYy04OGE2OTViOWZhNWYiLCJqdGkiOiJmMjAwZTVhODY3MWYyMTc2ZjVkMjczNTZhOWNjYjQ1ZTdmNGMzZjA3MmUzYWY5MTU5NGFmMDM1ZDUxOTZiZTY4MzUyMGQwMTQxMzA1ZDQzOCIsImlhdCI6MTc1MTI3ODM1NCwibmJmIjoxNzUxMjc4MzU0LCJleHAiOjE3NTEzNjQ3NTQsInN1YiI6IjEyNDEyMDAyIiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjMyMzc0NTk4LCJiYXNlX2RvbWFpbiI6ImFtb2NybS5ydSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiMDU5YjhhNjEtN2RlYi00NjY1LThlMWMtM2EyMjE2ODAwNDg0IiwiYXBpX2RvbWFpbiI6ImFwaS1iLmFtb2NybS5ydSJ9.JS_ufKFerUrFktl6zT0sC4GN9pEeD7Z062eF2nVW5PCTu6n0oLfoNb7J32We4cRsoQVyK3UI2PPWoHZ0Wpgir2wmMxVnXqbcFzoAXHCPF0u5eYiQlnSprEVl0UAbLmhriA_9fgZ-uctl3y5l19RfTj6dzaOuJ7_-V_plgfzJDdJ4EGZk5hlAe7OsdbJjGcQtZverdpabEObTF_7wrLXQ-7TK4MoXyWuG5DtCf0qRCwrprkxaxVjCm52HGstSB3py15c6PZ1GR8fLNZJ1Ir1Ncwt-_ex73KtlfoRSNXuqrahojnLUZnlx7UCAxghhLy4hTiLVppzKLzMjLr-Ekm3Qww",
+        "refresh_token": "def50200987836783d05c108bc691d236a8652a4c080018a264860e12ceb58193b9745f2ea0552a778bd8049ac6960a64a308c883be28df74d638cf0278a90f246691558efe34cdac7a2e5d99923546e96a82e09a14163e12132f0aa86c4fbb0ecf6e64fd64e1404305c59c04a9f8438d528f31b761c9878194cd25008174fc276624c36285ad01aedfd150e5c3a1ab39af4bcc8f6a69f8fc774b0f47a9981a3a762fa311251dd22159e4371a79c6869238a6ddbbda625033228ee6f0842d7832e9c73dcb01f9d63cf6d8048ca99e79a3098f2c7dc8589e689d7dbe49d886505b8f5d4c8e811e81dd0930f23f90981c15fdcd2050eb73da98245ed168648071df3e48b357dd9c8692370836bb4f25d4e6e940f6168853f10c63cb19b9b6c887b77e11a7fd52935593c92b2dded0b80ffc26117473f11348f8e4738451d730f6ac18f96fa6d965688cd6b272e6f2afa746754752082f6587777f95deb2f84bc32dfe6e894000193693dc89badcc5809ff01b0ba69a3786738ed7438746d695c0fdd24455ec34a87c8cd534ebf97ee687fe3b070761325fea0a5fb1f7685aaa30fc6ba59c6df2281211187d250ef837e9ab5fab06593eb78919ae070cae6cf8cb4445db079e503074b89a1880235364d1221f760b0c2be1bade26f0cd13fe0d1a434e5f243e7fee04fc3294c72b4bf",
+        "expires": 1751364754,
+        "created_at": "2025-06-30T10:11:12.000000Z",
+        "updated_at": "2025-06-30T10:12:34.000000Z"
+      },
+      "user": {
+        "id": 8,
+        "account_id": 3,
+        "first_name": "telagram",
+        "last_name": "amocrm",
+        "email": "test@google.com",
+        "phone": "+998997080724",
+        "email_verified_at": null,
+        "owner": false,
+        "photo": null,
+        "amojo_id": "3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9",
+        "telegram_id": 781366976,
+        "created_at": "2025-06-30T10:19:07.000000Z",
+        "updated_at": "2025-06-30T10:19:07.000000Z",
+        "deleted_at": null,
+        "connection_id": 3,
+        "amo_connection_id": 4,
+        "telegram": {
+          "id": 3,
+          "account_id": 3,
+          "phone": "+998997080724",
+          "telegram_id": 781366976,
+          "first_name": "Bexruz",
+          "last_name": null,
+          "user_name": "user0724",
+          "created_at": "2025-06-30T10:14:21.000000Z",
+          "updated_at": "2025-06-30T10:14:21.000000Z"
+        },
+        "amo": {
+          "id": 4,
+          "account_id": 3,
+          "uid": "05a5c46a-89eb-45a1-a2dc-88a695b9fa5f",
+          "amojo_id": "3fbb0ea8-3ee9-4018-8339-a9a298f6b6a9",
+          "secret_key": "1XsFzjSCNqz43GR4tKux46ETlnRA1lMZBSGS5mMdrmnlOx5FS9ZXHCps9sT5FJpr",
+          "amo_account_id": "00db92bc-8371-4adc-9092-9cba4a3654fa",
+          "base_domain": "zla31339.amocrm.ru",
+          "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImYyMDBlNWE4NjcxZjIxNzZmNWQyNzM1NmE5Y2NiNDVlN2Y0YzNmMDcyZTNhZjkxNTk0YWYwMzVkNTE5NmJlNjgzNTIwZDAxNDEzMDVkNDM4In0.eyJhdWQiOiIwNWE1YzQ2YS04OWViLTQ1YTEtYTJkYy04OGE2OTViOWZhNWYiLCJqdGkiOiJmMjAwZTVhODY3MWYyMTc2ZjVkMjczNTZhOWNjYjQ1ZTdmNGMzZjA3MmUzYWY5MTU5NGFmMDM1ZDUxOTZiZTY4MzUyMGQwMTQxMzA1ZDQzOCIsImlhdCI6MTc1MTI3ODM1NCwibmJmIjoxNzUxMjc4MzU0LCJleHAiOjE3NTEzNjQ3NTQsInN1YiI6IjEyNDEyMDAyIiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjMyMzc0NTk4LCJiYXNlX2RvbWFpbiI6ImFtb2NybS5ydSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiMDU5YjhhNjEtN2RlYi00NjY1LThlMWMtM2EyMjE2ODAwNDg0IiwiYXBpX2RvbWFpbiI6ImFwaS1iLmFtb2NybS5ydSJ9.JS_ufKFerUrFktl6zT0sC4GN9pEeD7Z062eF2nVW5PCTu6n0oLfoNb7J32We4cRsoQVyK3UI2PPWoHZ0Wpgir2wmMxVnXqbcFzoAXHCPF0u5eYiQlnSprEVl0UAbLmhriA_9fgZ-uctl3y5l19RfTj6dzaOuJ7_-V_plgfzJDdJ4EGZk5hlAe7OsdbJjGcQtZverdpabEObTF_7wrLXQ-7TK4MoXyWuG5DtCf0qRCwrprkxaxVjCm52HGstSB3py15c6PZ1GR8fLNZJ1Ir1Ncwt-_ex73KtlfoRSNXuqrahojnLUZnlx7UCAxghhLy4hTiLVppzKLzMjLr-Ekm3Qww",
+          "refresh_token": "def50200987836783d05c108bc691d236a8652a4c080018a264860e12ceb58193b9745f2ea0552a778bd8049ac6960a64a308c883be28df74d638cf0278a90f246691558efe34cdac7a2e5d99923546e96a82e09a14163e12132f0aa86c4fbb0ecf6e64fd64e1404305c59c04a9f8438d528f31b761c9878194cd25008174fc276624c36285ad01aedfd150e5c3a1ab39af4bcc8f6a69f8fc774b0f47a9981a3a762fa311251dd22159e4371a79c6869238a6ddbbda625033228ee6f0842d7832e9c73dcb01f9d63cf6d8048ca99e79a3098f2c7dc8589e689d7dbe49d886505b8f5d4c8e811e81dd0930f23f90981c15fdcd2050eb73da98245ed168648071df3e48b357dd9c8692370836bb4f25d4e6e940f6168853f10c63cb19b9b6c887b77e11a7fd52935593c92b2dded0b80ffc26117473f11348f8e4738451d730f6ac18f96fa6d965688cd6b272e6f2afa746754752082f6587777f95deb2f84bc32dfe6e894000193693dc89badcc5809ff01b0ba69a3786738ed7438746d695c0fdd24455ec34a87c8cd534ebf97ee687fe3b070761325fea0a5fb1f7685aaa30fc6ba59c6df2281211187d250ef837e9ab5fab06593eb78919ae070cae6cf8cb4445db079e503074b89a1880235364d1221f760b0c2be1bade26f0cd13fe0d1a434e5f243e7fee04fc3294c72b4bf",
+          "expires": 1751364754,
+          "created_at": "2025-06-30T10:11:12.000000Z",
+          "updated_at": "2025-06-30T10:12:34.000000Z"
+        }
+      }
+    }
+  ]
+]

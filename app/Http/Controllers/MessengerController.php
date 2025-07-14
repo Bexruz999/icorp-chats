@@ -30,11 +30,15 @@ class MessengerController extends Controller
         $phone = auth()->user()->getPhone();
 
         try {
+            $chats = $this->telegramService->getDialogs($phone);
             return Inertia::render('Messengers/Index', [
-                'chats' => $this->telegramService->getDialogs($phone)
+                'chats' => $chats
             ]);
         } catch (Exception $e) {
-            Log::error($e->getMessage());
+            Log::error('Error retrieving chats', [
+                'error' => $e->getMessage(),
+                'code' => $e->getCode(),
+            ]);
             return Inertia::render('Error', ['status' => $e->getCode()]);
         }
     }

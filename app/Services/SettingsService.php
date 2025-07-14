@@ -86,7 +86,6 @@ class SettingsService {
     }
 
     public function deleteConnection(string $phone) {
-        // Logout from Telegram
         try {
             $MadelineProto = TelegramService::createMadelineProto($phone);
             $MadelineProto->logOut();

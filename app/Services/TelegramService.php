@@ -13,7 +13,10 @@ use danog\MadelineProto\EventHandler\Media\Video;
 use danog\MadelineProto\EventHandler\Media\Voice;
 use danog\MadelineProto\Exception;
 use danog\MadelineProto\LocalFile;
+use danog\MadelineProto\Settings;
 use danog\MadelineProto\Settings\AppInfo;
+use danog\MadelineProto\Settings\Database\Mysql;
+use danog\MadelineProto\Settings\Database\Postgres;
 use Error;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
@@ -49,14 +52,28 @@ class TelegramService
 
     public static function createMadelineProto(string $phone): string|API
     {
-        $settings = (new AppInfo)
-            ->setApiId(intval(env("TELEGRAM_API_ID")))
-            ->setApiHash(env('TELEGRAM_API_HASH'));
+        $settings = new Settings();
+
+        // Use Postgres session storage with .env credentials
+       $config = config('database.connections.pgsql');
+
+        $settings->setAppInfo(
+            (new AppInfo)->setApiId((int)config('telegram.app_id'))->setApiHash(config('telegram.app_hash'))
+        );
+
+       $settings->setDb(
+           (new Mysql)
+               ->setUri("tcp://127.0.0.1")
+               ->setDatabase($config['database'])
+               ->setUsername($config['username'])
+               ->setPassword($config['password'])
+               ->setMaxConnections(100000)
+       );
 
         $storagePath = storage_path("app/telegram/$phone.madeline");
 
         try {
-            return new API($storagePath, $settings);
+            return new API(session: $storagePath, settings: $settings);
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -92,8 +109,9 @@ class TelegramService
                     $dialogs = [];
                 }
 
+                $count = Arr::get($dialogs, 'count', 0);
                 // Check if we received any dialogs
-                if (count($dialogs['dialogs']) == 0) {
+                if ($count == 0) {
                     break;
                 }
 
