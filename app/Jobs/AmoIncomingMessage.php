@@ -40,6 +40,10 @@ class AmoIncomingMessage implements ShouldQueue
     {
         Log::debug('This: ' . json_encode([$this->contact, $this->message, $this->connect], JSON_THROW_ON_ERROR));
 
+        if (Cache::has("amocrm_{$this->contact['id']}-{$this->message['id']}")) {
+            Log::debug('AmoIncomingMessage: Message already processed, skipping.');
+            return;
+        }
         $amo = new AmoChatService($this->connect);
         $amo->sendMessage(contact: $this->contact, msg: $this->message);
     }

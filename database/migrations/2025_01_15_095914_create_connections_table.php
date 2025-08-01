@@ -12,13 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('connections', function (Blueprint $table) {
-            $table->id();
+            $table->uuid()->primary();
             $table->foreignId('account_id');
-            $table->string('phone');
-            $table->integer('telegram_id')->nullable();
+            $table->string('platform')->default('telegram');
+            $table->integer('platform_user_id');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('user_name')->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
