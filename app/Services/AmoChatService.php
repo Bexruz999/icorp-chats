@@ -29,12 +29,9 @@ class AmoChatService
 
     public function connect(): void
     {
-        Log::debug('AmoChatService:  '. json_encode($this->connect));
-
         $channel = new Channel(uid: $this->connect['amo']['uid'], secretKey: $this->connect['amo']['secret_key']);
 
         $this->client = new AmoJoClient(channel: $channel, segment: 'ru');
-        Log::debug('AmoChatService client:  '. json_encode($this->client));
 
         $this->client->connect(accountUid: $this->connect['amo']['amo_account_id'], title: 'My channel');
     }
@@ -46,7 +43,6 @@ class AmoChatService
 
     public function createChat($contact, $chat_id): Conversation
     {
-        Log::debug('AmoChatService create chat:  '. json_encode($this->connect));
         $response = $this->client->createChat(
             accountUid: config('amo.account_id'),
             conversation: (new Conversation())->setId("chat-$chat_id"),
@@ -54,32 +50,6 @@ class AmoChatService
         );
 
         return (new Conversation())->setId("chat-$chat_id")->setRefId($response->getConversationRefId());
-    }
-
-    public function sendMessage(array $contact, array $msg)
-    {
-        $amo_contact = ($this->connect['out'] ? new Receiver() : new Sender())
-            ->setProfile((new UserProfile())->setPhone($contact['phone']))
-            ->setId("user-" . $contact['id'])
-            ->setName($contact['name'])
-            ->setAvatar($this->avatar);
-
-        Log::debug('AmoChatService $amo_contact:  '. $this->connect['out']);
-
-        $conv = $this->createChat($amo_contact, $contact['id']);
-
-        $payload = (new Payload())->setConversation($conv)->setMessage($this->setMessage($msg));
-        Log::debug('AmoChatService $payload:  '. $this->connect['out']);
-
-        if ($this->connect['out']) {
-            $payload->setSender((new Sender())->setRefId($this->connect['user']['amojo_id']));
-            $payload->setReceiver($amo_contact);
-        } else {
-            $payload->setSender($amo_contact);
-        }
-        \Log::debug('AmoChatService $payload: ' . json_encode($payload));
-
-        return $this->client->sendMessage($this->connect['amo']['amo_account_id'], $payload, 'test');
     }
 
     private function setMessage(array $message): AbstractMessage
@@ -103,5 +73,31 @@ class AmoChatService
         $newMessage->setUid("MSG_" . $message['id'])->setText($message['message']);
 
         return $newMessage;
+    }
+
+    public function sendMessage(array $contact, array $msg)
+    {
+        $amo_contact = ($this->connect['out'] ? new Receiver() : new Sender())
+            ->setProfile((new UserProfile())->setPhone($contact['phone']))
+            ->setId("user-" . $contact['id'])
+            ->setName($contact['name'])
+            ->setAvatar($this->avatar);
+
+        Log::debug('AmoChatService $amo_contact:  '. $this->connect['out']);
+
+        $conv = $this->createChat($amo_contact, $contact['id']);
+
+        $payload = (new Payload())->setConversation($conv)->setMessage($this->setMessage($msg));
+        Log::debug('AmoChatService $payload:  '. $this->connect['out']);
+
+        if ($this->connect['out']) {
+            $payload->setSender((new Sender())->setRefId($this->connect['user']['amojo_id']));
+            $payload->setReceiver($amo_contact);
+        } else {
+            $payload->setSender($amo_contact);
+        }
+        //Log::debug('AmoChatService $payload: ' . json_encode($payload, JSON_THROW_ON_ERROR));
+
+        return $this->client->sendMessage($this->connect['amo']['amo_account_id'], $payload, 'test');
     }
 }
