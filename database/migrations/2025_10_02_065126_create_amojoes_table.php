@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('account_id')->constrained()->cascadeOnDelete();
             $table->foreignId('amo_connection_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('connection_uuid')->nullable();
             $table->bigInteger('amo_account_id');
             $table->string('amojo_user_id')->unique();
             $table->string('name')->nullable();
@@ -31,6 +32,7 @@ return new class extends Migration {
         Schema::table('amojoes', static function (Blueprint $table) {
             $table->dropForeign(['account_id']);
             $table->dropForeign(['amo_connection_id']);
+            $table->dropForeign(['connection_uuid']);
         });
 
         Schema::dropIfExists('amojoes');
