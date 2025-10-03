@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('connections', function (Blueprint $table) {
+        Schema::create('connections', static function (Blueprint $table) {
             $table->uuid()->primary();
             $table->foreignId('account_id');
             $table->string('platform')->default('telegram');
