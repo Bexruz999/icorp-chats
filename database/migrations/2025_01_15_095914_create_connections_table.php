@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('user_name')->nullable();
             $table->tinyInteger('status')->default(0);
+            $table->text('name')->nullable();
             $table->timestamps();
         });
     }
