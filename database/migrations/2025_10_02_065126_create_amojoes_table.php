@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('account_id')->constrained()->cascadeOnDelete();
             $table->foreignId('amo_connection_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('connection_uuid')->nullable();
+            $table->foreignUuid('connection_uuid')->nullable();
             $table->bigInteger('amo_account_id');
             $table->string('amojo_user_id')->unique();
             $table->string('name')->nullable();
