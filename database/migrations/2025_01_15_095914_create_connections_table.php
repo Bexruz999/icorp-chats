@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid()->primary();
             $table->foreignId('account_id');
             $table->string('platform')->default('telegram');
-            $table->integer('platform_user_id');
+            $table->bigInteger('platform_user_id');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('first_name')->nullable();
